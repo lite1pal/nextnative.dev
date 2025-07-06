@@ -2,16 +2,33 @@ import { NextResponse } from "next/server";
 import { Octokit } from "@octokit/rest";
 import { prisma } from "@/prisma/client";
 import { trackEvent } from "@/services/custom-analytics";
+import { z } from "zod";
+
+const GITHUB_OWNER = "lite1pal";
+const GITHUB_REPO = "nextnative_boilerplate";
+
+const schema = z.object({
+  githubUsername: z.string().min(1).max(39),
+  paymentId: z.string().min(5),
+});
 
 export async function POST(request: Request) {
   try {
-    const { paymentId, githubUsername } = await request.json();
-    if (!paymentId || !githubUsername) {
-      return NextResponse.json(
-        { error: "Missing paymentId or githubUsername" },
-        { status: 400 }
-      );
+    // const { paymentId, githubUsername } = await request.json();
+    // if (!paymentId || !githubUsername) {
+    //   return NextResponse.json(
+    //     { error: "Missing paymentId or githubUsername" },
+    //     { status: 400 }
+    //   );
+    // }
+    const body = await request.json();
+
+    const parsed = schema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json({ error: "Invalid input" }, { status: 400 });
     }
+
+    const { githubUsername, paymentId } = parsed.data;
 
     const payment = await fetch(
       `https://live.dodopayments.com/payments/${paymentId}`,
@@ -53,14 +70,12 @@ export async function POST(request: Request) {
       );
     }
 
-    // Invite user to the repository
     const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-    const owner = "lite1pal";
-    const repo = "nextnative_boilerplate";
 
+    // Invite user to the repository
     await octokit.repos.addCollaborator({
-      owner,
-      repo,
+      owner: GITHUB_OWNER,
+      repo: GITHUB_REPO,
       username: githubUsername,
       permission: "pull",
     });
@@ -70,7 +85,7 @@ export async function POST(request: Request) {
     if (existingPurchase) {
       await prisma.purchase.update({
         where: { id: existingPurchase.id },
-        data: { isInvited: true },
+        data: { isInvited: true, githubUsername },
       });
     } else {
       await prisma.purchase.create({
