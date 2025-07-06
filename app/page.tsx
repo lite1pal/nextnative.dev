@@ -30,7 +30,7 @@ export default function Home() {
             priority
             width={600}
             height={600}
-            sizes="(max-width: 1279px) 70vw, 0vw"
+            sizes="(max-width: 1279px) 80vw, 0vw"
             quality={25}
           />
         </div>
@@ -75,7 +75,7 @@ export default function Home() {
           className="text-start md:text-center md:items-center"
         />
 
-        <p className="mt-6 text-lg max-w-2xl self-start w-fit md:mx-auto">
+        <p className="mt-6 text-lg max-w-2xl text-start md:text-center self-start w-fit md:mx-auto">
           Real apps. Real features. Fully cross-platform.
         </p>
       </div>
