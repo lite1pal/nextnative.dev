@@ -3,6 +3,8 @@ import { Octokit } from "@octokit/rest";
 import { prisma } from "@/prisma/client";
 import { trackEvent } from "@/services/custom-analytics";
 import { z } from "zod";
+import { ratelimit } from "@/lib/rate-limiter";
+import { headers } from "next/headers";
 
 const GITHUB_OWNER = "lite1pal";
 const GITHUB_REPO = "nextnative_boilerplate";
@@ -14,15 +16,22 @@ const schema = z.object({
 
 export async function POST(request: Request) {
   try {
-    // const { paymentId, githubUsername } = await request.json();
-    // if (!paymentId || !githubUsername) {
-    //   return NextResponse.json(
-    //     { error: "Missing paymentId or githubUsername" },
-    //     { status: 400 }
-    //   );
-    // }
+    // ✅ Rate limit by IP
+    const headersList = await headers();
+    const ip = headersList.get("x-forwarded-for") ?? "anonymous";
+    const { success: allowed } = await ratelimit.limit(ip);
+
+    if (!allowed) {
+      trackEvent(`⛔ Rate limited IP: ${ip}`, false);
+      return NextResponse.json(
+        { error: "Too many requests. Please wait a moment." },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
 
+    // ✅ Validate input
     const parsed = schema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
@@ -30,6 +39,7 @@ export async function POST(request: Request) {
 
     const { githubUsername, paymentId } = parsed.data;
 
+    // ✅ Check if the payment ID is valid
     const payment = await fetch(
       `https://live.dodopayments.com/payments/${paymentId}`,
       {
@@ -46,6 +56,7 @@ export async function POST(request: Request) {
       );
     }
 
+    // ✅ Check payment status
     const paymentData = await payment.json();
     if (paymentData.status !== "succeeded") {
       return NextResponse.json(
@@ -62,7 +73,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Already invited" }, { status: 409 });
     }
 
-    // Check if the GitHub token is available
+    // ✅ Check if the GitHub token is available
     if (!process.env.GITHUB_TOKEN) {
       return NextResponse.json(
         { error: "GitHub token is not configured" },
@@ -72,7 +83,7 @@ export async function POST(request: Request) {
 
     const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
-    // Invite user to the repository
+    // ✅ Invite user to the repository
     await octokit.repos.addCollaborator({
       owner: GITHUB_OWNER,
       repo: GITHUB_REPO,
