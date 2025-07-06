@@ -4,6 +4,13 @@ import { prisma } from "@/prisma/client";
 import { trackEvent } from "@/services/custom-analytics";
 import Link from "next/link";
 
+export const metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 export default async function Page({
   searchParams,
 }: {
