@@ -6,7 +6,7 @@ function BackgroundSVG() {
   const pathName = usePathname();
   // return <div className="w-full h-full absolute bg-yellow-300"></div>;
   return (
-    <div className="w-full h-full absolute grid grid-rows-6 top-0 left-0 z-[-1]">
+    <div className="w-full h-full absolute grid grid-rows-6 top-0 left-0 z-[-1] overflow-hidden max-w-[100vw]">
       <svg
         width="100%"
         height="100%"
@@ -14,7 +14,7 @@ function BackgroundSVG() {
         fill="none"
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
-        className={`${pathName !== "/" ? "row-span-6" : "row-span-4"} w-full h-full`}
+        className={`${pathName !== "/" ? "row-span-6" : "row-span-4"} w-full h-full max-w-[100vw]`}
       >
         <g clipPath="url(#clip0_158_153)">
           <path
