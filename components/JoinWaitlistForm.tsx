@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 import Button from "./Button";
-import StarburstSign from "./StarburstSign";
 import { subscribeToNewsletter } from "@/app/actions/subscribe";
-import Link from "next/link";
 
 function JoinWaitlistForm() {
   const [email, setEmail] = useState("");
@@ -17,7 +15,7 @@ function JoinWaitlistForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!email || !consent) {
+    if (!email) {
       setStatus("error");
       setMessage(
         !email
@@ -47,38 +45,42 @@ function JoinWaitlistForm() {
   };
 
   return (
-    <StarburstSign
-      rotation={180}
-      position="bottom-right"
-      className="w-full max-w-[600px]"
-      svgClassName="bottom-[-10px]"
+    <form
+      id="waitlist"
+      onSubmit={handleSubmit}
+      className="flex relative flex-col gap-4"
     >
-      <form
-        id="waitlist"
-        onSubmit={handleSubmit}
-        className="flex relative flex-col gap-4"
-      >
-        <div className="flex flex-col sm:flex-row gap-4 w-full mx-auto">
-          <input
-            id="waitlist-input"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            disabled={status === "loading"}
-            className="flex-1 px-6 py-2 md:py-4 bg-white border-2 border-gray/0 rounded-xl text-foreground placeholder:text-gray focus:outline-none focus:border-primary"
-          />
+      <h3 className="text-3xl font-[500]">🏃‍♂️ From Code to Customers</h3>
+      <p className="text-gray text-xl">
+        I write about what it really takes to build products solo, and get
+        people to pay for them. It’s honest, it’s useful, and it’ll save you
+        months of guessing.
+      </p>
+      <div className="flex flex-col mt-10 sm:flex-row gap-4 w-full mx-auto">
+        <input
+          id="waitlist-input"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter your email"
+          disabled={status === "loading"}
+          style={{
+            boxShadow:
+              "0px 288px 115px rgba(0, 0, 0, 0.01), 0px 162px 97px rgba(0, 0, 0, 0.02), 0px 72px 72px rgba(0, 0, 0, 0.03), 0px 18px 40px rgba(0, 0, 0, 0.04)",
+          }}
+          className="flex-1 px-6 py-2 md:py-4 bg-white border-2 border-gray/0 rounded-xl text-foreground placeholder:text-gray focus:outline-none focus:border-primary"
+        />
 
-          <Button
-            variant="primary"
-            disabled={status === "loading"}
-            className="w-full md:w-auto"
-          >
-            {status === "loading" ? "Joining..." : "Join Waitlist"}
-          </Button>
-        </div>
+        <Button
+          variant="primary"
+          disabled={status === "loading"}
+          className="w-full md:w-auto"
+        >
+          {status === "loading" ? "Subscribing..." : "Subscribe"}
+        </Button>
+      </div>
 
-        <div className="flex items-start gap-3 text-sm text-gray">
+      {/* <div className="flex items-start gap-3 text-sm text-gray">
           <div className="relative flex items-start">
             <input
               type="checkbox"
@@ -120,19 +122,18 @@ function JoinWaitlistForm() {
               Privacy Policy
             </Link>
           </label>
-        </div>
+        </div> */}
 
-        {message && (
-          <p
-            className={`text-sm absolute -bottom-10 left-0 ${
-              status === "success" ? "text-green-600" : "text-red-600"
-            }`}
-          >
-            {message}
-          </p>
-        )}
-      </form>
-    </StarburstSign>
+      {message && (
+        <p
+          className={`text-sm absolute -bottom-10 left-0 ${
+            status === "success" ? "text-green-600" : "text-red-600"
+          }`}
+        >
+          {message}
+        </p>
+      )}
+    </form>
   );
 }
 

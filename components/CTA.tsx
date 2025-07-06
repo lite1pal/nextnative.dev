@@ -1,7 +1,6 @@
 import { trackEvent } from "@/services/custom-analytics";
 import Button from "./Button";
 import JoinWaitlistForm from "./JoinWaitlistForm";
-import { dodoPaymentLinks } from "./PricingSection";
 import { cn } from "@/lib/utils";
 
 function CTA({ className }: { className?: string }) {

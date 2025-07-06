@@ -18,14 +18,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://nextnative.dev/blog",
       lastModified: new Date(),
     },
-    // {
-    //   url: "https://docs.nextnative.dev",
-    //   lastModified: new Date(),
-    // },
-    // {
-    //   url: "https://docs.nextnative.dev/tutorials/ship-in-5-minutes",
-    //   lastModified: new Date(),
-    // },
+    {
+      url: "https://nextnative.dev/showcase",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://nextnative.dev/contact",
+      lastModified: new Date(),
+    },
 
     ...posts.map((post) => ({
       url: `https://nextnative.dev/blog/${post.slug}`,
