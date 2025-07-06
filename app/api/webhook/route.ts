@@ -49,6 +49,6 @@ export async function POST(request: Request) {
   } catch (err: any) {
     console.error(err);
     trackEvent("💰 Error on webhook - " + err.message + " 💔", false);
-    return NextResponse.json({ message: "Webhook received" }, { status: 200 });
+    return NextResponse.json({ message: "Webhook failed" }, { status: 500 });
   }
 }
