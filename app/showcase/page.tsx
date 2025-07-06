@@ -4,14 +4,14 @@ import Apps from "./apps";
 export const metadata = {
   title: "Mobile App Showcase | Built with NextNative",
   description:
-    "See real mobile apps built with the NextNative starter. Published to the App Store and Google Play — including habit trackers and productivity tools.",
+    "See real mobile apps built with the NextNative Starter Kit. Published to the App Store and Google Play — including habit trackers and productivity tools.",
   openGraph: {
     title: "NextNative Mobile Apps",
     description:
       "Explore real iOS and Android apps built using Next.js + Capacitor.",
     images: [
       {
-        url: "/og/nextnative-showcase.png", // create one for social previews
+        url: "/showcase/og-showcase.png",
         width: 1200,
         height: 630,
         alt: "Showcase of apps built with NextNative",
