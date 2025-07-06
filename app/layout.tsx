@@ -77,7 +77,7 @@ export default function RootLayout({
           />
         </noscript>
         <Toaster />
-        <main className="flex relative max-xl:overflow-hidden flex-col">
+        <main className="flex relative overflow-hidden flex-col">
           <BackgroundSVG />
           <Container>
             <Navbar />

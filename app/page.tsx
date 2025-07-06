@@ -19,7 +19,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <>
+    <div>
       <HeroSection2 />
       <div className="grid xl:hidden grid-cols-1 items-center lg:grid-cols-2 gap-8 sm:gap-16">
         <div className="max-w-xl mx-auto">
@@ -199,7 +199,7 @@ export default function Home() {
         buttonText="Launch mobile apps"
       />
       <FAQ />
-    </>
+    </div>
   );
 }
 
