@@ -30,12 +30,19 @@ export async function POST(request: Request) {
     }
 
     const paymentData = await payment.json();
-
     if (paymentData.status !== "succeeded") {
       return NextResponse.json(
         { error: "Invalid or unsuccessful payment" },
         { status: 403 }
       );
+    }
+
+    // ✅ Prevent duplicate invites
+    const existingPurchase = await prisma.purchase.findFirst({
+      where: { paymentId },
+    });
+    if (existingPurchase?.isInvited) {
+      return NextResponse.json({ error: "Already invited" }, { status: 409 });
     }
 
     // Check if the GitHub token is available
@@ -58,13 +65,11 @@ export async function POST(request: Request) {
       permission: "pull",
     });
 
-    const purchase = await prisma.purchase.findFirst({
-      where: { paymentId },
-    });
+    trackEvent(`💌 User invited to repo - ${githubUsername}`, false);
 
-    if (purchase) {
+    if (existingPurchase) {
       await prisma.purchase.update({
-        where: { id: purchase.id },
+        where: { id: existingPurchase.id },
         data: { isInvited: true },
       });
     } else {

@@ -26,7 +26,6 @@ import { AnimatedHamburger } from "./navbar/animated-hamburger";
 import { PomodoroShowcase } from "./pomodoro/pomodoro-showcase";
 import { FlashcardShowcase } from "./flashcards/flashcard-showcase";
 import { ExpenseShowcase } from "./expenses/expense-showcase";
-import { TaskShowcase } from "./tasks/task-showcase";
 import dynamic from "next/dynamic";
 
 const Galaxy = dynamic(() => import("@/components/portfolio/galaxy"), {
@@ -72,7 +71,6 @@ export const components = [
   PomodoroShowcase,
   FlashcardShowcase,
   ExpenseShowcase,
-  TaskShowcase,
   {
     id: "galaxy",
     name: "Galaxy",
