@@ -79,7 +79,7 @@ export default function ThankYouPage({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!githubUsername || !paymentId) {
-      setError("GitHub username is required");
+      setError("GitHub username and payment ID are required");
       return;
     }
 
@@ -276,7 +276,7 @@ function InvitedMessage({ productId }: { productId?: string }) {
           <p>
             📱 Here's your{" "}
             <a
-              href="https://docs.google.com/document/d/15AXCShQ8IuWN9tsQkeprxNbTGz6_HkdAiVCv7CrI3rE/edit?tab=t.0"
+              href={process.env.NEXT_PUBLIC_IOS_PUBLISHING_GUIDE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 underline"
