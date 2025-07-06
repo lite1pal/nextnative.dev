@@ -30,7 +30,7 @@ export default function Home() {
             priority
             width={600}
             height={600}
-            sizes="(max-width: 1279px) 50vw, 0vw"
+            sizes="(max-width: 1279px) 70vw, 0vw"
             quality={25}
           />
         </div>
