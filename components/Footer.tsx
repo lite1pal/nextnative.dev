@@ -10,7 +10,10 @@ interface FooterLink {
 }
 
 const productLinks: FooterLink[] = [
-  { label: "Affiliates", href: "https://nextnative.affonso.io/auth" },
+  {
+    label: "Affiliates - Earn 30%",
+    href: "https://nextnative.affonso.io/auth",
+  },
   { label: "Pricing", href: "/#pricing" },
   { label: "Blog", href: "/blog" },
   { label: "Docs", href: "https://docs.nextnative.dev" },
