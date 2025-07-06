@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Container from "@/components/Container";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import BackgroundSVG from "@/components/BackgroundSVG";
 import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { outfit } from "./fonts";
+import LayoutWrapper from "./layout-wrapper";
 
 export const metadata: Metadata = {
   title: "NextNative | Launch Mobile Apps Faster With Next.js",
@@ -77,14 +74,15 @@ export default function RootLayout({
           />
         </noscript>
         <Toaster />
-        <main className="flex relative overflow-hidden flex-col">
+        {/* <main className="flex relative overflow-hidden flex-col">
           <BackgroundSVG />
           <Container>
             <Navbar />
             {children}
             <Footer />
           </Container>
-        </main>
+        </main> */}
+        <LayoutWrapper>{children}</LayoutWrapper>
         <Analytics />
       </body>
       <GoogleAnalytics gaId="G-QJT70XZBP7" />
