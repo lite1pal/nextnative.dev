@@ -142,7 +142,7 @@ const faqItems = [
         email.
         <br />
         <br />
-        The Play Store (Android) guide is coming in 3–7 days.
+        The Play Store (Android) guide is coming very soon.
         <br />
         <br />
         It’s being finalized based on real launch experience to make sure it's
