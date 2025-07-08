@@ -286,8 +286,16 @@ function InvitedMessage({ productId }: { productId?: string }) {
             . Everything you need to get live on the App Store.
           </p>
           <p>
-            🤖 The Android version is almost ready. I'll email it to you very
-            soon!
+            🤖 Here's your{" "}
+            <a
+              href={process.env.NEXT_PUBLIC_ANDROID_PUBLISHING_GUIDE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+              Android Publishing Guide
+            </a>
+            . Everything you need to get live on Google Play.
           </p>
         </div>
       )}
