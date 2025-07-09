@@ -138,15 +138,8 @@ const faqItems = [
     question: "When do I get the App Store / Play Store guides?",
     answer: (
       <>
-        The App Store (iOS) guide is delivered immediately after purchase via
-        email.
-        <br />
-        <br />
-        The Play Store (Android) guide is coming very soon.
-        <br />
-        <br />
-        It’s being finalized based on real launch experience to make sure it's
-        battle-tested, accurate, and easy to follow.
+        The App Store (iOS) and Google Play Store (Android) guides are delivered
+        immediately after purchase.
       </>
     ),
   },
