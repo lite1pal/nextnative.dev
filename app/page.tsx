@@ -194,8 +194,8 @@ export default function Home() {
 
       <div className=""></div>
       <CallToAction
-        title="Start building in minutes."
-        subtitle="Save weeks of work."
+        title="Not ready to buy? "
+        subtitle="No problem."
         buttonText="Launch mobile apps"
       />
       <FAQ />

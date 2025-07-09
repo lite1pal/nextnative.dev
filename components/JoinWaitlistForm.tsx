@@ -48,13 +48,12 @@ function JoinWaitlistForm() {
     <form
       id="waitlist"
       onSubmit={handleSubmit}
-      className="flex relative flex-col gap-4"
+      className="flex relative flex-col gap-4 max-w-xl"
     >
-      <h3 className="text-3xl font-[500]">🏃‍♂️ From Code to Customers</h3>
-      <p className="text-gray text-xl">
-        I write about what it really takes to build products solo, and get
-        people to pay for them. It’s honest, it’s useful, and it’ll save you
-        months of guessing.
+      {/* <h3 className="text-3xl font-[500]">🏃‍♂️ From Code to Customers</h3> */}
+      <p className="text-base max-w-[654.36px] sm:text-lg md:text-[22px] leading-relaxed">
+        I share what’s working (and what’s not) as I grow NextNative from zero
+        to paying users, with honest tips, lessons, and early previews.
       </p>
       <div className="flex flex-col mt-10 sm:flex-row gap-4 w-full mx-auto">
         <input
@@ -79,6 +78,9 @@ function JoinWaitlistForm() {
           {status === "loading" ? "Subscribing..." : "Subscribe"}
         </Button>
       </div>
+      <span className="text-gray font-[500]">
+        No spam, just real updates and useful stuff.
+      </span>
 
       {/* <div className="flex items-start gap-3 text-sm text-gray">
           <div className="relative flex items-start">

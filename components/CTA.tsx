@@ -3,9 +3,13 @@ import Button from "./Button";
 import JoinWaitlistForm from "./JoinWaitlistForm";
 import { cn } from "@/lib/utils";
 
-function CTA({ className }: { className?: string }) {
-  const isWaitlist = false;
-
+function CTA({
+  className,
+  isWaitlist = false,
+}: {
+  className?: string;
+  isWaitlist?: boolean;
+}) {
   if (isWaitlist) {
     return <JoinWaitlistForm />;
   }
