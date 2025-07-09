@@ -111,8 +111,7 @@ const faqItems = [
         <a href="https://docs.nextnative.dev">clear guides</a> to help you set
         everything up. <br />
         <br />
-        Plus, you can do all of your development right in your browser,
-        emulator, or even a physical device!
+        Plus, you can do 99% of development right in your browser.
       </>
     ),
   },
@@ -137,12 +136,11 @@ const faqItems = [
     question: "When do I get the App Store / Play Store guides?",
     answer: (
       <>
-        The App Store (iOS) and Google Play Store (Android) guides are delivered
+        The App Store (iOS) and Google Play (Android) guides are delivered
         immediately after purchase.
       </>
     ),
   },
-
   {
     question: "Can I use Next.js server actions?",
     answer: "Nope, but you can use Next.js Serverless API endpoints instead.",
