@@ -134,7 +134,7 @@ function JoinWaitlistForm() {
 
       {message && (
         <p
-          className={`text-sm absolute -bottom-10 left-0 ${
+          className={`absolute -bottom-10 left-0 ${
             status === "success" ? "text-green-600" : "text-red-600"
           }`}
         >
