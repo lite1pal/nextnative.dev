@@ -73,6 +73,7 @@ function JoinWaitlistForm() {
         />
 
         <Button
+          type="submit"
           variant="primary"
           disabled={status === "loading"}
           className="w-full md:w-auto"
