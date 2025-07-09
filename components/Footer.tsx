@@ -21,8 +21,6 @@ const productLinks: FooterLink[] = [
   { label: "Docs", href: "https://docs.nextnative.dev" },
   { label: "Showcase", href: "/showcase" },
   { label: "Contact", href: "/contact" },
-
-  // { label: "Components", href: "/components" },
 ];
 
 const legalLinks: FooterLink[] = [
@@ -30,7 +28,6 @@ const legalLinks: FooterLink[] = [
   { label: "Terms", href: "/terms" },
   { label: "Disclaimer", href: "/disclaimer" },
   { label: "License", href: "/license" },
-  // { label: "Refund", href: "/refund" },
 ];
 
 function FooterLinkGroup({
