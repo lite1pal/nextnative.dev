@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import { subscribeToNewsletter } from "@/app/actions/subscribe";
+import { trackEvent } from "@/services/custom-analytics";
 
 function JoinWaitlistForm() {
   const [email, setEmail] = useState("");
@@ -26,6 +27,7 @@ function JoinWaitlistForm() {
     }
 
     try {
+      trackEvent("🔥 Email provided - " + email);
       setStatus("loading");
       const result = await subscribeToNewsletter(email);
 
