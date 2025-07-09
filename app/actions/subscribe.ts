@@ -65,7 +65,7 @@ export async function subscribeToNewsletter(
     if (!automationResponse.ok) {
       return {
         success: true,
-        message: "You've already been added to the waitlist 🤗",
+        message: "You've already been added to the newsletter 🤗",
       };
     }
 
