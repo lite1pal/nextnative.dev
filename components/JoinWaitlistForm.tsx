@@ -65,6 +65,9 @@ function JoinWaitlistForm() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
           disabled={status === "loading"}
+          onClick={() => {
+            trackEvent("🤖 Email input clicked");
+          }}
           style={{
             boxShadow:
               "0px 288px 115px rgba(0, 0, 0, 0.01), 0px 162px 97px rgba(0, 0, 0, 0.02), 0px 72px 72px rgba(0, 0, 0, 0.03), 0px 18px 40px rgba(0, 0, 0, 0.04)",
