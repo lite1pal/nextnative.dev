@@ -129,8 +129,7 @@ const faqItems = [
         fast!
         <br />
         <br />
-        I've included detailed guides (coming soon) to help you through the
-        process.
+        I've included detailed guides to help you through the process.
       </>
     ),
   },
