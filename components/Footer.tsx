@@ -7,12 +7,14 @@ import { trackEvent } from "@/services/custom-analytics";
 interface FooterLink {
   label: string;
   href: string;
+  target?: string;
 }
 
 const productLinks: FooterLink[] = [
   {
     label: "Affiliates - Earn 30%",
     href: "https://nextnative.affonso.io/auth",
+    target: "_blank",
   },
   { label: "Pricing", href: "/pricing" },
   { label: "Blog", href: "/blog" },
@@ -46,6 +48,7 @@ function FooterLinkGroup({
           <Link
             key={link.label}
             href={link.href}
+            target={link.target || "_self"}
             onClick={() => trackEvent(`Footer_${link.label}_clicked`)}
             className="text-gray hover:text-foreground transition-colors"
           >
