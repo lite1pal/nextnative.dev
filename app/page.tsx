@@ -163,7 +163,7 @@ export default function Home() {
           />
         ))}
       </div>
-      <Testimonial
+      {/* <Testimonial
         name="Matthias Schaefer"
         description="Developer"
         testimonial={
@@ -188,7 +188,7 @@ export default function Home() {
             </span>
           </div>
         }
-      />
+      /> */}
       <Spend5Minutes />
       <PricingSection />
 
