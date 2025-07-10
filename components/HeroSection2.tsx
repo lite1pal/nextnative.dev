@@ -172,6 +172,17 @@ const data = [
     position: "Senior .NET Developer",
     image: "/testimonials/vitaliy.jpeg",
   },
+  {
+    name: "Terry",
+    position: "Developer",
+    image: "/testimonials/terry.jpg",
+  },
+  {
+    name: "Mat B.",
+    position: "Developer",
+    image: "/testimonials/snouzy.jpg",
+  },
+
   // {
   //   name: "Ryan",
   //   position: "Front-End Web Developer",
