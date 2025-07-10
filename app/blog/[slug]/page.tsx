@@ -156,7 +156,7 @@ export default async function BlogPostPage({
               <div className="flex flex-col items-start">
                 <RatingSvg />
                 <div className="font-medium text-xs text-gray-500 pl-2">
-                  Loved by makers
+                  Loved by <span className="text-foreground">17</span> makers
                 </div>
               </div>
             </div>
