@@ -162,21 +162,21 @@ const data = [
     position: "Web developer",
     image: "/testimonials/denis.jpg",
   },
-  {
-    name: "Richard",
-    position: "Developer",
-    image: "/testimonials/richard.png",
-  },
+  // {
+  //   name: "Richard",
+  //   position: "Developer",
+  //   image: "/testimonials/richard.png",
+  // },
   {
     name: "Vilaliy",
     position: "Senior .NET Developer",
     image: "/testimonials/vitaliy.jpeg",
   },
-  {
-    name: "Ryan",
-    position: "Front-End Web Developer",
-    image: "/testimonials/ryan.png",
-  },
+  // {
+  //   name: "Ryan",
+  //   position: "Front-End Web Developer",
+  //   image: "/testimonials/ryan.png",
+  // },
   {
     name: "Martin",
     position: "Entrepreneur",
