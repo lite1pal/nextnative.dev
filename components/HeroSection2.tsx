@@ -43,14 +43,14 @@ function HeroSection2() {
       <div className="flex flex-col max-w-[946.5px] w-full xl:items-center xl:text-center gap-8 md:gap-[45px]">
         <div className="flex flex-col xl:items-center xl:text-center gap-6 md:gap-[36px]">
           <div className="flex flex-col items-center">
-            {/* <div className="text-sm sm:text-base flex gap-2 md:text-lg text-gray">
-              <span className="text-foreground">👋</span>
-              Build with web tools you love
-            </div> */}
             <h1 className="text-[44px] md:text-[74px] leading-[60px] md:leading-[91px] font-[600]">
               Launch mobile apps faster with{" "}
               <HighlightedSpan>Next.js</HighlightedSpan>
             </h1>
+            {/* <h1 className="text-[44px] md:text-[74px] leading-[60px] md:leading-[91px] font-[600]">
+              Go from idea to App Store{" "}
+              <HighlightedSpan>10x faster</HighlightedSpan>
+            </h1> */}
           </div>
 
           <p className="text-base max-w-[654.36px] sm:text-lg md:text-[22px] leading-relaxed">
@@ -68,7 +68,7 @@ function HeroSection2() {
           <div className="flex flex-col">
             <RatingSvg />
             <div className="font-medium text-gray-500 pl-2">
-              Loved by <span className="text-foreground">17</span> makers
+              Loved by <span className="text-foreground">18</span> makers
             </div>
           </div>
         </div>

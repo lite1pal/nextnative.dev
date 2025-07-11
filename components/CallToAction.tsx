@@ -24,7 +24,7 @@ function CallToAction({
         className="md:items-center"
       />
       <div className="relative">
-        <CTA className="md:items-center" isWaitlist />
+        <CTA className="md:items-center" />
       </div>
     </div>
   );

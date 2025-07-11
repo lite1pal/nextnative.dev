@@ -54,8 +54,8 @@ function JoinWaitlistForm() {
     >
       {/* <h3 className="text-3xl font-[500]">🏃‍♂️ From Code to Customers</h3> */}
       <p className="text-base max-w-[654.36px] sm:text-lg md:text-[22px] leading-relaxed">
-        I share what’s working (and what’s not) as I grow NextNative from zero
-        to paying users, with honest tips, lessons, and early previews.
+        I share my progress building NextNative, and lessons learned along the
+        way.
       </p>
       <div className="flex flex-col mt-10 sm:flex-row gap-4 w-full mx-auto">
         <input

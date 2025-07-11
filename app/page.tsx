@@ -36,36 +36,22 @@ export default function Home() {
         </div>
       </div>
       <Testimonial
-        imgSrc={"/testimonials/vitaliy.jpeg"}
-        name="Vitalii Zabrodskyi"
-        description="Senior .NET Developer"
+        imgSrc={""}
+        letters="S"
+        name="Happy customer"
+        description=""
+        showStars
         testimonial={
           <div>
-            I’m really pumped about it! The setup seems super easy, and I{" "}
+            Insane product & a great founder behind it - I've been trying to
+            mess around creating mobile apps &{" "}
             <span className="bg-primary p-1 rounded text-white font-[500]">
-              can’t wait to finally build my app!
+              I'm getting there bit by bit w/ this helping me hugely!!
             </span>
-            <br /> <br />{" "}
-            <a
-              target="_blank"
-              href="https://x.com/nextnative"
-              className="text-blue-600"
-            >
-              @nextnative
-            </a>{" "}
-            by{" "}
-            <a
-              target="_blank"
-              href="https://x.com/shipwithdenis"
-              className="text-blue-600"
-            >
-              @shipwithdenis
-            </a>{" "}
-            is such a phenomenal tool!
-            <br /> <br /> Wow, just wow!
           </div>
         }
       />
+
       <DemoVideo />
 
       <div className="text-center md:mb-16 max-md:mt-24">
@@ -131,18 +117,34 @@ export default function Home() {
 
       <SocialProof />
       <Testimonial
-        imgSrc={
-          "https://pbs.twimg.com/profile_images/1799370892855660544/sd7E-_7S_400x400.jpg"
-        }
-        name="Denis Tarasenko"
-        description="Founder of Lasting Habits"
+        imgSrc={"/testimonials/vitaliy.jpeg"}
+        name="Vitalii Zabrodskyi"
+        description="Senior .NET Developer"
+        showStars
         testimonial={
           <div>
-            So much value in this!{" "}
+            I’m really pumped about it! The setup seems super easy, and I{" "}
             <span className="bg-primary p-1 rounded text-white font-[500]">
-              I was impressed
-            </span>{" "}
-            that building a mobile app is so easy! Amazing work 🙌
+              can’t wait to finally build my app!
+            </span>
+            <br /> <br />{" "}
+            <a
+              target="_blank"
+              href="https://x.com/nextnative"
+              className="text-blue-600"
+            >
+              @nextnative
+            </a>{" "}
+            by{" "}
+            <a
+              target="_blank"
+              href="https://x.com/shipwithdenis"
+              className="text-blue-600"
+            >
+              @shipwithdenis
+            </a>{" "}
+            is such a phenomenal tool!
+            <br /> <br /> Wow, just wow!
           </div>
         }
       />
@@ -163,39 +165,47 @@ export default function Home() {
           />
         ))}
       </div>
-      {/* <Testimonial
-        name="Matthias Schaefer"
-        description="Developer"
-        testimonial={
-          <div>
-            Hi Denis,
-            <br />
-            <br />
-            Cool stuff! I saw{" "}
-            <a
-              target="_blank"
-              className="text-blue-600"
-              href="https://www.reddit.com/r/capacitor/comments/1lbhqv0/just_shipped_nextnative_which_lets_you_build/"
-            >
-              your post
-            </a>{" "}
-            on Reddit and grabbed a copy of your work!
-            <br />
-            <br />
-            I'll have a look at it a bit later -{" "}
-            <span className="bg-primary p-1 rounded text-white font-[500]">
-              it's what I'm looking for!
-            </span>
-          </div>
-        }
-      /> */}
+
+      <Testimonial
+        imgSrc={"/testimonials/dagobert.jpg"}
+        name="Dagobert"
+        description="Entepreneur"
+        testimonial={<div>Love the ambition behind this</div>}
+        className="w-fit px-16 sm:py-10"
+      />
+
       <Spend5Minutes />
       <PricingSection />
 
-      <div className=""></div>
-      <CallToAction
-        title="Not ready to buy? "
+      <div>
+        <Testimonial
+          imgSrc={"/testimonials/terry.jpg"}
+          name="Terry Carson"
+          description="Developer"
+          testimonial={
+            <div>
+              NextNative is a great tool for rapidly developing cross-platform
+              mobile apps, especially if you are coming from a Next.js
+              background. It provides a structured starting point with modern
+              tooling to get your project{" "}
+              <span className="bg-primary p-1 rounded text-white font-[500]">
+                off the ground quickly.
+              </span>
+            </div>
+          }
+          showStars
+        />
+      </div>
+
+      {/* <CallToAction
+        title="Just curious?"
         subtitle="No problem."
+        buttonText="Launch mobile apps"
+      /> */}
+
+      <CallToAction
+        title="Start building in minutes."
+        subtitle="Save weeks of work."
         buttonText="Launch mobile apps"
       />
       <FAQ />

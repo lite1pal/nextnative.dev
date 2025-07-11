@@ -147,7 +147,7 @@ export default async function BlogPostPage({
             </p>
             <CTABlogButton post={{ slug: post.slug }} />
             <p className="mt-3 text-xs text-pink-600 font-medium">
-              🎁 60% off – 3 left
+              🎁 60% off – 2 left
             </p>
             <div className="flex mt-5 gap-2 items-center">
               <div className="relative">
@@ -156,7 +156,7 @@ export default async function BlogPostPage({
               <div className="flex flex-col items-start">
                 <RatingSvg />
                 <div className="font-medium text-xs text-gray-500 pl-2">
-                  Loved by <span className="text-foreground">17</span> makers
+                  Loved by <span className="text-foreground">18</span> makers
                 </div>
               </div>
             </div>
