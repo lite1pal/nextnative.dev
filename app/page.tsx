@@ -169,7 +169,7 @@ export default function Home() {
       <Testimonial
         imgSrc={"/testimonials/dagobert.jpg"}
         name="Dagobert"
-        description="Entepreneur"
+        description="Entrepreneur"
         testimonial={<div>Love the ambition behind this</div>}
         className="w-fit px-16 sm:py-10"
       />
