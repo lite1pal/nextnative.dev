@@ -82,7 +82,7 @@ function ToolCard({ tool, index }: { tool: Tool; index: number }) {
     <div className="group">
       <div
         // style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-        className={`rounded-3xl p-6 h-full transition-shadow duration-300 flex flex-col`}
+        className={`rounded-3xl sm:p-6 h-full transition-shadow duration-300 flex flex-col`}
       >
         {/* <h3 className="text-xl font-[500] mb-4">{tool.alt}</h3> */}
         <div

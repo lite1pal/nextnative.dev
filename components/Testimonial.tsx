@@ -33,9 +33,9 @@ function Testimonial({
         className
       )}
     >
-      <div className="flex items-center gap-4">
+      <div className="flex max-sm:flex-wrap items-center gap-4">
         <div
-          className={`${imgSrc ? "w-[80px] h-[80px]" : "w-[50px] h-[50px]"} relative`}
+          className={`${imgSrc ? "w-[80px] h-[80px]" : "w-[50px] h-[50px]"} relative shrink-0`}
         >
           {imgSrc ? (
             <Image
@@ -69,13 +69,14 @@ function Testimonial({
             target="_blank"
             rel="noopener"
             className="text-gray ml-auto"
+            aria-label="Visit external link"
           >
             <ExternalLink className="size-5" />
           </a>
         )}
       </div>
 
-      <blockquote className="leading-10">{testimonial}</blockquote>
+      <blockquote className="leading-9 sm:leading-10">{testimonial}</blockquote>
 
       <time className="text-base text-gray">{time}</time>
     </div>
