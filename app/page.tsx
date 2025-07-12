@@ -16,6 +16,7 @@ import Subheading from "@/components/Subheading";
 import HeroSection2 from "@/components/HeroSection2";
 import { trackEvent } from "@/services/custom-analytics";
 import Link from "next/link";
+import { ArrowUp, ChevronUp } from "lucide-react";
 
 export default function Home() {
   return (
@@ -41,6 +42,7 @@ export default function Home() {
         name="Happy customer"
         description=""
         showStars
+        url="https://microlaunch.net/p/nextnative"
         testimonial={
           <div>
             Insane product & a great founder behind it - I've been trying to
@@ -166,13 +168,31 @@ export default function Home() {
         ))}
       </div>
 
-      <Testimonial
+      {/* <Testimonial
         imgSrc={"/testimonials/dagobert.jpg"}
         name="Dagobert"
         description="Entrepreneur"
         testimonial={<div>Love the ambition behind this</div>}
         className="w-fit px-16 sm:py-10"
-      />
+      /> */}
+
+      <div className="mx-auto w-fit flex flex-col items-center my-16 gap-3">
+        <ChevronUp className="text-gray" />
+        <div className="flex items-center gap-6 py-4 px-6 pr-10 bg-white rounded-full">
+          <Image
+            src={"/testimonials/dagobert.jpg"}
+            alt="Dagobert X profile picture"
+            width={100}
+            height={100}
+            className="rounded-full object-cover w-[80px] h-[80px]"
+            sizes="25vw"
+          />
+          <div className="flex flex-col text-xl gap-1">
+            <p className="font-[500]">Love the ambition behind this</p>
+            <p className="text-gray">Dagobert — Entrepreneur</p>
+          </div>
+        </div>
+      </div>
 
       <Spend5Minutes />
       <PricingSection />
@@ -182,6 +202,7 @@ export default function Home() {
           imgSrc={"/testimonials/terry.jpg"}
           name="Terry Carson"
           description="Developer"
+          url="https://microlaunch.net/p/nextnative"
           testimonial={
             <div>
               NextNative is a great tool for rapidly developing cross-platform

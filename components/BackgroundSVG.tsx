@@ -314,7 +314,7 @@ function BackgroundSVG() {
 
       {pathName === "/" && (
         <div
-          className="w-full h-full row-span-2"
+          className="w-full h-full relative -top-1 row-span-2"
           style={{
             background: bottomColor,
             transition: "background 0.3s ease",

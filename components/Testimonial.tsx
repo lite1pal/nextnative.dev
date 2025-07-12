@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { PersonStanding } from "lucide-react";
+import { ExternalLink, PersonStanding } from "lucide-react";
 import Image from "next/image";
 import { ReactNode } from "react";
 import { RatingSvg } from "./HeroSection2";
@@ -13,6 +13,7 @@ function Testimonial({
   time,
   showStars = false,
   letters,
+  url,
 }: {
   name: string;
   description: string;
@@ -22,6 +23,7 @@ function Testimonial({
   time?: string;
   showStars?: boolean;
   letters?: string;
+  url?: string;
 }) {
   return (
     <div
@@ -59,6 +61,17 @@ function Testimonial({
           <div className="mt-1">
             <RatingSvg />
           </div>
+        )}
+
+        {url && (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener"
+            className="text-gray ml-auto"
+          >
+            <ExternalLink className="size-5" />
+          </a>
         )}
       </div>
 
