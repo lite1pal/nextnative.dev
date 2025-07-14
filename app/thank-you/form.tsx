@@ -61,15 +61,6 @@ export default function ThankYouPage({
         ? await hashEmail(paymentData.customer.email)
         : undefined;
 
-      console.log("Tracking Facebook Pixel Purchase Event", {
-        value: amount,
-        currency: "USD",
-        content_type: "product",
-        contents: [{ id: productId, quantity }],
-        em: hashedEmail,
-        eventID: paymentId,
-      });
-
       window.fbq("track", "Purchase", {
         value: amount,
         currency: "USD",
