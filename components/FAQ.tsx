@@ -180,7 +180,7 @@ const faqItems = [
         so it gets regular update.
         <br />
         <br />
-        <span className="text-primary">🔄 Last update: today</span>
+        <span className="text-primary">🔄 Last update: Jul 7, 2025</span>
       </>
     ),
   },
