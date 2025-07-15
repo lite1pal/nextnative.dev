@@ -54,8 +54,8 @@ function Testimonial({
           )}
         </div>
         <div className="flex flex-col">
-          <p className="font-[500]">{name}</p>
-          <p className="text-gray">{description}</p>
+          <p className="font-[500] text-xl">{name}</p>
+          <p className="text-gray text-lg">{description}</p>
         </div>
         {showStars && (
           <div className="mt-1">
@@ -68,7 +68,7 @@ function Testimonial({
             href={url}
             target="_blank"
             rel="noopener"
-            className="text-gray ml-auto"
+            className="text-gray ml-auto hidden sm:block"
             aria-label="Visit external link"
           >
             <ExternalLink className="size-5" />
