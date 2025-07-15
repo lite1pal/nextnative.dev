@@ -38,39 +38,27 @@ export default function ThankYouPage({
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const eventKey = `fb-purchase-${paymentId}`;
     if (!paymentId || typeof window === "undefined") return;
 
-    const alreadyTracked = sessionStorage.getItem(eventKey);
-    if (alreadyTracked) return;
-
     const track = async () => {
-      if (!window.fbq || !paymentData?.settlement_amount) return;
+      let hashedEmail: string | undefined;
+      try {
+        hashedEmail = paymentData?.customer?.email
+          ? await hashEmail(paymentData.customer.email)
+          : undefined;
+      } catch (error) {
+        console.error("Error hashing email:", error);
+      }
 
-      const amount = paymentData.settlement_amount / 100;
-
-      const product = paymentData.product_cart?.[0];
-      const productId = product?.product_id
-        ? product.product_id === nextNativeAllInId
-          ? "nextnative_all_in"
-          : "nextnative_starter"
-        : "unknown_product";
-      const quantity = product?.quantity ?? 1;
-
-      const hashedEmail = paymentData?.customer?.email
-        ? await hashEmail(paymentData.customer.email)
-        : undefined;
-
-      window.fbq("track", "Purchase", {
-        value: amount,
+      const fbqData: any = {
+        value: paymentData.settlement_amount / 100,
         currency: "USD",
-        content_type: "product",
-        contents: [{ id: productId, quantity }],
-        ...(hashedEmail ? { em: hashedEmail } : {}),
         eventID: paymentId,
-      });
+      };
 
-      sessionStorage.setItem(eventKey, "true");
+      if (hashedEmail) fbqData.em = hashedEmail;
+
+      window.fbq("track", "Purchase", fbqData);
     };
 
     track();
