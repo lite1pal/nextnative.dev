@@ -36,7 +36,7 @@ function CTA({
         <p className="font-medium text-gray-500 flex items-center gap-2">
           <span className="text-xl">🎁</span>
           <span className="sm:text-xl">
-            <span className="text-red-500">50% off</span> for the first 30
+            <span className="text-red-500">48% off</span> for the first 30
             customers, <span className="text-red-500">10 left</span>
           </span>
         </p>
