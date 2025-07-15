@@ -68,7 +68,7 @@ function HeroSection2() {
           <div className="flex flex-col">
             <RatingSvg />
             <div className="font-medium text-gray-500 pl-2">
-              Loved by <span className="text-foreground">19</span> makers
+              Loved by <span className="text-foreground">20</span> makers
             </div>
           </div>
         </div>
