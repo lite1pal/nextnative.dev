@@ -41,7 +41,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         {/* Meta Pixel base code */}
-        <Script id="fb-pixel" strategy="lazyOnload">
+        <Script id="fb-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s){
               if(f.fbq) return;
