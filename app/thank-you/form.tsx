@@ -38,32 +38,12 @@ export default function ThankYouPage({
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (!paymentId || typeof window === "undefined") return;
-
-    const track = async () => {
-      let hashedEmail: string | undefined;
-      try {
-        hashedEmail = paymentData?.customer?.email
-          ? await hashEmail(paymentData.customer.email)
-          : undefined;
-      } catch (error) {
-        console.error("Error hashing email:", error);
-      }
-
-      const fbqData: any = {
-        value: paymentData.settlement_amount / 100,
-        currency: "USD",
-        eventID: paymentId,
-      };
-
-      if (hashedEmail) fbqData.em = hashedEmail;
-
-      console.log("Tracking Facebook Pixel Purchase event with data:", fbqData);
-      window.fbq("track", "Purchase", fbqData);
-    };
-
-    track();
-  }, [paymentData, paymentId]);
+    window.fbq("track", "Purchase", {
+      value: paymentData.settlement_amount / 100,
+      currency: "USD",
+      eventID: paymentData.payment_id,
+    });
+  }, [paymentData]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
