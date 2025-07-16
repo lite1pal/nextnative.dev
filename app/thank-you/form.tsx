@@ -58,6 +58,7 @@ export default function ThankYouPage({
 
       if (hashedEmail) fbqData.em = hashedEmail;
 
+      console.log("Tracking Facebook Pixel Purchase event with data:", fbqData);
       window.fbq("track", "Purchase", fbqData);
     };
 
