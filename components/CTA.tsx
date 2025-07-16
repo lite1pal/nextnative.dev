@@ -1,69 +1,63 @@
-import { trackEvent } from "@/services/custom-analytics";
-import Button from "./Button";
-import JoinWaitlistForm from "./JoinWaitlistForm";
 import { cn } from "@/lib/utils";
+import CTAButton from "./CTAButton";
 
-function CTA({
-  className,
-  isWaitlist = false,
-}: {
-  className?: string;
-  isWaitlist?: boolean;
-}) {
-  if (isWaitlist) {
-    return <JoinWaitlistForm />;
+async function CTA({ className }: { className?: string }) {
+  let customersCount = 20;
+  let discountLimit = 25;
+  let isError = false;
+
+  try {
+    const res = await fetch(`${process.env.API_URL}/customers-count`, {
+      next: { revalidate: 84600 },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch customers count");
+    }
+    const data = await res.json();
+    customersCount = data.count || 20;
+
+    discountLimit = Math.ceil((customersCount + 1) / 5) * 5;
+  } catch (error) {
+    console.error("Error calculating discount limit:", error);
+    isError = true;
   }
 
   return (
     <div className={cn("flex flex-col gap-4 xl:items-center", className)}>
-      {/* <StarburstSign rotation={270} position="bottom-left"> */}
-      <Button
-        onClick={() => {
-          trackEvent("CTA_clicked");
-          // window.location.href = dodoPaymentLinks.allAccess;
-          const el = document.getElementById("pricing");
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth" });
-          }
-        }}
-        variant="primary"
-      >
-        Get NextNative now
-      </Button>
-      {/* </StarburstSign> */}
+      <CTAButton />
 
-      <div className="flex flex-col">
-        <p className="font-medium text-gray-500 flex items-center gap-2">
-          <span className="text-xl">🎁</span>
-          <span className="sm:text-xl">
-            <span className="text-red-500">50% off</span> for the first 25
-            customers, <span className="text-red-500">5 left</span>
-          </span>
-        </p>
-
-        {/* <div className="mt-6 flex flex-col">
-          <div className="flex -space-x-2 mb-2">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div
-                key={i}
-                className="w-10 h-10 rounded-full bg-gray-300 border-2 border-background overflow-hidden"
-              />
-            ))}
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="flex">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <span key={i} className="text-yellow-400">
-                  ★
-                </span>
-              ))}
-            </div>
-            <span className="text-gray-200">6869 developers ship faster</span>
-          </div>
-        </div> */}
-      </div>
+      {isError ? (
+        <ErrorCase />
+      ) : (
+        <div className="flex flex-col">
+          <p className="font-medium text-gray-500 flex items-center gap-2">
+            <span className="text-xl">🎁</span>
+            <span className="sm:text-xl">
+              <span className="text-red-500">50% off</span> for the first{" "}
+              {discountLimit} customers,{" "}
+              <span className="text-red-500">
+                {discountLimit - customersCount} left
+              </span>
+            </span>
+          </p>
+        </div>
+      )}
     </div>
   );
 }
 
 export default CTA;
+
+function ErrorCase() {
+  return (
+    <div className="flex flex-col">
+      <p className="font-medium text-gray-500 flex items-center gap-2">
+        <span className="text-xl">🎁</span>
+        <span className="sm:text-xl">
+          <span className="text-red-500">50% off </span>limited time offer
+        </span>
+      </p>
+    </div>
+  );
+}

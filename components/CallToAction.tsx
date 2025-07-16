@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import CTA from "./CTA";
 import Subheading from "./Subheading";
+import CTASkeleton from "./CTASkeleton";
 
 interface CallToActionProps {
   title: string;
@@ -24,7 +26,9 @@ function CallToAction({
         className="md:items-center"
       />
       <div className="relative">
-        <CTA className="md:items-center" />
+        <Suspense fallback={<CTASkeleton />}>
+          <CTA className="md:items-center" />
+        </Suspense>
       </div>
     </div>
   );

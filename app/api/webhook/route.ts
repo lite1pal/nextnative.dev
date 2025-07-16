@@ -1,5 +1,6 @@
 import { prisma } from "@/prisma/client";
 import { trackEvent } from "@/services/custom-analytics";
+import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -41,8 +42,15 @@ export async function POST(request: Request) {
           email: payload.data.customer.email,
         },
       });
+      await prisma.globalNumber.update({
+        where: {
+          id: "99c3a4be-4565-451b-813e-82bf381568d7",
+          title: "customers",
+        },
+        data: { value: { increment: 1 } },
+      });
 
-      // await handleOneTimePayment(email, payload);
+      revalidatePath("/api/customers-count");
     }
 
     return NextResponse.json({ message: "Webhook received" }, { status: 200 });

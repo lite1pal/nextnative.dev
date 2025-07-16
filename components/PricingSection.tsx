@@ -1,5 +1,6 @@
 "use client";
 
+import usePurchaseStats from "@/hooks/use-purchase-stats";
 import Button from "./Button";
 import HighlightedSpan from "./HighlightedSpan";
 import StarburstSign from "./StarburstSign";
@@ -73,6 +74,8 @@ const pricingFeaturesStarter: PricingFeature[] = [
 ];
 
 function PricingSection() {
+  const { customersCount, discountLimit } = usePurchaseStats();
+
   const handleGetNextnative = (paymentLink: string) => {
     if (isWaitlist) {
       // Find the waitlist input element
@@ -192,7 +195,9 @@ function PricingSection() {
         <div className="flex mx-auto flex-col w-full max-w-[500px] gap-1">
           <span className={`text-sm sm:text-xl font-[500] text-gray ml-auto`}>
             limited launch discount{" "}
-            <span className="text-red-500">50% off, 5 left</span>{" "}
+            <span className="text-red-500">
+              50% off, {discountLimit - customersCount} left
+            </span>{" "}
           </span>
 
           <div

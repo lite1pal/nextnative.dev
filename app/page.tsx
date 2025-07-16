@@ -1,5 +1,3 @@
-"use client";
-
 import SocialProof from "@/components/SocialProof";
 import PricingSection from "@/components/PricingSection";
 import WastedTime from "@/components/WastedTime";
@@ -10,13 +8,12 @@ import DemoVideo from "@/components/DemoVideo";
 import Testimonial from "@/components/Testimonial";
 import SetupByDefault from "@/components/SetupByDefault";
 import Image from "next/image";
-import IPhoneMockup from "@/components/note-taking/iphone-mockup";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode } from "react";
 import Subheading from "@/components/Subheading";
 import HeroSection2 from "@/components/HeroSection2";
-import { trackEvent } from "@/services/custom-analytics";
-import Link from "next/link";
-import { ArrowUp, ChevronUp } from "lucide-react";
+import { ChevronUp } from "lucide-react";
+import ShowcaseSection from "@/components/ShowcaseSection";
+import LazyVideo from "@/components/LazyVideo";
 
 export default function Home() {
   return (
@@ -68,54 +65,7 @@ export default function Home() {
         </p>
       </div>
 
-      <Link
-        href="/showcase"
-        onClick={() => {
-          trackEvent("Demo_Apps_Showcase_clicked");
-        }}
-        id="interactive-demo"
-        className="flex justify-center max-md:scale-[0.6] h-[500px] max-md:left-10 relative sm:h-full md:py-16 space-x-[-200px]"
-      >
-        <div className="rotate-[-30deg]">
-          <IPhoneMockup isDark={false}>
-            <div>
-              <Image
-                src={"/showcase/lastinghabits.png"}
-                alt={"Note-taking app screenshot"}
-                width={400}
-                height={800}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-          </IPhoneMockup>
-        </div>
-        <div className="rotate-[0deg] z-20">
-          <IPhoneMockup isDark={true}>
-            <div>
-              <Image
-                src={"/showcase/pomodoro-dark.png"}
-                alt={"Note-taking app screenshot"}
-                width={400}
-                height={800}
-                className="absolute pb-10 inset-0 w-full h-full object-cover"
-              />
-            </div>
-          </IPhoneMockup>
-        </div>
-        <div className="rotate-[30deg]">
-          <IPhoneMockup isDark={false}>
-            <div>
-              <Image
-                src={"/showcase/expenses.png"}
-                alt={"Note-taking app screenshot"}
-                width={400}
-                height={800}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-          </IPhoneMockup>
-        </div>
-      </Link>
+      <ShowcaseSection />
 
       <SocialProof />
       <Testimonial
@@ -167,14 +117,6 @@ export default function Home() {
           />
         ))}
       </div>
-
-      {/* <Testimonial
-        imgSrc={"/testimonials/dagobert.jpg"}
-        name="Dagobert"
-        description="Entrepreneur"
-        testimonial={<div>Love the ambition behind this</div>}
-        className="w-fit px-16 sm:py-10"
-      /> */}
 
       <div className="mx-auto w-fit flex flex-col items-center my-16 gap-3">
         <ChevronUp className="text-gray" />
@@ -243,11 +185,6 @@ export default function Home() {
         testimonial={<div>the best boilerplate for mobile apps</div>}
         showStars
       />
-      {/* <CallToAction
-        title="Just curious?"
-        subtitle="No problem."
-        buttonText="Launch mobile apps"
-      /> */}
 
       <CallToAction
         title="Start building in minutes."
@@ -400,70 +337,3 @@ const FeatureSection = ({
     </div>
   );
 };
-
-interface LazyVideoProps {
-  src: string;
-  alt: string;
-}
-
-function LazyVideo({ src, alt }: LazyVideoProps) {
-  const [isInView, setIsInView] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [showControls, setShowControls] = useState(false);
-  const ref = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          observer.disconnect();
-        }
-      },
-      {
-        threshold: 0.05,
-        rootMargin: "50px",
-      }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      className="w-full relative md:w-[550px] overflow-hidden h-[350px] bg-[#4c1190] rounded-3xl order-2 md:order-2"
-      role="region"
-      aria-label={alt}
-      onMouseEnter={() => setShowControls(true)}
-      onMouseLeave={() => setShowControls(false)}
-    >
-      {isInView && (
-        <>
-          {!isLoaded && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="animate-spin h-8 w-8 border-4 border-white border-t-transparent rounded-full" />
-            </div>
-          )}
-          <video
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`}
-            src={src}
-            autoPlay
-            muted
-            loop
-            playsInline
-            controls={showControls}
-            preload="metadata"
-            aria-label={alt}
-            onCanPlay={() => setIsLoaded(true)}
-            onError={() => console.error("Video failed to load")}
-          />
-        </>
-      )}
-    </div>
-  );
-}

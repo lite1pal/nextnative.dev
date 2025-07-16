@@ -133,6 +133,14 @@ exports.Prisma.BlogPostScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.GlobalNumberScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  value: 'value',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -146,7 +154,8 @@ exports.Prisma.QueryMode = {
 
 exports.Prisma.ModelName = {
   Purchase: 'Purchase',
-  BlogPost: 'BlogPost'
+  BlogPost: 'BlogPost',
+  GlobalNumber: 'GlobalNumber'
 };
 
 /**

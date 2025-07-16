@@ -2,6 +2,10 @@ import Image from "next/image";
 import CTA from "./CTA";
 import HighlightedSpan from "./HighlightedSpan";
 import { cn } from "@/lib/utils";
+import { Suspense } from "react";
+import CTASkeleton from "./CTASkeleton";
+import LovedByMakers from "./LovedByMakers";
+import LovedByMakersSkeleton from "./LovedByMakersSkeleton";
 
 function HeroSection2() {
   return (
@@ -59,7 +63,9 @@ function HeroSection2() {
           </p>
         </div>
 
-        <CTA />
+        <Suspense fallback={<CTASkeleton />}>
+          <CTA />
+        </Suspense>
 
         <div className="flex gap-2">
           <div className="relative -top-1.5">
@@ -67,9 +73,9 @@ function HeroSection2() {
           </div>
           <div className="flex flex-col">
             <RatingSvg />
-            <div className="font-medium text-gray-500 pl-2">
-              Loved by <span className="text-foreground">20</span> makers
-            </div>
+            <Suspense fallback={<LovedByMakersSkeleton />}>
+              <LovedByMakers />
+            </Suspense>
           </div>
         </div>
       </div>
