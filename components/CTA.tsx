@@ -8,7 +8,7 @@ async function CTA({ className }: { className?: string }) {
 
   try {
     const res = await fetch(`${process.env.API_URL}/customers-count`, {
-      next: { revalidate: 84600 },
+      next: { revalidate: 0 },
     });
 
     if (!res.ok) {
