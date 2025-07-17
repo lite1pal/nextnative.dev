@@ -10,7 +10,7 @@ async function NextNativeCard({ post }: { post: { slug: string } }) {
 
   try {
     const res = await fetch(`${process.env.API_URL}/customers-count`, {
-      next: { revalidate: 0 },
+      next: { revalidate: 84600 },
     });
 
     if (!res.ok) {
