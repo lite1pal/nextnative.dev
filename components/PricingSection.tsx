@@ -92,6 +92,7 @@ function PricingSection() {
       }
     } else {
       if (paymentLink) {
+        window.fbq("track", "InitiateCheckout");
         window.location.href =
           paymentLink + `&metadata_affonso_referral=${window.affonso_referral}`;
       } else {
