@@ -4,7 +4,7 @@ async function LovedByMakers() {
 
   try {
     const res = await fetch(`${process.env.API_URL}/customers-count`, {
-      next: { revalidate: 600 },
+      next: { revalidate: 0 },
     });
 
     if (!res.ok) {
