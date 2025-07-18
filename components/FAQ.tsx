@@ -145,19 +145,19 @@ const faqItems = [
     question: "Can I use Next.js server actions?",
     answer: "Nope, but you can use Next.js Serverless API endpoints instead.",
   },
-  {
-    question: "How long does it take to launch an app?",
-    answer: (
-      <>
-        With NextNative, you can have a basic app running in 5 minutes!
-        <br />
-        <br />
-        The real timeline depends on your app's complexity. <br />
-        <br />
-        Way faster than starting from scratch!
-      </>
-    ),
-  },
+  // {
+  //   question: "How long does it take to launch an app?",
+  //   answer: (
+  //     <>
+  //       With NextNative, you can have a basic app running in 5 minutes!
+  //       <br />
+  //       <br />
+  //       The real timeline depends on your app's complexity. <br />
+  //       <br />
+  //       Way faster than starting from scratch!
+  //     </>
+  //   ),
+  // },
   {
     question: "Do I need to know mobile development?",
     answer: (
