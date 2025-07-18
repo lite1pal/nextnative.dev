@@ -87,7 +87,7 @@ function ToolCard({ tool, index }: { tool: Tool; index: number }) {
         {/* <h3 className="text-xl font-[500] mb-4">{tool.alt}</h3> */}
         <div
           style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-          className={`rounded-2xl bg-white p-6 mb-4 flex items-center justify-center group-hover:scale-[0.98] transition-transform duration-300`}
+          className={`${tool.src.includes("capacitor") && "px-20"} rounded-2xl bg-white p-6 mb-4 flex items-center justify-center group-hover:scale-[0.98] transition-transform duration-300`}
         >
           <div className={`relative w-full h-36`}>
             <Image
