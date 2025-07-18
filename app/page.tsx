@@ -26,7 +26,7 @@ export default function Home() {
         <div className="max-w-xl mx-auto">
           <Image
             className="w-full h-full z-10 relative object-cover"
-            src="/hero-section-tools.png"
+            src="/mobile-hero-img.webp"
             alt="Tools included in NextNative"
             priority
             width={600}
