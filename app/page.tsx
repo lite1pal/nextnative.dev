@@ -36,6 +36,7 @@ export default function Home() {
           />
         </div>
       </div>
+
       <Testimonial
         imgSrc={""}
         letters="S"
@@ -53,6 +54,8 @@ export default function Home() {
           </div>
         }
       />
+
+      <QuickStart />
 
       <DemoVideo />
 
@@ -139,7 +142,6 @@ export default function Home() {
         </div>
       </div>
 
-      <QuickStart />
       <StoreGuides />
 
       <Spend5Minutes />

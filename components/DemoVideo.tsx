@@ -9,35 +9,13 @@ import { trackEvent } from "@/services/custom-analytics";
 function DemoVideo() {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  // const [isVisible, setIsVisible] = useState(false);
 
   // YouTube video ID and URLs
   const videoId = "9iDXsyiP134";
   const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&`;
   // const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
   const thumbnailUrl = "/thumbnail-4.png";
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
-    }
-
-    return () => {
-      if (videoRef.current) {
-        observer.unobserve(videoRef.current);
-      }
-    };
-  }, []);
 
   const handleVideoClick = () => {
     trackEvent("DemoVideo_clicked");
@@ -59,9 +37,7 @@ function DemoVideo() {
       <StarburstSign position="bottom-right" rotation={180}>
         <div
           style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-          className={`max-w-[962px] xl:max-w-[1260px] h-full xl:h-[620px] rounded-[20px] overflow-hidden relative bg-white transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className={`max-w-[962px] xl:max-w-[1260px] h-full xl:h-[620px] rounded-[20px] overflow-hidden relative bg-white transition-all duration-700`}
         >
           {isPlaying ? (
             <iframe
@@ -94,13 +70,6 @@ function DemoVideo() {
           )}
         </div>
       </StarburstSign>
-      {/* 
-      <p className="text-gray text-center mt-4 max-w-2xl mx-auto">
-        Hey web developers! 👋 Tired of learning new frameworks just to build
-        mobile apps? NextNative lets you use your favorite web tools (Next.js,
-        React, Tailwind) to create stunning iOS and Android apps in a fraction
-        of the time. No native code required!
-      </p> */}
     </div>
   );
 }
