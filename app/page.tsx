@@ -137,7 +137,9 @@ export default function Home() {
           />
           <div className="flex flex-col text-xl gap-1">
             <p className="font-[500]">Love the ambition behind this</p>
-            <p className="text-gray">Dagobert — Entrepreneur</p>
+            <p className="text-gray text-sm sm:text-xl">
+              Dagobert — Entrepreneur
+            </p>
           </div>
         </div>
       </div>
