@@ -113,7 +113,7 @@ function PricingSection() {
 
       <div className="flex flex-col md:flex-row w-full gap-6 mt-6 md:mt-10 md:px-4">
         {/* Starter Plan Card */}
-        <div className="flex mx-auto flex-col w-full max-w-[500px] gap-1">
+        <div className="flex order-2 sm:order-1 mx-auto flex-col w-full max-w-[500px] gap-1">
           <span
             className={`text-sm opacity-0 pointer-events-none sm:text-xl font-[500] text-red-500 ml-auto`}
           >
@@ -193,7 +193,7 @@ function PricingSection() {
         </div>
 
         {/* All-in Card */}
-        <div className="flex mx-auto flex-col w-full max-w-[500px] gap-1">
+        <div className="flex order-1 sm:order-2 mx-auto flex-col w-full max-w-[500px] gap-1">
           <span className={`text-sm sm:text-xl font-[500] text-gray ml-auto`}>
             limited launch discount{" "}
             <span className="text-red-500">
