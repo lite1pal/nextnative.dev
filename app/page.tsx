@@ -2,6 +2,7 @@ import SocialProof from "@/components/SocialProof";
 import PricingSection from "@/components/PricingSection";
 import WastedTime from "@/components/WastedTime";
 import Spend5Minutes from "@/components/Spend5Minutes";
+import QuickStart from "@/components/QuickStart";
 import CallToAction from "@/components/CallToAction";
 import FAQ from "@/components/FAQ";
 import DemoVideo from "@/components/DemoVideo";
@@ -14,6 +15,7 @@ import HeroSection2 from "@/components/HeroSection2";
 import { ChevronUp } from "lucide-react";
 import ShowcaseSection from "@/components/ShowcaseSection";
 import LazyVideo from "@/components/LazyVideo";
+import StoreGuides from "@/components/StoreGuides";
 
 export default function Home() {
   return (
@@ -136,7 +138,11 @@ export default function Home() {
         </div>
       </div>
 
+      <QuickStart />
+      <StoreGuides />
+
       <Spend5Minutes />
+
       <PricingSection />
 
       <Testimonial

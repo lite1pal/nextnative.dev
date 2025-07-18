@@ -21,6 +21,16 @@ function SocialProof() {
 
         <div className="flex items-center gap-2">
           <Image
+            src="/featured-on/microlaunch.svg"
+            alt="Microlaunch"
+            width={40}
+            height={40}
+            className="h-12 md:h-16 w-12 md:w-16"
+          />
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Image
             src="/x-logo.svg"
             alt="X (formerly Twitter)"
             width={40}

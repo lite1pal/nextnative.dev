@@ -121,12 +121,12 @@ function SetupByDefault() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <Subheading
-            className="items-center"
             heading1="Everything you need,"
             heading2="setup by default"
+            className="text-start md:text-center md:items-center"
           />
 
-          <p className="mt-6 text-lg max-w-2xl mx-auto">
+          <p className="mt-6 text-lg max-w-2xl text-start md:text-center self-start w-fit md:mx-auto">
             Stop wasting time on configuration. Start with a fully-featured
             foundation and focus on what makes your app unique.
           </p>

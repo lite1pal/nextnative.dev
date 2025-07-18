@@ -13,7 +13,7 @@ function Subheading({
   className?: string;
 }) {
   return (
-    <div className={cn("flex flex-col gap-6 md:gap-10", className)}>
+    <div className={cn("flex w-full flex-col gap-6 md:gap-10", className)}>
       {withHorizontalLine && <HorizontalLine className="w-[94px]" />}
       <h2 className="text-[40px] md:text-[54px] leading-[52px] md:leading-[71px] font-[500]">
         {heading1} <br />
