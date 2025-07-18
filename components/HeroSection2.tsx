@@ -48,8 +48,8 @@ function HeroSection2() {
         <div className="flex flex-col xl:items-center xl:text-center gap-6 md:gap-[36px]">
           <div className="flex flex-col items-center">
             <h1 className="text-[44px] md:text-[74px] leading-[60px] md:leading-[91px] font-[600]">
-              Launch mobile apps faster with{" "}
-              <HighlightedSpan>Next.js</HighlightedSpan>
+              Launch mobile apps <span className="sm:hidden">10x</span> faster
+              with <HighlightedSpan>Next.js</HighlightedSpan>
             </h1>
             {/* <h1 className="text-[44px] md:text-[74px] leading-[60px] md:leading-[91px] font-[600]">
               Go from idea to App Store{" "}
