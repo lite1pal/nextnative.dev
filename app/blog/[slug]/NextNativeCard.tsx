@@ -41,11 +41,11 @@ async function NextNativeCard({ post }: { post: { slug: string } }) {
         <CTABlogButton post={{ slug: post.slug }} />
         {isError ? (
           <p className="mt-3 text-xs text-pink-600 font-medium">
-            🎁 50% off limited offer
+            🎁 60% off limited offer
           </p>
         ) : (
           <p className="mt-3 text-xs text-pink-600 font-medium">
-            🎁 50% off – {discountLimit - customersCount} left
+            🎁 60% off – {discountLimit - customersCount} left
           </p>
         )}
         <div className="flex mt-5 gap-2 items-center">
