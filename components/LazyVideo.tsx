@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 function LazyVideo({ src, alt }: LazyVideoProps) {
@@ -38,6 +39,16 @@ function LazyVideo({ src, alt }: LazyVideoProps) {
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(false)}
     >
+      {src.includes("iap-section") && (
+        <Image
+          src="/section-videos/placeholder.webp"
+          alt={alt}
+          layout="fill"
+          objectFit="cover"
+          sizes="33vw"
+          quality={25}
+        />
+      )}
       {isInView && (
         <>
           {!isLoaded && (
@@ -46,7 +57,7 @@ function LazyVideo({ src, alt }: LazyVideoProps) {
             </div>
           )}
           <video
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+            className={`${src.includes("iap-section") && "px-44"} absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`}
             src={src}
             autoPlay
             muted

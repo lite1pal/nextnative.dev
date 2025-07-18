@@ -43,7 +43,10 @@ function QuickStart() {
                 {step.number}
               </div>
               <div className="flex-1">
-                <div className="bg-gray-50 rounded-lg p-4">
+                <div
+                  style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
+                  className="bg-white rounded-lg px-4 py-6"
+                >
                   <code className="text-gray-900 text-base font-mono">
                     $ {step.code}
                   </code>

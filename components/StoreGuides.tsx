@@ -18,9 +18,12 @@ function StoreGuides() {
           </p>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+        <div className="mt-12 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {/* App Store Guide */}
-          <div className="rounded-2xl bg-white p-6">
+          <div
+            style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
+            className="rounded-2xl bg-white p-6"
+          >
             <div className="flex items-center mb-10 gap-3">
               <div className="w-12 h-12 flex justify-center items-center">
                 <Image
@@ -63,7 +66,10 @@ function StoreGuides() {
           </div>
 
           {/* Google Play Guide */}
-          <div className="bg-white rounded-2xl p-6">
+          <div
+            style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
+            className="bg-white rounded-2xl p-6"
+          >
             <div className="flex items-center gap-3 mb-10">
               <div className="w-12 h-12 flex justify-center items-center">
                 <Image
