@@ -57,7 +57,7 @@ function LazyVideo({ src, alt }: LazyVideoProps) {
             </div>
           )}
           <video
-            className={`${src.includes("iap-section") && "px-28 sm:px-44"} absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+            className={`${src.includes("iap-section") && "px-24 sm:px-44"} absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`}
             src={src}
             autoPlay
             muted
