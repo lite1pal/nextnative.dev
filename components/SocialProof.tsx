@@ -9,7 +9,7 @@ function SocialProof() {
       </div>
 
       <div className="flex items-center w-full justify-evenly gap-16">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0">
           <Image
             src="/featured-on/producthunt.png"
             alt="Product Hunt"
@@ -19,7 +19,7 @@ function SocialProof() {
           />
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0">
           <Image
             src="/featured-on/microlaunch.svg"
             alt="Microlaunch"
@@ -29,7 +29,7 @@ function SocialProof() {
           />
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0">
           <Image
             src="/x-logo.svg"
             alt="X (formerly Twitter)"
@@ -39,7 +39,7 @@ function SocialProof() {
           />
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0">
           <Image
             src="/featured-on/reddit.png"
             alt="Reddit"
