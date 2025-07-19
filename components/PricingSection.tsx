@@ -27,11 +27,11 @@ interface PricingFeature {
 const pricingFeatures: PricingFeature[] = [
   { text: "Next.js boilerplate" },
   // { text: "3 real apps included" },
-  { text: "Onboarding flow" },
   { text: "Secure backend" },
   { text: "Database" },
   { text: "Authentication" },
   { text: "Push notifications" },
+  { text: "Onboarding flow" },
   { text: "In-App Purchases & Subscriptions" },
   { text: "App Store/Google Play guides" },
   { text: "3 months email support" },
@@ -41,11 +41,11 @@ const pricingFeatures: PricingFeature[] = [
 const pricingFeaturesStarter: PricingFeature[] = [
   { text: "Next.js boilerplate" },
   // { text: "3 real apps included" },
-  { text: "Onboarding flow" },
   { text: "Secure backend" },
   { text: "Database" },
   { text: "Authentication" },
   { text: "Push notifications" },
+  { text: "Onboarding flow" },
   { text: "In-App Purchases & Subscriptions" },
   { text: "Lifetime updates" },
 ];

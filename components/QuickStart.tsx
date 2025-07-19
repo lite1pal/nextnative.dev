@@ -59,7 +59,7 @@ function QuickStart() {
 
         <HighlightedSpan>
           <div className="flex items-center text-3xl mt-16 justify-center gap-2 md:gap-3">
-            That's it! Your mobile app is running.
+            That's it! Now it's time to ship viral apps!
           </div>
         </HighlightedSpan>
       </div>
