@@ -26,6 +26,8 @@ interface PricingFeature {
 
 const pricingFeatures: PricingFeature[] = [
   { text: "Next.js boilerplate" },
+  // { text: "3 real apps included" },
+  { text: "Onboarding flow" },
   { text: "Secure backend" },
   { text: "Database" },
   { text: "Authentication" },
@@ -38,6 +40,8 @@ const pricingFeatures: PricingFeature[] = [
 
 const pricingFeaturesStarter: PricingFeature[] = [
   { text: "Next.js boilerplate" },
+  // { text: "3 real apps included" },
+  { text: "Onboarding flow" },
   { text: "Secure backend" },
   { text: "Database" },
   { text: "Authentication" },

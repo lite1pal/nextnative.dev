@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Subheading from "./Subheading";
-import { motion } from "framer-motion";
 
 interface Tool {
   src: string;
