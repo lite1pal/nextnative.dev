@@ -192,11 +192,11 @@ const features = [
     alt: "Onboarding process demonstration",
   },
   {
-    heading1: "API routes",
+    heading1: "Secure API routes",
     heading2: "in the same codebase",
     description: (
       <>
-        Add and manage API routes right in the same codebase! <br />
+        Add and manage secure API routes right in the same codebase! <br />
         <br /> Keep everything unified and efficient with Next.js power.
       </>
     ),
