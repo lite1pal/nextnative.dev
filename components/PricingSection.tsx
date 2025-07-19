@@ -26,50 +26,23 @@ interface PricingFeature {
 
 const pricingFeatures: PricingFeature[] = [
   { text: "Next.js boilerplate" },
-  { text: "Auth" },
-  { text: "Push notifications" },
-  { text: "In-App purchases" },
+  { text: "Secure backend" },
   { text: "Database" },
-  // {
-  //   text: (
-  //     <div
-  //       onClick={() => {
-  //         trackEvent("PricingSection_Beautiful_UI_components_clicked");
-  //       }}
-  //       // href="/components"
-  //       className="text-primary group transition-colors relative"
-  //     >
-  //       2 production-ready apps included
-  //       <span className="h-0.5 group-hover:w-full w-0 transition-all duration-300 absolute bottom-0 left-0 bg-primary rounded-full"></span>
-  //     </div>
-  //   ),
-  // },
-  { text: "Guides on deploying to the stores" },
-  // { text: "GPT prompts for terms & privacy" },
+  { text: "Authentication" },
+  { text: "Push notifications" },
+  { text: "In-App Purchases & Subscriptions" },
+  { text: "App Store/Google Play guides" },
   { text: "3 months email support" },
   { text: "Lifetime updates" },
 ];
 
 const pricingFeaturesStarter: PricingFeature[] = [
   { text: "Next.js boilerplate" },
-  { text: "Auth" },
-  { text: "Push notifications" },
-  { text: "In-App purchases" },
+  { text: "Secure backend" },
   { text: "Database" },
-  // {
-  //   text: (
-  //     <div
-  //       onClick={() => {
-  //         trackEvent("PricingSection_Beautiful_UI_components_clicked");
-  //       }}
-  //       // href="/components"
-  //       className="text-primary group transition-colors relative"
-  //     >
-  //       1 production-ready template app
-  //       <span className="h-0.5 group-hover:w-full w-0 transition-all duration-300 absolute bottom-0 left-0 bg-primary rounded-full"></span>
-  //     </div>
-  //   ),
-  // },
+  { text: "Authentication" },
+  { text: "Push notifications" },
+  { text: "In-App Purchases & Subscriptions" },
   { text: "Lifetime updates" },
 ];
 
