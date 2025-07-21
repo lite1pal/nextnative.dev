@@ -28,9 +28,9 @@ export default function ShowcasePage() {
           <h1 className="text-4xl font-[500]">
             Mobile apps built with <HighlightedSpan>NextNative</HighlightedSpan>
           </h1>
-          <p className="text-gray text-lg">
+          {/* <p className="text-gray text-lg">
             Real mobile apps published to the App Store and Google Play.
-          </p>
+          </p> */}
         </div>
         <Apps />
       </div>
