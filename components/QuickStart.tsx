@@ -24,7 +24,7 @@ function QuickStart() {
   ];
 
   return (
-    <div className="py-20 relative overflow-hidden">
+    <div className="py-10 sm:py-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <Subheading
@@ -69,7 +69,7 @@ function QuickStart() {
           alt="Launch in 2 Days"
           width={1920}
           height={1080}
-          className="rounded-[20px] w-full mt-12 mx-auto"
+          className="rounded-[20px] w-full mt-12 sm:mb-12 mx-auto"
         />
       </div>
     </div>

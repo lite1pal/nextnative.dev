@@ -2,6 +2,8 @@ import HighlightedSpan from "@/components/HighlightedSpan";
 import Logo from "@/components/Logo";
 import CTABlogButton from "./CTABlogButton";
 import { AvatarList, RatingSvg } from "@/components/HeroSection2";
+import LogoSymbol from "@/components/LogoSymbol";
+import Link from "next/link";
 
 async function NextNativeCard({ post }: { post: { slug: string } }) {
   let customersCount = 20;
@@ -31,12 +33,18 @@ async function NextNativeCard({ post }: { post: { slug: string } }) {
       className="sticky top-20 rounded-xl p-6 bg-white"
     >
       <div className="text-center items-center flex flex-col">
-        <Logo />
-        <h3 className="text-xl mt-7 font-semibold">
-          Launch mobile apps with <HighlightedSpan>Next.js</HighlightedSpan>
+        <Link href="/" className="flex items-center gap-4">
+          <div className="relative top-[2px]">
+            <LogoSymbol />
+          </div>
+          {/* <p className="text-2xl font-[500]">nextnative</p> */}
+        </Link>
+        <h3 className="text-2xl mt-7 font-semibold">
+          Launch mobile apps 10x faster with{" "}
+          <HighlightedSpan>Next.js</HighlightedSpan>
         </h3>
         <p className="text-sm text-gray-600 mt-2">
-          Skip native dev. Use Capacitor + Next.js to go live fast.
+          Skip native dev. Use Next.js + Capacitor to go live fast.
         </p>
         <CTABlogButton post={{ slug: post.slug }} />
         {isError ? (
