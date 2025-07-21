@@ -65,7 +65,7 @@ function QuickStart() {
         </HighlightedSpan> */}
 
         <Image
-          src="/launch-in-2-days.webp"
+          src="/launch-in-2-days-optimized.webp"
           alt="Launch in 2 Days"
           width={1920}
           height={1080}
