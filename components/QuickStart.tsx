@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import HighlightedSpan from "./HighlightedSpan";
 import Subheading from "./Subheading";
 
@@ -36,7 +37,7 @@ function QuickStart() {
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto space-y-6">
+        <div className="max-w-xl mx-auto space-y-6">
           {steps.map((step, index) => (
             <div key={index} className="flex items-start gap-4">
               <div className="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm flex-shrink-0 mt-1">
@@ -47,8 +48,8 @@ function QuickStart() {
                   style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
                   className="bg-white rounded-lg px-4 py-6"
                 >
-                  <code className="text-gray-900 text-base font-mono">
-                    $ {step.code}
+                  <code className="text-gray-900 font-[500] text-base font-mono">
+                    {step.code}
                   </code>
                 </div>
                 {/* <p className="text-gray-600 text-sm mt-2">{step.description}</p> */}
@@ -57,11 +58,19 @@ function QuickStart() {
           ))}
         </div>
 
-        <HighlightedSpan>
+        {/* <HighlightedSpan>
           <div className="flex items-center text-3xl mt-16 justify-center gap-2 md:gap-3">
             That's it! Now it's time to ship viral apps!
           </div>
-        </HighlightedSpan>
+        </HighlightedSpan> */}
+
+        <Image
+          src="/launch-in-2-days.webp"
+          alt="Launch in 2 Days"
+          width={1920}
+          height={1080}
+          className="rounded-[20px] w-full mt-12 mx-auto"
+        />
       </div>
     </div>
   );

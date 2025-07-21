@@ -64,7 +64,7 @@ function Navbar() {
 
       {/* Desktop navigation */}
       <div className="hidden md:flex items-center gap-8 lg:gap-14">
-        <Link
+        {/* <Link
           href="/showcase"
           onClick={() => {
             trackEvent("Navbar_Showcase_clicked");
@@ -72,7 +72,7 @@ function Navbar() {
           className="text-base cursor-pointer md:text-lg hover:text-primary transition-colors"
         >
           Showcase
-        </Link>
+        </Link> */}
         <Link
           onClick={() => {
             trackEvent("Navbar_Docs_clicked");
@@ -122,7 +122,7 @@ function Navbar() {
       {/* Mobile navigation */}
       {isMenuOpen && (
         <div className="absolute top-16 left-0 right-0 bg-white shadow-lg p-4 flex flex-col gap-4 md:hidden z-50">
-          <Link
+          {/* <Link
             href="/showcase"
             onClick={() => {
               setIsMenuOpen(false);
@@ -131,7 +131,7 @@ function Navbar() {
             className="text-base cursor-pointer md:text-lg hover:text-primary transition-colors"
           >
             Showcase
-          </Link>
+          </Link> */}
           <Link
             onClick={() => {
               setIsMenuOpen(false);

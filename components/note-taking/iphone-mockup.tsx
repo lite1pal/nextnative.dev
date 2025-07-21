@@ -65,13 +65,13 @@ export default function IPhoneMockup({
               <div className="h-full overflow-hidden">{children}</div>
 
               {/* Home indicator */}
-              <div className="absolute bottom-2 right-0 left-0 w-full z-[90] flex items-center justify-center">
+              {/* <div className="absolute bottom-2 right-0 left-0 w-full z-[90] flex items-center justify-center">
                 <div
                   className={`w-32 h-1 rounded-full ${
                     isDark ? "bg-gray-700" : "bg-gray-300"
                   }`}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

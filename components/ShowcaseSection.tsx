@@ -32,11 +32,11 @@ function ShowcaseSection() {
         <IPhoneMockup isDark={true}>
           <div>
             <Image
-              src={"/showcase/pomodoro-dark.png"}
-              alt={"Note-taking app screenshot"}
+              src={"/showcase/sproutly-premium-screen.jpg"}
+              alt={"AI Plant identification app screenshot"}
               width={400}
               height={800}
-              className="absolute pb-10 inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
         </IPhoneMockup>
@@ -45,7 +45,7 @@ function ShowcaseSection() {
         <IPhoneMockup isDark={false}>
           <div>
             <Image
-              src={"/showcase/expenses.png"}
+              src={"/showcase/pomodoro-dark.png"}
               alt={"Note-taking app screenshot"}
               width={400}
               height={800}

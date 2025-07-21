@@ -57,12 +57,10 @@ export default function Home() {
 
       <QuickStart />
 
-      <DemoVideo />
-
       <div className="text-center md:mb-16 max-md:mt-24">
         <Subheading
           heading1="See what"
-          heading2="you can build"
+          heading2="you can build in days"
           className="text-start md:text-center md:items-center"
         />
 
@@ -109,6 +107,8 @@ export default function Home() {
       <WastedTime />
 
       <SetupByDefault />
+
+      <DemoVideo />
 
       <div className="flex flex-col gap-28 sm:gap-52 py-16 sm:py-32">
         {features.map((feature, index) => (
