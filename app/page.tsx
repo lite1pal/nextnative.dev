@@ -17,6 +17,8 @@ import ShowcaseSection from "@/components/ShowcaseSection";
 import LazyVideo from "@/components/LazyVideo";
 import StoreGuides from "@/components/StoreGuides";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import Apps from "./showcase/apps";
+import AppsBuiltWithNextNative from "@/components/AppsBuiltWithNextNative";
 
 export default function Home() {
   return (
@@ -107,6 +109,8 @@ export default function Home() {
       <WastedTime />
 
       <SetupByDefault />
+
+      <AppsBuiltWithNextNative />
 
       <DemoVideo />
 

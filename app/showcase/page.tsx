@@ -32,7 +32,9 @@ export default function ShowcasePage() {
             Real mobile apps published to the App Store and Google Play.
           </p> */}
         </div>
-        <Apps />
+        <div className="bg-white rounded-xl py-10">
+          <Apps />
+        </div>
       </div>
     </div>
   );
