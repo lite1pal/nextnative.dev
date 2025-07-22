@@ -1,6 +1,7 @@
 "use client";
 
 import IPhoneMockup from "@/components/note-taking/iphone-mockup";
+import { trackEvent } from "@/services/custom-analytics";
 import { Wrench } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -86,6 +87,9 @@ function Apps() {
                 href={app.storeLinks.appStore}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  trackEvent(`App_store_${app.name}_clicked`);
+                }}
               >
                 <Image
                   src="/showcase/download-on-the-app-store.svg"
@@ -102,6 +106,7 @@ function Apps() {
                   position: "top-center",
                   className: "text-xl",
                 });
+                trackEvent(`Google_Play_${app.name}_clicked`);
               }}
               className="cursor-pointer"
               aria-label="Download on Google Play"
