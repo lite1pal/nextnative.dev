@@ -189,7 +189,7 @@ const faqItems = [
     question: "Can I see some apps built with NextNative?",
     answer: (
       <>
-        Yes, check out the Lasting Habits app built with NextNative.
+        {/* Yes, check out the Lasting Habits app built with NextNative.
         <br />
         <br />
         You can find it on the{" "}
@@ -202,12 +202,24 @@ const faqItems = [
         </Link>
         . It's coming soon to the Play Store.
         <br />
-        <br />
-        Visit{" "}
+        <br /> */}
+        Yes! <br /> <br /> Visit{" "}
         <Link className="text-primary" href="/showcase">
           Showcase
         </Link>{" "}
         to see all apps built, or in progress, with NextNative.
+        <br />
+        <br />
+        Some of them are included in the package, like{" "}
+        <a
+          className="text-primary"
+          href="https://apps.apple.com/ua/app/sproutly-ai-plant-identifier/id6748902696"
+          target="_blank"
+        >
+          Sproutly: AI Plant Identifier.
+        </a>
+        <br />
+        <br /> Soon more to come!
       </>
     ),
   },
