@@ -29,7 +29,7 @@ function SocialProof() {
           />
         </div>
 
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="hidden sm:flex items-center gap-2 shrink-0">
           <Image
             src="/x-logo.svg"
             alt="X (formerly Twitter)"
