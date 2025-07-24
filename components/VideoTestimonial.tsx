@@ -58,6 +58,7 @@ function VideoTestimonial({
               className="w-full h-auto object-cover"
               width={759}
               height={427}
+              sizes="20vw"
             />
 
             {/* Play Button */}
