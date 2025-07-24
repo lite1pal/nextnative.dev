@@ -5,11 +5,10 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import HighlightedSpan from "@/components/HighlightedSpan";
 import { BlogPagination } from "@/components/BlogPagination";
-import { PaginationInfo } from "@/components/PaginationInfo";
 import { calculatePagination } from "@/lib/pagination";
 
 interface BlogListPageProps {
-  searchParams: Promise<{ page?: string }> | { page?: string };
+  searchParams: any;
 }
 
 export async function generateMetadata({
