@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import HighlightedSpan from "./HighlightedSpan";
 import Subheading from "./Subheading";
+import { trackEvent } from "@/services/custom-analytics";
 
 function QuickStart() {
   const steps = [
@@ -70,6 +70,7 @@ function QuickStart() {
           width={1920}
           height={1080}
           className="rounded-[20px] w-full mt-12 sm:mb-12 mx-auto"
+          onClick={() => trackEvent("Launched_in_2_days_clicked")}
         />
       </div>
     </div>
