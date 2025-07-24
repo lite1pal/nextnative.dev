@@ -41,7 +41,7 @@ function ShowcaseSection() {
           </div>
         </IPhoneMockup>
       </div>
-      <div className="rotate-[30deg]">
+      <div className="rotate-[30deg] max-sm:relative max-sm:top-10">
         <IPhoneMockup isDark={false}>
           <div>
             <Image
