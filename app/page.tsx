@@ -79,7 +79,7 @@ export default function Home() {
 
       <SocialProof />
 
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-2xl mx-auto mt-16">
         <VideoTestimonial
           name={videoTestimonial?.name as string}
           videoSrc={videoTestimonial?.videoSrc!}

@@ -29,7 +29,7 @@ function Testimonial({
     <div
       style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
       className={cn(
-        `flex flex-col rounded-2xl px-10 bg-white text-lg md:text-[22px] gap-6 mx-auto max-w-[759.07px] py-8 sm:py-16 my-16`,
+        `flex flex-col rounded-2xl px-4 sm:px-10 bg-white text-lg md:text-[22px] gap-6 mx-auto max-w-[759.07px] py-4 sm:py-16 my-16`,
         className
       )}
     >
