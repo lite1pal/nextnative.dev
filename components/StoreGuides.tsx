@@ -13,7 +13,7 @@ function StoreGuides() {
           />
           <p className="mt-6 text-lg max-w-2xl text-start md:text-center self-start w-fit md:mx-auto">
             No need to figure it out on your own. Learn exactly how to pass App
-            Store and Play Store checks.{" "}
+            Store and Google Play checks.{" "}
             {/* <span className="hidden">Based on real submissions.</span> */}
           </p>
         </div>

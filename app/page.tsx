@@ -16,11 +16,16 @@ import { ChevronUp } from "lucide-react";
 import ShowcaseSection from "@/components/ShowcaseSection";
 import LazyVideo from "@/components/LazyVideo";
 import StoreGuides from "@/components/StoreGuides";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import Apps from "./showcase/apps";
+import TestimonialsSection, {
+  testimonials,
+} from "@/components/TestimonialsSection";
 import AppsBuiltWithNextNative from "@/components/AppsBuiltWithNextNative";
+import VideoTestimonial from "@/components/VideoTestimonial";
 
 export default function Home() {
+  const videoTestimonial = testimonials.find(
+    (testimonial) => testimonial.type === "video" && testimonial.name === "Leo"
+  );
   return (
     <div>
       <HeroSection2 />
@@ -43,7 +48,6 @@ export default function Home() {
         imgSrc={""}
         letters="S"
         name="Happy customer"
-        description=""
         showStars
         url="https://microlaunch.net/p/nextnative"
         testimonial={
@@ -74,6 +78,17 @@ export default function Home() {
       <ShowcaseSection />
 
       <SocialProof />
+
+      <div className="max-w-2xl mx-auto">
+        <VideoTestimonial
+          name={videoTestimonial?.name as string}
+          videoSrc={videoTestimonial?.videoSrc!}
+          testimonial={videoTestimonial?.testimonial}
+          showStars={videoTestimonial?.showStars}
+          className="my-0 max-w-none"
+        />
+      </div>
+
       <Testimonial
         imgSrc={"/testimonials/vitaliy.jpeg"}
         name="Vitalii Zabrodskyi"
@@ -106,6 +121,7 @@ export default function Home() {
           </div>
         }
       />
+
       <WastedTime />
 
       <SetupByDefault />

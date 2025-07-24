@@ -15,9 +15,9 @@ function Testimonial({
   letters,
   url,
 }: {
-  name: string;
-  description: string;
   testimonial: ReactNode;
+  name?: string;
+  description?: string;
   imgSrc?: string;
   className?: string;
   time?: string;
