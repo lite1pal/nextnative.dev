@@ -64,14 +64,19 @@ function QuickStart() {
           </div>
         </HighlightedSpan> */}
 
-        <Image
-          src="/launch-in-2-days-optimized.webp"
-          alt="Launch in 2 Days"
-          width={1920}
-          height={1080}
-          className="rounded-[20px] w-full mt-12 sm:mb-12 mx-auto"
+        <a
+          href="https://apps.apple.com/ua/app/sproutly-ai-plant-identifier/id6748902696"
+          target="_blank"
           onClick={() => trackEvent("Launched_in_2_days_clicked")}
-        />
+        >
+          <Image
+            src="/launch-in-2-days-optimized.webp"
+            alt="Launch in 2 Days"
+            width={1920}
+            height={1080}
+            className="rounded-[20px] w-full mt-12 sm:mb-12 mx-auto"
+          />
+        </a>
       </div>
     </div>
   );
