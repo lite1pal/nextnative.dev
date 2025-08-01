@@ -167,11 +167,6 @@ export default async function BlogPostPage({
       <aside className="relative mx-auto hidden w-full max-w-md lg:block">
         <Suspense fallback={<NextNativeCardSkeleton />}>
           <NextNativeCard post={{ slug }} />
-          <script
-            async
-            src="https://eocampaign1.com/form/b5043f12-6ef3-11f0-826d-d372b1117e0b.js"
-            data-form="b5043f12-6ef3-11f0-826d-d372b1117e0b"
-          ></script>
         </Suspense>
       </aside>
       <script
