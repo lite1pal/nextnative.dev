@@ -131,6 +131,9 @@ export default async function BlogListPage({
                             className="mb-3 rounded-lg"
                             quality={50}
                             sizes={"(max-width: 1200px) 60vw, 15vw"}
+                            style={{
+                              boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)",
+                            }}
                           />
                         )}
                         <h2>{post.title}</h2>
