@@ -1,15 +1,37 @@
-import HighlightedSpan from "@/components/HighlightedSpan";
-import Logo from "@/components/Logo";
 import { prisma } from "@/prisma/client";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import CTABlogButton from "./CTABlogButton";
 import { Breadcrumbs } from "./Breadcrumbs";
-import { AvatarList, RatingSvg } from "@/components/HeroSection2";
 import NextNativeCard from "./NextNativeCard";
 import { Suspense } from "react";
 import NextNativeCardSkeleton from "./NextNativeCardSkeleton";
+import { rehype } from "rehype";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+
+async function addAnchorsToHeadings(html: string): Promise<string> {
+  const result = await rehype()
+    .data("settings", { fragment: true })
+    .use(rehypeSlug)
+    .use(rehypeAutolinkHeadings, {
+      behavior: "append",
+      properties: {
+        className: ["inline-anchor"],
+      },
+      content: {
+        type: "element",
+        tagName: "span",
+        properties: {
+          className: ["text-gray-400", "text-lg", "ml-2"],
+        },
+        children: [{ type: "text", value: "#" }],
+      },
+    })
+    .process(html);
+
+  return result.toString();
+}
 
 export const revalidate = 600; // Revalidate every 10 minutes
 
@@ -79,18 +101,22 @@ export default async function BlogPostPage({
     day: "numeric",
   });
 
+  const contentWithAnchors = await addAnchorsToHeadings(post.contentHtml);
+
   return (
-    <main className="grid grid-cols-1 max-xl:overflow-hidden lg:grid-cols-[1fr_400px] w-full gap-10 sm:px-4 py-8 max-w-[962px] xl:max-w-[1260px] mx-auto">
-      <article className="prose sm:prose-p:text-lg sm:prose-p:leading-loose prose-li:marker:text-primary prose-td:border sm:prose-td:px-4 prose-th:border prose-tr:border max-w-3xl flex-1 min-h-screen prose-a:text-primary prose-a:no-underline">
-        <Breadcrumbs
-          items={[
-            { label: "Home", href: "/" },
-            { label: "Blog", href: "/blog" },
-            { label: post.title, href: `/blog/${post.slug}` },
-          ]}
-        />
-        <h1>{post.title}</h1>
-        <p className="text-gray-500">{formattedDate}</p>
+    <main className="mx-auto grid w-full max-w-[962px] grid-cols-1 gap-10 py-8 max-xl:overflow-hidden sm:px-4 xl:max-w-[1260px]">
+      <article className="prose prose-img:rounded-2xl sm:prose-p:text-xl xl:prose-h2:pt-16 xl:prose-h3:pt-8 prose-table:bg-white sm:prose-p:leading-loose prose-li:marker:text-primary prose-td:border sm:prose-td:px-4 prose-table:prose-p:text-xs xl:prose-h1:text-5xl sm:prose-h2:text-3xl sm:prose-h3:text-2xl xl:prose-h1:leading-tight prose-th:border prose-tr:border prose-a:text-primary prose-a:no-underline min-h-screen max-w-4xl flex-1 xl:mx-auto">
+        <div className="xl:px-16">
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Blog", href: "/blog" },
+              { label: post.title, href: `/blog/${post.slug}` },
+            ]}
+          />
+          <h1>{post.title}</h1>
+          <p className="text-gray-500">{formattedDate}</p>
+        </div>
 
         {post.image && (
           <Image
@@ -99,13 +125,16 @@ export default async function BlogPostPage({
             width={800}
             height={400}
             style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-            className="rounded-lg my-6"
+            className="my-6 w-full rounded-4xl"
           />
         )}
 
-        <p>{post.description}</p>
+        {/* <p>{post.description}</p> */}
 
-        <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+        <div
+          className="xl:px-16"
+          dangerouslySetInnerHTML={{ __html: contentWithAnchors }}
+        />
 
         <script
           type="application/ld+json"
@@ -135,11 +164,21 @@ export default async function BlogPostPage({
         />
       </article>
 
-      <aside className="hidden relative lg:block w-full max-w-md">
+      <aside className="relative mx-auto hidden w-full max-w-md lg:block">
         <Suspense fallback={<NextNativeCardSkeleton />}>
           <NextNativeCard post={{ slug }} />
+          <script
+            async
+            src="https://eocampaign1.com/form/b5043f12-6ef3-11f0-826d-d372b1117e0b.js"
+            data-form="b5043f12-6ef3-11f0-826d-d372b1117e0b"
+          ></script>
         </Suspense>
       </aside>
+      <script
+        async
+        src="https://eocampaign1.com/form/9870388e-6ee8-11f0-acfe-733f9fcd04f6.js"
+        data-form="9870388e-6ee8-11f0-acfe-733f9fcd04f6"
+      ></script>
     </main>
   );
 }

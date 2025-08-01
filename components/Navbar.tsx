@@ -1,14 +1,19 @@
 "use client";
+
 import Link from "next/link";
 import Button from "./Button";
 import Logo from "./Logo";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { trackEvent } from "@/services/custom-analytics";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const router = useRouter();
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isBlog = pathname.startsWith("/blog");
+
   useEffect(() => {
     const handleOutsideClick = (event: any) => {
       if (!event.target.closest(".navbar")) {
@@ -25,21 +30,28 @@ function Navbar() {
     };
   }, [isMenuOpen]);
 
-  // const handleSignIn = () => {
-  //   trackEvent("Navbar_SignIn_clicked");
-  //   setIsMenuOpen(false);
-  //   const waitlistInput = document.getElementById("waitlist-input");
+  useEffect(() => {
+    const updateScrolled = () => {
+      if (isBlog) setScrolled(window.scrollY > 10);
+    };
 
-  //   if (waitlistInput) {
-  //     waitlistInput.scrollIntoView({ behavior: "smooth", block: "center" });
-  //     (waitlistInput as HTMLInputElement).focus();
-  //   } else {
-  //     router.push("/#waitlist");
-  //   }
-  // };
+    // Run once on mount to check initial position
+    updateScrolled();
+
+    // Then listen to scroll events
+    window.addEventListener("scroll", updateScrolled);
+    return () => window.removeEventListener("scroll", updateScrolled);
+  }, [isBlog]);
 
   return (
-    <div className="flex py-4 md:py-5 items-center justify-between navbar">
+    <div
+      className={cn(
+        "navbar sticky top-0 z-50 flex items-center justify-between py-4 transition-all duration-300 md:py-5",
+        scrolled
+          ? "top-3 mx-auto rounded-full bg-white px-8 md:py-4"
+          : "bg-transparent",
+      )}
+    >
       <div onClick={() => setIsMenuOpen(false)}>
         <Logo />
       </div>
@@ -63,13 +75,13 @@ function Navbar() {
       </button>
 
       {/* Desktop navigation */}
-      <div className="hidden md:flex items-center gap-8 lg:gap-14">
+      <div className="hidden items-center gap-8 md:flex lg:gap-14">
         <Link
           href="/showcase"
           onClick={() => {
             trackEvent("Navbar_Showcase_clicked");
           }}
-          className="text-base cursor-pointer md:text-lg hover:text-primary transition-colors"
+          className="hover:text-primary cursor-pointer text-base transition-colors md:text-lg"
         >
           Showcase
         </Link>
@@ -78,7 +90,7 @@ function Navbar() {
             trackEvent("Navbar_Docs_clicked");
           }}
           href="https://docs.nextnative.dev"
-          className="text-base md:text-lg hover:text-primary transition-colors"
+          className="hover:text-primary text-base transition-colors md:text-lg"
         >
           Docs
         </Link>
@@ -95,7 +107,7 @@ function Navbar() {
               window.location.href = "/#pricing";
             }
           }}
-          className="text-base md:text-lg hover:text-primary transition-colors"
+          className="hover:text-primary text-base transition-colors md:text-lg"
         >
           Pricing
         </Link>
@@ -104,31 +116,44 @@ function Navbar() {
           onClick={() => {
             trackEvent("Navbar_Blog_clicked");
           }}
-          className="text-base cursor-pointer md:text-lg hover:text-primary transition-colors"
+          className="hover:text-primary cursor-pointer text-base transition-colors md:text-lg"
         >
           Blog
         </Link>
 
-        <Link
-          href="/contact"
-          onClick={() => {
-            trackEvent("Navbar_Contact_clicked");
-          }}
-        >
-          <Button variant="secondary">Contact</Button>
-        </Link>
+        {isBlog ? (
+          <Link
+            href="/"
+            onClick={() => {
+              trackEvent("Navbar_BlogPage_LaunchYourApp_clicked");
+            }}
+          >
+            <Button variant="primary" className="py-2 md:px-8 md:py-2">
+              Launch Your App
+            </Button>
+          </Link>
+        ) : (
+          <Link
+            href="/contact"
+            onClick={() => {
+              trackEvent("Navbar_Contact_clicked");
+            }}
+          >
+            <Button variant="secondary">Contact</Button>
+          </Link>
+        )}
       </div>
 
       {/* Mobile navigation */}
       {isMenuOpen && (
-        <div className="absolute top-16 left-0 right-0 bg-white shadow-lg p-4 flex flex-col gap-4 md:hidden z-50">
+        <div className="absolute top-16 right-0 left-0 z-50 flex flex-col gap-4 bg-white p-4 shadow-lg md:hidden">
           <Link
             href="/showcase"
             onClick={() => {
               setIsMenuOpen(false);
               trackEvent("Navbar_Showcase_clicked");
             }}
-            className="text-base cursor-pointer md:text-lg hover:text-primary transition-colors"
+            className="hover:text-primary cursor-pointer text-base transition-colors md:text-lg"
           >
             Showcase
           </Link>
@@ -138,7 +163,7 @@ function Navbar() {
               trackEvent("Navbar_Docs_clicked");
             }}
             href="https://docs.nextnative.dev"
-            className="text-base hover:text-primary transition-colors"
+            className="hover:text-primary text-base transition-colors"
           >
             Docs
           </Link>
@@ -157,7 +182,7 @@ function Navbar() {
                 window.location.href = "/#pricing";
               }
             }}
-            className="text-base hover:text-primary transition-colors"
+            className="hover:text-primary text-base transition-colors"
           >
             Pricing
           </Link>
@@ -167,7 +192,7 @@ function Navbar() {
               setIsMenuOpen(false);
               trackEvent("Navbar_Blog_clicked");
             }}
-            className="text-base cursor-pointer md:text-lg hover:text-primary transition-colors"
+            className="hover:text-primary cursor-pointer text-base transition-colors md:text-lg"
           >
             Blog
           </Link>
