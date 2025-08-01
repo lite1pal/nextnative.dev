@@ -47,7 +47,7 @@ function Navbar() {
     <div
       className={cn(
         "navbar sticky top-0 z-50 flex items-center justify-between py-4 transition-all duration-300 md:py-5",
-        scrolled
+        scrolled && isBlog
           ? "top-3 mx-auto rounded-full bg-white px-8 md:py-4"
           : "bg-transparent",
       )}

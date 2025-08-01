@@ -59,7 +59,7 @@ export default async function BlogListPage({
     redirect("/blog");
   }
 
-  const postsPerPage = 6;
+  const postsPerPage = 4;
 
   // Get total count of posts
   const totalPosts = await prisma.blogPost.count();
@@ -88,8 +88,8 @@ export default async function BlogListPage({
   });
 
   return (
-    <div className="flex flex-col gap-5 items-center">
-      <div className="prose prose-h1:text-5xl max-w-full items-center flex flex-col mx-auto py-10">
+    <div className="flex flex-col items-center gap-5">
+      <div className="prose prose-h1:text-5xl mx-auto flex max-w-full flex-col items-center py-10">
         <h1>
           Welcome to <HighlightedSpan>NextNative</HighlightedSpan>'s Blog
         </h1>
@@ -108,10 +108,10 @@ export default async function BlogListPage({
             endIndex={paginationInfo.endIndex}
           /> */}
 
-            <ul className="list-none p-0 space-y-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <ul className="grid list-none grid-cols-1 gap-8 space-y-10 p-0 md:grid-cols-2">
               {posts.map((post) => {
                 const formattedDate = new Date(
-                  post.createdAt
+                  post.createdAt,
                 ).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
@@ -128,7 +128,7 @@ export default async function BlogListPage({
                             alt={post.title}
                             width={800}
                             height={400}
-                            className="rounded-lg mb-3"
+                            className="mb-3 rounded-lg"
                             quality={50}
                             sizes={"(max-width: 1200px) 60vw, 15vw"}
                           />
@@ -144,8 +144,8 @@ export default async function BlogListPage({
             </ul>
           </>
         ) : (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No blog posts found.</p>
+          <div className="py-12 text-center">
+            <p className="text-lg text-gray-500">No blog posts found.</p>
           </div>
         )}
       </div>
