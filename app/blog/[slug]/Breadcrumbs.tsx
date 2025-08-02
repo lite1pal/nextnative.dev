@@ -7,12 +7,12 @@ type Props = {
 export function Breadcrumbs({ items }: Props) {
   return (
     <nav aria-label="Breadcrumb" className="mb-6 text-sm">
-      <ol className="flex space-x-2 p-0! m-0!">
+      <ol className="m-0! flex space-x-2 p-0!">
         {items.map((item, idx) => (
-          <li key={idx} className="flex items-center">
+          <li key={idx} className="flex items-center !text-sm">
             <Link
               href={item.href}
-              className="hover:underline text-gray-800 truncate font-medium"
+              className="truncate font-medium text-gray-800 hover:underline"
             >
               {item.label}
             </Link>
