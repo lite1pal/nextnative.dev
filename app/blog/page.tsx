@@ -89,15 +89,19 @@ export default async function BlogListPage({
 
   return (
     <div className="flex flex-col items-center gap-5">
-      <div className="prose prose-h1:text-5xl mx-auto flex max-w-full flex-col items-center py-10">
-        <h1>
+      <div className="flex flex-col items-center gap-2 text-center sm:py-16">
+        {/* <h1>
+            Welcome to <HighlightedSpan>NextNative</HighlightedSpan>'s Blog
+          </h1> */}
+        <h1 className="text-[44px] leading-[60px] font-[600] md:text-[74px] md:leading-[91px]">
           Welcome to <HighlightedSpan>NextNative</HighlightedSpan>'s Blog
         </h1>
-        <p className="text-gray prose-p:text-xl">
-          Guides, tutorials, and tips for building mobile apps with Next.js and
-          Capacitor.
+        <p className="mt-7 max-w-2xl text-xl leading-relaxed">
+          Guides, tutorials, and tips for building cross-platform mobile apps
+          faster with web frameworks.
         </p>
-
+      </div>
+      <div className="prose prose-h1:text-5xl prose-h2:mt-7 mx-auto flex max-w-full flex-col items-center py-10">
         {posts.length > 0 ? (
           <>
             {/* <PaginationInfo
@@ -120,7 +124,10 @@ export default async function BlogListPage({
 
                 return (
                   <li key={post.id}>
-                    <Link href={`/blog/${post.slug}`} className="no-underline">
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="group no-underline"
+                    >
                       <div>
                         {post.image && (
                           <Image
@@ -128,7 +135,7 @@ export default async function BlogListPage({
                             alt={post.title}
                             width={800}
                             height={400}
-                            className="mb-3 rounded-lg"
+                            className="mb-3 rounded-lg transition-transform duration-300 group-hover:scale-[1.01]"
                             quality={50}
                             sizes={"(max-width: 1200px) 60vw, 15vw"}
                             style={{

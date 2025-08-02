@@ -179,6 +179,7 @@ export default async function BlogPostPage({
 
       {/* Slide-in */}
       <script
+        className="shadow-lg"
         async
         src="https://eocampaign1.com/form/b5043f12-6ef3-11f0-826d-d372b1117e0b.js"
         data-form="b5043f12-6ef3-11f0-826d-d372b1117e0b"

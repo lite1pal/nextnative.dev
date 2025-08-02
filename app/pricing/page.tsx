@@ -1,4 +1,5 @@
 import PricingSection from "@/components/PricingSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -29,11 +30,12 @@ export const metadata: Metadata = {
 function PricingPage() {
   return (
     <div className="py-12">
-      <div className="max-w-[1200px] mx-auto px-4">
+      <div className="mx-auto max-w-[1200px] px-4">
         <div className="flex flex-col gap-6">
           <h1 className="text-4xl font-[500]">Pricing</h1>
         </div>
         <PricingSection />
+        <TestimonialsSection />
       </div>
     </div>
   );
