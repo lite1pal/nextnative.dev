@@ -105,7 +105,7 @@ export default async function BlogPostPage({
 
   return (
     <main className="mx-auto grid w-full max-w-[962px] grid-cols-1 gap-10 py-8 max-xl:overflow-hidden sm:px-4 xl:max-w-[1260px]">
-      <article className="prose prose-img:rounded-2xl sm:prose-p:text-xl xl:prose-h2:pt-16 xl:prose-h3:pt-8 prose-table:bg-white sm:prose-p:leading-loose prose-li:marker:text-primary prose-td:border sm:prose-td:px-4 prose-table:prose-p:text-xs xl:prose-h1:text-5xl sm:prose-h2:text-3xl sm:prose-h3:text-2xl xl:prose-h1:leading-tight prose-th:border prose-tr:border prose-a:text-primary prose-a:no-underline min-h-screen max-w-4xl flex-1 xl:mx-auto">
+      <article className="prose prose-hr:opacity-10 prose-img:rounded-2xl sm:prose-p:text-xl xl:prose-h2:pt-16 xl:prose-h3:pt-8 prose-table:bg-white sm:prose-p:leading-[38px] prose-li:marker:text-primary prose-td:border sm:prose-td:px-4 prose-table:prose-p:text-xs xl:prose-h1:text-5xl sm:prose-h2:text-3xl sm:prose-h3:text-2xl xl:prose-h1:leading-tight prose-th:border prose-tr:border prose-a:text-primary prose-a:no-underline min-h-screen max-w-4xl flex-1 xl:mx-auto">
         <div className="xl:px-16">
           <Breadcrumbs
             items={[
@@ -132,7 +132,7 @@ export default async function BlogPostPage({
         {/* <p>{post.description}</p> */}
 
         <div
-          className="xl:px-16"
+          className="drop-cap xl:px-16"
           dangerouslySetInnerHTML={{ __html: contentWithAnchors }}
         />
 
@@ -169,10 +169,19 @@ export default async function BlogPostPage({
           <NextNativeCard post={{ slug }} />
         </Suspense>
       </aside>
+
+      {/* Pop-up */}
       <script
         async
         src="https://eocampaign1.com/form/9870388e-6ee8-11f0-acfe-733f9fcd04f6.js"
         data-form="9870388e-6ee8-11f0-acfe-733f9fcd04f6"
+      ></script>
+
+      {/* Slide-in */}
+      <script
+        async
+        src="https://eocampaign1.com/form/b5043f12-6ef3-11f0-826d-d372b1117e0b.js"
+        data-form="b5043f12-6ef3-11f0-826d-d372b1117e0b"
       ></script>
     </main>
   );

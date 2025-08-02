@@ -13,12 +13,12 @@ export default function LayoutWrapper({
 }) {
   const pathname = usePathname();
 
-  const isBlogPostPage = pathname.startsWith("/blog/");
+  const isBlogPostPage = pathname.startsWith("/blog");
   const mainClass = `flex relative flex-col ${isBlogPostPage ? "" : "overflow-hidden"}`;
 
   return (
     <main className={mainClass}>
-      <BackgroundSVG />
+      {!pathname.startsWith("/blog/") && <BackgroundSVG />}
       <Container>
         <Navbar />
         {children}

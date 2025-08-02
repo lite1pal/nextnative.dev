@@ -48,7 +48,7 @@ function Navbar() {
       className={cn(
         "navbar sticky top-0 z-50 flex items-center justify-between py-4 transition-all duration-300 md:py-5",
         scrolled && isBlog
-          ? "top-3 mx-auto rounded-full bg-white px-8 md:py-4"
+          ? "top-3 mx-auto rounded-full bg-white px-8 shadow-xl md:py-4"
           : "bg-transparent",
       )}
     >
