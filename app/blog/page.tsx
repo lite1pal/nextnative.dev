@@ -1,21 +1,10 @@
 import { prisma } from "@/prisma/client";
-import Link from "next/link";
-import Image from "next/image";
 import { Metadata } from "next";
-import { redirect } from "next/navigation";
-import HighlightedSpan from "@/components/HighlightedSpan";
-import { BlogPagination } from "@/components/BlogPagination";
 import { calculatePagination } from "@/lib/pagination";
+import BlogViewPage from "./view";
 
-interface BlogListPageProps {
-  searchParams: any;
-}
-
-export async function generateMetadata({
-  searchParams,
-}: BlogListPageProps): Promise<Metadata> {
-  const params = await Promise.resolve(searchParams);
-  const page = parseInt(params.page || "1", 10);
+export async function generateMetadata(): Promise<Metadata> {
+  const page = 1; // Default to page 1
 
   const baseTitle = "NextNative Blog";
   const baseDescription =
@@ -24,7 +13,11 @@ export async function generateMetadata({
   const title = page > 1 ? `${baseTitle} - Page ${page}` : baseTitle;
   const description =
     page > 1 ? `${baseDescription} - Page ${page}` : baseDescription;
-  const url = `https://nextnative.dev/blog${page > 1 ? `?page=${page}` : ""}`;
+
+  const url =
+    page === 1
+      ? "https://nextnative.dev/blog"
+      : `https://nextnative.dev/blog/page/${page}`;
 
   return {
     title,
@@ -47,17 +40,8 @@ export async function generateMetadata({
 
 export const revalidate = 600;
 
-export default async function BlogListPage({
-  searchParams,
-}: BlogListPageProps) {
-  const params = await Promise.resolve(searchParams);
-  const pageParam = params.page;
-  const page = parseInt(pageParam || "1", 10);
-
-  // Validate page parameter
-  if (pageParam && (isNaN(page) || page < 1)) {
-    redirect("/blog");
-  }
+export default async function BlogListPage() {
+  const page = 1; // Default to page 1
 
   const postsPerPage = 4;
 
@@ -66,11 +50,6 @@ export default async function BlogListPage({
 
   // Calculate pagination info
   const paginationInfo = calculatePagination(page, totalPosts, postsPerPage);
-
-  // Redirect if page number is too high
-  if (totalPosts > 0 && page > paginationInfo.totalPages) {
-    redirect("/blog");
-  }
 
   // Fetch posts for current page
   const posts = await prisma.blogPost.findMany({
@@ -87,85 +66,5 @@ export default async function BlogListPage({
     },
   });
 
-  return (
-    <div className="flex flex-col items-center gap-5">
-      <div className="flex flex-col items-center gap-2 text-center sm:py-16">
-        {/* <h1>
-            Welcome to <HighlightedSpan>NextNative</HighlightedSpan>'s Blog
-          </h1> */}
-        <h1 className="text-[44px] leading-[60px] font-[600] md:text-[74px] md:leading-[91px]">
-          Welcome to <HighlightedSpan>NextNative</HighlightedSpan>'s Blog
-        </h1>
-        <p className="mt-7 max-w-2xl text-xl leading-relaxed">
-          Guides, tutorials, and tips for building cross-platform mobile apps
-          faster with web frameworks.
-        </p>
-      </div>
-      <div className="prose prose-h1:text-5xl prose-h2:mt-7 mx-auto flex max-w-full flex-col items-center py-10">
-        {posts.length > 0 ? (
-          <>
-            {/* <PaginationInfo
-            currentPage={paginationInfo.currentPage}
-            totalPages={paginationInfo.totalPages}
-            totalItems={paginationInfo.totalItems}
-            startIndex={paginationInfo.startIndex}
-            endIndex={paginationInfo.endIndex}
-          /> */}
-
-            <ul className="grid list-none grid-cols-1 gap-8 space-y-10 p-0 md:grid-cols-2">
-              {posts.map((post) => {
-                const formattedDate = new Date(
-                  post.createdAt,
-                ).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                });
-
-                return (
-                  <li key={post.id}>
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="group no-underline"
-                    >
-                      <div>
-                        {post.image && (
-                          <Image
-                            src={post.image}
-                            alt={post.title}
-                            width={800}
-                            height={400}
-                            className="mb-3 rounded-lg transition-transform duration-200 group-hover:scale-[1.01]"
-                            quality={50}
-                            sizes={"(max-width: 1200px) 60vw, 15vw"}
-                            style={{
-                              boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)",
-                            }}
-                          />
-                        )}
-                        <h2 className="group-hover:text-primary transition-colors duration-200">
-                          {post.title}
-                        </h2>
-                        <p className="text-gray text-sm">{formattedDate}</p>
-                        <p>{post.description}</p>
-                      </div>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </>
-        ) : (
-          <div className="py-12 text-center">
-            <p className="text-lg text-gray-500">No blog posts found.</p>
-          </div>
-        )}
-      </div>
-
-      <BlogPagination
-        currentPage={paginationInfo.currentPage}
-        totalPages={paginationInfo.totalPages}
-      />
-    </div>
-  );
+  return <BlogViewPage posts={posts} paginationInfo={paginationInfo} />;
 }

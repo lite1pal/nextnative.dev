@@ -18,7 +18,7 @@ export default function LayoutWrapper({
 
   return (
     <main className={mainClass}>
-      {!pathname.startsWith("/blog/") && <BackgroundSVG />}
+      {!isBlogPostPage && <BackgroundSVG />}
       <Container>
         <Navbar />
         {children}

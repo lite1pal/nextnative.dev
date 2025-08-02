@@ -13,7 +13,7 @@ interface BlogPaginationProps {
 export function BlogPagination({
   currentPage,
   totalPages,
-  basePath = "/blog",
+  basePath = "/blog/page/",
 }: BlogPaginationProps) {
   if (totalPages <= 1) return null;
 
@@ -21,9 +21,9 @@ export function BlogPagination({
 
   const createPageUrl = (page: number) => {
     if (page === 1) {
-      return basePath;
+      return basePath + "1";
     }
-    return `${basePath}?page=${page}`;
+    return `${basePath}${page}`;
   };
 
   return (
