@@ -115,7 +115,20 @@ export default async function BlogPostPage({
             ]}
           />
           <h1>{post.title}</h1>
-          <p className="text-gray-500">{formattedDate}</p>
+
+          <p className="mb-0 text-gray-500">
+            written by{" "}
+            <span className="mr-7 font-[500]">
+              <a
+                className="hover:!text-primary !text-gray-500 transition-colors duration-200"
+                href="https://x.com/shipwithdenis"
+                target="_blank"
+              >
+                Denis Tarasenko
+              </a>
+            </span>{" "}
+            | <span className="ml-7">{formattedDate}</span>
+          </p>
         </div>
 
         {post.image && (

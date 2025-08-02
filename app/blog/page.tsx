@@ -135,7 +135,7 @@ export default async function BlogListPage({
                             alt={post.title}
                             width={800}
                             height={400}
-                            className="mb-3 rounded-lg transition-transform duration-300 group-hover:scale-[1.01]"
+                            className="mb-3 rounded-lg transition-transform duration-200 group-hover:scale-[1.01]"
                             quality={50}
                             sizes={"(max-width: 1200px) 60vw, 15vw"}
                             style={{
@@ -143,7 +143,9 @@ export default async function BlogListPage({
                             }}
                           />
                         )}
-                        <h2>{post.title}</h2>
+                        <h2 className="group-hover:text-primary transition-colors duration-200">
+                          {post.title}
+                        </h2>
                         <p className="text-gray text-sm">{formattedDate}</p>
                         <p>{post.description}</p>
                       </div>

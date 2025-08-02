@@ -30,7 +30,7 @@ export function BlogPagination({
     <nav
       role="navigation"
       aria-label="pagination"
-      className="mx-auto flex w-full justify-center mt-10"
+      className="mx-auto mt-10 flex w-full justify-center"
     >
       <ul className="flex flex-row items-center gap-1">
         {currentPage > 1 && (
@@ -38,7 +38,7 @@ export function BlogPagination({
             <Link
               href={createPageUrl(currentPage - 1)}
               aria-label="Go to previous page"
-              className="inline-flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             >
               <ChevronLeft className="h-4 w-4" />
               <span>Previous</span>
@@ -59,11 +59,14 @@ export function BlogPagination({
             ) : (
               <Link
                 href={createPageUrl(pageNumber)}
+                style={{
+                  boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)",
+                }}
                 aria-current={pageNumber === currentPage ? "page" : undefined}
-                className={`inline-flex items-center justify-center h-9 w-9 text-sm font-medium border ${
+                className={`inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-medium ${
                   pageNumber === currentPage
-                    ? "bg-blue-50 border-blue-500 text-blue-600 z-10"
-                    : "bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                    ? "bg-primary z-10 text-white"
+                    : "bg-white text-gray-500 hover:bg-gray-50 hover:text-gray-700"
                 } focus:z-10 focus:ring-2 focus:ring-blue-500 focus:outline-none`}
               >
                 {pageNumber}
@@ -77,7 +80,10 @@ export function BlogPagination({
             <Link
               href={createPageUrl(currentPage + 1)}
               aria-label="Go to next page"
-              className="inline-flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              style={{
+                boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)",
+              }}
+              className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             >
               <span>Next</span>
               <ChevronRight className="h-4 w-4" />
