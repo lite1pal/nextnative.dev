@@ -28,7 +28,8 @@ const apps = [
     storeLinks: {
       appStore:
         "https://apps.apple.com/ua/app/sproutly-ai-plant-identifier/id6748902696",
-      googlePlay: "soon",
+      googlePlay:
+        "https://play.google.com/store/apps/details?id=com.sproutly.app",
     },
   },
   // {
@@ -58,12 +59,12 @@ const apps = [
 
 function Apps() {
   return (
-    <div className="xl:grid gap-10 rounded-xl gap-y-20 xl:grid-cols-2">
+    <div className="gap-10 gap-y-20 rounded-xl xl:grid xl:grid-cols-2">
       {apps.map((app: any) => (
         <article key={app.name} className="flex flex-col items-center gap-4">
           {/* Heading + description */}
-          <div className="text-center flex flex-col gap-3 max-w-md">
-            <div className="flex justify-center mb-4">
+          <div className="flex max-w-md flex-col gap-3 text-center">
+            <div className="mb-4 flex justify-center">
               {app.logo && (
                 <Image
                   src={app.logo}
@@ -75,13 +76,13 @@ function Apps() {
               )}
             </div>
             <h3 className="text-3xl font-semibold">{app.name}</h3>
-            <p className="text-gray  font-[500] text-lg mt-3">
+            <p className="text-gray mt-3 text-lg font-[500]">
               {app.description}
             </p>
           </div>
 
           {/* Store buttons */}
-          <div className="flex flex-col -space-y-10 md:space-y-0 md:flex-row items-center md:h-32 gap-3">
+          <div className="flex flex-col items-center gap-3 -space-y-10 md:h-32 md:flex-row md:space-y-0">
             {app.storeLinks?.appStore && (
               <a
                 href={app.storeLinks.appStore}
@@ -99,7 +100,25 @@ function Apps() {
                 />
               </a>
             )}
-            <div
+            {app.storeLinks?.googlePlay &&
+              app.storeLinks?.googlePlay !== "soon" && (
+                <a
+                  href={app.storeLinks.googlePlay}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    trackEvent(`Google_Play_${app.name}_clicked`);
+                  }}
+                >
+                  <Image
+                    src="/showcase/download-on-google-play.webp"
+                    width={247}
+                    height={247}
+                    alt="Download on Google Play"
+                  />
+                </a>
+              )}
+            {/* <div
               onClick={() => {
                 toast.success("Coming soon to Google Play!", {
                   duration: 3000,
@@ -117,10 +136,10 @@ function Apps() {
                 height={247}
                 alt="Download on Google Play"
               />
-            </div>
+            </div> */}
           </div>
 
-          <div className="max-sm:left-12 max-sm:max-h-[770px] relative">
+          <div className="relative max-sm:left-12 max-sm:max-h-[770px]">
             <IPhoneMockup isDark={false}>
               {app.realDemo ? (
                 <app.realDemo />
@@ -131,7 +150,7 @@ function Apps() {
                     alt={app.name}
                     width={400}
                     height={800}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 h-full w-full object-cover"
                   />
                 </div>
               )}
