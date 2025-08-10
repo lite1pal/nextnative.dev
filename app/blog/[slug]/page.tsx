@@ -48,6 +48,7 @@ export async function generateMetadata({
   if (!post) return {};
 
   const publishedAt = post.createdAt.toISOString();
+  const updatedAt = post.updatedAt.toISOString();
 
   return {
     title: post.title,
@@ -59,6 +60,7 @@ export async function generateMetadata({
       url: `https://nextnative.dev/blog/${post.slug}`,
       images: post.image ? [{ url: post.image }] : [],
       publishedTime: publishedAt,
+      modifiedTime: updatedAt,
       authors: ["https://nextnative.dev"],
     },
     twitter: {
