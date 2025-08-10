@@ -105,9 +105,11 @@ export default async function BlogPostPage({
 
   const contentWithAnchors = await addAnchorsToHeadings(post.contentHtml);
 
+  // prose-pre:rounded-xl prose-pre:bg-gradient-to-br prose-pre:from-indigo-800 prose-pre:to-indigo-950 prose-pre:font-[600] prose-pre:text-white prose-pre:p-10 prose-pre:font-mono prose-pre:text-base
+
   return (
     <main className="mx-auto grid w-full max-w-[962px] grid-cols-1 gap-10 py-8 max-xl:overflow-hidden sm:px-4 xl:max-w-[1260px]">
-      <article className="prose prose-hr:opacity-10 prose-img:rounded-2xl sm:prose-p:text-xl sm:prose-li:text-xl sm:prose-li:leading-[38px] xl:prose-h2:pt-16 xl:prose-h3:pt-8 prose-table:bg-white sm:prose-p:leading-[38px] prose-li:marker:text-primary prose-td:border sm:prose-td:px-4 prose-table:prose-p:text-xs xl:prose-h1:text-5xl sm:prose-h2:text-3xl sm:prose-h3:text-2xl xl:prose-h1:leading-tight prose-th:border prose-tr:border prose-a:text-primary prose-a:no-underline min-h-screen max-w-4xl flex-1 xl:mx-auto">
+      <article className="prose prose-pre:rounded-xl prose-pre:bg-gradient-to-br prose-pre:from-indigo-800 prose-pre:to-indigo-950 prose-pre:font-[600] prose-pre:text-white prose-pre:p-10 prose-pre:font-mono prose-pre:text-base prose-hr:opacity-10 prose-img:rounded-2xl sm:prose-p:text-xl sm:prose-li:text-xl sm:prose-li:leading-[38px] xl:prose-h2:pt-16 xl:prose-h3:pt-8 sm:prose-p:leading-[38px] prose-li:marker:text-primary prose-td:border-2 sm:prose-td:px-4 xl:prose-h1:text-5xl sm:prose-h2:text-3xl sm:prose-h3:text-2xl xl:prose-h1:leading-tight prose-th:border-2 prose-tr:border-2 prose-a:text-primary prose-a:no-underline min-h-screen max-w-4xl flex-1 xl:mx-auto">
         <div className="xl:px-16">
           <Breadcrumbs
             items={[
