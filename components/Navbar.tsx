@@ -13,6 +13,7 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isBlog = pathname.startsWith("/blog");
+  const isComponentPage = pathname.startsWith("/components");
 
   useEffect(() => {
     const handleOutsideClick = (event: any) => {
@@ -121,15 +122,19 @@ function Navbar() {
           Blog
         </Link>
 
-        {isBlog ? (
+        {isBlog || isComponentPage ? (
           <Link
             href="/"
             onClick={() => {
-              trackEvent("Navbar_BlogPage_LaunchYourApp_clicked");
+              if (isComponentPage) {
+                trackEvent("Navbar_ComponentPage_UnlockAllComponents_clicked");
+              } else {
+                trackEvent("Navbar_BlogPage_LaunchYourApp_clicked");
+              }
             }}
           >
             <Button variant="primary" className="py-2 md:px-8 md:py-2">
-              Launch Your App
+              {isComponentPage ? "Unlock all components" : "Launch your app"}
             </Button>
           </Link>
         ) : (

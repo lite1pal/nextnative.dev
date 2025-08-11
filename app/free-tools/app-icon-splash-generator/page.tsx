@@ -14,8 +14,11 @@ import {
   CornerDownRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ButtonNextNative from "@/components/Button";
 import { Input } from "@/components/ui/input";
 import { useIconGenerator } from "@/hooks/use-icon-generator";
+import HighlightedSpan from "@/components/HighlightedSpan";
+import { trackEvent } from "@/services/custom-analytics";
 
 interface ImageUploadProps {
   onImageUpload: (file: File) => void;
@@ -445,19 +448,36 @@ export default function AppIconSplashGenerator() {
     <div className="mx-auto w-full max-w-[962px] px-4 py-12 xl:max-w-[1260px] xl:px-0">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
-        <div className="mb-12 text-center">
-          <h1 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-gray-100">
-            Free App Icon & Splash Screen Generator
+        <div className="mb-12 py-10 text-center">
+          <h1 className="mb-4 text-4xl font-semibold text-gray-900 md:text-[74px] md:leading-[91px]">
+            Free App Icon & Splash Screen{" "}
+            <HighlightedSpan>Generator</HighlightedSpan>
           </h1>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-400">
+          <p className="mx-auto mb-10 max-w-3xl text-xl text-gray-600 dark:text-gray-400">
             Upload one image and instantly get all required icon and splash
             screen sizes for iOS and Android apps. 100% free, no signup
             required.
           </p>
+
+          <ButtonNextNative
+            onClick={() => {
+              trackEvent("FreeTools_CTA_clicked");
+              const el = document.getElementById("upload-form");
+              if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            variant="primary"
+          >
+            Upload your image now
+          </ButtonNextNative>
         </div>
 
         {/* Main Content */}
-        <div className="mb-12 rounded-2xl bg-white p-8 shadow-xl dark:bg-gray-900">
+        <div
+          id="upload-form"
+          className="mb-12 rounded-2xl bg-white p-8 shadow-xl dark:bg-gray-900"
+        >
           <ImageUpload
             onImageUpload={handleImageUpload}
             isDragActive={isDragActive}
@@ -490,7 +510,7 @@ export default function AppIconSplashGenerator() {
         </div>
 
         {/* Additional Info */}
-        <div className="mb-12">
+        <div className="py-10 sm:py-36">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-3xl font-[500] md:text-4xl">
               Everything you need to launch
@@ -501,34 +521,34 @@ export default function AppIconSplashGenerator() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-3">
-            <div className="hover:border-primary/20 hover:bg-primary/5 dark:hover:border-primary/30 dark:hover:bg-primary/10 rounded-2xl border p-6 transition-all duration-200 dark:border-gray-700">
+            <div className="rounded-2xl bg-white p-6">
               <span className="mb-4 block text-3xl">📱</span>
               <h3 className="mb-2 text-xl font-[500] text-gray-900 dark:text-gray-100">
                 All Sizes Included
               </h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-gray-600">
                 Generate all required iOS and Android icon sizes (40+ variants)
                 in one click.
               </p>
             </div>
 
-            <div className="hover:border-primary/20 hover:bg-primary/5 dark:hover:border-primary/30 dark:hover:bg-primary/10 rounded-2xl border p-6 transition-all duration-200 dark:border-gray-700">
+            <div className="rounded-2xl bg-white p-6">
               <span className="mb-4 block text-3xl">🎨</span>
-              <h3 className="mb-2 text-xl font-[500] text-gray-900 dark:text-gray-100">
+              <h3 className="mb-2 text-xl font-[500] text-gray-900">
                 Customizable
               </h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-gray-600">
                 Choose background colors, rounded corners, and add your app name
                 to splash screens.
               </p>
             </div>
 
-            <div className="hover:border-primary/20 hover:bg-primary/5 dark:hover:border-primary/30 dark:hover:bg-primary/10 rounded-2xl border p-6 transition-all duration-200 dark:border-gray-700">
+            <div className="rounded-2xl bg-white p-6">
               <span className="mb-4 block text-3xl">⚡</span>
-              <h3 className="mb-2 text-xl font-[500] text-gray-900 dark:text-gray-100">
+              <h3 className="mb-2 text-xl font-[500] text-gray-900">
                 Ready to Use
               </h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-gray-600">
                 Download organized ZIP with folders for iOS/Android and detailed
                 setup instructions.
               </p>
@@ -537,8 +557,8 @@ export default function AppIconSplashGenerator() {
         </div>
 
         {/* Related Links */}
-        <div className="rounded-xl bg-gray-50 p-8 dark:bg-gray-800">
-          <h3 className="mb-6 text-center text-xl font-semibold text-gray-900 dark:text-gray-100">
+        <div className="rounded-xl p-8">
+          <h3 className="mb-10 text-center text-3xl font-[500] md:text-4xl">
             More Tools & Resources
           </h3>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
