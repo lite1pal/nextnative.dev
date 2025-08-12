@@ -70,7 +70,6 @@ function PricingSection() {
     } else {
       if (paymentLink) {
         window.fbq("track", "InitiateCheckout");
-        window?.datafast("checkout_initiated");
 
         window.location.href =
           paymentLink + `&metadata_affonso_referral=${window.affonso_referral}`;
