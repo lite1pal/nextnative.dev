@@ -70,6 +70,8 @@ function PricingSection() {
     } else {
       if (paymentLink) {
         window.fbq("track", "InitiateCheckout");
+        window?.datafast("checkout_initiated");
+
         window.location.href =
           paymentLink + `&metadata_affonso_referral=${window.affonso_referral}`;
       } else {
@@ -80,19 +82,19 @@ function PricingSection() {
   return (
     <div
       id="pricing"
-      className="flex flex-col items-center gap-4 py-12 md:py-20 max-w-[1000px] mx-auto text-center"
+      className="mx-auto flex max-w-[1000px] flex-col items-center gap-4 py-12 text-center md:py-20"
     >
       <Subheading
         heading1="One-time payment,"
         heading2="lifetime value"
-        className="text-start md:text-center md:items-center"
+        className="text-start md:items-center md:text-center"
       />
 
-      <div className="flex flex-col md:flex-row w-full gap-6 mt-6 md:mt-10 md:px-4">
+      <div className="mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:px-4">
         {/* Starter Plan Card */}
-        <div className="flex order-2 sm:order-1 mx-auto flex-col w-full max-w-[500px] gap-1">
+        <div className="order-2 mx-auto flex w-full max-w-[500px] flex-col gap-1 sm:order-1">
           <span
-            className={`text-sm opacity-0 pointer-events-none sm:text-xl font-[500] text-red-500 ml-auto`}
+            className={`pointer-events-none ml-auto text-sm font-[500] text-red-500 opacity-0 sm:text-xl`}
           >
             limited launch %60 discount
           </span>
@@ -101,28 +103,28 @@ function PricingSection() {
               boxShadow:
                 "0px 288px 115px rgba(0, 0, 0, 0.01), 0px 162px 97px rgba(0, 0, 0, 0.02), 0px 72px 72px rgba(0, 0, 0, 0.03), 0px 18px 40px rgba(0, 0, 0, 0.04)",
             }}
-            className="bg-white rounded-[32px] p-6 md:p-10 w-full h-full"
+            className="h-full w-full rounded-[32px] bg-white p-6 md:p-10"
           >
-            <div className="flex flex-col gap-6 md:gap-8 h-full">
-              <h3 className="text-xl sm:text-2xl md:text-[32px] font-[500] w-fit">
+            <div className="flex h-full flex-col gap-6 md:gap-8">
+              <h3 className="w-fit text-xl font-[500] sm:text-2xl md:text-[32px]">
                 Starter
               </h3>
 
               <div className="flex gap-1">
-                <span className="text-lg sm:text-xl md:text-2xl text-gray line-through">
+                <span className="text-gray text-lg line-through sm:text-xl md:text-2xl">
                   $199
                 </span>
                 <div className="flex items-end gap-2">
-                  <h3 className="text-3xl sm:text-4xl md:text-[54px] font-[500] leading-none">
+                  <h3 className="text-3xl leading-none font-[500] sm:text-4xl md:text-[54px]">
                     $98
                   </h3>
-                  <span className="text-lg sm:text-xl md:text-2xl text-gray">
+                  <span className="text-gray text-lg sm:text-xl md:text-2xl">
                     /forever
                   </span>
                 </div>
               </div>
 
-              <div className="flex flex-col font-[500] gap-3 md:gap-4 w-full flex-grow">
+              <div className="flex w-full flex-grow flex-col gap-3 font-[500] md:gap-4">
                 {pricingFeaturesStarter.map((feature, index) => (
                   <div
                     key={index}
@@ -149,14 +151,14 @@ function PricingSection() {
                 ))}
               </div>
 
-              <div className="flex flex-col gap-2 mt-auto">
+              <div className="mt-auto flex flex-col gap-2">
                 <Button
                   onClick={() => {
                     trackEvent("PricingSection_GetNextNative_Starter_clicked");
                     handleGetNextnative(dodoPaymentLinks.starter);
                   }}
                   variant="secondary"
-                  className="w-full flex items-center justify-center gap-2 text-[18px] py-5 mt-7"
+                  className="mt-7 flex w-full items-center justify-center gap-2 py-5 text-[18px]"
                 >
                   Get NextNative
                 </Button>
@@ -170,8 +172,8 @@ function PricingSection() {
         </div>
 
         {/* All-in Card */}
-        <div className="flex order-1 sm:order-2 mx-auto flex-col w-full max-w-[500px] gap-1">
-          <span className={`text-sm sm:text-xl font-[500] text-gray ml-auto`}>
+        <div className="order-1 mx-auto flex w-full max-w-[500px] flex-col gap-1 sm:order-2">
+          <span className={`text-gray ml-auto text-sm font-[500] sm:text-xl`}>
             limited launch discount{" "}
             <span className="text-red-500">
               50% off, {discountLimit - customersCount} left
@@ -183,28 +185,28 @@ function PricingSection() {
               boxShadow:
                 "0px 288px 115px rgba(0, 0, 0, 0.01), 0px 162px 97px rgba(0, 0, 0, 0.02), 0px 72px 72px rgba(0, 0, 0, 0.03), 0px 18px 40px rgba(0, 0, 0, 0.04)",
             }}
-            className="bg-white rounded-[32px] p-6 md:p-10 w-full h-full border-2 border-primary"
+            className="border-primary h-full w-full rounded-[32px] border-2 bg-white p-6 md:p-10"
           >
-            <div className="flex flex-col gap-6 md:gap-8 h-full">
-              <h3 className="text-xl sm:text-2xl md:text-[32px] font-[500] w-fit">
+            <div className="flex h-full flex-col gap-6 md:gap-8">
+              <h3 className="w-fit text-xl font-[500] sm:text-2xl md:text-[32px]">
                 All-in
               </h3>
 
               <div className="flex gap-1">
-                <span className="text-lg sm:text-xl md:text-2xl text-gray line-through">
+                <span className="text-gray text-lg line-through sm:text-xl md:text-2xl">
                   $249
                 </span>
                 <div className="flex items-end gap-2">
-                  <h3 className="text-3xl sm:text-4xl md:text-[54px] font-[500] leading-none">
+                  <h3 className="text-3xl leading-none font-[500] sm:text-4xl md:text-[54px]">
                     <HighlightedSpan>$125</HighlightedSpan>
                   </h3>
-                  <span className="text-lg sm:text-xl md:text-2xl text-gray">
+                  <span className="text-gray text-lg sm:text-xl md:text-2xl">
                     /forever
                   </span>
                 </div>
               </div>
 
-              <div className="flex flex-col font-[500] gap-3 md:gap-4 w-full flex-grow">
+              <div className="flex w-full flex-grow flex-col gap-3 font-[500] md:gap-4">
                 {pricingFeatures.map((feature, index) => (
                   <div
                     key={index}
@@ -231,12 +233,12 @@ function PricingSection() {
                 ))}
               </div>
 
-              <div className="flex flex-col gap-2 mt-auto">
+              <div className="mt-auto flex flex-col gap-2">
                 <StarburstSign
                   size="small"
                   rotation={90}
                   position="top-right"
-                  className="w-full mx-auto"
+                  className="mx-auto w-full"
                   svgClassName="top-[-5px] right-[-25px]"
                 >
                   <Button
@@ -245,7 +247,7 @@ function PricingSection() {
                       handleGetNextnative(dodoPaymentLinks.allAccess);
                     }}
                     variant="primary"
-                    className="w-full flex items-center justify-center gap-2 text-[18px] py-4 mt-7"
+                    className="mt-7 flex w-full items-center justify-center gap-2 py-4 text-[18px]"
                   >
                     Get NextNative
                   </Button>
