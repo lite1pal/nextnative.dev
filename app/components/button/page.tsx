@@ -15,7 +15,7 @@ function ButtonPage() {
           heading="Duolingo Button"
           codeExample={duolingoButtonCode}
         >
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 pt-16">
             <DuolingoButton>Try for 0,00 US$</DuolingoButton>
             <DuolingoButton variant="secondary">Get other app</DuolingoButton>
             <DuolingoButton variant="ghost">No thanks</DuolingoButton>
@@ -25,7 +25,7 @@ function ButtonPage() {
           heading="Premium Button"
           codeExample={premiumButtonCode}
         >
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 pt-16">
             <PremiumButton>Unlock Premium Features</PremiumButton>
             <PremiumButton variant="secondary">
               Unlock Premium Features
@@ -33,7 +33,7 @@ function ButtonPage() {
           </div>
         </ComponentWrapper>
         <ComponentWrapper heading="Pill Button" codeExample={premiumButtonCode}>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 pt-16">
             <PillButton>Get started now</PillButton>
             <PillButton variant="secondary">Check prices first</PillButton>
             <PillButton variant="ghost">Go away</PillButton>

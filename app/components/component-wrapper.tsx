@@ -12,11 +12,15 @@ function ComponentWrapper({
   codeExample,
   heading = "Component Example",
   paid = false,
+  isDark = false,
+  fullMockup = false,
 }: {
   children: React.ReactNode;
   codeExample: string;
   heading?: string;
   paid?: boolean;
+  isDark?: boolean;
+  fullMockup?: boolean;
 }) {
   const [copied, setCopied] = useState(false);
 
@@ -60,13 +64,19 @@ function ComponentWrapper({
           value="preview"
           className="flex items-center justify-center py-10"
         >
-          <div className="relative max-h-[450px] overflow-hidden">
-            <IPhoneMockup isDark={false}>
-              <div className="h-full min-h-[810px] bg-white px-4 pt-16">
+          <div
+            className={`${!fullMockup && "max-h-[450px]"} relative overflow-hidden`}
+          >
+            <IPhoneMockup isDark={isDark}>
+              <div
+                className={`${!isDark ? "bg-white text-black" : "text-white"} h-full min-h-[810px] px-4`}
+              >
                 {children}
               </div>
             </IPhoneMockup>
-            <div className="pointer-events-none absolute bottom-0 left-0 h-32 w-full bg-gradient-to-t from-white via-white/90 to-transparent" />
+            {!fullMockup && (
+              <div className="pointer-events-none absolute bottom-0 left-0 h-32 w-full bg-gradient-to-t from-white via-white/90 to-transparent" />
+            )}
           </div>
         </TabsContent>
 

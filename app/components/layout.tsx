@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Button", href: "/components/button" },
-  // { label: "Input", href: "/components/input" },
+  { label: "Screens", href: "/components/screens" },
   // { label: "Card", href: "/components/card" },
   // { label: "Avatar", href: "/components/avatar" },
   // { label: "Badge / Chip", href: "/components/badge" },

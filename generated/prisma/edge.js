@@ -168,11 +168,12 @@ const config = {
     "db"
   ],
   "activeProvider": "mongodb",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "mongodb+srv://deniskatarasenko6:QAcolOohodf9gVMF@cluster0.ruroqdm.mongodb.net/prisma?retryWrites=true&w=majority&appName=Cluster0"
+        "value": null
       }
     }
   },
