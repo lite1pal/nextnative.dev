@@ -63,6 +63,7 @@ export default async function BlogListPage() {
       description: true,
       image: true,
       createdAt: true,
+      tags: true
     },
   });
 
