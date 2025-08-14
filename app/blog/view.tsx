@@ -1,7 +1,12 @@
+"use client"
+
 import { BlogPagination } from "@/components/BlogPagination";
 import HighlightedSpan from "@/components/HighlightedSpan";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import PostsGrid from "./posts-grid";
+import BlogHeading from "./blog-heading";
 
 export default function BlogViewPage({
   posts,
@@ -16,77 +21,84 @@ export default function BlogViewPage({
     endIndex: number;
   };
 }) {
+
+  // Collect unique tags across all posts
+  const allTags = Array.from(
+    new Set(
+      posts.flatMap((p) => Array.isArray(p.tags) ? p.tags : [])
+    )
+  ).sort();
+
   return (
     <div className="flex flex-col items-center gap-5">
-      <div className="flex flex-col items-center gap-2 text-center sm:pt-16 sm:pb-8">
-        {/* <h1>
-            Welcome to <HighlightedSpan>NextNative</HighlightedSpan>'s Blog
-          </h1> */}
-        <h1 className="text-[44px] leading-[60px] font-[600] md:text-[74px] md:leading-[91px]">
-          Welcome to <HighlightedSpan>NextNative</HighlightedSpan>'s Blog
-        </h1>
-        <p className="mt-7 max-w-2xl text-xl leading-relaxed">
-          Guides, tutorials, and tips for building cross-platform mobile apps
-          faster with web frameworks.
-        </p>
-      </div>
-      <div className="prose prose-h1:text-5xl prose-h2:mt-7 mx-auto flex max-w-full flex-col items-center py-10">
-        {posts.length > 0 ? (
-          <>
-            <ul className="grid list-none grid-cols-1 gap-8 space-y-10 p-0 md:grid-cols-2 lg:grid-cols-3">
-              {posts.map((post) => {
-                const formattedDate = new Date(
-                  post.createdAt,
-                ).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                });
+      <BlogHeading />
 
-                return (
-                  <li key={post.id}>
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="group no-underline"
-                    >
-                      <div>
-                        {post.image && (
-                          <Image
-                            src={post.image}
-                            alt={post.title}
-                            width={800}
-                            height={400}
-                            className="mb-3 rounded-lg transition-transform duration-200 group-hover:scale-[1.01]"
-                            quality={50}
-                            sizes={"(max-width: 1200px) 60vw, 15vw"}
-                            style={{
-                              boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)",
-                            }}
-                          />
-                        )}
-                        <h2 className="group-hover:text-primary font-[600] transition-colors duration-200">
-                          {post.title}
-                        </h2>
-                        <p className="text-gray-500 text-lg">{formattedDate}</p>
-                        <p className="line-clamp-2 text-gray-800">{post.description}</p>
-                      </div>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </>
-        ) : (
-          <div className="py-12 text-center">
-            <p className="text-lg text-gray-500">No blog posts found.</p>
-          </div>
-        )}
-      </div>
+      {/* TAG FILTER BAR */}
+      {allTags.length > 0 && (
+        <div className="w-full max-w-6xl px-4">
+          <TagFilter tags={allTags} />
+        </div>
+      )}
+
+
+      <PostsGrid posts={posts} />
 
       <BlogPagination
         currentPage={paginationInfo.currentPage}
         totalPages={paginationInfo.totalPages}
       />
+    </div>
+  );
+}
+
+export function TagFilter({ tags }: { tags: string[] }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const sp = useSearchParams();
+
+  const active = sp.get("tag") ?? "all";
+
+  const setTag = (t: string | null) => {
+    const params = new URLSearchParams(sp.toString());
+    if (!t || t === "all") {
+      params.delete("tag");
+    } else {
+      params.set("tag", t);
+    }
+    // reset pagination when changing tag
+    params.delete("page");
+    const q = params.toString();
+    router.push(q ? `${pathname}?${q}` : pathname);
+  };
+
+  const basePill =
+    "inline-flex cursor-pointer items-center rounded-2xl px-4 py-2 text-sm font-medium " +
+    "transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 " +
+    "bg-[#CDEBFF] text-black";
+
+  const activePill =
+    "bg-primary text-white";
+
+  return (
+    <div className="flex flex-wrap gap-3">
+      <button
+        type="button"
+        onClick={() => setTag("all")}
+        className={`${basePill} ${active === "all" ? activePill : ""}`}
+      >
+        All
+      </button>
+
+      {tags.map((tag) => (
+        <button
+          key={tag}
+          type="button"
+          onClick={() => setTag(tag)}
+          className={`${basePill} ${active === tag ? activePill : ""}`}
+        >
+          {tag}
+        </button>
+      ))}
     </div>
   );
 }
