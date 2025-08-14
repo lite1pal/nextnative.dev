@@ -82,6 +82,6 @@ export default function BlogCategoryPage(props: BlogTagPageProps) {
         ></path>
       </svg>
     </div>}>
-    <BlogCategoryView params={props.params}  />;
+    <BlogCategoryView params={props.params}  />
   </Suspense>
 }
