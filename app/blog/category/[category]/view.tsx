@@ -1,30 +1,19 @@
 import { prisma } from "@/prisma/client";
-import { Metadata } from "next";
 import { redirect, notFound } from "next/navigation";
-import { calculatePagination } from "@/lib/pagination";
 import LoadMorePosts from "@/components/LoadMorePosts";
 import BlogHeading from "../../blog-heading";
 import TagFilter from "../../tag-filter";
 
 interface BlogTagPageProps {
   params: any;
-  searchParams: any;
 }
 
 export default async function BlogCategoryView(props: BlogTagPageProps) {
   const params = await props.params;
-  const searchParams = await props.searchParams;
   
   const tag = decodeURIComponent(params.category);
 
   const tagWithoutDashes = tag.replaceAll("-", " ");
-
-  const page = parseInt(searchParams.page || "1", 10);
-
-  // Validate page parameter
-  if (searchParams.page && (isNaN(page) || page < 1)) {
-    redirect(`/blog/category/${encodeURIComponent(tag)}`);
-  }
 
   const postsPerPage = 6;
 
@@ -42,14 +31,6 @@ export default async function BlogCategoryView(props: BlogTagPageProps) {
     notFound();
   }
 
-  // Calculate pagination info
-  const paginationInfo = calculatePagination(page, totalPosts, postsPerPage);
-
-  // Redirect if page number is too high
-  if (page > paginationInfo.totalPages) {
-    redirect(`/blog/category/${encodeURIComponent(tag)}`);
-  }
-
   // Fetch posts for current page with the specific tag
   const posts = await prisma.blogPost.findMany({
     where: {
@@ -57,7 +38,6 @@ export default async function BlogCategoryView(props: BlogTagPageProps) {
         has: tagWithoutDashes,
       },
     },
-    skip: paginationInfo.startIndex,
     take: postsPerPage,
     orderBy: { createdAt: "desc" },
     select: {
@@ -103,7 +83,6 @@ export default async function BlogCategoryView(props: BlogTagPageProps) {
 
       <LoadMorePosts
         initialPosts={posts}
-        totalPages={paginationInfo.totalPages}
         tag={tagWithoutDashes}
       />
     </div>

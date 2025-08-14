@@ -1,25 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import PostsGrid from "@/app/blog/posts-grid";
+import { calculatePagination } from "@/lib/pagination";
 
 interface LoadMorePostsProps {
   initialPosts: any[];
-  totalPages: number;
   tag?: string; // For tag-specific loading
 }
 
 export default function LoadMorePosts({
   initialPosts,
-  totalPages,
   tag,
 }: LoadMorePostsProps) {
+    const [totalPages, setTotalPages] = useState<any>(null);
   const [posts, setPosts] = useState(initialPosts);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(totalPages > 1);
+
+  useEffect(() => {
+    const pagination = calculatePagination(currentPage, posts.length, 6);
+    setTotalPages(pagination.totalPages);
+  }, [currentPage, posts.length])
 
   const loadMorePosts = async () => {
     if (loading || !hasMore) return;
