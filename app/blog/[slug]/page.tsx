@@ -9,6 +9,20 @@ import NextNativeCardSkeleton from "./NextNativeCardSkeleton";
 import { rehype } from "rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { JSDOM } from "jsdom"; // install: npm i jsdom
+import TableOfContents from "./TableOfContents";
+
+
+
+function extractHeadings(html: string) {
+  const dom = new JSDOM(html);
+  const headings = [...dom.window.document.querySelectorAll("h2")];
+  return headings.map((h) => ({
+    id: h.id,
+    text: h.textContent || "",
+    level: h.tagName.toLowerCase(),
+  }));
+}
 
 async function addAnchorsToHeadings(html: string): Promise<string> {
   const result = await rehype()
@@ -105,10 +119,13 @@ export default async function BlogPostPage({
 
   const contentWithAnchors = await addAnchorsToHeadings(post.contentHtml);
 
+  const headings = extractHeadings(contentWithAnchors);
+
   return (
-    <main className="mx-auto grid w-full max-w-[962px] grid-cols-1 gap-10 py-8 max-xl:overflow-hidden sm:px-4 xl:max-w-[1260px]">
+    <main className="mx-auto grid w-full max-w-[962px] grid-cols-1 xl:grid-cols-5 gap-10 py-8 max-xl:overflow-hidden sm:px-4 xl:max-w-[1260px]">
+      <div className="flex flex-col gap-10 xl:col-span-3">
       <article className="prose prose-pre:rounded-xl prose-pre:bg-gradient-to-br prose-pre:from-indigo-800 prose-pre:to-indigo-950 prose-pre:font-[600] prose-pre:text-white prose-pre:p-10 prose-pre:font-mono prose-pre:text-base prose-hr:opacity-10 prose-img:rounded-2xl sm:prose-p:text-xl sm:prose-li:text-xl sm:prose-li:leading-[38px] xl:prose-h2:pt-16 xl:prose-h3:pt-8 sm:prose-p:leading-[38px] prose-li:marker:text-primary prose-td:border-2 sm:prose-td:px-4 xl:prose-h1:text-5xl sm:prose-h2:text-3xl sm:prose-h3:text-2xl xl:prose-h1:leading-tight prose-th:border-2 prose-tr:border-2 prose-a:text-primary prose-a:no-underline min-h-screen max-w-4xl flex-1 xl:mx-auto">
-        <div className="xl:px-16">
+        <div className="lg:px-16 xl:px-0">
           <Breadcrumbs
             items={[
               { label: "Home", href: "/" },
@@ -147,7 +164,7 @@ export default async function BlogPostPage({
         {/* <p>{post.description}</p> */}
 
         <div
-          className="drop-cap xl:px-16"
+          className="drop-cap lg:px-16 xl:px-0"
           dangerouslySetInnerHTML={{ __html: contentWithAnchors }}
         />
 
@@ -178,11 +195,18 @@ export default async function BlogPostPage({
           }}
         />
       </article>
+<Suspense fallback={<NextNativeCardSkeleton />}>
+          <NextNativeCard post={{ slug }} />
+        </Suspense>
+      </div>
 
-      <aside className="relative mx-auto hidden w-full max-w-md lg:block">
+      <aside className="relative mx-auto xl:col-span-2 hidden w-full max-w-xl lg:block">
         <Suspense fallback={<NextNativeCardSkeleton />}>
           <NextNativeCard post={{ slug }} />
         </Suspense>
+
+        {/* Navigation Links */}
+        <TableOfContents headings={headings} />
       </aside>
 
       {/* Pop-up */}
