@@ -8,7 +8,7 @@ import { BlogPagination } from "@/components/BlogPagination";
 import { calculatePagination } from "@/lib/pagination";
 import PostsGrid from "../../posts-grid";
 import BlogHeading from "../../blog-heading";
-import { TagFilter } from "../../view";
+import TagFilter from "../../tag-filter";
 
 interface BlogListPageProps {
   params: any;

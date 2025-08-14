@@ -8,22 +8,33 @@ interface BlogPaginationProps {
   currentPage: number;
   totalPages: number;
   basePath?: string;
+  baseUrl?: string; // For tag routes like /blog/tag/react
 }
 
 export function BlogPagination({
   currentPage,
   totalPages,
   basePath = "/blog/page/",
+  baseUrl, // For tag routes like /blog/tag/react
 }: BlogPaginationProps) {
   if (totalPages <= 1) return null;
 
   const pageNumbers = generatePageNumbers(currentPage, totalPages);
 
   const createPageUrl = (page: number) => {
-    if (page === 1) {
-      return basePath + "1";
+    if (baseUrl) {
+      // For tag routes: page 1 goes to baseUrl, page 2+ goes to baseUrl/page/X
+      if (page === 1) {
+        return baseUrl;
+      }
+      return `${baseUrl}/page/${page}`;
+    } else {
+      // For regular blog pagination
+      if (page === 1) {
+        return "/blog";
+      }
+      return `${basePath}${page}`;
     }
-    return `${basePath}${page}`;
   };
 
   return (
