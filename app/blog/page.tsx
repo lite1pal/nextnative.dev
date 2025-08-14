@@ -43,7 +43,7 @@ export const revalidate = 600;
 export default async function BlogListPage() {
   const page = 1; // Default to page 1
 
-  const postsPerPage = 4;
+  const postsPerPage = 6;
 
   // Get total count of posts
   const totalPosts = await prisma.blogPost.count();

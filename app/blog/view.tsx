@@ -18,7 +18,7 @@ export default function BlogViewPage({
 }) {
   return (
     <div className="flex flex-col items-center gap-5">
-      <div className="flex flex-col items-center gap-2 text-center sm:py-16">
+      <div className="flex flex-col items-center gap-2 text-center sm:pt-16 sm:pb-8">
         {/* <h1>
             Welcome to <HighlightedSpan>NextNative</HighlightedSpan>'s Blog
           </h1> */}
@@ -33,15 +33,7 @@ export default function BlogViewPage({
       <div className="prose prose-h1:text-5xl prose-h2:mt-7 mx-auto flex max-w-full flex-col items-center py-10">
         {posts.length > 0 ? (
           <>
-            {/* <PaginationInfo
-            currentPage={paginationInfo.currentPage}
-            totalPages={paginationInfo.totalPages}
-            totalItems={paginationInfo.totalItems}
-            startIndex={paginationInfo.startIndex}
-            endIndex={paginationInfo.endIndex}
-          /> */}
-
-            <ul className="grid list-none grid-cols-1 gap-8 space-y-10 p-0 md:grid-cols-2">
+            <ul className="grid list-none grid-cols-1 gap-8 space-y-10 p-0 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => {
                 const formattedDate = new Date(
                   post.createdAt,
@@ -72,11 +64,11 @@ export default function BlogViewPage({
                             }}
                           />
                         )}
-                        <h2 className="group-hover:text-primary transition-colors duration-200">
+                        <h2 className="group-hover:text-primary font-[600] transition-colors duration-200">
                           {post.title}
                         </h2>
-                        <p className="text-gray text-sm">{formattedDate}</p>
-                        <p>{post.description}</p>
+                        <p className="text-gray-500 text-lg">{formattedDate}</p>
+                        <p className="line-clamp-2 text-gray-800">{post.description}</p>
                       </div>
                     </Link>
                   </li>
