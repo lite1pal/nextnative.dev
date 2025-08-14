@@ -8,14 +8,14 @@ interface BlogPaginationProps {
   currentPage: number;
   totalPages: number;
   basePath?: string;
-  baseUrl?: string; // For tag routes like /blog/tag/react
+  baseUrl?: string; // For tag routes like /blog/category/react
 }
 
 export function BlogPagination({
   currentPage,
   totalPages,
   basePath = "/blog/page/",
-  baseUrl, // For tag routes like /blog/tag/react
+  baseUrl, // For tag routes like /blog/category/react
 }: BlogPaginationProps) {
   if (totalPages <= 1) return null;
 

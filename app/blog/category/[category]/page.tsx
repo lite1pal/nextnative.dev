@@ -15,21 +15,22 @@ export async function generateMetadata(
   props: BlogTagPageProps,
 ): Promise<Metadata> {
   const params = await props.params;
-  const tag = decodeURIComponent(params.tag);
+  const tag = decodeURIComponent(params.category);
+  const tagWithoutDashes = tag.replaceAll("-", " ");
 
-  const baseTitle = `NextNative Blog - ${tag}`;
-  const baseDescription = `Posts tagged with "${tag}" - Guides, tutorials, and tips for building mobile apps with Next.js and Capacitor`;
+  const baseTitle = `NextNative Blog - ${tagWithoutDashes}`;
+  const baseDescription = `${tagWithoutDashes} - Guides, tutorials, and tips for building mobile apps with Next.js and Capacitor`;
 
   return {
     title: baseTitle,
     description: baseDescription,
     alternates: {
-      canonical: `https://nextnative.dev/blog/tag/${encodeURIComponent(tag)}`,
+      canonical: `https://nextnative.dev/blog/category/${encodeURIComponent(tag)}`,
     },
     openGraph: {
       title: baseTitle,
       description: baseDescription,
-      url: `https://nextnative.dev/blog/tag/${encodeURIComponent(tag)}`,
+      url: `https://nextnative.dev/blog/category/${encodeURIComponent(tag)}`,
     },
     twitter: {
       card: "summary",
@@ -57,15 +58,15 @@ export async function generateStaticParams() {
   ).sort();
 
   return allTags.map((tag) => ({
-    tag: encodeURIComponent(tag.replaceAll(" ", "-")), // Encode spaces as dashes
+    category: encodeURIComponent(tag.replaceAll(" ", "-")), // Encode spaces as dashes
   }));
 }
 
-export default async function BlogTagPage(props: BlogTagPageProps) {
+export default async function BlogCategoryPage(props: BlogTagPageProps) {
   const params = await props.params;
   const searchParams = await props.searchParams;
   
-  const tag = decodeURIComponent(params.tag);
+  const tag = decodeURIComponent(params.category);
 
   const tagWithoutDashes = tag.replaceAll("-", " ");
 
@@ -73,7 +74,7 @@ export default async function BlogTagPage(props: BlogTagPageProps) {
 
   // Validate page parameter
   if (searchParams.page && (isNaN(page) || page < 1)) {
-    redirect(`/blog/tag/${encodeURIComponent(tag)}`);
+    redirect(`/blog/category/${encodeURIComponent(tag)}`);
   }
 
   const postsPerPage = 6;
@@ -97,7 +98,7 @@ export default async function BlogTagPage(props: BlogTagPageProps) {
 
   // Redirect if page number is too high
   if (page > paginationInfo.totalPages) {
-    redirect(`/blog/tag/${encodeURIComponent(tag)}`);
+    redirect(`/blog/category/${encodeURIComponent(tag)}`);
   }
 
   // Fetch posts for current page with the specific tag
@@ -136,7 +137,7 @@ export default async function BlogTagPage(props: BlogTagPageProps) {
       <div className="w-full max-w-6xl px-4">
         <div className="mb-4">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-            Posts tagged with "{tagWithoutDashes}"
+            {tagWithoutDashes} category
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mt-1">
             {totalPosts} {totalPosts === 1 ? 'post' : 'posts'} found
