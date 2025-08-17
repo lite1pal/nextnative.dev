@@ -10,6 +10,10 @@ interface FooterLink {
   target?: string;
 }
 
+const freeToolsLinks: FooterLink[] = [
+  { label: "App Icon & Splash Screen Generator", href: "/free-tools/app-icon-splash-generator" },
+];
+
 const productLinks: FooterLink[] = [
   {
     label: "Affiliates - Earn 30%",
@@ -21,6 +25,7 @@ const productLinks: FooterLink[] = [
   { label: "Docs", href: "https://docs.nextnative.dev" },
   { label: "Showcase", href: "/showcase" },
   { label: "Contact", href: "/contact" },
+  // { label: "Icon & Splash Generator", href: "/free-tools/app-icon-splash-generator" },
 ];
 
 const legalLinks: FooterLink[] = [

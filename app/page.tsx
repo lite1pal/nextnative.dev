@@ -24,15 +24,15 @@ import VideoTestimonial from "@/components/VideoTestimonial";
 
 export default function Home() {
   const videoTestimonial = testimonials.find(
-    (testimonial) => testimonial.type === "video" && testimonial.name === "Leo"
+    (testimonial) => testimonial.type === "video" && testimonial.name === "Leo",
   );
   return (
     <div>
       <HeroSection2 />
-      <div className="grid xl:hidden grid-cols-1 items-center lg:grid-cols-2 gap-8 sm:gap-16">
-        <div className="max-w-xl mx-auto">
+      <div className="grid grid-cols-1 items-center gap-8 sm:gap-16 lg:grid-cols-2 xl:hidden">
+        <div className="mx-auto max-w-xl">
           <Image
-            className="w-full h-full z-10 relative object-cover"
+            className="relative z-10 h-full w-full object-cover"
             src="/mobile-hero-img.webp"
             alt="Tools included in NextNative"
             priority
@@ -54,7 +54,7 @@ export default function Home() {
           <div>
             Insane product & a great founder behind it - I've been trying to
             mess around creating mobile apps &{" "}
-            <span className="bg-primary p-1 rounded text-white font-[500]">
+            <span className="bg-primary rounded p-1 font-[500] text-white">
               I'm getting there bit by bit w/ this helping me hugely!!
             </span>
           </div>
@@ -63,14 +63,14 @@ export default function Home() {
 
       <QuickStart />
 
-      <div className="text-center md:mb-16 max-md:mt-24">
+      <div className="text-center max-md:mt-24 md:mb-16">
         <Subheading
           heading1="See what"
           heading2="you can build in days"
-          className="text-start md:text-center md:items-center"
+          className="text-start md:items-center md:text-center"
         />
 
-        <p className="mt-6 text-lg max-w-2xl text-start md:text-center self-start w-fit md:mx-auto">
+        <p className="mt-6 w-fit max-w-2xl self-start text-start text-lg md:mx-auto md:text-center">
           Real apps. Real features. Fully cross-platform.
         </p>
       </div>
@@ -79,7 +79,7 @@ export default function Home() {
 
       <SocialProof />
 
-      <div className="max-w-2xl mx-auto mt-16">
+      <div className="mx-auto mt-16 max-w-2xl">
         <VideoTestimonial
           name={videoTestimonial?.name as string}
           videoSrc={videoTestimonial?.videoSrc!}
@@ -97,7 +97,7 @@ export default function Home() {
         testimonial={
           <div>
             I’m really pumped about it! The setup seems super easy, and I{" "}
-            <span className="bg-primary p-1 rounded text-white font-[500]">
+            <span className="bg-primary rounded p-1 font-[500] text-white">
               can’t wait to finally build my app!
             </span>
             <br /> <br />{" "}
@@ -130,7 +130,7 @@ export default function Home() {
 
       <DemoVideo />
 
-      <div className="flex flex-col gap-28 sm:gap-52 py-16 sm:py-32">
+      <div className="flex flex-col gap-28 py-16 sm:gap-52 sm:py-32">
         {features.map((feature, index) => (
           <FeatureSection
             key={index}
@@ -144,18 +144,18 @@ export default function Home() {
         ))}
       </div>
 
-      <div className="mx-auto w-fit flex flex-col items-center my-16 gap-3">
+      <div className="mx-auto my-16 flex w-fit flex-col items-center gap-3">
         <ChevronUp className="text-gray" />
-        <div className="flex items-center gap-6 py-4 px-6 pr-10 bg-white rounded-full">
+        <div className="flex items-center gap-6 rounded-full bg-white px-6 py-4 pr-10">
           <Image
             src={"/testimonials/dagobert.jpg"}
             alt="Dagobert X profile picture"
             width={100}
             height={100}
-            className="rounded-full object-cover w-[80px] h-[80px]"
+            className="h-[80px] w-[80px] rounded-full object-cover"
             sizes="25vw"
           />
-          <div className="flex flex-col text-xl gap-1">
+          <div className="flex flex-col gap-1 text-xl">
             <p className="font-[500]">Love the ambition behind this</p>
             <p className="text-gray text-sm sm:text-xl">
               Dagobert — Entrepreneur
@@ -312,22 +312,22 @@ const FeatureSection = ({
   alt?: string;
 }) => {
   return (
-    <div className="grid xl:grid-cols-2 gap-12 xl:gap-36">
+    <div className="grid gap-12 xl:grid-cols-2 xl:gap-36">
       {isImageLeft ? (
         <>
           <LazyVideo src={src} alt={src} />
-          <div className="flex flex-col gap-10 order-1 xl:order-2">
+          <div className="order-1 flex flex-col gap-10 xl:order-2">
             <Subheading heading1={heading1} heading2={heading2} />
-            <p className="text-base max-w-xl sm:text-lg md:text-2xl leading-relaxed">
+            <p className="max-w-xl text-base leading-relaxed sm:text-lg md:text-2xl">
               {description}
             </p>
           </div>
         </>
       ) : (
         <>
-          <div className="flex flex-col gap-10 order-1 xl:order-1">
+          <div className="order-1 flex flex-col gap-10 xl:order-1">
             <Subheading heading1={heading1} heading2={heading2} />
-            <p className="text-base max-w-xl sm:text-lg md:text-2xl leading-relaxed">
+            <p className="max-w-xl text-base leading-relaxed sm:text-lg md:text-2xl">
               {description}
             </p>
           </div>

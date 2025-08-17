@@ -561,7 +561,7 @@ export default function AppIconSplashGenerator() {
           <h3 className="mb-10 text-center text-3xl font-[500] md:text-4xl">
             More Tools & Resources
           </h3>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             <Link
               href="/blog"
               className="rounded-lg bg-white p-4 transition-shadow hover:shadow-md dark:bg-gray-700"
@@ -571,18 +571,6 @@ export default function AppIconSplashGenerator() {
               </h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 Learn best practices and tips
-              </p>
-            </Link>
-
-            <Link
-              href="/templates"
-              className="rounded-lg bg-white p-4 transition-shadow hover:shadow-md dark:bg-gray-700"
-            >
-              <h4 className="mb-2 font-medium text-gray-900 dark:text-gray-100">
-                App Templates
-              </h4>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Ready-to-use mobile app templates
               </p>
             </Link>
 
