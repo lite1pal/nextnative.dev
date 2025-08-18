@@ -21,6 +21,7 @@ export async function sendWelcomeEmail(
     const { error } = await resend.emails.send({
       from: "Denis from NextNative <nextnative@updates.denistarasenko.com>",
       to: [data.email],
+      replyTo: "deniskatarasenko6@gmail.com",
       subject: "Welcome to NextNative! 👋",
       html: emailContent,
     });
@@ -110,7 +111,7 @@ export function generateWelcomeEmailHTML(link: string): string {
               </h1>
 
               <p class="text" style="margin:12px 0 18px 0; font:400 16px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; color:#374151;">
-                Thanks for your purchase and welcome to <strong>NextNative</strong>!.
+                Thanks for your purchase and welcome to <strong>NextNative</strong>!
               </p>
 
               <p class="text" style="margin:0 0 22px 0; font:400 16px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; color:#374151;">
