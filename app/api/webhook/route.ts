@@ -33,7 +33,7 @@ export async function POST(request: Request) {
     ) {
       trackEvent(
         "💰 Payment_succeeded - " + payload.data.customer.email + " 🎉",
-        false
+        false,
       );
       console.log("Payment succeeded");
       await prisma.purchase.create({
@@ -42,6 +42,7 @@ export async function POST(request: Request) {
           email: payload.data.customer.email,
         },
       });
+      // Update customer count
       await prisma.globalNumber.update({
         where: {
           id: "99c3a4be-4565-451b-813e-82bf381568d7",
@@ -49,6 +50,34 @@ export async function POST(request: Request) {
         },
         data: { value: { increment: 1 } },
       });
+
+      // // Send welcome email
+      // try {
+      //   const emailResult = await sendWelcomeEmail({
+      //     email: payload.data.customer.email,
+      //     link: `https://nextnative.dev/thank-you?payment_id=${payload.data.payment_id}&status=succeeded`,
+      //   });
+
+      //   if (emailResult.success) {
+      //     trackEvent(
+      //       "📧 Welcome email sent - " + payload.data.customer.email + " ✉️",
+      //       false,
+      //     );
+      //     console.log("Welcome email sent successfully");
+      //   } else {
+      //     trackEvent(
+      //       "📧 Welcome email failed - " + payload.data.customer.email + " ❌",
+      //       false,
+      //     );
+      //     console.error("Failed to send welcome email:", emailResult.message);
+      //   }
+      // } catch (emailError) {
+      //   trackEvent(
+      //     "📧 Welcome email error - " + payload.data.customer.email + " 💥",
+      //     false,
+      //   );
+      //   console.error("Welcome email error:", emailError);
+      // }
 
       revalidatePath("/api/customers-count");
     }
