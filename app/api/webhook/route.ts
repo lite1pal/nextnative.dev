@@ -1,5 +1,6 @@
 import { prisma } from "@/prisma/client";
 import { trackEvent } from "@/services/custom-analytics";
+import { sendWelcomeEmail } from "@/services/resend";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
@@ -51,33 +52,33 @@ export async function POST(request: Request) {
         data: { value: { increment: 1 } },
       });
 
-      // // Send welcome email
-      // try {
-      //   const emailResult = await sendWelcomeEmail({
-      //     email: payload.data.customer.email,
-      //     link: `https://nextnative.dev/thank-you?payment_id=${payload.data.payment_id}&status=succeeded`,
-      //   });
+      // Send welcome email
+      try {
+        const emailResult = await sendWelcomeEmail({
+          email: payload.data.customer.email,
+          link: `https://nextnative.dev/thank-you?payment_id=${payload.data.payment_id}&status=succeeded`,
+        });
 
-      //   if (emailResult.success) {
-      //     trackEvent(
-      //       "📧 Welcome email sent - " + payload.data.customer.email + " ✉️",
-      //       false,
-      //     );
-      //     console.log("Welcome email sent successfully");
-      //   } else {
-      //     trackEvent(
-      //       "📧 Welcome email failed - " + payload.data.customer.email + " ❌",
-      //       false,
-      //     );
-      //     console.error("Failed to send welcome email:", emailResult.message);
-      //   }
-      // } catch (emailError) {
-      //   trackEvent(
-      //     "📧 Welcome email error - " + payload.data.customer.email + " 💥",
-      //     false,
-      //   );
-      //   console.error("Welcome email error:", emailError);
-      // }
+        if (emailResult.success) {
+          trackEvent(
+            "📧 Welcome email sent - " + payload.data.customer.email + " ✉️",
+            false,
+          );
+          console.log("Welcome email sent successfully");
+        } else {
+          trackEvent(
+            "📧 Welcome email failed - " + payload.data.customer.email + " ❌",
+            false,
+          );
+          console.error("Failed to send welcome email:", emailResult.message);
+        }
+      } catch (emailError) {
+        trackEvent(
+          "📧 Welcome email error - " + payload.data.customer.email + " 💥",
+          false,
+        );
+        console.error("Welcome email error:", emailError);
+      }
 
       revalidatePath("/api/customers-count");
     }

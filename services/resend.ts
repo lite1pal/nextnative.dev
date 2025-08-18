@@ -105,16 +105,16 @@ export function generateWelcomeEmailHTML(link: string): string {
               </table>
 
               <!-- Heading -->
-              <h1 class="text" style="margin:0 0 10px 0; font:700 22px/1.25 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; color:#111827;">
+              <h1 class="text" style="margin:0 0 10px 0; font:400 16px/1.25 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; color:#374151;">
                 Hey! Denis here 👋
               </h1>
 
               <p class="text" style="margin:12px 0 18px 0; font:400 16px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; color:#374151;">
-                Thanks for your purchase and welcome to <strong>NextNative</strong>.
+                Thanks for your purchase and welcome to <strong>NextNative</strong>!.
               </p>
 
               <p class="text" style="margin:0 0 22px 0; font:400 16px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; color:#374151;">
-                If you didn’t land on the thank-you page, here’s your quick link to the dashboard:
+                If you didn’t land on the thank-you page, here’s your quick link to it:
               </p>
 
               <!-- Button (bulletproof w/ VML for Outlook) -->
@@ -141,32 +141,21 @@ export function generateWelcomeEmailHTML(link: string): string {
                 </tr>
               </table>
 
-              <p class="muted" style="margin:18px 0 0 0; font:400 14px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; color:#6b7280; text-align:center;">
-                Having trouble? Paste this in your browser:<br>
-                <a href="${link}" style="color:#6b7280; text-decoration:underline;">${link}</a>
-              </p>
-
               <hr role="separator" style="border:none; border-top:1px solid #e5e7eb; margin:28px 0;">
 
               <p class="text" style="margin:0 0 4px 0; font:400 16px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; color:#374151;">
-                P.S. I read and reply to every email, so please don’t hesitate to reach out 💪
+                P.S. I read and reply to every email, so please don’t hesitate to reach out.
               </p>
 
               <!-- Signature -->
-              <p class="text" style="margin:22px 0 0 0; font:400 16px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; color:#374151;">
+              <p class="text" style="margin:22px 0 6px 0; font:400 16px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; color:#374151;">
                 Best,
               </p>
-              <p class="text" style="margin:6px 0 0 0; font:italic 600 20px/1.2 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; color:#111827;">
-                — Denis
-              </p>
-            </td>
-          </tr>
-
-          <!-- Footer -->
-          <tr>
-            <td class="px" style="padding:8px 32px 28px 32px;">
-              <p class="muted" style="margin:18px 0 0 0; font:400 12px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; color:#9ca3af; text-align:center;">
-                You’re receiving this because you purchased NextNative. If this wasn’t you, reply and I’ll fix it.
+              <p style="margin:10px 0 0 0; text-align:center;">
+                <img src="https://nextnative.dev/denis-signature.png" 
+                     alt="Denis Signature" 
+                     width="180" 
+                     style="max-width:180px; height:auto; display:block;" />
               </p>
             </td>
           </tr>
