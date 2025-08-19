@@ -1,17 +1,17 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 import { Blocks, ChevronRight, Home, Library, Search } from "lucide-react";
-import { ReactNode, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 
 function ApplePodcasts() {
   return (
     <div className={`relative h-[800px] tracking-[-3%]`}>
       <div className={`scrollbar-hide relative h-full overflow-auto pb-36`}>
-        <div className="flex items-center justify-between">
-          <div className="text-[32px] font-[600]">Home</div>
-          <div className="size-[39px] rounded-full bg-white"></div>
-        </div>
+        <Header>Home</Header>
+
+        <Tabs />
 
         <Section>
           <SectionHeader>Up Next</SectionHeader>
@@ -36,6 +36,73 @@ function ApplePodcasts() {
         </Section>
       </div>
       <BottomNav />
+    </div>
+  );
+}
+
+function Header({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex items-center justify-between">
+      <div className="text-[32px] font-[600]">{children}</div>
+      <div className="size-[39px] rounded-full bg-indigo-600"></div>
+    </div>
+  );
+}
+
+function Tabs() {
+  const [activeTab, setActiveTab] = useState(0);
+
+  const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const tabs = ["Books", "Self-Improvement", "Exercise", "Meditation"];
+
+  const handleClick = (index: number) => {
+    setActiveTab(index);
+    const el = tabRefs.current[index];
+
+    if (el) {
+      el.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  };
+
+  return (
+    <div id="tabs" className="scrollbar-hide mt-3 flex gap-3 overflow-auto">
+      {tabs.map((tab, i) => (
+        <Tab
+          key={i}
+          onClick={() => handleClick(i)}
+          ref={(el: any) => (tabRefs.current[i] = el)}
+        >
+          {tab}
+        </Tab>
+      ))}
+    </div>
+  );
+}
+
+function Tab({
+  children,
+  onClick,
+  ref,
+}: {
+  children: ReactNode;
+  onClick: () => void;
+  ref: any;
+}) {
+  const moveTabs = () => {
+    const tabs = document.getElementById("tabs");
+  };
+  return (
+    <div
+      onClick={onClick}
+      className="shrink-0 cursor-pointer rounded-md bg-white px-4 py-1.5 font-[500] text-black transition duration-200 hover:bg-black hover:text-white"
+      ref={ref}
+    >
+      {children}
     </div>
   );
 }
