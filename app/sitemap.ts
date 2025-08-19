@@ -28,6 +28,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "https://docs.nextnative.dev/components/modal",
   ];
 
+  const freeTools = [
+    "https://nextnative.dev/free-tools/app-icon-splash-generator",
+  ];
+
   return [
     {
       url: "https://nextnative.dev/",
@@ -58,6 +62,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...posts.map((post) => ({
       url: `https://nextnative.dev/blog/${post.slug}`,
       lastModified: post.updatedAt,
+    })),
+
+    ...freeTools.map((freeTool) => ({
+      url: freeTool,
+      lastModified: new Date("2025-08-19"),
+      changeFrequency: "weekly",
     })),
   ];
 }

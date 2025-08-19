@@ -10,10 +10,6 @@ interface FooterLink {
   target?: string;
 }
 
-const freeToolsLinks: FooterLink[] = [
-  { label: "App Icon & Splash Screen Generator", href: "/free-tools/app-icon-splash-generator" },
-];
-
 const productLinks: FooterLink[] = [
   {
     label: "Affiliates - Earn 30%",
@@ -25,7 +21,10 @@ const productLinks: FooterLink[] = [
   { label: "Docs", href: "https://docs.nextnative.dev" },
   { label: "Showcase", href: "/showcase" },
   { label: "Contact", href: "/contact" },
-  // { label: "Icon & Splash Generator", href: "/free-tools/app-icon-splash-generator" },
+  {
+    label: "Icon & Splash Generator",
+    href: "/free-tools/app-icon-splash-generator",
+  },
 ];
 
 const legalLinks: FooterLink[] = [
@@ -44,7 +43,7 @@ function FooterLinkGroup({
 }) {
   return (
     <div className="flex flex-col gap-4">
-      <h3 className="font-[500] text-lg">{title}</h3>
+      <h3 className="text-lg font-[500]">{title}</h3>
       <div className="flex flex-col gap-3">
         {links.map((link) => (
           <Link
@@ -64,11 +63,11 @@ function FooterLinkGroup({
 
 function Footer() {
   return (
-    <footer className="border-t border-gray/20 mt-20">
-      <div className="mx-auto px-4 md:px-0 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+    <footer className="border-gray/20 mt-20 border-t">
+      <div className="mx-auto px-4 py-16 md:px-0">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8">
           {/* Logo and social section */}
-          <div className="col-span-1 md:col-span-4 flex flex-col gap-6">
+          <div className="col-span-1 flex flex-col gap-6 md:col-span-4">
             <Logo />
             <p className="text-gray">Launch mobile apps faster with Next.js</p>
             <div className="flex gap-4">
@@ -81,7 +80,7 @@ function Footer() {
                 className="text-gray hover:text-foreground transition-colors"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="h-6 w-6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -97,7 +96,7 @@ function Footer() {
                 className="text-gray hover:text-foreground transition-colors"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="h-6 w-6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -121,7 +120,7 @@ function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-16 pt-8 border-t border-gray/20">
+        <div className="border-gray/20 mt-16 border-t pt-8">
           <p className="text-gray text-sm">
             © {new Date().getFullYear()} NextNative. All rights reserved.
           </p>

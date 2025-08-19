@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 import { Blocks, ChevronRight, Home, Library, Search } from "lucide-react";
 import { ReactNode, useRef, useState } from "react";
 
@@ -93,9 +92,6 @@ function Tab({
   onClick: () => void;
   ref: any;
 }) {
-  const moveTabs = () => {
-    const tabs = document.getElementById("tabs");
-  };
   return (
     <div
       onClick={onClick}
