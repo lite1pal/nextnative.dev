@@ -38,7 +38,7 @@
     "dodopayments": "^1.30.0",
     "feed": "^5.1.0",
     "firebase": "^11.9.1",
-    "framer-motion": "^12.23.12",
+    "framer-motion": "^12.4.7",
     "hls": "^0.0.1",
     "jsdom": "^26.1.0",
     "jszip": "^3.10.1",
