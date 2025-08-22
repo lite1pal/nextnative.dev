@@ -82,5 +82,9 @@
     "prisma": "^6.6.0",
     "tailwindcss": "^4.0.9",
     "typescript": "^5"
+  },
+  "overrides": {
+    "motion-dom": "12.4.5",
+    "motion-utils": "12.0.0"
   }
 }
