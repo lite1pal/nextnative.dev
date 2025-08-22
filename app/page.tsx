@@ -21,6 +21,14 @@ import TestimonialsSection, {
 } from "@/components/TestimonialsSection";
 import AppsBuiltWithNextNative from "@/components/AppsBuiltWithNextNative";
 import VideoTestimonial from "@/components/VideoTestimonial";
+import type { Metadata } from "next";
+import Script from "next/script";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://nextnative.dev",
+  },
+};
 
 export default function Home() {
   const videoTestimonial = testimonials.find(
@@ -28,6 +36,17 @@ export default function Home() {
   );
   return (
     <div>
+      <Script id="structured-data" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "NextNative",
+          url: "https://nextnative.dev",
+          description:
+            "NextNative helps developers launch iOS and Android apps using the same codebase they use for web. Built on Next.js + Capacitor.",
+        })}
+      </Script>
+
       <HeroSection2 />
       <div className="grid grid-cols-1 items-center gap-8 sm:gap-16 lg:grid-cols-2 xl:hidden">
         <div className="mx-auto max-w-xl">

@@ -12,8 +12,6 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { JSDOM } from "jsdom"; // install: npm i jsdom
 import TableOfContents from "./TableOfContents";
 
-
-
 function extractHeadings(html: string) {
   const dom = new JSDOM(html);
   const headings = [...dom.window.document.querySelectorAll("h2")];
@@ -122,85 +120,85 @@ export default async function BlogPostPage({
   const headings = extractHeadings(contentWithAnchors);
 
   return (
-    <main className="mx-auto grid w-full max-w-[962px] grid-cols-1 xl:grid-cols-5 gap-10 py-8 max-xl:overflow-hidden sm:px-4 xl:max-w-[1260px]">
+    <main className="mx-auto grid w-full max-w-[962px] grid-cols-1 gap-10 py-8 max-xl:overflow-hidden sm:px-4 xl:max-w-[1260px] xl:grid-cols-5">
       <div className="flex flex-col gap-10 xl:col-span-3">
-      <article className="prose prose-pre:rounded-xl prose-pre:bg-gradient-to-br prose-pre:from-indigo-800 prose-pre:to-indigo-950 prose-pre:font-[600] prose-pre:text-white prose-pre:p-10 prose-pre:font-mono prose-pre:text-base prose-hr:opacity-10 prose-img:rounded-2xl sm:prose-p:text-xl sm:prose-li:text-xl sm:prose-li:leading-[38px] xl:prose-h2:pt-16 xl:prose-h3:pt-8 sm:prose-p:leading-[38px] prose-li:marker:text-primary prose-td:border-2 sm:prose-td:px-4 xl:prose-h1:text-5xl sm:prose-h2:text-3xl sm:prose-h3:text-2xl xl:prose-h1:leading-tight prose-th:border-2 prose-tr:border-2 prose-a:text-primary prose-a:no-underline min-h-screen max-w-4xl flex-1 xl:mx-auto">
-        <div className="lg:px-16 xl:px-0">
-          <Breadcrumbs
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Blog", href: "/blog" },
-              { label: post.title, href: `/blog/${post.slug}` },
-            ]}
+        <article className="prose prose-pre:rounded-xl prose-pre:bg-gradient-to-br prose-pre:from-indigo-800 prose-pre:to-indigo-950 prose-pre:font-[600] prose-pre:text-white prose-pre:p-10 prose-pre:font-mono prose-pre:text-base prose-hr:opacity-10 prose-img:rounded-2xl sm:prose-p:text-xl sm:prose-li:text-xl sm:prose-li:leading-[38px] xl:prose-h2:pt-16 xl:prose-h3:pt-8 sm:prose-p:leading-[38px] prose-li:marker:text-primary prose-td:border-2 sm:prose-td:px-4 xl:prose-h1:text-5xl sm:prose-h2:text-3xl sm:prose-h3:text-2xl xl:prose-h1:leading-tight prose-th:border-2 prose-tr:border-2 prose-a:text-primary prose-a:no-underline min-h-screen max-w-4xl flex-1 xl:mx-auto">
+          <div className="lg:px-16 xl:px-0">
+            <Breadcrumbs
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Blog", href: "/blog" },
+                { label: post.title, href: `/blog/${post.slug}` },
+              ]}
+            />
+            <h1>{post.title}</h1>
+
+            <p className="mb-0 text-gray-500">
+              written by{" "}
+              <span className="mr-7 font-[500]">
+                <a
+                  className="hover:!text-primary !text-gray-500 transition-colors duration-200"
+                  href="https://x.com/shipwithdenis"
+                  target="_blank"
+                >
+                  Denis Tarasenko
+                </a>
+              </span>{" "}
+              | <span className="ml-7">{formattedDate}</span>
+            </p>
+          </div>
+
+          {post.image && (
+            <Image
+              src={post.image}
+              alt={post.title}
+              width={800}
+              height={400}
+              style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
+              className="my-6 w-full rounded-4xl"
+            />
+          )}
+
+          {/* <p>{post.description}</p> */}
+
+          <div
+            className="drop-cap lg:px-16 xl:px-0"
+            dangerouslySetInnerHTML={{ __html: contentWithAnchors }}
           />
-          <h1>{post.title}</h1>
 
-          <p className="mb-0 text-gray-500">
-            written by{" "}
-            <span className="mr-7 font-[500]">
-              <a
-                className="hover:!text-primary !text-gray-500 transition-colors duration-200"
-                href="https://x.com/shipwithdenis"
-                target="_blank"
-              >
-                Denis Tarasenko
-              </a>
-            </span>{" "}
-            | <span className="ml-7">{formattedDate}</span>
-          </p>
-        </div>
-
-        {post.image && (
-          <Image
-            src={post.image}
-            alt={post.title}
-            width={800}
-            height={400}
-            style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-            className="my-6 w-full rounded-4xl"
-          />
-        )}
-
-        {/* <p>{post.description}</p> */}
-
-        <div
-          className="drop-cap lg:px-16 xl:px-0"
-          dangerouslySetInnerHTML={{ __html: contentWithAnchors }}
-        />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BlogPosting",
-              headline: post.title,
-              description: post.description,
-              image: post.image,
-              author: {
-                "@type": "Person",
-                name: "Denis Tarasenko",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "NextNative.dev",
-                logo: {
-                  "@type": "ImageObject",
-                  url: "https://nextnative.dev/nextnative-logo.png",
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BlogPosting",
+                headline: post.title,
+                description: post.description,
+                image: post.image,
+                author: {
+                  "@type": "Person",
+                  name: "Denis Tarasenko",
                 },
-              },
-              datePublished: post.createdAt,
-              mainEntityOfPage: `https://nextnative.dev/blog/${post.slug}`,
-            }),
-          }}
-        />
-      </article>
-<Suspense fallback={<NextNativeCardSkeleton />}>
+                publisher: {
+                  "@type": "Organization",
+                  name: "NextNative.dev",
+                  logo: {
+                    "@type": "ImageObject",
+                    url: "https://nextnative.dev/nextnative-logo.png",
+                  },
+                },
+                datePublished: post.createdAt,
+                mainEntityOfPage: `https://nextnative.dev/blog/${post.slug}`,
+              }),
+            }}
+          />
+        </article>
+        <Suspense fallback={<NextNativeCardSkeleton />}>
           <NextNativeCard post={{ slug }} />
         </Suspense>
       </div>
 
-      <aside className="relative mx-auto xl:col-span-2 hidden w-full max-w-xl lg:block">
+      <aside className="relative mx-auto hidden w-full max-w-xl lg:block xl:col-span-2">
         <Suspense fallback={<NextNativeCardSkeleton />}>
           <NextNativeCard post={{ slug }} />
         </Suspense>
