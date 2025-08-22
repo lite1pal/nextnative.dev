@@ -4,13 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { Metadata } from "next";
 
 const navItems = [
   { label: "Button", href: "/components/button" },
   { label: "Screens", href: "/components/screens" },
   // { label: "Card", href: "/components/card" },
   // { label: "Avatar", href: "/components/avatar" },
-  // { label: "Badge / Chip", href: "/components/badge" },
+  // { label: "Input", href: "/components/input" },
   // { label: "Tabs", href: "/components/tabs" },
   // { label: "Bottom Nav", href: "/components/bottom-nav" },
   // { label: "Search Bar", href: "/components/search-bar" },
@@ -25,6 +26,24 @@ const navItems = [
   // { label: "Pricing / Paywall", href: "/screens/pricing" },
   // { label: "Settings", href: "/screens/settings" },
 ];
+
+export const metadata: Metadata = {
+  title: "Free Mobile UI Components for React & Tailwind CSS | NextNative",
+  description:
+    "Explore a growing collection of production-ready mobile UI components for React and Tailwind CSS. Designed for iOS and Android apps. Built with NextNative.",
+  openGraph: {
+    title: "Free Mobile UI Components for React & Tailwind CSS | NextNative",
+    description:
+      "Browse and use beautifully crafted mobile UI components for React and Tailwind CSS, optimized for building native apps with NextNative.",
+    url: "https://nextnative.dev/components",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free Mobile UI Components for React & Tailwind CSS | NextNative",
+    description:
+      "Build mobile apps faster with drop-in React components styled with Tailwind. From buttons to bottom sheets, NextNative has you covered.",
+  },
+};
 
 function Layout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

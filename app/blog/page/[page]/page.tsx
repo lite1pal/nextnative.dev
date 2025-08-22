@@ -77,7 +77,7 @@ export default async function BlogListPage(props: BlogListPageProps) {
     redirect("/blog");
   }
 
-  const postsPerPage = 4;
+  const postsPerPage = 6;
 
   // Get total count of posts
   const totalPosts = await prisma.blogPost.count();
@@ -108,11 +108,8 @@ export default async function BlogListPage(props: BlogListPageProps) {
 
   // Collect unique tags across all posts
   const allTags = Array.from(
-    new Set(
-      posts.flatMap((p) => Array.isArray(p.tags) ? p.tags : [])
-    )
+    new Set(posts.flatMap((p) => (Array.isArray(p.tags) ? p.tags : []))),
   ).sort();
-
 
   return (
     <div className="flex flex-col items-center gap-5">
@@ -124,7 +121,7 @@ export default async function BlogListPage(props: BlogListPageProps) {
           <TagFilter tags={allTags} />
         </div>
       )}
-      
+
       <PostsGrid posts={posts} />
 
       <BlogPagination

@@ -1,7 +1,26 @@
+import { Metadata } from "next";
 import ComponentWrapper from "../component-wrapper";
 import Heading from "../heading";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Crown } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Mobile Button Components for React & Tailwind CSS | NextNative",
+  description:
+    "Explore free, production-ready mobile button components for React apps styled with Tailwind CSS. Includes Duolingo-style buttons, premium buttons, pill buttons, and more.",
+  openGraph: {
+    title: "Mobile Button Components for React & Tailwind CSS | NextNative",
+    description:
+      "Ready-to-use mobile button components for your next React app. Styled with Tailwind CSS and optimized for native UI. Inspired by Duolingo, Apple, and more.",
+    url: "https://nextnative.dev/components/button",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mobile Button Components for React & Tailwind CSS | NextNative",
+    description:
+      "Find beautifully styled mobile buttons ready to use in your React + Tailwind app. 100% free and native-ready.",
+  },
+};
 
 function ButtonPage() {
   return (
@@ -223,34 +242,6 @@ function PillButton({
     >
       {children}
       {icon}
-    </button>
-  );
-}
-
-function AppleButton({
-  children,
-  variant = "primary",
-  className,
-  onClick,
-  disabled,
-  type = "button",
-}: ButtonProps) {
-  let defaultClasses =
-    "relative w-full max-w-md cursor-pointer rounded-sm px-4 py-3 font-[500]";
-
-  const variantClasses = {
-    primary: "bg-white text-black active:bg-gray-50",
-    secondary: "",
-    ghost: "",
-  };
-  return (
-    <button
-      className={cn(defaultClasses, variantClasses[variant], className)}
-      onClick={onClick}
-      disabled={disabled}
-      type={type}
-    >
-      {children}
     </button>
   );
 }
