@@ -180,7 +180,7 @@ const faqItems = [
         so it gets regular update.
         <br />
         <br />
-        <span className="text-primary">🔄 Last update: Jul 20, 2025</span>
+        <span className="text-primary">🔄 Last update: Aug 10, 2025</span>
       </>
     ),
   },
@@ -269,10 +269,10 @@ const faqItems = [
 
 function FAQ() {
   return (
-    <div className="flex flex-col gap-10 py-12 md:py-20 mx-auto">
+    <div className="mx-auto flex flex-col gap-10 py-12 md:py-20">
       <Subheading heading1="Got a question?" heading2="I got an answer!" />
 
-      <div className="ml-auto xl:max-w-1/2 w-full">
+      <div className="ml-auto w-full xl:max-w-1/2">
         <Accordion type="single" collapsible>
           {faqItems.map((item, index) => (
             <AccordionItem
@@ -282,10 +282,10 @@ function FAQ() {
               key={index}
               value={`item-${index}`}
             >
-              <AccordionTrigger className="text-lg text-start md:py-7 cursor-pointer sm:text-xl md:text-2xl font-[500] hover:no-underline">
+              <AccordionTrigger className="cursor-pointer text-start text-lg font-[500] hover:no-underline sm:text-xl md:py-7 md:text-2xl">
                 {item.question}
               </AccordionTrigger>
-              <AccordionContent className="text-base sm:text-lg text-gray-500 font-medium">
+              <AccordionContent className="text-base font-medium text-gray-500 sm:text-lg">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>
