@@ -103,7 +103,7 @@ function Navbar() {
 
             const el = document.getElementById("pricing");
             if (el) {
-              el.scrollIntoView({ behavior: "smooth" });
+              el.scrollIntoView();
             } else {
               window.location.href = "/#pricing";
             }
@@ -181,7 +181,7 @@ function Navbar() {
 
               const el = document.getElementById("pricing");
               if (el) {
-                el.scrollIntoView({ behavior: "smooth" });
+                el.scrollIntoView();
               } else {
                 // fallback: go to home with hash if not already on /
                 window.location.href = "/#pricing";

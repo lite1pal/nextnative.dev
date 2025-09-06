@@ -1,11 +1,7 @@
-import HighlightedSpan from "./HighlightedSpan";
-
-function Heading() {
+function Heading({ children }: { children: React.ReactNode }) {
   return (
-    <h1 className="text-[44px] md:text-[64px] leading-[60px] md:leading-[71px] font-[600]">
-      {/* Build iOS and Android apps with{" "}
-      <HighlightedSpan>Next.js & TailwindCSS</HighlightedSpan> */}
-      Launch mobile apps faster with <HighlightedSpan>Next.js</HighlightedSpan>
+    <h1 className="text-[44px] leading-[60px] font-[700] md:text-[74px] md:leading-[91px]">
+      {children}
     </h1>
   );
 }

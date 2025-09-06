@@ -18,7 +18,7 @@ function CallToAction({
 }: CallToActionProps) {
   return (
     <div
-      className={`flex flex-col md:items-center gap-10 py-12 md:py-36 md:text-center ${className}`}
+      className={`flex flex-col gap-10 py-12 md:items-center md:py-36 md:text-center ${className}`}
     >
       <Subheading
         heading1={title}

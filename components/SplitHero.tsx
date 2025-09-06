@@ -5,10 +5,10 @@ export function SplitHero() {
   return (
     <section className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-16">
           {/* Left side - Text content */}
           <div className="flex flex-col gap-6">
-            <div className="inline-flex items-center space-x-2 rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 ring-1 ring-inset ring-blue-600/20 dark:bg-blue-900/30 dark:text-blue-400 dark:ring-blue-400/20">
+            <div className="inline-flex items-center space-x-2 rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 ring-1 ring-blue-600/20 ring-inset dark:bg-blue-900/30 dark:text-blue-400 dark:ring-blue-400/20">
               <span className="font-bold">New</span>
               <span>NextNative v1.0 is here</span>
             </div>
@@ -22,16 +22,16 @@ export function SplitHero() {
               </span>
             </h1>
 
-            <p className="mt-3 text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
+            <p className="mt-3 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
               NextNative lets you build native mobile apps using the web
               technologies you already know and love. Ship faster with a single
               codebase for web, iOS, and Android.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Button
                 size="lg"
-                className="bg-blue-600 hover:bg-blue-700 text-white"
+                className="bg-blue-600 text-white hover:bg-blue-700"
               >
                 Start building
               </Button>
@@ -49,7 +49,7 @@ export function SplitHero() {
                 {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
-                    className="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-gray-800 overflow-hidden bg-gray-200 dark:bg-gray-700"
+                    className="inline-block h-8 w-8 overflow-hidden rounded-full bg-gray-200 ring-2 ring-white dark:bg-gray-700 dark:ring-gray-800"
                   >
                     <div className="h-full w-full bg-gradient-to-br from-blue-400 to-indigo-600" />
                   </div>
@@ -66,7 +66,7 @@ export function SplitHero() {
 
           {/* Right side - Image with decorative elements */}
           <div className="relative">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl">
               <Image
                 src="/video-demo-1.png"
                 alt="NextNative dashboard preview"
@@ -77,11 +77,11 @@ export function SplitHero() {
             </div>
 
             {/* Decorative floating elements */}
-            <div className="absolute -left-8 -top-8 h-16 w-16 rounded-full bg-blue-600 blur-xl opacity-70" />
-            <div className="absolute -bottom-4 -right-4 h-20 w-20 rounded-full bg-purple-600 blur-xl opacity-70" />
+            <div className="absolute -top-8 -left-8 h-16 w-16 rounded-full bg-blue-600 opacity-70 blur-xl" />
+            <div className="absolute -right-4 -bottom-4 h-20 w-20 rounded-full bg-purple-600 opacity-70 blur-xl" />
 
             {/* Feature badge floating on the image */}
-            <div className="absolute -right-6 top-1/3 rounded-2xl bg-white p-4 shadow-lg dark:bg-gray-800">
+            <div className="absolute top-1/3 -right-6 rounded-2xl bg-white p-4 shadow-lg dark:bg-gray-800">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900">
                   <svg
