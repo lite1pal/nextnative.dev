@@ -11,7 +11,7 @@ function CTAButton() {
         // window.location.href = dodoPaymentLinks.allAccess;
         const el = document.getElementById("pricing");
         if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
+          el.scrollIntoView();
         }
       }}
       variant="primary"
