@@ -25,6 +25,10 @@ const productLinks: FooterLink[] = [
     label: "Icon & Splash Generator",
     href: "/free-tools/app-icon-splash-generator",
   },
+  {
+    label: "MVP Agency",
+    href: "/mvp-app-development",
+  },
 ];
 
 const legalLinks: FooterLink[] = [

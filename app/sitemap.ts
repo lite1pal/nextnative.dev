@@ -53,11 +53,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://nextnative.dev/pricing",
       lastModified: new Date(),
     },
-
-    ...docs.map((doc) => ({
-      url: doc,
+    {
+      url: "https://nextnative.dev/mvp-app-development",
       lastModified: new Date(),
-    })),
+    },
 
     ...posts.map((post) => ({
       url: `https://nextnative.dev/blog/${post.slug}`,
@@ -68,6 +67,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: freeTool,
       lastModified: new Date("2025-08-19"),
       changeFrequency: "weekly",
+    })),
+
+    ...docs.map((doc) => ({
+      url: doc,
+      lastModified: new Date(),
     })),
   ];
 }
