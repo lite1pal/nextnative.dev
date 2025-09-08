@@ -235,11 +235,11 @@ export default function Page() {
 
       {/* Why MVP with us */}
       <Section className="py-20 md:py-24">
-        <div className="text-center">
+        <div className="md:text-center">
           <Subheading
             heading1="Launch your MVP"
             heading2="the right way"
-            className="md:items-center md:text-center"
+            className="text-start md:items-center md:text-center"
           />
           <p className="mx-auto mt-6 max-w-2xl text-lg text-balance text-gray-600">
             Stop wasting time on configuration. Start with a production-ready
@@ -272,7 +272,7 @@ export default function Page() {
           <Subheading
             heading1="MVP app"
             heading2="development services"
-            className="md:items-center md:text-center"
+            className="text-start md:items-center md:text-center"
           />
         </div>
 
@@ -302,11 +302,11 @@ export default function Page() {
 
       {/* Showcase */}
       <Section className="py-12 md:py-16">
-        <div className="text-center">
+        <div className="md:text-center">
           <Subheading
             heading1="See what"
             heading2="you can get in weeks"
-            className="md:items-center md:text-center"
+            className="text-start md:items-center md:text-center"
           />
           <p className="mx-auto mt-6 max-w-2xl text-lg text-balance text-gray-600">
             Real apps. Real features. Fully cross-platform.
@@ -323,7 +323,7 @@ export default function Page() {
         <Subheading
           heading1="Ready to build your MVP?"
           heading2="Let's turn your idea into a reality."
-          className="md:items-center"
+          className="text-start md:items-center md:text-center"
         />
         <div className="relative">
           <Link href="https://cal.com/nextnative/30min" target="_blank">
