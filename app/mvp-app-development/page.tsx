@@ -17,6 +17,47 @@ import HeroSection from "@/components/HeroSection";
 import Subheading from "@/components/Subheading";
 import Image from "next/image";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title:
+    "MVP App Development Services | Build Your Minimum Viable Product Fast",
+  description:
+    "We help startups and teams with MVP app development. Launch your minimum viable product faster with Next.js + Capacitor. From scratch or web-to-mobile conversion — get your app live on iOS and Android, stress-free.",
+  keywords: [
+    "MVP app development",
+    "build MVP",
+    "startup MVP development",
+    "minimum viable product",
+    "Next.js mobile app",
+    "web to mobile conversion",
+  ],
+  openGraph: {
+    title: "MVP App Development Services",
+    description:
+      "From idea to App Store in weeks. Build your MVP app with Next.js + Capacitor. Trusted process to avoid rejections and launch faster.",
+    url: "https://nextnative.dev/mvp-app-development",
+    siteName: "NextNative",
+    images: [
+      {
+        url: "/mvp-agency/og-image-mvp.png", // export a screenshot of hero
+        width: 1200,
+        height: 630,
+        alt: "MVP App Development Services by NextNative",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MVP App Development Services | NextNative",
+    description:
+      "Build your minimum viable product with Next.js + Capacitor. From scratch or web-to-mobile conversion, get your app live on iOS & Android in weeks.",
+    images: ["/mvp-agency/og-image-mvp.png"],
+  },
+};
+
 const features = [
   {
     name: "Save time",
