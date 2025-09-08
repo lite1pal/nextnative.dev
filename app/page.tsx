@@ -9,9 +9,8 @@ import DemoVideo from "@/components/DemoVideo";
 import Testimonial from "@/components/Testimonial";
 import SetupByDefault from "@/components/SetupByDefault";
 import Image from "next/image";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import Subheading from "@/components/Subheading";
-import HeroSection2 from "@/components/HeroSection2";
 import { ChevronUp } from "lucide-react";
 import ShowcaseSection from "@/components/ShowcaseSection";
 import LazyVideo from "@/components/LazyVideo";
@@ -23,6 +22,11 @@ import AppsBuiltWithNextNative from "@/components/AppsBuiltWithNextNative";
 import VideoTestimonial from "@/components/VideoTestimonial";
 import type { Metadata } from "next";
 import Script from "next/script";
+import HighlightedSpan from "@/components/HighlightedSpan";
+import HeroSection from "@/components/HeroSection";
+import ToolCard from "@/components/ToolCard";
+import CTA from "@/components/CTA";
+import CTASkeleton from "@/components/CTASkeleton";
 
 export const metadata: Metadata = {
   alternates: {
@@ -47,7 +51,48 @@ export default function Home() {
         })}
       </Script>
 
-      <HeroSection2 />
+      <HeroSection
+        heading={
+          <>
+            Launch mobile apps <span className="sm:hidden">10x</span> faster
+            with <HighlightedSpan>Next.js</HighlightedSpan>
+          </>
+        }
+        paragraph="Skip React Native. Use the web tools you already know, combined with Capacitor, to launch cross-platform apps in days."
+        leftTop={
+          <ToolCard
+            tool="Next.js"
+            bullets={["API Routes", "A single codebase"]}
+            img="/tools/nextjs-dark.jpeg"
+          />
+        }
+        rightTop={
+          <ToolCard
+            tool="Capacitor"
+            bullets={["Native functionality", "Cross-platform support"]}
+            img="/tools/cap-small.png"
+          />
+        }
+        leftBottom={
+          <ToolCard
+            tool="Tailwind"
+            bullets={["Utility classes", "Responsive design"]}
+            img="/tools/tailwind.png"
+          />
+        }
+        rightBottom={
+          <ToolCard
+            tool="RevenueCat"
+            bullets={["One-time payments", "Subscriptions"]}
+            img="/tools/revenuecat-small.png"
+          />
+        }
+        ctaButton={
+          <Suspense fallback={<CTASkeleton />}>
+            <CTA />
+          </Suspense>
+        }
+      />
       <div className="grid grid-cols-1 items-center gap-8 sm:gap-16 lg:grid-cols-2 xl:hidden">
         <div className="mx-auto max-w-xl">
           <Image

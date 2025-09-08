@@ -1,121 +1,88 @@
 import Image from "next/image";
 import CTA from "./CTA";
-import HighlightedSpan from "./HighlightedSpan";
 import { cn } from "@/lib/utils";
 import { Suspense } from "react";
 import CTASkeleton from "./CTASkeleton";
 import LovedByMakers from "./LovedByMakers";
 import LovedByMakersSkeleton from "./LovedByMakersSkeleton";
 
-function HeroSection2() {
+function HeroSection({
+  heading,
+  paragraph,
+  leftTop,
+  rightTop,
+  leftBottom,
+  rightBottom,
+  ctaButton,
+  includeRatingStars = true,
+}: {
+  heading: string | React.ReactNode;
+  paragraph: string;
+  leftTop: React.ReactNode;
+  rightTop: React.ReactNode;
+  leftBottom: React.ReactNode;
+  rightBottom: React.ReactNode;
+  ctaButton: React.ReactNode;
+  includeRatingStars?: boolean;
+}) {
   return (
-    <div className="flex flex-col relative py-12 md:py-20 md:pt-16 items-center mx-auto justify-center">
-      <div className="hidden xl:flex justify-between pb-10 w-full items-center">
-        <div className="rotate-[-7deg]">
-          <ToolCard
-            tool="Next.js"
-            bullets={["API Routes", "A single codebase"]}
-            img="/tools/nextjs-dark.jpeg"
-          />
-        </div>
-        <div className="rotate-[7deg]">
-          <ToolCard
-            tool="Capacitor"
-            bullets={["Native functionality", "Cross-platform support"]}
-            img="/tools/cap-small.png"
-          />
-        </div>
+    <div className="relative mx-auto flex flex-col items-center justify-center py-12 md:py-20 md:pt-16">
+      <div className="hidden w-full items-center justify-between pb-10 xl:flex">
+        <div className="rotate-[-7deg]">{leftTop}</div>
+        <div className="rotate-[7deg]">{rightTop}</div>
       </div>
 
-      <div className="hidden xl:flex absolute bottom-14 pointer-events-none justify-between w-full items-center">
-        <div className="rotate-[-15deg] relative -left-16 pb-10">
-          <ToolCard
-            tool="Tailwind"
-            bullets={["Utility classes", "Responsive design"]}
-            img="/tools/tailwind.png"
-          />
+      <div className="pointer-events-none absolute bottom-14 hidden w-full items-center justify-between xl:flex">
+        <div className="relative -left-16 rotate-[-15deg] pb-10">
+          {leftBottom}
         </div>
-        <div className="rotate-[15deg] relative -right-16">
-          <ToolCard
-            tool="RevenueCat"
-            bullets={["One-time payments", "Subscriptions"]}
-            img="/tools/revenuecat-small.png"
-          />
-        </div>
+        <div className="relative -right-16 rotate-[15deg]">{rightBottom}</div>
       </div>
 
-      <div className="flex flex-col max-w-[946.5px] w-full xl:items-center xl:text-center gap-8 md:gap-[45px]">
-        <div className="flex flex-col xl:items-center xl:text-center gap-6 md:gap-[36px]">
+      <div className="flex w-full max-w-[946.5px] flex-col gap-8 md:gap-[45px] xl:items-center xl:text-center">
+        <div className="flex flex-col gap-6 md:gap-[36px] xl:items-center xl:text-center">
           <div className="flex flex-col items-center">
-            <h1 className="text-[44px] md:text-[74px] leading-[60px] md:leading-[91px] font-[600]">
-              Launch mobile apps <span className="sm:hidden">10x</span> faster
-              with <HighlightedSpan>Next.js</HighlightedSpan>
-            </h1>
-            {/* <h1 className="text-[44px] md:text-[74px] leading-[60px] md:leading-[91px] font-[600]">
-              Go from idea to App Store{" "}
-              <HighlightedSpan>10x faster</HighlightedSpan>
-            </h1> */}
+            <Heading>{heading}</Heading>
           </div>
 
-          <p className="text-base max-w-[654.36px] sm:text-lg md:text-[22px] leading-relaxed">
-            Skip React Native. Use the web tools you already know, combined with
-            Capacitor, to launch cross-platform apps in days.
-          </p>
+          <Paragraph>{paragraph}</Paragraph>
         </div>
 
-        <Suspense fallback={<CTASkeleton />}>
-          <CTA />
-        </Suspense>
+        {ctaButton}
 
-        <div className="flex gap-2">
-          <div className="relative -top-1.5">
-            <AvatarList />
+        {includeRatingStars && (
+          <div className="flex gap-2">
+            <div className="relative -top-1.5">
+              <AvatarList />
+            </div>
+            <div className="flex flex-col">
+              <RatingSvg />
+              <Suspense fallback={<LovedByMakersSkeleton />}>
+                <LovedByMakers />
+              </Suspense>
+            </div>
           </div>
-          <div className="flex flex-col">
-            <RatingSvg />
-            <Suspense fallback={<LovedByMakersSkeleton />}>
-              <LovedByMakers />
-            </Suspense>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
 }
 
-export default HeroSection2;
+export default HeroSection;
 
-function ToolCard({ tool, bullets, img }: any) {
+function Heading({ children }: { children: React.ReactNode }) {
   return (
-    <div
-      style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-      className="w-fit px-16 h-[121.4px] rounded-[20px] py-4 flex items-center justify-center bg-white"
-    >
-      <div className="flex gap-[20px]">
-        <div className="w-[60px] h-[60px] rounded-[10px] overflow-hidden">
-          <Image
-            src={img}
-            width={300}
-            height={300}
-            className="object-cover w-full h-full"
-            alt={tool}
-            sizes={"(max-width: 1279px) 1vw, 80vw"}
-          />
-        </div>
+    <h1 className="text-[44px] leading-[60px] font-[600] md:text-[74px] md:leading-[91px]">
+      {children}
+    </h1>
+  );
+}
 
-        <div className="flex flex-col gap-1">
-          <div className="text-[24px] font-medium">{tool}</div>
-
-          <ul role="list" className="list-disc pl-[17px] market-[#868C98]">
-            {bullets.map((bullet: string) => (
-              <li key={bullet} className="text-[16px] text-[#868C98]">
-                {bullet}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
+function Paragraph({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="max-w-[654.36px] text-base leading-relaxed sm:text-lg md:text-[22px]">
+      {children}
+    </p>
   );
 }
 
@@ -220,10 +187,10 @@ export function AvatarList({
       {data.map((item) => (
         <div
           key={item.name}
-          className="group relative -space-x-4 z-0 -ml-4 flex scale-100 items-center transition-all duration-200 ease-in-out xl:hover:z-10 xl:hover:scale-110"
+          className="group relative z-0 -ml-4 flex scale-100 items-center -space-x-4 transition-all duration-200 ease-in-out xl:hover:z-10 xl:hover:scale-110"
         >
           <div className="relative overflow-hidden rounded-full">
-            <div className="bg-size pointer-events-none absolute h-full w-full animate-bg-position from-violet-500 from-30% via-cyan-400 via-50% to-pink-500 to-80% bg-[length:300%_auto] opacity-15 xl:group-hover:bg-gradient-to-r" />
+            <div className="bg-size animate-bg-position pointer-events-none absolute h-full w-full from-violet-500 from-30% via-cyan-400 via-50% to-pink-500 to-80% bg-[length:300%_auto] opacity-15 xl:group-hover:bg-gradient-to-r" />
             <div className="z-1 blur-lg" />
             <Image
               src={item.image}
@@ -232,12 +199,12 @@ export function AvatarList({
               height={300}
               className={cn(
                 "rounded-full object-cover",
-                sizes[size] ?? sizes.md
+                sizes[size] ?? sizes.md,
               )}
               sizes="(max-width: 1279px) 50vw, 25vw"
             />
           </div>
-          <div className="absolute bottom-full left-1/2 -translate-x-1/2 translate-y-2 transform whitespace-nowrap rounded bg-slate-900 p-2 text-white opacity-0 transition-all duration-300 ease-in-out xl:group-hover:-translate-y-2 xl:group-hover:opacity-100 dark:bg-slate-100 dark:text-slate-900">
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 translate-y-2 transform rounded bg-slate-900 p-2 whitespace-nowrap text-white opacity-0 transition-all duration-300 ease-in-out xl:group-hover:-translate-y-2 xl:group-hover:opacity-100 dark:bg-slate-100 dark:text-slate-900">
             <div className="text-sm font-semibold">{item.name}</div>
             <div className="text-sm">{item.position}</div>
           </div>

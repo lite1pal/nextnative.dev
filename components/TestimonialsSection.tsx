@@ -4,7 +4,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import { ExternalLink } from "lucide-react";
-import { RatingSvg } from "./HeroSection2";
+import { RatingSvg } from "./HeroSection";
 import Testimonial from "./Testimonial";
 
 export const testimonials = [
@@ -23,7 +23,7 @@ export const testimonials = [
         <br />
         <br />
         That's how I found NextNative and felt really blessed that{" "}
-        <span className="bg-primary p-1 rounded text-white font-[500]">
+        <span className="bg-primary rounded p-1 font-[500] text-white">
           a product like this exists!
         </span>
       </div>
@@ -48,7 +48,7 @@ export const testimonials = [
     testimonial: (
       <div>
         NextNative is{" "}
-        <span className="bg-primary p-1 rounded text-white font-[500]">
+        <span className="bg-primary rounded p-1 font-[500] text-white">
           a simple and easy approach
         </span>{" "}
         to building your apps... a perfect app💪
@@ -65,7 +65,7 @@ export const testimonials = [
     testimonial: (
       <div>
         NextNative is a great tool for{" "}
-        <span className="bg-primary p-1 rounded text-white font-[500]">
+        <span className="bg-primary rounded p-1 font-[500] text-white">
           rapidly developing
         </span>{" "}
         cross-platform mobile apps, especially if you are coming from a Next.js
@@ -74,7 +74,7 @@ export const testimonials = [
         <br />
         It provides a structured starting point with modern tooling to get your
         project{" "}
-        <span className="bg-primary p-1 rounded text-white font-[500]">
+        <span className="bg-primary rounded p-1 font-[500] text-white">
           off the ground quickly.
         </span>
       </div>
@@ -92,7 +92,7 @@ export const testimonials = [
       <div>
         Insane product & a great founder behind it - I've been trying to mess
         around creating mobile apps &{" "}
-        <span className="bg-primary p-1 rounded text-white font-[500]">
+        <span className="bg-primary rounded p-1 font-[500] text-white">
           I'm getting there bit by bit w/ this helping me hugely!!
         </span>
       </div>
@@ -124,7 +124,7 @@ export const testimonials = [
     url: "https://microlaunch.net/p/nextnative",
     testimonial: (
       <div>
-        <span className="bg-primary p-1 rounded text-white font-[500]">
+        <span className="bg-primary rounded p-1 font-[500] text-white">
           the best boilerplate
         </span>{" "}
         for mobile apps
@@ -141,7 +141,7 @@ export const testimonials = [
     testimonial: (
       <div>
         I’m really pumped about it! The setup seems super easy, and I{" "}
-        <span className="bg-primary p-1 rounded text-white font-[500]">
+        <span className="bg-primary rounded p-1 font-[500] text-white">
           can’t wait to finally build my app!
         </span>
         <br /> <br />{" "}
@@ -179,7 +179,7 @@ export const testimonials = [
         experiences incredibly fast.
         <br />
         <br />
-        <span className="bg-primary p-1 rounded text-white font-[500]">
+        <span className="bg-primary rounded p-1 font-[500] text-white">
           Perfect for devs who want speed
         </span>{" "}
         without sacrificing flexibility.
@@ -191,18 +191,18 @@ export const testimonials = [
 
 function TestimonialsSection() {
   return (
-    <div className="py-20 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+    <div className="relative overflow-hidden py-20">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-16 text-center">
           <Subheading
             heading1="Loved by"
             heading2="developers"
-            className="text-start md:text-center md:items-center"
+            className="text-start md:items-center md:text-center"
           />
         </div>
 
         {/* Masonry Grid Layout */}
-        <div className="columns-1 md:columns-2 gap-6 space-y-6">
+        <div className="columns-1 gap-6 space-y-6 md:columns-2">
           {testimonials.map((testimonial, index) => {
             if (testimonial.type === "video") {
               return (
@@ -228,7 +228,7 @@ function TestimonialsSection() {
                   letters={testimonial.letters}
                   testimonial={testimonial.testimonial}
                   showStars={testimonial.showStars}
-                  className="my-0 max-w-none py-8 sm:py-8 px-8"
+                  className="my-0 max-w-none px-8 py-8 sm:py-8"
                 />
               </div>
             );

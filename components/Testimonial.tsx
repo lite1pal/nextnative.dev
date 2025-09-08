@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { ExternalLink, PersonStanding } from "lucide-react";
 import Image from "next/image";
 import { ReactNode } from "react";
-import { RatingSvg } from "./HeroSection2";
+import { RatingSvg } from "./HeroSection";
 
 function Testimonial({
   name,
@@ -29,13 +29,13 @@ function Testimonial({
     <div
       style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
       className={cn(
-        `flex flex-col rounded-2xl px-4 sm:px-10 bg-white text-lg md:text-[22px] gap-6 mx-auto max-w-[759.07px] py-4 sm:py-16 my-16`,
-        className
+        `mx-auto my-16 flex max-w-[759.07px] flex-col gap-6 rounded-2xl bg-white px-4 py-4 text-lg sm:px-10 sm:py-16 md:text-[22px]`,
+        className,
       )}
     >
-      <div className="flex max-sm:flex-wrap items-center gap-4">
+      <div className="flex items-center gap-4 max-sm:flex-wrap">
         <div
-          className={`${imgSrc ? "w-[80px] h-[80px]" : "w-[50px] h-[50px]"} relative shrink-0`}
+          className={`${imgSrc ? "h-[80px] w-[80px]" : "h-[50px] w-[50px]"} relative shrink-0`}
         >
           {imgSrc ? (
             <Image
@@ -43,18 +43,18 @@ function Testimonial({
               alt="Profile picture"
               width={100}
               height={100}
-              className="rounded-full object-cover w-[80px] h-[80px]"
+              className="h-[80px] w-[80px] rounded-full object-cover"
               sizes="25vw"
             />
           ) : (
-            <div className="rounded-full flex items-center justify-center bg-green-400 object-cover w-[50px] h-[50px]">
+            <div className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-green-400 object-cover">
               {/* <div className="bg-indigo-400 rounded-full w-[50px] h-[50px]"></div> */}
               {letters}
             </div>
           )}
         </div>
         <div className="flex flex-col">
-          <p className="font-[500] text-xl">{name}</p>
+          <p className="text-xl font-[500]">{name}</p>
           <p className="text-gray text-lg">{description}</p>
         </div>
         {showStars && (
@@ -78,7 +78,7 @@ function Testimonial({
 
       <blockquote className="leading-9 sm:leading-10">{testimonial}</blockquote>
 
-      <time className="text-base text-gray">{time}</time>
+      <time className="text-gray text-base">{time}</time>
     </div>
   );
 }
