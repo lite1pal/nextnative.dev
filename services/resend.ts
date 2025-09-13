@@ -60,24 +60,13 @@ export function generateWelcomeEmailHTML(link: string): string {
     <style>*, a, td { font-family: Arial, sans-serif !important; }</style>
   <![endif]-->
   <style>
-    :root { color-scheme: light dark; supported-color-schemes: light dark; }
+    :root { color-scheme: light; supported-color-schemes: light; }
     /* Mobile tweaks for clients that support <style> */
     @media screen and (max-width: 600px) {
       .container { width: 100% !important; }
       .px { padding-left: 20px !important; padding-right: 20px !important; }
       .btn { padding: 14px 22px !important; }
     }
-    /* Dark mode (Apple Mail / iOS Mail) */
-    @media (prefers-color-scheme: dark) {
-      body, .bg { background: #0b0f17 !important; }
-      .card { background: #101826 !important; }
-      .text { color: #e5e7eb !important; }
-      .muted { color: #9aa3b2 !important; }
-      .btn { background: #16a34a !important; }
-    }
-    /* Gmail dark mode hack */
-    u + .body .card { background: #ffffff; }
-    u + .body .text { color: #2d3748; }
   </style>
 </head>
 <body class="body" style="margin:0; padding:0; background:#f5f7fb;">
