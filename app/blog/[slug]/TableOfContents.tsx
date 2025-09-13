@@ -21,7 +21,7 @@ export default function TableOfContents({
       {
         rootMargin: "0px 0px -70% 0px", // trigger a bit before heading hits top
         threshold: 0,
-      }
+      },
     );
 
     headings.forEach((h) => {
@@ -33,8 +33,8 @@ export default function TableOfContents({
   }, [headings]);
 
   return (
-    <nav className="sticky top-36 mt-8 rounded-x p-5">
-      <div className="flex text-lg uppercase items-center mb-5 gap-2 font-medium">
+    <nav className="rounded-x mt-8 p-5">
+      <div className="mb-5 flex items-center gap-2 text-lg font-medium uppercase">
         {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5"
@@ -48,16 +48,13 @@ export default function TableOfContents({
       </div>
       <ul className="space-y-5">
         {headings.map((h) => (
-          <li
-            key={h.id}
-            className={h.level === "h3" ? "ml-4" : ""}
-          >
+          <li key={h.id} className={h.level === "h3" ? "ml-4" : ""}>
             <a
               href={`#${h.id}`}
               className={`block transition-colors ${
                 activeId === h.id
                   ? "text-primary font-[500]"
-                  : "text-gray-600 hover:text-primary"
+                  : "hover:text-primary text-gray-600"
               }`}
             >
               {h.text.replaceAll("#", "")}

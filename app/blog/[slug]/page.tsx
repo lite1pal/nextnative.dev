@@ -11,6 +11,8 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { JSDOM } from "jsdom"; // install: npm i jsdom
 import TableOfContents from "./TableOfContents";
+import MobileCTA from "./MobileCTA";
+import MobileCTAClient from "./MobileCTA";
 
 function extractHeadings(html: string) {
   const dom = new JSDOM(html);
@@ -181,18 +183,18 @@ export default async function BlogPostPage({
             }}
           />
         </article>
-        <Suspense fallback={<NextNativeCardSkeleton />}>
-          <NextNativeCard post={{ slug }} />
-        </Suspense>
       </div>
 
       <aside className="relative mx-auto hidden w-full max-w-xl lg:block xl:col-span-2">
-        <Suspense fallback={<NextNativeCardSkeleton />}>
-          <NextNativeCard post={{ slug }} />
-        </Suspense>
-
         {/* Navigation Links */}
-        <TableOfContents headings={headings} />
+
+        <div className="sticky top-36">
+          <TableOfContents headings={headings} />
+
+          <Suspense fallback={<NextNativeCardSkeleton />}>
+            <NextNativeCard post={{ slug }} />
+          </Suspense>
+        </div>
       </aside>
 
       {/* Pop-up */}
@@ -209,6 +211,12 @@ export default async function BlogPostPage({
         src="https://eocampaign1.com/form/b5043f12-6ef3-11f0-826d-d372b1117e0b.js"
         data-form="b5043f12-6ef3-11f0-826d-d372b1117e0b"
       ></script>
+
+      <MobileCTAClient showAfterPx={350}>
+        <Suspense fallback={<NextNativeCardSkeleton />}>
+          <NextNativeCard post={{ slug }} />
+        </Suspense>
+      </MobileCTAClient>
     </main>
   );
 }

@@ -30,7 +30,7 @@ async function NextNativeCard({ post }: { post: { slug: string } }) {
   return (
     <div
       style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-      className="rounded-xl bg-white p-6"
+      className="border-primary rounded-xl border-2 bg-white p-6"
     >
       <div className="flex flex-col items-center text-center">
         <Link href="/" className="flex items-center gap-4">
