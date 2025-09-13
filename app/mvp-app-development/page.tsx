@@ -156,7 +156,11 @@ export default function Page() {
           </div>
         }
         rightTop={
-          <div className="flex h-[121.4px] w-fit items-center justify-center">
+          <Link
+            href="https://apps.apple.com/ua/app/sproutly-ai-plant-identifier/id6748902696"
+            target="_blank"
+            className="flex h-[121.4px] w-fit items-center justify-center"
+          >
             <Image
               src="/mvp-agency/sproutly-distributed-min.png"
               width={200}
@@ -164,7 +168,7 @@ export default function Page() {
               className="h-full w-full scale-[1.2] rotate-[-7deg] rounded-[10px] object-cover"
               alt="Sproutly: AI Plant Identifier on the App Store"
             />
-          </div>
+          </Link>
         }
         leftBottom={
           <div
