@@ -1,10 +1,5 @@
 import Subheading from "./Subheading";
 import VideoTestimonial from "./VideoTestimonial";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
-import { ReactNode } from "react";
-import { ExternalLink } from "lucide-react";
-import { RatingSvg } from "./HeroSection";
 import Testimonial from "./Testimonial";
 
 export const testimonials = [

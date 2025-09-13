@@ -145,13 +145,15 @@ export default function Page() {
         }
         paragraph="We help startups and teams with MVP app development. Whether you need to build a minimum viable product from scratch or convert an existing Next.js project to mobile, we’ll get you live on iOS and Android — stress-free."
         leftTop={
-          <Image
-            src="/mvp-agency/appstore-icon-min.webp"
-            className="w-[190px]"
-            width={300}
-            height={300}
-            alt="App Store Icon"
-          />
+          <div className="h-[121.4px]">
+            <Image
+              src="/mvp-agency/appstore-icon-min.webp"
+              className="w-[190px]"
+              width={300}
+              height={300}
+              alt="App Store Icon"
+            />
+          </div>
         }
         rightTop={
           <div className="flex h-[121.4px] w-fit items-center justify-center">
