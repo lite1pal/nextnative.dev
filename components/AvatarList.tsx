@@ -5,12 +5,12 @@ const data = [
   {
     name: "Vlad",
     position: "Android developer",
-    image: "/testimonials/vlad.jpg",
+    image: "/testimonials/vlad.webp",
   },
   {
     name: "Bogdan",
     position: "NVIDIA GPU Engineer",
-    image: "/testimonials/bogdan.jpg",
+    image: "/testimonials/bogdan.webp",
   },
   {
     name: "Denis",
