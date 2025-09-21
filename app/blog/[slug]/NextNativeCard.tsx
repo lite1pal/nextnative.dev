@@ -1,9 +1,10 @@
 import HighlightedSpan from "@/components/HighlightedSpan";
 import Logo from "@/components/Logo";
 import CTABlogButton from "./CTABlogButton";
-import { AvatarList, RatingSvg } from "@/components/HeroSection";
 import LogoSymbol from "@/components/LogoSymbol";
 import Link from "next/link";
+import { AvatarList } from "@/components/AvatarList";
+import RatingSvg from "@/components/RatingSvg";
 
 async function NextNativeCard({ post }: { post: { slug: string } }) {
   let customersCount = 20;

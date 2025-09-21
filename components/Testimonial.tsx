@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
-import { ExternalLink, PersonStanding } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { ReactNode } from "react";
-import { RatingSvg } from "./HeroSection";
+import RatingSvg from "./RatingSvg";
 
 function Testimonial({
   name,

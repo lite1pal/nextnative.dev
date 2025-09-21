@@ -1,7 +1,8 @@
 import HighlightedSpan from "@/components/HighlightedSpan";
 import Logo from "@/components/Logo";
 import CTABlogButton from "./CTABlogButton";
-import { AvatarList, RatingSvg } from "@/components/HeroSection";
+import { AvatarList } from "@/components/AvatarList";
+import RatingSvg from "@/components/RatingSvg";
 
 function NextNativeCardSkeleton() {
   return (

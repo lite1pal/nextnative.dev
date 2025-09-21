@@ -3,29 +3,28 @@ import Subheading from "./Subheading";
 
 function StoreGuides() {
   return (
-    <div className="py-20 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+    <div className="relative overflow-hidden py-20">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-16 text-center">
           <Subheading
             heading1="Publishing guides"
             heading2="included"
-            className="text-start md:text-center md:items-center"
+            className="text-start md:items-center md:text-center"
           />
-          <p className="mt-6 text-lg max-w-2xl text-start md:text-center self-start w-fit md:mx-auto">
+          <p className="mt-6 w-fit max-w-2xl self-start text-start text-lg md:mx-auto md:text-center">
             No need to figure it out on your own. Learn exactly how to pass App
             Store and Google Play checks.{" "}
-            {/* <span className="hidden">Based on real submissions.</span> */}
           </p>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2">
           {/* App Store Guide */}
           <div
             style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
             className="rounded-2xl bg-white p-6"
           >
-            <div className="flex items-center mb-10 gap-3">
-              <div className="w-12 h-12 flex justify-center items-center">
+            <div className="mb-10 flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center">
                 <Image
                   src="/store-guides/app-store-icon.png"
                   alt="App Store icon"
@@ -34,7 +33,7 @@ function StoreGuides() {
                   height={48}
                 />
               </div>
-              <h3 className="font-semibold text-2xl text-gray-900">
+              <h3 className="text-2xl font-semibold text-gray-900">
                 App Store Guide
               </h3>
             </div>
@@ -45,21 +44,21 @@ function StoreGuides() {
                 alt="App Store submission guide"
                 width={400}
                 height={400}
-                className="w-full object-cover rounded-lg"
+                className="w-full rounded-lg object-cover"
               />
             </div>
 
-            <ul className="text-gray-600 text-base space-y-3">
+            <ul className="space-y-3 text-base text-gray-600">
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
                 App Store review guidelines
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
                 Metadata & screenshots
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
                 Common rejection fixes
               </li>
             </ul>
@@ -68,10 +67,10 @@ function StoreGuides() {
           {/* Google Play Guide */}
           <div
             style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-            className="bg-white rounded-2xl p-6"
+            className="rounded-2xl bg-white p-6"
           >
-            <div className="flex items-center gap-3 mb-10">
-              <div className="w-12 h-12 flex justify-center items-center">
+            <div className="mb-10 flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center">
                 <Image
                   src="/store-guides/google-play-icon.png"
                   alt="Google Play icon"
@@ -80,7 +79,7 @@ function StoreGuides() {
                   height={36}
                 />
               </div>
-              <h3 className="font-semibold text-2xl text-gray-900">
+              <h3 className="text-2xl font-semibold text-gray-900">
                 Google Play Guide
               </h3>
             </div>
@@ -91,28 +90,28 @@ function StoreGuides() {
                 alt="Google Play submission guide"
                 width={400}
                 height={400}
-                className="w-full object-cover rounded-lg"
+                className="w-full rounded-lg object-cover"
               />
             </div>
 
-            <ul className="text-gray-600 text-base space-y-3">
+            <ul className="space-y-3 text-base text-gray-600">
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
                 Play Console setup
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
                 Signing & security
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
                 Release management
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-8 text-center flex flex-col md:flex-row gap-6 md:gap-10 text-lg justify-center">
+        <div className="mt-8 flex flex-col justify-center gap-6 text-center text-lg md:flex-row md:gap-10">
           <div className="flex items-center gap-2">
             <svg
               width="24"
@@ -170,7 +169,7 @@ function StoreGuides() {
             </svg>{" "}
             Troubleshooting tips
           </div>
-          <p className="text-gray-500 text-sm"></p>
+          <p className="text-sm text-gray-500"></p>
         </div>
       </div>
     </div>

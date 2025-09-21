@@ -27,6 +27,7 @@ import HeroSection from "@/components/HeroSection";
 import ToolCard from "@/components/ToolCard";
 import CTA from "@/components/CTA";
 import CTASkeleton from "@/components/CTASkeleton";
+import dynamic from "next/dynamic";
 
 export const metadata: Metadata = {
   alternates: {
@@ -288,34 +289,6 @@ const features = [
     src: "/section-videos/api-section.mp4",
     alt: "API routes demonstration",
   },
-  // {
-  //   heading1: "Payments",
-  //   heading2: "",
-  //   description: (
-  //     <>
-  //       Turn your app into a money-maker! <br />
-  //       <br /> Easily set up subscriptions and in-app purchases with RevenueCat,
-  //       and use already designed pricing screens for you to get started with.
-  //     </>
-  //   ),
-  //   isImageLeft: true,
-  //   src: "/section-videos/payments-section.mp4",
-  //   alt: "Payments setup demonstration",
-  // },
-  // {
-  //   heading1: "Offline Storage Support",
-  //   heading2: "",
-  //   description: (
-  //     <>
-  //       Keep your app running anytime! <br />
-  //       <br /> Move to offline database quickly at any point, ensuring users
-  //       stay productive even without an internet connection.
-  //     </>
-  //   ),
-  //   isImageLeft: false,
-  //   src: "/section-videos/offline-storage-section.mp4",
-  //   alt: "Offline storage support demonstration",
-  // },
   {
     heading1: "Authentication",
     heading2: "",
