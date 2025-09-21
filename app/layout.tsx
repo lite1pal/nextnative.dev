@@ -63,7 +63,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`antialiased bg-background ${outfit.className}`}>
+      <body className={`bg-background antialiased ${outfit.className}`}>
         <noscript>
           <img
             height="1"

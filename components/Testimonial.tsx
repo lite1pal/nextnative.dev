@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { ReactNode } from "react";
 import RatingSvg from "./RatingSvg";
@@ -48,7 +47,6 @@ function Testimonial({
             />
           ) : (
             <div className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-green-400 object-cover">
-              {/* <div className="bg-indigo-400 rounded-full w-[50px] h-[50px]"></div> */}
               {letters}
             </div>
           )}
@@ -71,7 +69,17 @@ function Testimonial({
             className="text-gray ml-auto hidden sm:block"
             aria-label="Visit external link"
           >
-            <ExternalLink className="size-5" />
+            <img
+              src="/external-link.svg"
+              width={20}
+              height={20}
+              alt="MicroLaunch"
+              loading="lazy"
+              decoding="async"
+              fetchPriority="low"
+              className="opacity-50"
+              style={{ display: "inline-block" }}
+            />
           </a>
         )}
       </div>
