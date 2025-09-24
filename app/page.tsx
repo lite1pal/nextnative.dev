@@ -27,7 +27,6 @@ import HeroSection from "@/components/HeroSection";
 import ToolCard from "@/components/ToolCard";
 import CTA from "@/components/CTA";
 import CTASkeleton from "@/components/CTASkeleton";
-import dynamic from "next/dynamic";
 
 export const metadata: Metadata = {
   alternates: {

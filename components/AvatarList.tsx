@@ -43,11 +43,11 @@ const data = [
   //   position: "Front-End Web Developer",
   //   image: "/testimonials/ryan.png",
   // },
-  // {
-  //   name: "Martin",
-  //   position: "Entrepreneur",
-  //   image: "/testimonials/martin.png",
-  // },
+  {
+    name: "Martin",
+    position: "Entrepreneur",
+    image: "/testimonials/martin.png",
+  },
   // { name: "Syauqy", position: "Developer", image: "/testimonials/syauqy.jpeg" },
 ];
 
