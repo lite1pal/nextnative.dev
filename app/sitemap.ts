@@ -46,6 +46,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     {
+      url: "https://nextnative.dev/convert-website-to-app",
+      lastModified: new Date(),
+    },
+    {
       url: "https://nextnative.dev/showcase",
       lastModified: new Date(),
     },
