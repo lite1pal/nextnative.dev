@@ -1,5 +1,6 @@
 import HighlightedSpan from "@/components/HighlightedSpan";
 import { ArrowRight, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 function Page() {
   const tools = [
@@ -46,7 +47,7 @@ function Page() {
         {/* Tools grid */}
         <div className="grid grid-cols-1 gap-6">
           {tools.map((tool) => (
-            <a
+            <Link
               key={tool.title}
               href={tool.link}
               className="group rounded-2xl bg-white p-8 shadow-sm transition hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
@@ -65,7 +66,7 @@ function Page() {
                   size={20}
                 />
               </button>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

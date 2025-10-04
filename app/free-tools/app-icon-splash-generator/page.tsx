@@ -467,7 +467,7 @@ export default function AppIconSplashGenerator() {
                 el.scrollIntoView({ behavior: "smooth" });
               }
             }}
-            variant="primary"
+            variant="secondary"
           >
             Upload your image now
           </ButtonNextNative>
