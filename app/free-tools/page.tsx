@@ -1,6 +1,9 @@
+"use client";
+
 import HighlightedSpan from "@/components/HighlightedSpan";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useMemo } from "react";
 
 function Page() {
   const tools = [
@@ -27,28 +30,85 @@ function Page() {
         "Create a customizable privacy policy for your iOS, Android, or web app in minutes.",
       link: "/free-tools/app-privacy-policy-generator",
     },
-    // {
-    //   title: "Capacitor Config Builder",
-    //   description:
-    //     "Quickly create a valid capacitor.config.ts file for your Next.js app with plugin options and environment presets.",
-    //   link: "/free-tools/config-builder",
-    // },
-    // {
-    //   title: "App Store Checklist Generator",
-    //   description:
-    //     "Get a personalized checklist to make sure your app passes Apple and Google Play reviews without rejections.",
-    //   link: "/free-tools/publish-checklist",
-    // },
-    // {
-    //   title: "Compatibility Checker",
-    //   description:
-    //     "Paste your Next.js repo link and check if your setup is ready for Capacitor and native deployment.",
-    //   link: "/free-tools/compatibility-checker",
-    // },
+    {
+      title: "Capacitor Config Generator",
+      description:
+        "Create a valid capacitor.config.ts for your Next.js or web app. Copy or download instantly.",
+      link: "/free-tools/capacitor-config-generator",
+    },
+    {
+      title: "iOS Bundle ID Generator",
+      description:
+        "Generate a reverse-domain bundle identifier like com.company.app for Xcode and Capacitor.",
+      link: "/free-tools/ios-bundle-id-generator",
+    },
+    {
+      title: "App Idea Generator",
+      description:
+        "Get fresh mobile app ideas with features and monetization suggestions.",
+      link: "/free-tools/app-idea-generator",
+    },
+    {
+      title: "App Store Metadata Generator",
+      description:
+        "Create App Store & Google Play titles, subtitles, keywords CSV, and descriptions.",
+      link: "/free-tools/app-store-metadata-generator",
+    },
+    {
+      title: "App Store Screenshot Generator",
+      description:
+        "Generate beautiful App Store and Google Play screenshots with device frames.",
+      link: "/free-tools/app-store-screenshot-generator",
+    },
   ];
+
+  // JSON-LD: Breadcrumb + ItemList of tools
+  const jsonLd = useMemo(() => {
+    const base = "https://nextnative.dev";
+    return [
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${base}/` },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Free tools",
+            item: `${base}/free-tools`,
+          },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "Free mobile app developer tools",
+        itemListElement: tools.map((t, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `${base}${t.link}`,
+          item: {
+            "@type": "SoftwareApplication",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "iOS, Android, Web",
+            name: t.title,
+            description: t.description,
+            url: `${base}${t.link}`,
+            offers: { "@type": "Offer", price: 0, priceCurrency: "USD" },
+          },
+        })),
+      },
+    ];
+  }, []);
 
   return (
     <div className="mx-auto w-full max-w-[962px] px-4 py-12 xl:max-w-[1260px] xl:px-0">
+      {/* JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <div className="mx-auto max-w-6xl">
         {/* Header */}
         <div className="mb-12 py-10 text-center">
@@ -57,7 +117,7 @@ function Page() {
           </h1>
           <p className="mx-auto mb-10 max-w-3xl text-xl text-gray-600 dark:text-gray-400">
             A growing collection of free tools to help you build, test, and
-            publish mobile apps faster — powered by Next.js + Capacitor.
+            publish mobile apps faster.
           </p>
         </div>
 
@@ -67,7 +127,8 @@ function Page() {
             <Link
               key={tool.title}
               href={tool.link}
-              className="group rounded-2xl bg-white p-8 shadow-sm transition hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
+              className="group rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100 transition hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
+              aria-label={`${tool.title} – ${tool.description}`}
             >
               <h3 className="group-hover:text-primary mb-2 text-2xl font-semibold text-gray-900 dark:text-white">
                 {tool.title}
@@ -76,16 +137,31 @@ function Page() {
                 {tool.description}
               </p>
 
-              <button className="text-primary mt-10 flex cursor-pointer items-center gap-1 text-xl font-[500]">
+              <span className="text-primary mt-10 inline-flex items-center gap-1 text-xl font-[500]">
                 Use tool{" "}
                 <ArrowRight
                   className="mt-0.5 transition-transform group-hover:translate-x-1"
                   size={20}
                 />
-              </button>
+              </span>
             </Link>
           ))}
         </div>
+
+        {/* Keyword-rich supportive copy */}
+        <section className="mx-auto mt-14 max-w-3xl text-center text-base leading-7 text-gray-600 dark:text-gray-400">
+          <h2 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+            Free app developer tools for iOS, Android & Web
+          </h2>
+          <p>
+            This hub includes <strong>free mobile app tools</strong> like an{" "}
+            <strong>app icon generator</strong>,{" "}
+            <strong>PWA manifest generator</strong>,{" "}
+            <strong>privacy policy generator</strong>, and{" "}
+            <strong>app revenue calculator</strong>. Each tool is built for
+            developers shipping apps with Next.js and Capacitor.
+          </p>
+        </section>
       </div>
     </div>
   );
