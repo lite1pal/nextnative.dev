@@ -11,10 +11,15 @@ function Page() {
       link: "/free-tools/app-icon-splash-generator",
     },
     {
-      title: "App Revenue Calculator | Estimate App Store Profit Instantly",
+      title: "App Revenue Calculator",
       description:
         "Estimate your app's net revenue after App Store, Google Play, and RevenueCat fees.",
       link: "/free-tools/app-revenue-calculator",
+    },
+    {
+      title: "PWA Manifest Generator",
+      description: "Generate a valid PWA manifest.json file in seconds.",
+      link: "/free-tools/pwa-manifest-generator",
     },
     // {
     //   title: "Capacitor Config Builder",
@@ -51,14 +56,14 @@ function Page() {
         </div>
 
         {/* Tools grid */}
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {tools.map((tool) => (
             <Link
               key={tool.title}
               href={tool.link}
               className="group rounded-2xl bg-white p-8 shadow-sm transition hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
             >
-              <h3 className="group-hover:text-primary mb-2 text-3xl font-semibold text-gray-900 dark:text-white">
+              <h3 className="group-hover:text-primary mb-2 text-2xl font-semibold text-gray-900 dark:text-white">
                 {tool.title}
               </h3>
               <p className="text-lg text-gray-600 dark:text-gray-400">

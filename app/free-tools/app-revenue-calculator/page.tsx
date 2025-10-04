@@ -86,13 +86,14 @@ export default function AppRevenueCalculator() {
       </div>
 
       <p className="mt-10 text-gray-500 dark:text-gray-400">
-        Built with ❤️ using{" "}
+        Built with ❤️ by{" "}
         <a
           href="https://nextnative.dev"
           className="font-semibold text-green-600 underline hover:text-green-700"
         >
           NextNative.dev
-        </a>
+        </a>{" "}
+        team.
       </p>
     </div>
   );
