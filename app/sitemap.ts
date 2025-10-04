@@ -9,6 +9,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     select: { slug: true, updatedAt: true },
   });
 
+  const lastModified = new Date("2025-10-04");
+
   const docs = [
     "https://nextnative.dev/docs",
     "https://nextnative.dev/docs/tutorials/ship-in-5-minutes",
@@ -46,31 +48,45 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     {
       url: "https://nextnative.dev/",
-      lastModified: new Date(),
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 1.0,
     },
     {
       url: "https://nextnative.dev/blog",
-      lastModified: new Date(),
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
       url: "https://nextnative.dev/convert-website-to-app",
-      lastModified: new Date(),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: "https://nextnative.dev/showcase",
-      lastModified: new Date(),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
     {
       url: "https://nextnative.dev/contact",
-      lastModified: new Date(),
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.4,
     },
     {
       url: "https://nextnative.dev/pricing",
-      lastModified: new Date(),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
     },
     {
       url: "https://nextnative.dev/mvp-app-development",
-      lastModified: new Date(),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
 
     ...posts.map((post) => ({
@@ -80,13 +96,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     ...freeTools.map((freeTool) => ({
       url: freeTool,
-      lastModified: new Date("2025-10-04"),
+      lastModified,
       changeFrequency: "weekly",
+      priority: 0.9,
     })),
 
     ...docs.map((doc) => ({
       url: doc,
       lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1.0,
     })),
   ];
 }
