@@ -555,50 +555,6 @@ export default function AppIconSplashGenerator() {
             </div>
           </div>
         </div>
-
-        {/* Related Links */}
-        <div className="rounded-xl p-8">
-          <h3 className="mb-10 text-center text-3xl font-[500] md:text-4xl">
-            More Tools & Resources
-          </h3>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <Link
-              href="/blog"
-              className="rounded-lg bg-white p-4 transition-shadow hover:shadow-md dark:bg-gray-700"
-            >
-              <h4 className="mb-2 font-medium text-gray-900 dark:text-gray-100">
-                Mobile App Development Blog
-              </h4>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Learn best practices and tips
-              </p>
-            </Link>
-
-            <Link
-              href="/pricing"
-              className="rounded-lg bg-white p-4 transition-shadow hover:shadow-md dark:bg-gray-700"
-            >
-              <h4 className="mb-2 font-medium text-gray-900 dark:text-gray-100">
-                NextNative
-              </h4>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Build apps 10x faster with Next.js
-              </p>
-            </Link>
-
-            <Link
-              href="/showcase"
-              className="rounded-lg bg-white p-4 transition-shadow hover:shadow-md dark:bg-gray-700"
-            >
-              <h4 className="mb-2 font-medium text-gray-900 dark:text-gray-100">
-                App Showcase
-              </h4>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                See apps built with NextNative
-              </p>
-            </Link>
-          </div>
-        </div>
       </div>
     </div>
   );
