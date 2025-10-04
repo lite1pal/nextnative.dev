@@ -10,25 +10,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   const docs = [
-    "https://docs.nextnative.dev",
-    "https://docs.nextnative.dev/tutorials/ship-in-5-minutes",
-    "https://docs.nextnative.dev/tutorials/ionic-router",
-    "https://docs.nextnative.dev/tutorials/native-device-features",
-    "https://docs.nextnative.dev/tutorials/splash-screen",
-    "https://docs.nextnative.dev/tutorials/onboarding-flow",
-    "https://docs.nextnative.dev/features/database",
-    "https://docs.nextnative.dev/features/nextjs-api",
-    "https://docs.nextnative.dev/features/authorization",
-    "https://docs.nextnative.dev/features/in-app-purchases",
-    "https://docs.nextnative.dev/features/push-notifications",
-    "https://docs.nextnative.dev/preparing-for-deployment/rename-your-app",
-    "https://docs.nextnative.dev/preparing-for-deployment/change-app-icon",
-    "https://docs.nextnative.dev/preparing-for-deployment/build-app-for-production",
-    "https://docs.nextnative.dev/components/screen-container",
-    "https://docs.nextnative.dev/components/modal",
+    "https://nextnative.dev/docs",
+    "https://nextnative.dev/docs/tutorials/ship-in-5-minutes",
+    "https://nextnative.dev/docs/tutorials/ionic-router",
+    "https://nextnative.dev/docs/tutorials/native-device-features",
+    "https://nextnative.dev/docs/tutorials/splash-screen",
+    "https://nextnative.dev/docs/tutorials/onboarding-flow",
+    "https://nextnative.dev/docs/features/database",
+    "https://nextnative.dev/docs/features/nextjs-api",
+    "https://nextnative.dev/docs/features/authorization",
+    "https://nextnative.dev/docs/features/in-app-purchases",
+    "https://nextnative.dev/docs/features/push-notifications",
+    "https://nextnative.dev/docs/preparing-for-deployment/rename-your-app",
+    "https://nextnative.dev/docs/preparing-for-deployment/change-app-icon",
+    "https://nextnative.dev/docs/preparing-for-deployment/build-app-for-production",
+    "https://nextnative.dev/docs/components/screen-container",
+    "https://nextnative.dev/docs/components/modal",
   ];
 
   const freeTools = [
+    "https://nextnative.dev/free-tools",
     "https://nextnative.dev/free-tools/app-icon-splash-generator",
   ];
 
