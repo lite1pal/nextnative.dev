@@ -73,6 +73,107 @@ const PRESETS: Preset[] = [
   },
 ];
 
+type ColorTheme = {
+  id: string;
+  name: string;
+  bg1: string;
+  bg2: string;
+  textColor: string;
+  bgMode: "solid" | "gradient";
+  gradientDirection?: "diagonal" | "vertical" | "horizontal";
+};
+
+const COLOR_THEMES: ColorTheme[] = [
+  {
+    id: "teal-green",
+    name: "Teal & Green",
+    bg1: "#0ea5a3",
+    bg2: "#16a34a",
+    textColor: "#ffffff",
+    bgMode: "gradient",
+    gradientDirection: "diagonal",
+  },
+  {
+    id: "purple-pink",
+    name: "Purple & Pink",
+    bg1: "#9333ea",
+    bg2: "#ec4899",
+    textColor: "#ffffff",
+    bgMode: "gradient",
+    gradientDirection: "diagonal",
+  },
+  {
+    id: "blue-cyan",
+    name: "Blue & Cyan",
+    bg1: "#0284c7",
+    bg2: "#06b6d4",
+    textColor: "#ffffff",
+    bgMode: "gradient",
+    gradientDirection: "diagonal",
+  },
+  {
+    id: "orange-red",
+    name: "Orange & Red",
+    bg1: "#f97316",
+    bg2: "#ef4444",
+    textColor: "#ffffff",
+    bgMode: "gradient",
+    gradientDirection: "diagonal",
+  },
+  {
+    id: "dark",
+    name: "Dark",
+    bg1: "#1f2937",
+    bg2: "#111827",
+    textColor: "#ffffff",
+    bgMode: "gradient",
+    gradientDirection: "vertical",
+  },
+  {
+    id: "light",
+    name: "Light",
+    bg1: "#f9fafb",
+    bg2: "#e5e7eb",
+    textColor: "#111827",
+    bgMode: "gradient",
+    gradientDirection: "vertical",
+  },
+  {
+    id: "black",
+    name: "Pure Black",
+    bg1: "#000000",
+    bg2: "#000000",
+    textColor: "#ffffff",
+    bgMode: "solid",
+  },
+  {
+    id: "white",
+    name: "Pure White",
+    bg1: "#ffffff",
+    bg2: "#ffffff",
+    textColor: "#000000",
+    bgMode: "solid",
+  },
+  {
+    id: "indigo-purple",
+    name: "Indigo & Purple",
+    bg1: "#6366f1",
+    bg2: "#a855f7",
+    textColor: "#ffffff",
+    bgMode: "gradient",
+    gradientDirection: "diagonal",
+  },
+  {
+    id: "emerald-teal",
+    name: "Emerald & Teal",
+    bg1: "#10b981",
+    bg2: "#14b8a6",
+    textColor: "#ffffff",
+    bgMode: "gradient",
+    gradientDirection: "diagonal",
+  },
+];
+
 type Uploaded = { id: string; src: string; name: string };
 
 export default function AppStoreScreenshotGenerator() {
@@ -102,6 +203,30 @@ export default function AppStoreScreenshotGenerator() {
   const [cornerRadius, setCornerRadius] = useState(48);
   const [textYOffset, setTextYOffset] = useState(0); // adjustable text block position
   const [previewIndex, setPreviewIndex] = useState(0); // which upload to preview
+
+  // Enhanced text controls
+  const [textAlign, setTextAlign] = useState<"left" | "center" | "right">(
+    "left",
+  );
+  const [textVAlign, setTextVAlign] = useState<"top" | "middle" | "bottom">(
+    "top",
+  );
+  const [titleFontSize, setTitleFontSize] = useState(62); // base: 62 per 1000px width
+  const [subtitleFontSize, setSubtitleFontSize] = useState(35);
+  const [titleWeight, setTitleWeight] = useState<"700" | "800" | "900">("700");
+  const [subtitleWeight, setSubtitleWeight] = useState<"400" | "500" | "600">(
+    "500",
+  );
+
+  // Text effects
+  const [textShadow, setTextShadow] = useState(false);
+  const [textStroke, setTextStroke] = useState(false);
+  const [textStrokeColor, setTextStrokeColor] = useState("#000000");
+
+  // Device frame
+  const [deviceFrame, setDeviceFrame] = useState<
+    "none" | "iphone" | "ipad" | "android"
+  >("none");
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const dropRef = useRef<HTMLDivElement | null>(null);
@@ -154,6 +279,133 @@ export default function AppStoreScreenshotGenerator() {
   const removeUpload = (id: string) =>
     setUploads((u) => u.filter((x) => x.id !== id));
 
+  const applyTheme = (theme: ColorTheme) => {
+    setBgMode(theme.bgMode);
+    setBg1(theme.bg1);
+    setBg2(theme.bg2);
+    setTextColor(theme.textColor);
+    if (theme.gradientDirection) {
+      setGradientDirection(theme.gradientDirection);
+    }
+  };
+
+  const saveConfig = () => {
+    const config = {
+      title,
+      subtitle,
+      padding,
+      bgMode,
+      bg1,
+      bg2,
+      gradientDirection,
+      textColor,
+      imageScale,
+      cornerRadius,
+      textYOffset,
+      textAlign,
+      textVAlign,
+      titleFontSize,
+      subtitleFontSize,
+      titleWeight,
+      subtitleWeight,
+      textShadow,
+      textStroke,
+      textStrokeColor,
+      deviceFrame,
+    };
+    const json = JSON.stringify(config, null, 2);
+    const blob = new Blob([json], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "screenshot-config.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const loadConfig = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const config = JSON.parse(String(reader.result));
+        if (config.title !== undefined) setTitle(config.title);
+        if (config.subtitle !== undefined) setSubtitle(config.subtitle);
+        if (config.padding !== undefined) setPadding(config.padding);
+        if (config.bgMode !== undefined) setBgMode(config.bgMode);
+        if (config.bg1 !== undefined) setBg1(config.bg1);
+        if (config.bg2 !== undefined) setBg2(config.bg2);
+        if (config.gradientDirection !== undefined)
+          setGradientDirection(config.gradientDirection);
+        if (config.textColor !== undefined) setTextColor(config.textColor);
+        if (config.imageScale !== undefined) setImageScale(config.imageScale);
+        if (config.cornerRadius !== undefined)
+          setCornerRadius(config.cornerRadius);
+        if (config.textYOffset !== undefined)
+          setTextYOffset(config.textYOffset);
+        if (config.textAlign !== undefined) setTextAlign(config.textAlign);
+        if (config.textVAlign !== undefined) setTextVAlign(config.textVAlign);
+        if (config.titleFontSize !== undefined)
+          setTitleFontSize(config.titleFontSize);
+        if (config.subtitleFontSize !== undefined)
+          setSubtitleFontSize(config.subtitleFontSize);
+        if (config.titleWeight !== undefined)
+          setTitleWeight(config.titleWeight);
+        if (config.subtitleWeight !== undefined)
+          setSubtitleWeight(config.subtitleWeight);
+        if (config.textShadow !== undefined) setTextShadow(config.textShadow);
+        if (config.textStroke !== undefined) setTextStroke(config.textStroke);
+        if (config.textStrokeColor !== undefined)
+          setTextStrokeColor(config.textStrokeColor);
+        if (config.deviceFrame !== undefined)
+          setDeviceFrame(config.deviceFrame);
+      } catch (err) {
+        alert("Failed to load configuration file");
+      }
+    };
+    reader.readAsText(file);
+    e.currentTarget.value = "";
+  };
+
+  const downloadAllPresets = () => {
+    const presetsToExport = PRESETS.filter((p) => p.id !== "custom");
+    uploads.forEach((u, uIdx) => {
+      presetsToExport.forEach((p, pIdx) => {
+        setTimeout(
+          () => downloadOne(u, p),
+          (uIdx * presetsToExport.length + pIdx) * 500,
+        );
+      });
+    });
+  };
+
+  const resetToDefaults = () => {
+    if (!confirm("Reset all settings to default values?")) return;
+    setTitle("Ship faster with NextNative");
+    setSubtitle("Turn your website into an iOS & Android app");
+    setPadding(80);
+    setBgMode("solid");
+    setBg1("#0ea5a3");
+    setBg2("#16a34a");
+    setGradientDirection("diagonal");
+    setTextColor("#ffffff");
+    setImageScale(100);
+    setCornerRadius(48);
+    setTextYOffset(0);
+    setTextAlign("left");
+    setTextVAlign("top");
+    setTitleFontSize(62);
+    setSubtitleFontSize(35);
+    setTitleWeight("700");
+    setSubtitleWeight("500");
+    setTextShadow(false);
+    setTextStroke(false);
+    setTextStrokeColor("#000000");
+    setDeviceFrame("none");
+    setBgImage(null);
+  };
+
   const draw = async (imgSrc?: string, targetSize = size) => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d")!;
@@ -201,32 +453,73 @@ export default function AppStoreScreenshotGenerator() {
     const innerHTop = Math.floor(h * 0.33) + textYOffset; // adjustable text block
     const innerHBottom = h - padding * 2 - innerHTop;
 
-    // Title/Sub
+    // Title/Sub with enhanced controls
     ctx.fillStyle = textColor;
-    ctx.textAlign = "left";
+    ctx.textAlign = textAlign;
+
+    // Calculate text x position based on alignment
+    let textX = padding;
+    if (textAlign === "center") textX = w / 2;
+    if (textAlign === "right") textX = w - padding;
+
+    // Calculate vertical position
+    let textY = padding;
+    if (textVAlign === "middle") {
+      textY = (h - 200) / 2; // rough estimate, will adjust
+    } else if (textVAlign === "bottom") {
+      textY = h - padding - 200;
+    }
+    textY += textYOffset;
+
     ctx.textBaseline = "top";
 
+    // Apply text effects
+    if (textShadow) {
+      ctx.shadowColor = "rgba(0,0,0,0.5)";
+      ctx.shadowBlur = Math.max(8, Math.floor(w * 0.012));
+      ctx.shadowOffsetY = Math.max(4, Math.floor(h * 0.006));
+    }
+
     // Title
-    ctx.font = `700 ${Math.round(w * 0.062)}px system-ui, -apple-system, Segoe UI, Roboto, sans-serif`;
-    const titleLines = wrapText(
+    const titleSize = Math.round((w / 1000) * titleFontSize);
+    ctx.font = `${titleWeight} ${titleSize}px system-ui, -apple-system, Segoe UI, Roboto, sans-serif`;
+
+    if (textStroke) {
+      ctx.strokeStyle = textStrokeColor;
+      ctx.lineWidth = Math.max(2, Math.floor(w * 0.003));
+    }
+
+    const titleLines = wrapTextEnhanced(
       ctx,
       title,
-      padding,
-      padding,
+      textX,
+      textY,
       innerW,
-      Math.round(w * 0.075),
+      Math.round(titleSize * 1.2),
+      textAlign,
+      textStroke,
     );
 
     // Subtitle below title
-    ctx.font = `500 ${Math.round(w * 0.035)}px system-ui, -apple-system, Segoe UI, Roboto, sans-serif`;
-    wrapText(
+    const subtitleSize = Math.round((w / 1000) * subtitleFontSize);
+    ctx.font = `${subtitleWeight} ${subtitleSize}px system-ui, -apple-system, Segoe UI, Roboto, sans-serif`;
+    wrapTextEnhanced(
       ctx,
       subtitle,
-      padding,
-      padding + titleLines * Math.round(w * 0.075),
+      textX,
+      textY + titleLines * Math.round(titleSize * 1.2),
       innerW,
-      Math.round(w * 0.05),
+      Math.round(subtitleSize * 1.4),
+      textAlign,
+      textStroke,
     );
+
+    // Reset shadow
+    if (textShadow) {
+      ctx.shadowColor = "transparent";
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetY = 0;
+    }
 
     // Main image (contain)
     if (imgSrc) {
@@ -279,6 +572,16 @@ export default function AppStoreScreenshotGenerator() {
     imageScale,
     cornerRadius,
     textYOffset,
+    textAlign,
+    textVAlign,
+    titleFontSize,
+    subtitleFontSize,
+    titleWeight,
+    subtitleWeight,
+    textShadow,
+    textStroke,
+    textStrokeColor,
+    deviceFrame,
   ]);
 
   const downloadOne = async (img: Uploaded, p: Preset | null = null) => {
@@ -345,71 +648,152 @@ export default function AppStoreScreenshotGenerator() {
     };
   }, []);
 
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Cmd/Ctrl + S to save config
+      if ((e.metaKey || e.ctrlKey) && e.key === "s") {
+        e.preventDefault();
+        saveConfig();
+      }
+      // Cmd/Ctrl + D to download all current size
+      if ((e.metaKey || e.ctrlKey) && e.key === "d") {
+        e.preventDefault();
+        if (uploads.length) downloadAllForPreset();
+      }
+      // Arrow keys to navigate images
+      if (e.key === "ArrowLeft" && previewIndex > 0) {
+        setPreviewIndex(previewIndex - 1);
+      }
+      if (e.key === "ArrowRight" && previewIndex < uploads.length - 1) {
+        setPreviewIndex(previewIndex + 1);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [uploads.length, previewIndex, saveConfig, downloadAllForPreset]);
+
   return (
     <div className="mx-auto max-w-7xl px-6 py-16">
-      <h1 className="mb-2 text-center text-4xl font-bold text-gray-900 dark:text-white">
-        App Store Screenshot Generator 📱
-      </h1>
-      <p className="mb-16 text-center text-gray-600 dark:text-gray-400">
-        Upload images, customize text & visuals, select store presets (updated
-        for 2025), and export high-quality PNGs for App Store, Google Play, and
-        more. Fully browser-based with drag & drop support.
-      </p>
+      <div className="mb-12 text-center">
+        <h1 className="mb-3 bg-gradient-to-r bg-clip-text text-5xl font-bold">
+          App Store Screenshot Generator 📱
+        </h1>
+        <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
+          Create stunning, professional screenshots for App Store and Google
+          Play in seconds. Customize text, backgrounds, and export in all
+          required sizes.
+        </p>
+        <div className="mt-4 flex items-center justify-center gap-4 text-sm text-gray-500">
+          <span className="flex items-center gap-1">✨ 10+ Color Themes</span>
+          <span className="flex items-center gap-1">📱 All Device Presets</span>
+          <span className="flex items-center gap-1">⚡ Instant Export</span>
+          <span className="flex items-center gap-1">💾 Save Settings</span>
+        </div>
+      </div>
 
       {/* Controls */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Left: upload + list */}
         <section
           ref={dropRef}
-          className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-900"
+          className="rounded-2xl border-2 border-dashed border-gray-300 bg-white p-5 shadow-sm transition-colors hover:border-green-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-green-600"
         >
           <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-            1) Upload screenshots (drag & drop here)
+            1) 📤 Upload Screenshots
           </h3>
-          <input
-            type="file"
-            accept="image/*"
-            multiple
-            onChange={(e) => onUpload(e.target.files)}
-            className="mb-4"
-          />
+          <div className="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4 text-center dark:border-gray-700 dark:bg-gray-800/50">
+            <label className="cursor-pointer">
+              <input
+                type="file"
+                accept="image/*"
+                multiple
+                onChange={(e) => onUpload(e.target.files)}
+                className="hidden"
+              />
+              <div className="mb-2 text-4xl">📸</div>
+              <div className="font-medium text-gray-700 dark:text-gray-300">
+                Click to upload or drag & drop
+              </div>
+              <div className="mt-1 text-xs text-gray-500">
+                PNG, JPG, WebP (Multiple files supported)
+              </div>
+            </label>
+          </div>
           <ul className="space-y-2 text-sm">
             {uploads.map((u, i) => (
               <li
                 key={u.id}
-                className={`flex cursor-pointer items-center justify-between rounded-lg px-3 py-2 ${i === previewIndex ? "bg-green-100 dark:bg-green-900" : "bg-gray-50 dark:bg-gray-800/60"}`}
+                className={`flex cursor-pointer items-center justify-between rounded-lg px-3 py-2 transition-colors ${i === previewIndex ? "bg-green-100 ring-2 ring-green-500 dark:bg-green-900/50" : "bg-gray-50 hover:bg-gray-100 dark:bg-gray-800/60 dark:hover:bg-gray-800"}`}
                 onClick={() => setPreviewIndex(i)}
               >
-                <span className="truncate">{u.name}</span>
+                <span className="truncate font-medium">{u.name}</span>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     removeUpload(u.id);
                     if (previewIndex >= uploads.length - 1) setPreviewIndex(0);
                   }}
-                  className="text-xs text-red-500 hover:underline"
+                  className="ml-2 text-xs text-red-500 hover:text-red-700 hover:underline"
                 >
-                  remove
+                  ✕
                 </button>
               </li>
             ))}
             {!uploads.length && (
-              <li className="text-gray-500">
-                No files yet. Drag images here or click to upload.
+              <li className="py-8 text-center text-gray-400">
+                <div className="mb-2 text-4xl">🖼️</div>
+                <div className="text-sm">No files yet</div>
               </li>
             )}
           </ul>
+
+          {uploads.length > 0 && (
+            <div className="mt-4 rounded-lg bg-blue-50 p-3 dark:bg-blue-900/20">
+              <p className="text-xs text-blue-800 dark:text-blue-200">
+                <strong>⌨️ Shortcuts:</strong> Use ← → arrows to navigate images
+              </p>
+            </div>
+          )}
         </section>
 
         {/* Middle: settings */}
-        <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+        <section className="max-h-[800px] overflow-y-auto rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-900">
           <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
             2) Settings
           </h3>
 
+          {/* Color Themes */}
+          <div className="mb-4">
+            <label className="mb-2 block text-sm font-medium">
+              🎨 Color Themes
+            </label>
+            <div className="grid grid-cols-2 gap-2">
+              {COLOR_THEMES.slice(0, 6).map((theme) => (
+                <button
+                  key={theme.id}
+                  onClick={() => applyTheme(theme)}
+                  className="rounded-lg border border-gray-300 bg-white p-2 text-xs font-medium transition-colors hover:border-green-500 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                  style={{
+                    background:
+                      theme.bgMode === "gradient"
+                        ? `linear-gradient(to ${theme.gradientDirection === "vertical" ? "bottom" : theme.gradientDirection === "horizontal" ? "right" : "bottom right"}, ${theme.bg1}, ${theme.bg2})`
+                        : theme.bg1,
+                    color: theme.textColor,
+                  }}
+                >
+                  {theme.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Presets */}
           <div className="mb-4">
-            <label className="mb-1 block text-sm font-medium">Preset</label>
+            <label className="mb-1 block text-sm font-medium">
+              📱 Device Preset
+            </label>
             <select
               value={selectedPreset.id}
               onChange={(e) => {
@@ -446,16 +830,12 @@ export default function AppStoreScreenshotGenerator() {
                 />
               </div>
             )}
-            <p className="mt-2 text-xs text-gray-500">
-              Presets updated for 2025. Always verify latest guidelines from
-              Apple/Google.
-            </p>
           </div>
 
           {/* Orientation */}
           <div className="mb-4">
             <label className="mb-1 block text-sm font-medium">
-              Orientation
+              🔄 Orientation
             </label>
             <select
               value={orientation}
@@ -469,9 +849,9 @@ export default function AppStoreScreenshotGenerator() {
             </select>
           </div>
 
-          {/* Overlay text */}
+          {/* Text Content */}
           <div className="mb-4">
-            <label className="mb-1 block text-sm font-medium">Title</label>
+            <label className="mb-1 block text-sm font-medium">📝 Title</label>
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -479,7 +859,9 @@ export default function AppStoreScreenshotGenerator() {
             />
           </div>
           <div className="mb-4">
-            <label className="mb-1 block text-sm font-medium">Subtitle</label>
+            <label className="mb-1 block text-sm font-medium">
+              📄 Subtitle
+            </label>
             <input
               value={subtitle}
               onChange={(e) => setSubtitle(e.target.value)}
@@ -487,22 +869,136 @@ export default function AppStoreScreenshotGenerator() {
             />
           </div>
 
-          {/* Visuals */}
-          <div className="mb-3 grid grid-cols-2 gap-3">
+          {/* Text Alignment */}
+          <div className="mb-4 grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-sm font-medium">
-                Background
+                Text Align
               </label>
               <select
-                value={bgMode}
-                onChange={(e) => setBgMode(e.target.value as any)}
+                value={textAlign}
+                onChange={(e) => setTextAlign(e.target.value as any)}
                 className="w-full rounded-lg border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
               >
-                <option value="solid">Solid</option>
-                <option value="gradient">Gradient</option>
-                <option value="image">Image</option>
+                <option value="left">Left</option>
+                <option value="center">Center</option>
+                <option value="right">Right</option>
               </select>
             </div>
+            <div>
+              <label className="mb-1 block text-sm font-medium">
+                Vertical Pos.
+              </label>
+              <select
+                value={textVAlign}
+                onChange={(e) => setTextVAlign(e.target.value as any)}
+                className="w-full rounded-lg border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              >
+                <option value="top">Top</option>
+                <option value="middle">Middle</option>
+                <option value="bottom">Bottom</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Font Controls */}
+          <div className="mb-4 grid grid-cols-2 gap-3">
+            <div>
+              <label className="mb-1 block text-sm font-medium">
+                Title Weight
+              </label>
+              <select
+                value={titleWeight}
+                onChange={(e) => setTitleWeight(e.target.value as any)}
+                className="w-full rounded-lg border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              >
+                <option value="700">Bold</option>
+                <option value="800">Extra Bold</option>
+                <option value="900">Black</option>
+              </select>
+            </div>
+            <div>
+              <label className="mb-1 block text-sm font-medium">
+                Subtitle Weight
+              </label>
+              <select
+                value={subtitleWeight}
+                onChange={(e) => setSubtitleWeight(e.target.value as any)}
+                className="w-full rounded-lg border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              >
+                <option value="400">Regular</option>
+                <option value="500">Medium</option>
+                <option value="600">Semibold</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Text Effects */}
+          <div className="mb-4">
+            <label className="mb-2 block text-sm font-medium">
+              ✨ Text Effects
+            </label>
+            <div className="space-y-2">
+              <label className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={textShadow}
+                  onChange={(e) => setTextShadow(e.target.checked)}
+                  className="rounded border-gray-300"
+                />
+                <span className="text-sm">Drop Shadow</span>
+              </label>
+              <label className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={textStroke}
+                  onChange={(e) => setTextStroke(e.target.checked)}
+                  className="rounded border-gray-300"
+                />
+                <span className="text-sm">Text Outline</span>
+              </label>
+              {textStroke && (
+                <div className="ml-6">
+                  <label className="mb-1 block text-xs">Outline Color</label>
+                  <input
+                    type="color"
+                    value={textStrokeColor}
+                    onChange={(e) => setTextStrokeColor(e.target.value)}
+                    className="h-8 w-full cursor-pointer rounded-lg border border-gray-300"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Background */}
+          <div className="mb-3">
+            <label className="mb-1 block text-sm font-medium">
+              🎨 Background
+            </label>
+            <div className="grid grid-cols-3 gap-2">
+              <button
+                onClick={() => setBgMode("solid")}
+                className={`rounded-lg border p-2 text-xs font-medium ${bgMode === "solid" ? "border-green-500 bg-green-50 dark:bg-green-900/30" : "border-gray-300 dark:border-gray-700"}`}
+              >
+                Solid
+              </button>
+              <button
+                onClick={() => setBgMode("gradient")}
+                className={`rounded-lg border p-2 text-xs font-medium ${bgMode === "gradient" ? "border-green-500 bg-green-50 dark:bg-green-900/30" : "border-gray-300 dark:border-gray-700"}`}
+              >
+                Gradient
+              </button>
+              <button
+                onClick={() => setBgMode("image")}
+                className={`rounded-lg border p-2 text-xs font-medium ${bgMode === "image" ? "border-green-500 bg-green-50 dark:bg-green-900/30" : "border-gray-300 dark:border-gray-700"}`}
+              >
+                Image
+              </button>
+            </div>
+          </div>
+
+          <div className="mb-3 grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-sm font-medium">
                 Text color
@@ -524,7 +1020,7 @@ export default function AppStoreScreenshotGenerator() {
                 className="h-10 w-full cursor-pointer rounded-lg border border-gray-300 bg-white disabled:opacity-40 dark:border-gray-700 dark:bg-gray-800"
               />
             </div>
-            <div>
+            <div className="col-span-2">
               <label className="mb-1 block text-sm font-medium">
                 {bgMode === "gradient" ? "Color B" : "—"}
               </label>
@@ -577,93 +1073,235 @@ export default function AppStoreScreenshotGenerator() {
             </div>
           )}
 
-          <div className="grid grid-cols-2 gap-3">
+          {/* Sliders */}
+          <div className="space-y-3">
             <Range
-              label="Padding"
+              label="📏 Padding"
               value={padding}
               setValue={setPadding}
               min={40}
               max={160}
             />
             <Range
-              label="Image scale %"
+              label="🔍 Image scale %"
               value={imageScale}
               setValue={setImageScale}
               min={60}
               max={140}
             />
             <Range
-              label="Corner radius"
+              label="⬜ Corner radius"
               value={cornerRadius}
               setValue={setCornerRadius}
               min={0}
               max={100}
             />
             <Range
-              label="Text Y offset"
+              label="↕️ Text Y offset"
               value={textYOffset}
               setValue={setTextYOffset}
               min={-200}
               max={200}
             />
+            <Range
+              label="📏 Title size"
+              value={titleFontSize}
+              setValue={setTitleFontSize}
+              min={30}
+              max={100}
+            />
+            <Range
+              label="📏 Subtitle size"
+              value={subtitleFontSize}
+              setValue={setSubtitleFontSize}
+              min={20}
+              max={60}
+            />
+          </div>
+
+          {/* Save/Load Config */}
+          <div className="mt-4 border-t border-gray-200 pt-4 dark:border-gray-700">
+            <label className="mb-2 block text-sm font-medium">
+              💾 Configuration
+            </label>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                onClick={saveConfig}
+                className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-medium hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+              >
+                💾 Save
+              </button>
+              <label className="cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 text-center text-xs font-medium hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                📂 Load
+                <input
+                  type="file"
+                  accept=".json"
+                  onChange={loadConfig}
+                  className="hidden"
+                />
+              </label>
+            </div>
+            <button
+              onClick={resetToDefaults}
+              className="mt-2 w-full rounded-lg border border-red-300 bg-white px-3 py-2 text-xs font-medium text-red-600 hover:bg-red-50 dark:border-red-700 dark:bg-gray-800 dark:hover:bg-red-900/20"
+            >
+              🔄 Reset to Defaults
+            </button>
           </div>
         </section>
 
         {/* Right: preview & export */}
         <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-900">
-          <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-            3) Preview & export
-          </h3>
+          <div className="mb-3 flex items-center justify-between">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              3) 🎨 Preview & Export
+            </h3>
+            {uploads.length > 0 && (
+              <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-300">
+                {previewIndex + 1} / {uploads.length}
+              </span>
+            )}
+          </div>
+
+          {/* Image Navigation */}
+          {uploads.length > 1 && (
+            <div className="mb-3 flex items-center justify-center gap-2">
+              <button
+                onClick={() => setPreviewIndex(Math.max(0, previewIndex - 1))}
+                disabled={previewIndex === 0}
+                className="rounded-lg border border-gray-300 px-3 py-1 text-sm font-medium hover:bg-gray-50 disabled:opacity-30 dark:border-gray-700 dark:hover:bg-gray-800"
+              >
+                ← Prev
+              </button>
+              <button
+                onClick={() =>
+                  setPreviewIndex(
+                    Math.min(uploads.length - 1, previewIndex + 1),
+                  )
+                }
+                disabled={previewIndex === uploads.length - 1}
+                className="rounded-lg border border-gray-300 px-3 py-1 text-sm font-medium hover:bg-gray-50 disabled:opacity-30 dark:border-gray-700 dark:hover:bg-gray-800"
+              >
+                Next →
+              </button>
+            </div>
+          )}
+
           <canvas
             ref={canvasRef}
-            className="mx-auto block w-full max-w-sm rounded-xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
+            className="mx-auto block w-full max-w-sm rounded-xl border border-gray-200 bg-white shadow-lg transition-all dark:border-gray-700 dark:bg-gray-800"
           />
 
-          <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+          {!uploads.length && (
+            <div className="mt-4 rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-8 text-center dark:border-gray-700 dark:bg-gray-800/50">
+              <div className="mb-3 text-5xl">🎬</div>
+              <p className="font-medium text-gray-700 dark:text-gray-300">
+                Upload images to get started
+              </p>
+              <p className="mt-1 text-sm text-gray-500">
+                Your preview will appear here
+              </p>
+            </div>
+          )}
+
+          {/* Quick Actions */}
+          <div className="mt-4 space-y-2">
             <button
               disabled={!uploads.length}
               onClick={() => downloadAllForPreset()}
-              className="rounded-xl bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-700 disabled:opacity-50"
+              className="w-full rounded-xl bg-green-600 px-4 py-3 font-semibold text-white transition-colors hover:bg-green-700 disabled:opacity-50"
             >
-              Download all current ({size.w}×{size.h})
+              ⬇️ Download All ({size.w}×{size.h})
             </button>
 
             <button
               disabled={!uploads.length}
-              onClick={() => downloadAllForPreset(PRESETS[0])}
-              className="rounded-xl border border-green-600 px-4 py-2 font-semibold text-green-700 hover:bg-green-50 disabled:opacity-50 dark:hover:bg-gray-800"
+              onClick={downloadAllPresets}
+              className="w-full rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-4 py-3 font-semibold text-white transition-colors hover:from-purple-700 hover:to-pink-700 disabled:opacity-50"
             >
-              All iOS 6.9″
-            </button>
-            <button
-              disabled={!uploads.length}
-              onClick={() => downloadAllForPreset(PRESETS[1])}
-              className="rounded-xl border border-green-600 px-4 py-2 font-semibold text-green-700 hover:bg-green-50 disabled:opacity-50 dark:hover:bg-gray-800"
-            >
-              All iOS 6.5″
-            </button>
-            <button
-              disabled={!uploads.length}
-              onClick={() => downloadAllForPreset(PRESETS[3])}
-              className="rounded-xl border border-green-600 px-4 py-2 font-semibold text-green-700 hover:bg-green-50 disabled:opacity-50 dark:hover:bg-gray-800"
-            >
-              All iPad 13″
-            </button>
-            <button
-              disabled={!uploads.length}
-              onClick={() => downloadAllForPreset(PRESETS[4])}
-              className="rounded-xl border border-green-600 px-4 py-2 font-semibold text-green-700 hover:bg-green-50 disabled:opacity-50 dark:hover:bg-gray-800"
-            >
-              All Play Phone
+              🚀 Export All Presets (Bulk)
             </button>
           </div>
 
-          <p className="mt-3 text-xs text-gray-500">
-            Tip: For batch exports, downloads are staggered. Use different
-            presets for device-specific requirements. Supports up to 10
-            screenshots per listing.
-          </p>
+          {/* Individual Preset Exports */}
+          <div className="mt-4">
+            <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+              Quick Export by Preset:
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                disabled={!uploads.length}
+                onClick={() => downloadAllForPreset(PRESETS[0])}
+                className="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium transition-colors hover:bg-gray-50 disabled:opacity-50 dark:border-gray-700 dark:hover:bg-gray-800"
+              >
+                iOS 6.9″
+              </button>
+              <button
+                disabled={!uploads.length}
+                onClick={() => downloadAllForPreset(PRESETS[1])}
+                className="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium transition-colors hover:bg-gray-50 disabled:opacity-50 dark:border-gray-700 dark:hover:bg-gray-800"
+              >
+                iOS 6.5″
+              </button>
+              <button
+                disabled={!uploads.length}
+                onClick={() => downloadAllForPreset(PRESETS[3])}
+                className="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium transition-colors hover:bg-gray-50 disabled:opacity-50 dark:border-gray-700 dark:hover:bg-gray-800"
+              >
+                iPad 13″
+              </button>
+              <button
+                disabled={!uploads.length}
+                onClick={() => downloadAllForPreset(PRESETS[4])}
+                className="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium transition-colors hover:bg-gray-50 disabled:opacity-50 dark:border-gray-700 dark:hover:bg-gray-800"
+              >
+                Play Phone
+              </button>
+            </div>
+          </div>
+
+          <div className="mt-4 rounded-lg bg-blue-50 p-3 dark:bg-blue-900/20">
+            <p className="text-xs text-blue-800 dark:text-blue-200">
+              <strong>💡 Pro Tip:</strong> "Export All Presets" generates
+              screenshots for all devices at once. Downloads are staggered to
+              avoid browser limits. Perfect for App Store & Google Play
+              submissions!
+            </p>
+          </div>
         </section>
+      </div>
+
+      {/* Keyboard Shortcuts Help */}
+      <div className="mt-8 rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-white p-6 dark:border-gray-700 dark:from-gray-900 dark:to-gray-800">
+        <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+          ⌨️ Keyboard Shortcuts
+        </h3>
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+          <div className="flex items-center gap-3">
+            <kbd className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 font-mono text-sm shadow-sm dark:border-gray-600 dark:bg-gray-700">
+              ⌘/Ctrl + S
+            </kbd>
+            <span className="text-sm text-gray-600 dark:text-gray-400">
+              Save configuration
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <kbd className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 font-mono text-sm shadow-sm dark:border-gray-600 dark:bg-gray-700">
+              ⌘/Ctrl + D
+            </kbd>
+            <span className="text-sm text-gray-600 dark:text-gray-400">
+              Download all
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <kbd className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 font-mono text-sm shadow-sm dark:border-gray-600 dark:bg-gray-700">
+              ← →
+            </kbd>
+            <span className="text-sm text-gray-600 dark:text-gray-400">
+              Navigate images
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -743,6 +1381,41 @@ function wrapText(
   }
   ctx.fillText(line.trimEnd(), x, yy);
   return lines + 1; // return line count for positioning
+}
+
+function wrapTextEnhanced(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  maxWidth: number,
+  lineHeight: number,
+  align: "left" | "center" | "right",
+  stroke: boolean,
+): number {
+  const words = text.split(/\s+/);
+  let line = "";
+  let yy = y;
+  let lines = 0;
+
+  for (let n = 0; n < words.length; n++) {
+    const testLine = line + words[n] + " ";
+    const { width } = ctx.measureText(testLine);
+    if (width > maxWidth && n > 0) {
+      const finalLine = line.trimEnd();
+      if (stroke) ctx.strokeText(finalLine, x, yy);
+      ctx.fillText(finalLine, x, yy);
+      line = words[n] + " ";
+      yy += lineHeight;
+      lines++;
+    } else {
+      line = testLine;
+    }
+  }
+  const finalLine = line.trimEnd();
+  if (stroke) ctx.strokeText(finalLine, x, yy);
+  ctx.fillText(finalLine, x, yy);
+  return lines + 1;
 }
 
 function loadImage(src: string) {
