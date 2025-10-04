@@ -152,7 +152,7 @@ export default async function BlogPostPage({
           {/* <p>{post.description}</p> */}
 
           <div
-            className="drop-cap lg:px-16 xl:px-0"
+            className="drop-cap max-w-2xl lg:px-16 xl:px-0"
             dangerouslySetInnerHTML={{ __html: contentWithAnchors }}
           />
 
