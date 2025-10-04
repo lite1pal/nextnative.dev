@@ -1,36 +1,6 @@
 {
   "rewrites": [
     { "source": "/docs", "destination": "https://docs.nextnative.dev" },
-    { "source": "/docs/:path*", "destination": "https://docs.nextnative.dev/:path*" },
-
-    {
-      "source": "/_next/:path*",
-      "has": [
-        { "type": "header", "key": "referer", "value": "https://nextnative\\.dev/docs.*" }
-      ],
-      "destination": "https://docs.nextnative.dev/_next/:path*"
-    },
-
-    {
-      "source": "/fonts/:path*",
-      "has": [
-        { "type": "header", "key": "referer", "value": "https://nextnative\\.dev/docs.*" }
-      ],
-      "destination": "https://docs.nextnative.dev/fonts/:path*"
-    },
-    {
-      "source": "/images/:path*",
-      "has": [
-        { "type": "header", "key": "referer", "value": "https://nextnative\\.dev/docs.*" }
-      ],
-      "destination": "https://docs.nextnative.dev/images/:path*"
-    },
-    {
-      "source": "/favicon.ico",
-      "has": [
-        { "type": "header", "key": "referer", "value": "https://nextnative\\.dev/docs.*" }
-      ],
-      "destination": "https://docs.nextnative.dev/favicon.ico"
-    }
+    { "source": "/docs/:path*", "destination": "https://docs.nextnative.dev/:path*" }
   ]
 }
