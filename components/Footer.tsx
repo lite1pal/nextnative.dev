@@ -22,8 +22,8 @@ const productLinks: FooterLink[] = [
   { label: "Showcase", href: "/showcase" },
   { label: "Contact", href: "/contact" },
   {
-    label: "Icon & Splash Generator",
-    href: "/free-tools/app-icon-splash-generator",
+    label: "Free tools",
+    href: "/free-tools",
   },
   {
     label: "MVP Agency",
