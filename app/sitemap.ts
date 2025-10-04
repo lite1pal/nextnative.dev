@@ -31,6 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const freeTools = [
     "https://nextnative.dev/free-tools",
     "https://nextnative.dev/free-tools/app-icon-splash-generator",
+    "https://nextnative.dev/free-tools/app-revenue-calculator",
   ];
 
   return [
@@ -66,7 +67,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     ...freeTools.map((freeTool) => ({
       url: freeTool,
-      lastModified: new Date("2025-08-19"),
+      lastModified: new Date("2025-10-04"),
       changeFrequency: "weekly",
     })),
 

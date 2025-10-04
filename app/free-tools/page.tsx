@@ -10,6 +10,12 @@ function Page() {
         "Upload one image to instantly generate all required iOS and Android app icons and splash screens.",
       link: "/free-tools/app-icon-splash-generator",
     },
+    {
+      title: "App Revenue Calculator | Estimate App Store Profit Instantly",
+      description:
+        "Estimate your app's net revenue after App Store, Google Play, and RevenueCat fees.",
+      link: "/free-tools/app-revenue-calculator",
+    },
     // {
     //   title: "Capacitor Config Builder",
     //   description:
