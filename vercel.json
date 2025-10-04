@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/docs", "destination": "https://docs.nextnative.dev" },
+    { "source": "/docs/:path*", "destination": "https://docs.nextnative.dev/:path*" }
+  ]
+}
