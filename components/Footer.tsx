@@ -18,7 +18,7 @@ const productLinks: FooterLink[] = [
   },
   { label: "Pricing", href: "/pricing" },
   { label: "Blog", href: "/blog" },
-  { label: "Docs", href: "https://docs.nextnative.dev" },
+  { label: "Docs", href: "https://nextnative.dev/docs" },
   { label: "Showcase", href: "/showcase" },
   { label: "Contact", href: "/contact" },
   {

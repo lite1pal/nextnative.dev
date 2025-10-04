@@ -90,7 +90,7 @@ function Navbar() {
           onClick={() => {
             trackEvent("Navbar_Docs_clicked");
           }}
-          href="https://docs.nextnative.dev"
+          href="https://nextnative.dev/docs"
           className="hover:text-primary text-base transition-colors md:text-lg"
         >
           Docs
@@ -167,7 +167,7 @@ function Navbar() {
               setIsMenuOpen(false);
               trackEvent("Navbar_Docs_clicked");
             }}
-            href="https://docs.nextnative.dev"
+            href="https://nextnative.dev/docs"
             className="hover:text-primary text-base transition-colors"
           >
             Docs
