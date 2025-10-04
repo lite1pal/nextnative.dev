@@ -1,7 +1,7 @@
 {
   "rewrites": [
-    { "source": "/docs", "destination": "https://docs.nextnative.dev/docs" },
-    { "source": "/docs/_next/:path*", "destination": "https://docs.nextnative.dev/docs/_next/:path*" },
-    { "source": "/docs/:path*", "destination": "https://docs.nextnative.dev/docs/:path*" }
+    { "source": "/docs", "destination": "https://docs.nextnative.dev" },
+    { "source": "/docs/_next/:path*", "destination": "https://docs.nextnative.dev/_next/:path*" },
+    { "source": "/docs/:path*", "destination": "https://docs.nextnative.dev/:path*" }
   ]
 }
