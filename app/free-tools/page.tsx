@@ -3,6 +3,7 @@
 import HighlightedSpan from "@/components/HighlightedSpan";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { title } from "process";
 import { useMemo } from "react";
 
 function Page() {
@@ -12,6 +13,12 @@ function Page() {
       description:
         "Get fresh mobile app ideas with features and monetization suggestions.",
       link: "/free-tools/app-idea-generator",
+    },
+    {
+      title: "App Name Generator",
+      description:
+        "Generate brandable app name ideas with domain suggestions. Short, punchy, two-word, and invented styles.",
+      link: "/free-tools/app-name-generator",
     },
     {
       title: "App Store Metadata Generator",
@@ -52,6 +59,12 @@ function Page() {
       description:
         "Create a customizable privacy policy for your iOS, Android, or web app in minutes.",
       link: "/free-tools/app-privacy-policy-generator",
+    },
+    {
+      title: "Play Store Privacy Policy Generator",
+      description:
+        "Generate a Google Play compliant privacy policy for your Android app instantly.",
+      link: "/free-tools/play-store-privacy-policy",
     },
     {
       title: "Capacitor Config Generator",
