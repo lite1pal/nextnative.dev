@@ -32,6 +32,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "https://nextnative.dev/free-tools",
     "https://nextnative.dev/free-tools/app-icon-splash-generator",
     "https://nextnative.dev/free-tools/app-revenue-calculator",
+    "https://nextnative.dev/free-tools/app-privacy-policy-generator",
+    "https://nextnative.dev/free-tools/pwa-manifest-generator",
   ];
 
   return [

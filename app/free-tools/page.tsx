@@ -21,6 +21,12 @@ function Page() {
       description: "Generate a valid PWA manifest.json file in seconds.",
       link: "/free-tools/pwa-manifest-generator",
     },
+    {
+      title: "App Privacy Policy Generator",
+      description:
+        "Create a customizable privacy policy for your iOS, Android, or web app in minutes.",
+      link: "/free-tools/app-privacy-policy-generator",
+    },
     // {
     //   title: "Capacitor Config Builder",
     //   description:
