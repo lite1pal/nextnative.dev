@@ -278,13 +278,13 @@ export default function AppIdeaGenerator() {
         </div>
       </div>
 
-      <p className="mt-10 text-center text-gray-500 dark:text-gray-400">
+      <p className="mt-10 text-center text-lg text-gray-500 dark:text-gray-400">
         Like this idea?{" "}
         <a
           href="https://nextnative.dev"
           className="font-semibold text-green-600 underline hover:text-green-700"
         >
-          Turn it into a real iOS & Android app with NextNative →
+          Turn it into a real iOS & Android app with NextNative
         </a>
       </p>
     </div>

@@ -8,10 +8,33 @@ import { useMemo } from "react";
 function Page() {
   const tools = [
     {
+      title: "App Idea Generator",
+      description:
+        "Get fresh mobile app ideas with features and monetization suggestions.",
+      link: "/free-tools/app-idea-generator",
+    },
+    {
+      title: "App Store Metadata Generator",
+      description:
+        "Create App Store & Google Play titles, subtitles, keywords CSV, and descriptions.",
+      link: "/free-tools/app-store-metadata-generator",
+    },
+    {
+      title: "App Store Screenshot Generator",
+      description:
+        "Generate beautiful App Store and Google Play screenshots with device frames.",
+      link: "/free-tools/app-store-screenshot-generator",
+    },
+    {
       title: "App Icon & Splash Screen Generator",
       description:
         "Upload one image to instantly generate all required iOS and Android app icons and splash screens.",
       link: "/free-tools/app-icon-splash-generator",
+    },
+    {
+      title: "Preview Website on Mobile Device",
+      description: "Test how your web app would look on a mobile device.",
+      link: "/convert-website-to-app",
     },
     {
       title: "App Revenue Calculator",
@@ -41,24 +64,6 @@ function Page() {
       description:
         "Generate a reverse-domain bundle identifier like com.company.app for Xcode and Capacitor.",
       link: "/free-tools/ios-bundle-id-generator",
-    },
-    {
-      title: "App Idea Generator",
-      description:
-        "Get fresh mobile app ideas with features and monetization suggestions.",
-      link: "/free-tools/app-idea-generator",
-    },
-    {
-      title: "App Store Metadata Generator",
-      description:
-        "Create App Store & Google Play titles, subtitles, keywords CSV, and descriptions.",
-      link: "/free-tools/app-store-metadata-generator",
-    },
-    {
-      title: "App Store Screenshot Generator",
-      description:
-        "Generate beautiful App Store and Google Play screenshots with device frames.",
-      link: "/free-tools/app-store-screenshot-generator",
     },
   ];
 

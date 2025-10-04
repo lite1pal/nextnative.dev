@@ -22,7 +22,7 @@ const productLinks: FooterLink[] = [
   { label: "Showcase", href: "/showcase" },
   { label: "Contact", href: "/contact" },
   {
-    label: "Free tools",
+    label: "Free Tools",
     href: "/free-tools",
   },
   {
