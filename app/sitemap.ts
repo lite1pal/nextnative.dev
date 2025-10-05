@@ -2,6 +2,7 @@
 import { prisma } from "@/prisma/client";
 import type { MetadataRoute } from "next";
 import { comparisons } from "./comparisons/[slug]/comparisons-data";
+import { tutorials } from "./tutorials/[slug]/tutorials-data";
 
 export const revalidate = 600; // 10 minutes in seconds
 
@@ -48,6 +49,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const comparisonUrls = comparisons.map(
     (comparison) => `https://nextnative.dev/comparisons/${comparison.slug}`,
+  );
+
+  const tutorialUrls = tutorials.map(
+    (tutorial) => `https://nextnative.dev/tutorials/${tutorial.slug}`,
   );
 
   return [
@@ -99,6 +104,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    {
+      url: "https://nextnative.dev/tutorials",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
 
     ...posts.map((post) => ({
       url: `https://nextnative.dev/blog/${post.slug}`,
@@ -120,6 +131,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
 
     ...comparisonUrls.map((url) => ({
+      url,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    })),
+
+    ...tutorialUrls.map((url) => ({
       url,
       lastModified,
       changeFrequency: "monthly",

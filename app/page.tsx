@@ -27,7 +27,6 @@ import HeroSection from "@/components/HeroSection";
 import ToolCard from "@/components/ToolCard";
 import CTA from "@/components/CTA";
 import CTASkeleton from "@/components/CTASkeleton";
-import ComparisonCTA from "@/components/ComparisonCTA";
 
 export const metadata: Metadata = {
   alternates: {
@@ -230,8 +229,6 @@ export default function Home() {
       </div>
 
       <StoreGuides />
-
-      <ComparisonCTA />
 
       <Spend5Minutes />
 

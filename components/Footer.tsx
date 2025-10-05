@@ -26,6 +26,7 @@ const productLinks: FooterLink[] = [
     href: "/free-tools",
   },
   { label: "Comparisons", href: "/comparisons" },
+  { label: "Tutorials", href: "/tutorials" },
   {
     label: "MVP Agency",
     href: "/mvp-app-development",

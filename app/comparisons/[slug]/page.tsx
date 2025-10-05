@@ -74,18 +74,21 @@ export default async function ComparisonPage({
   };
 
   return (
-    <div className="mx-auto max-w-4xl px-6 py-16">
+    <div className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
       <Script id="faq-schema" type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </Script>
 
       {/* Breadcrumbs */}
-      <nav className="mb-8 flex items-center gap-2 text-sm text-gray-600">
-        <Link href="/" className="hover:text-primary">
+      <nav className="mb-10 flex items-center gap-2 text-base text-gray-600">
+        <Link href="/" className="hover:text-primary transition-colors">
           Home
         </Link>
         <ChevronRight className="h-4 w-4" />
-        <Link href="/comparisons" className="hover:text-primary">
+        <Link
+          href="/comparisons"
+          className="hover:text-primary transition-colors"
+        >
           Comparisons
         </Link>
         <ChevronRight className="h-4 w-4" />
@@ -95,84 +98,84 @@ export default async function ComparisonPage({
       </nav>
 
       {/* Header */}
-      <header className="mb-12 text-center">
-        <h1 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+      <header className="mb-16 text-center">
+        <h1 className="mb-6 text-4xl leading-tight font-bold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
           {comparison.option1.name} vs {comparison.option2.name}
         </h1>
-        <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
+        <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600 md:text-2xl dark:text-gray-400">
           {comparison.summary}
         </p>
       </header>
 
       {/* Quick Answer */}
-      <div className="bg-primary/10 mb-12 rounded-2xl p-6 md:p-8">
-        <h2 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
-          Quick Answer
+      <div className="bg-primary/10 mb-16 rounded-3xl p-8 md:p-10">
+        <h2 className="mb-4 text-2xl font-semibold text-gray-900 md:text-3xl dark:text-white">
+          🎯 Quick Answer
         </h2>
-        <p className="text-gray-700 dark:text-gray-300">
+        <p className="text-lg leading-relaxed text-gray-700 md:text-xl dark:text-gray-300">
           {comparison.quickAnswer}
         </p>
       </div>
 
       {/* Comparison Table */}
-      <section className="mb-16">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
+      <section className="mb-20">
+        <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
           Feature Comparison
         </h2>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-700">
           <table className="w-full border-collapse">
             <thead>
-              <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="p-4 text-left text-sm font-semibold text-gray-900 dark:text-white">
+              <tr className="border-b-2 border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
+                <th className="p-5 text-left text-base font-semibold text-gray-900 md:text-lg dark:text-white">
                   Feature
                 </th>
-                <th className="p-4 text-left text-sm font-semibold text-gray-900 dark:text-white">
+                <th className="p-5 text-left text-base font-semibold text-gray-900 md:text-lg dark:text-white">
                   {comparison.option1.name}
                 </th>
-                <th className="p-4 text-left text-sm font-semibold text-gray-900 dark:text-white">
+                <th className="p-5 text-left text-base font-semibold text-gray-900 md:text-lg dark:text-white">
                   {comparison.option2.name}
                 </th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="bg-white dark:bg-gray-900">
               {comparison.features.map((feature, index) => (
                 <tr
                   key={index}
-                  className="border-b border-gray-100 dark:border-gray-800"
+                  className="border-b border-gray-100 transition-colors hover:bg-gray-50 dark:border-gray-800 dark:hover:bg-gray-800/50"
                 >
-                  <td className="p-4 font-medium text-gray-900 dark:text-white">
+                  <td className="p-5 text-base font-medium text-gray-900 md:text-lg dark:text-white">
                     {feature.feature}
                   </td>
                   <td
-                    className={`p-4 ${
+                    className={`p-5 ${
                       feature.winner === "option1" ? "bg-primary/5" : ""
                     }`}
                   >
                     {typeof feature.option1 === "boolean" ? (
                       feature.option1 ? (
-                        <Check className="h-5 w-5 text-green-600" />
+                        <Check className="h-6 w-6 text-green-600" />
                       ) : (
-                        <X className="h-5 w-5 text-red-600" />
+                        <X className="h-6 w-6 text-red-600" />
                       )
                     ) : (
-                      <span className="text-gray-700 dark:text-gray-300">
+                      <span className="text-base text-gray-700 md:text-lg dark:text-gray-300">
                         {feature.option1}
                       </span>
                     )}
                   </td>
                   <td
-                    className={`p-4 ${
+                    className={`p-5 ${
                       feature.winner === "option2" ? "bg-primary/5" : ""
                     }`}
                   >
                     {typeof feature.option2 === "boolean" ? (
                       feature.option2 ? (
-                        <Check className="h-5 w-5 text-green-600" />
+                        <Check className="h-6 w-6 text-green-600" />
                       ) : (
-                        <X className="h-5 w-5 text-red-600" />
+                        <X className="h-6 w-6 text-red-600" />
                       )
                     ) : (
-                      <span className="text-gray-700 dark:text-gray-300">
+                      <span className="text-base text-gray-700 md:text-lg dark:text-gray-300">
                         {feature.option2}
                       </span>
                     )}
@@ -185,25 +188,25 @@ export default async function ComparisonPage({
       </section>
 
       {/* Pros and Cons */}
-      <section className="mb-16">
-        <h2 className="mb-8 text-3xl font-bold text-gray-900 dark:text-white">
+      <section className="mb-20">
+        <h2 className="mb-10 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
           Pros & Cons
         </h2>
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2 lg:gap-10">
           {/* Option 1 */}
-          <div className="rounded-2xl border border-gray-200 p-6 dark:border-gray-700">
-            <h3 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
+          <div className="rounded-2xl border border-gray-200 bg-white p-7 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+            <h3 className="mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
               {comparison.option1.name}
             </h3>
-            <div className="mb-6">
-              <h4 className="mb-3 font-medium text-green-700 dark:text-green-400">
-                Pros
+            <div className="mb-8">
+              <h4 className="mb-4 text-lg font-semibold text-green-700 dark:text-green-400">
+                ✓ Pros
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {comparison.option1Pros.map((pro, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">
+                  <li key={index} className="flex items-start gap-3">
+                    <Check className="mt-1 h-5 w-5 flex-shrink-0 text-green-600" />
+                    <span className="text-base leading-relaxed text-gray-700 dark:text-gray-300">
                       {pro}
                     </span>
                   </li>
@@ -211,14 +214,14 @@ export default async function ComparisonPage({
               </ul>
             </div>
             <div>
-              <h4 className="mb-3 font-medium text-red-700 dark:text-red-400">
-                Cons
+              <h4 className="mb-4 text-lg font-semibold text-red-700 dark:text-red-400">
+                ✗ Cons
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {comparison.option1Cons.map((con, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <X className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-600" />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">
+                  <li key={index} className="flex items-start gap-3">
+                    <X className="mt-1 h-5 w-5 flex-shrink-0 text-red-600" />
+                    <span className="text-base leading-relaxed text-gray-700 dark:text-gray-300">
                       {con}
                     </span>
                   </li>
@@ -228,19 +231,19 @@ export default async function ComparisonPage({
           </div>
 
           {/* Option 2 */}
-          <div className="rounded-2xl border border-gray-200 p-6 dark:border-gray-700">
-            <h3 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
+          <div className="rounded-2xl border border-gray-200 bg-white p-7 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+            <h3 className="mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
               {comparison.option2.name}
             </h3>
-            <div className="mb-6">
-              <h4 className="mb-3 font-medium text-green-700 dark:text-green-400">
-                Pros
+            <div className="mb-8">
+              <h4 className="mb-4 text-lg font-semibold text-green-700 dark:text-green-400">
+                ✓ Pros
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {comparison.option2Pros.map((pro, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">
+                  <li key={index} className="flex items-start gap-3">
+                    <Check className="mt-1 h-5 w-5 flex-shrink-0 text-green-600" />
+                    <span className="text-base leading-relaxed text-gray-700 dark:text-gray-300">
                       {pro}
                     </span>
                   </li>
@@ -248,14 +251,14 @@ export default async function ComparisonPage({
               </ul>
             </div>
             <div>
-              <h4 className="mb-3 font-medium text-red-700 dark:text-red-400">
-                Cons
+              <h4 className="mb-4 text-lg font-semibold text-red-700 dark:text-red-400">
+                ✗ Cons
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {comparison.option2Cons.map((con, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <X className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-600" />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">
+                  <li key={index} className="flex items-start gap-3">
+                    <X className="mt-1 h-5 w-5 flex-shrink-0 text-red-600" />
+                    <span className="text-base leading-relaxed text-gray-700 dark:text-gray-300">
                       {con}
                     </span>
                   </li>
@@ -267,20 +270,20 @@ export default async function ComparisonPage({
       </section>
 
       {/* When to Use */}
-      <section className="mb-16">
-        <h2 className="mb-8 text-3xl font-bold text-gray-900 dark:text-white">
+      <section className="mb-20">
+        <h2 className="mb-10 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
           When to Use Each
         </h2>
-        <div className="grid gap-8 md:grid-cols-2">
-          <div className="bg-primary/5 rounded-2xl p-6">
-            <h3 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
+        <div className="grid gap-8 md:grid-cols-2 lg:gap-10">
+          <div className="bg-primary/5 rounded-3xl p-8 shadow-sm">
+            <h3 className="mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
               Choose {comparison.option1.name}
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {comparison.whenToUse.option1.map((use, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <ChevronRight className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
-                  <span className="text-gray-700 dark:text-gray-300">
+                <li key={index} className="flex items-start gap-3">
+                  <ChevronRight className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
+                  <span className="text-base leading-relaxed text-gray-700 md:text-lg dark:text-gray-300">
                     {use}
                   </span>
                 </li>
@@ -288,15 +291,15 @@ export default async function ComparisonPage({
             </ul>
           </div>
 
-          <div className="rounded-2xl bg-gray-100 p-6 dark:bg-gray-800">
-            <h3 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
+          <div className="rounded-3xl bg-gray-100 p-8 shadow-sm dark:bg-gray-800">
+            <h3 className="mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
               Choose {comparison.option2.name}
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {comparison.whenToUse.option2.map((use, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <ChevronRight className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600 dark:text-gray-400" />
-                  <span className="text-gray-700 dark:text-gray-300">
+                <li key={index} className="flex items-start gap-3">
+                  <ChevronRight className="mt-1 h-5 w-5 flex-shrink-0 text-gray-600 dark:text-gray-400" />
+                  <span className="text-base leading-relaxed text-gray-700 md:text-lg dark:text-gray-300">
                     {use}
                   </span>
                 </li>
@@ -307,52 +310,56 @@ export default async function ComparisonPage({
       </section>
 
       {/* FAQs */}
-      <section className="mb-16">
-        <h2 className="mb-8 text-3xl font-bold text-gray-900 dark:text-white">
+      <section className="mb-20">
+        <h2 className="mb-10 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
           Frequently Asked Questions
         </h2>
         <div className="space-y-6">
           {comparison.faqs.map((faq, index) => (
             <div
               key={index}
-              className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700"
+              className="rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-900"
             >
-              <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+              <h3 className="mb-4 text-xl leading-tight font-semibold text-gray-900 md:text-2xl dark:text-white">
                 {faq.question}
               </h3>
-              <p className="text-gray-700 dark:text-gray-300">{faq.answer}</p>
+              <p className="text-base leading-relaxed text-gray-700 md:text-lg dark:text-gray-300">
+                {faq.answer}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Conclusion */}
-      <section className="mb-16">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
+      <section className="mb-20">
+        <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
           Conclusion
         </h2>
-        <div className="rounded-2xl bg-white p-6">
-          <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+        <div className="rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 p-8 shadow-sm dark:from-gray-800 dark:to-gray-900">
+          <p className="text-lg leading-relaxed text-gray-700 md:text-xl dark:text-gray-300">
             {comparison.conclusion}
           </p>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="rounded-2xl bg-white p-8 text-center md:p-12">
-        <h2 className="mb-4 text-3xl font-bold">{comparison.cta.text}</h2>
-        <p className="mb-6 text-lg opacity-90">{comparison.cta.description}</p>
+      <section className="rounded-3xl bg-white p-10 text-center shadow-lg md:p-14">
+        <h2 className="mb-5 text-3xl font-bold md:text-4xl">
+          {comparison.cta.text}
+        </h2>
+        <p className="mb-8 text-lg md:text-xl">{comparison.cta.description}</p>
         <Suspense fallback={<CTASkeleton />}>
           <CTA />
         </Suspense>
       </section>
 
       {/* Related Comparisons */}
-      <section className="mt-16">
-        <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
+      <section className="mt-20">
+        <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
           Related Comparisons
         </h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {comparisons
             .filter((c) => c.slug !== slug)
             .slice(0, 3)
@@ -360,12 +367,12 @@ export default async function ComparisonPage({
               <Link
                 key={related.slug}
                 href={`/comparisons/${related.slug}`}
-                className="group hover:border-primary rounded-xl border bg-white p-4 transition-all hover:shadow-lg dark:border-gray-700"
+                className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg dark:border-gray-700 dark:bg-gray-900"
               >
-                <h3 className="group-hover:text-primary mb-2 font-semibold text-gray-900 dark:text-white">
+                <h3 className="group-hover:text-primary mb-3 text-lg font-semibold text-gray-900 dark:text-white">
                   {related.title}
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-base text-gray-600 dark:text-gray-400">
                   {related.option1.name} vs {related.option2.name}
                 </p>
               </Link>

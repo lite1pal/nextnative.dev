@@ -2,6 +2,9 @@ import Link from "next/link";
 import { comparisons } from "./[slug]/comparisons-data";
 import { ChevronRight } from "lucide-react";
 import HighlightedSpan from "@/components/HighlightedSpan";
+import CTASkeleton from "@/components/CTASkeleton";
+import { Suspense } from "react";
+import CTA from "@/components/CTA";
 
 export default function ComparisonsPage() {
   return (
@@ -18,12 +21,12 @@ export default function ComparisonsPage() {
       </header>
 
       {/* Comparison Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2">
         {comparisons.map((comparison) => (
           <Link
             key={comparison.slug}
             href={`/comparisons/${comparison.slug}`}
-            className="group hover:border-primary rounded-2xl border border-gray-200 p-6 transition-all hover:shadow-xl dark:border-gray-700"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-xl dark:border-gray-700"
           >
             <div className="mb-4 flex items-center justify-between">
               <h2 className="group-hover:text-primary text-2xl font-bold text-gray-900 dark:text-white">
@@ -50,20 +53,23 @@ export default function ComparisonsPage() {
       </div>
 
       {/* Bottom CTA */}
-      <div className="bg-primary/5 mt-16 rounded-2xl p-8 text-center">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+      <div className="mt-16 rounded-2xl bg-white p-16 text-center">
+        <h2 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white">
           Ready to build your mobile app?
         </h2>
-        <p className="mb-6 text-gray-700 dark:text-gray-300">
+        <p className="mb-6 text-lg text-gray-700">
           NextNative provides everything you need to ship iOS and Android apps
           with Next.js + Capacitor in minutes.
         </p>
-        <Link
+        {/* <Link
           href="/pricing"
           className="bg-primary hover:bg-primary/90 inline-block rounded-full px-8 py-3 font-semibold text-white transition-all"
         >
           Get Started
-        </Link>
+        </Link> */}
+        <Suspense fallback={<CTASkeleton />}>
+          <CTA />
+        </Suspense>
       </div>
     </div>
   );
