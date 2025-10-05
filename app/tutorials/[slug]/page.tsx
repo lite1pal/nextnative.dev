@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { tutorials } from "./tutorials-data";
+import { comparisons } from "../../comparisons/[slug]/comparisons-data";
 import type { Metadata } from "next";
 import {
   ChevronRight,
@@ -304,6 +305,32 @@ export default async function TutorialPage({
           </div>
         </section>
       )}
+
+      {/* Related Comparisons */}
+      <section className="mb-16">
+        <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+          Compare Mobile Frameworks
+        </h2>
+        <p className="mb-8 text-lg text-gray-600 dark:text-gray-400">
+          Still deciding on your tech stack? Check out these comparisons
+        </p>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {comparisons.slice(0, 3).map((comparison) => (
+            <Link
+              key={comparison.slug}
+              href={`/comparisons/${comparison.slug}`}
+              className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg dark:border-gray-700 dark:bg-gray-900"
+            >
+              <h3 className="group-hover:text-primary mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+                {comparison.title}
+              </h3>
+              <p className="text-base text-gray-600 dark:text-gray-400">
+                {comparison.option1.name} vs {comparison.option2.name}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {/* Documentation Links */}
       <section className="mt-20 rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 p-10 dark:from-gray-800/50 dark:to-gray-900/50">

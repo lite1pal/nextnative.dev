@@ -1,6 +1,14 @@
 import { alternatives } from "./alternatives-data";
+import { tutorials } from "../../tutorials/[slug]/tutorials-data";
+import { comparisons } from "../../comparisons/[slug]/comparisons-data";
 import { notFound } from "next/navigation";
-import { CheckCircle2, XCircle, ChevronRight, Minus } from "lucide-react";
+import {
+  CheckCircle2,
+  XCircle,
+  ChevronRight,
+  Minus,
+  Calendar,
+} from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 import CTASkeleton from "@/components/CTASkeleton";
@@ -130,6 +138,15 @@ export default function AlternativePage({
           <h1 className="mb-6 text-5xl leading-tight font-bold text-gray-900 md:text-6xl lg:text-7xl dark:text-white">
             {alternative.heroHeading}
           </h1>
+
+          {/* Last Updated */}
+          <div className="mb-6">
+            <span className="flex items-center gap-2 text-lg text-gray-600 dark:text-gray-400">
+              <Calendar className="h-5 w-5" />
+              Updated {alternative.lastUpdated}
+            </span>
+          </div>
+
           <p className="text-xl leading-relaxed text-gray-600 md:text-2xl dark:text-gray-400">
             {alternative.heroDescription}
           </p>
@@ -340,34 +357,53 @@ export default function AlternativePage({
           </Suspense>
         </div>
 
-        {/* Related Links */}
+        {/* Related Tutorials */}
         <div className="border-t border-gray-200 pt-12 dark:border-gray-700">
+          <h3 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
+            Ready to Get Started?
+          </h3>
+          <p className="mb-6 text-lg text-gray-600 dark:text-gray-400">
+            Follow these step-by-step tutorials to build your mobile app
+          </p>
+          <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {tutorials.slice(0, 3).map((tutorial) => (
+              <Link
+                key={tutorial.slug}
+                href={`/tutorials/${tutorial.slug}`}
+                className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-900"
+              >
+                <h4 className="group-hover:text-primary mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                  {tutorial.title}
+                </h4>
+                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                  {tutorial.timeToComplete} • {tutorial.difficulty}
+                </p>
+                <p className="text-base text-gray-600 dark:text-gray-400">
+                  {tutorial.summary}
+                </p>
+              </Link>
+            ))}
+          </div>
+
+          {/* Related Comparisons */}
           <h3 className="mb-6 text-xl font-bold text-gray-900 md:text-2xl dark:text-white">
-            Learn More About NextNative
+            Compare Mobile Frameworks
           </h3>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <Link
-              href="/tutorials"
-              className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-900"
-            >
-              <h4 className="group-hover:text-primary mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-                Tutorials & Guides
-              </h4>
-              <p className="text-base text-gray-600 dark:text-gray-400">
-                Step-by-step guides to build mobile apps with Next.js
-              </p>
-            </Link>
-            <Link
-              href="/comparisons"
-              className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-900"
-            >
-              <h4 className="group-hover:text-primary mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-                Framework Comparisons
-              </h4>
-              <p className="text-base text-gray-600 dark:text-gray-400">
-                Detailed comparisons of mobile development frameworks
-              </p>
-            </Link>
+            {comparisons.slice(0, 3).map((comparison) => (
+              <Link
+                key={comparison.slug}
+                href={`/comparisons/${comparison.slug}`}
+                className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-900"
+              >
+                <h4 className="group-hover:text-primary mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                  {comparison.title}
+                </h4>
+                <p className="text-base text-gray-600 dark:text-gray-400">
+                  {comparison.option1.name} vs {comparison.option2.name}
+                </p>
+              </Link>
+            ))}
           </div>
         </div>
       </div>

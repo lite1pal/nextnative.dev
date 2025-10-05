@@ -10,6 +10,7 @@ export interface AlternativeData {
   title: string;
   metaTitle: string;
   metaDescription: string;
+  lastUpdated: string;
   alternativeName: string;
   alternativeTagline: string;
   heroHeading: string;
@@ -41,7 +42,8 @@ export const alternatives: AlternativeData[] = [
     metaTitle:
       "React Native Alternative: Build Mobile Apps with Next.js + Capacitor",
     metaDescription:
-      "Looking for a React Native alternative? Use Next.js + Capacitor to build iOS and Android apps with your existing web skills. Share code 100% across web and mobile.",
+      "Skip React Native. Build iOS & Android with Next.js + Capacitor. 100% code sharing, 3x faster dev. From $149. 10,000+ developers switched. Learn why →",
+    lastUpdated: "October 2025",
     alternativeName: "React Native",
     alternativeTagline: "Native mobile framework",
     heroHeading: "Build mobile apps without leaving the web ecosystem",
@@ -207,7 +209,8 @@ export const alternatives: AlternativeData[] = [
     metaTitle:
       "Flutter Alternative: Build Mobile Apps with Next.js + Capacitor",
     metaDescription:
-      "Don't want to learn Dart? Build iOS and Android apps with Next.js + Capacitor instead of Flutter. Use JavaScript/TypeScript and share code with your web app.",
+      "Skip Dart & Flutter. Build iOS & Android with JavaScript. 100% code sharing, hire web devs easily. From $149. No new language needed →",
+    lastUpdated: "October 2025",
     alternativeName: "Flutter",
     alternativeTagline: "Google's mobile framework",
     heroHeading: "Build mobile apps without learning Dart",
@@ -372,7 +375,8 @@ export const alternatives: AlternativeData[] = [
     title: "Expo Alternative",
     metaTitle: "Expo Alternative: Build Mobile Apps with Next.js + Capacitor",
     metaDescription:
-      "Looking for an Expo alternative with web support? Build iOS and Android apps with Next.js + Capacitor. Share code 100% across web and mobile platforms.",
+      "Expo alternative with web supremacy. Build iOS, Android & Web from 1 codebase. Next.js + Capacitor. From $149. 10,000+ developers switched. Start →",
+    lastUpdated: "October 2025",
     alternativeName: "Expo",
     alternativeTagline: "Managed React Native",
     heroHeading: "Build mobile apps that also work as websites",
@@ -537,7 +541,8 @@ export const alternatives: AlternativeData[] = [
     title: "Ionic Alternative",
     metaTitle: "Ionic Alternative: Build Mobile Apps with Next.js + Capacitor",
     metaDescription:
-      "Want Capacitor without Ionic's UI components? Build iOS and Android apps with Next.js + Capacitor using Tailwind CSS and your own custom design.",
+      "Capacitor without Ionic's UI. Use Next.js + Tailwind CSS. Design freedom + native features. From $149. 10,000+ developers prefer it. Try now →",
+    lastUpdated: "October 2025",
     alternativeName: "Ionic",
     alternativeTagline: "Hybrid mobile framework",
     heroHeading: "Use Capacitor without Ionic's UI components",
@@ -694,7 +699,8 @@ export const alternatives: AlternativeData[] = [
     metaTitle:
       "Cordova Alternative: Build Mobile Apps with Capacitor + Next.js",
     metaDescription:
-      "Upgrade from Cordova to Capacitor. Build modern iOS and Android apps with Next.js + Capacitor—better performance, modern APIs, and active development.",
+      "Upgrade from Cordova to modern Capacitor + Next.js. Better APIs, active development, faster builds. Migration guide included. Start today →",
+    lastUpdated: "October 2025",
     alternativeName: "Cordova",
     alternativeTagline: "Legacy hybrid framework",
     heroHeading: "Upgrade to modern mobile development",

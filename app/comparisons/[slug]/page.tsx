@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import { comparisons, type ComparisonData } from "./comparisons-data";
+import { tutorials } from "../../tutorials/[slug]/tutorials-data";
 import type { Metadata } from "next";
 import HighlightedSpan from "@/components/HighlightedSpan";
-import { Check, X, ChevronRight } from "lucide-react";
+import { Check, X, ChevronRight, Calendar } from "lucide-react";
 import Link from "next/link";
 import Script from "next/script";
 import { Suspense } from "react";
@@ -102,6 +103,15 @@ export default async function ComparisonPage({
         <h1 className="mb-6 text-4xl leading-tight font-bold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
           {comparison.option1.name} vs {comparison.option2.name}
         </h1>
+
+        {/* Last Updated */}
+        <div className="mb-6 flex justify-center">
+          <span className="flex items-center gap-2 text-lg text-gray-600 dark:text-gray-400">
+            <Calendar className="h-5 w-5" />
+            Updated {comparison.lastUpdated}
+          </span>
+        </div>
+
         <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600 md:text-2xl dark:text-gray-400">
           {comparison.summary}
         </p>
@@ -354,6 +364,35 @@ export default async function ComparisonPage({
             <CTA />
           </Link>
         </Suspense>
+      </section>
+
+      {/* Related Tutorials */}
+      <section className="mt-20">
+        <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
+          Ready to Get Started?
+        </h2>
+        <p className="mb-8 text-lg text-gray-600 dark:text-gray-400">
+          Follow these step-by-step tutorials to build your mobile app
+        </p>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {tutorials.slice(0, 3).map((tutorial) => (
+            <Link
+              key={tutorial.slug}
+              href={`/tutorials/${tutorial.slug}`}
+              className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg dark:border-gray-700 dark:bg-gray-900"
+            >
+              <h3 className="group-hover:text-primary mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+                {tutorial.title}
+              </h3>
+              <p className="mb-3 text-sm text-gray-500 dark:text-gray-400">
+                {tutorial.timeToComplete} • {tutorial.difficulty}
+              </p>
+              <p className="text-base text-gray-600 dark:text-gray-400">
+                {tutorial.summary}
+              </p>
+            </Link>
+          ))}
+        </div>
       </section>
 
       {/* Related Comparisons */}
