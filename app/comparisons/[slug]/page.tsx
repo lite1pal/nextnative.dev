@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
-import { comparisons, type ComparisonData } from "./comparisons-data";
+import { comparisons } from "./comparisons-data";
 import { tutorials } from "../../tutorials/[slug]/tutorials-data";
 import type { Metadata } from "next";
-import HighlightedSpan from "@/components/HighlightedSpan";
 import { Check, X, ChevronRight, Calendar } from "lucide-react";
 import Link from "next/link";
 import Script from "next/script";

@@ -23,9 +23,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const alternative = alternatives.find((alt) => alt.slug === params.slug);
+  const { slug } = await params;
+  const alternative = alternatives.find((alt) => alt.slug === slug);
 
   if (!alternative) {
     return {};
