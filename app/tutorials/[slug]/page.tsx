@@ -356,11 +356,11 @@ export default async function TutorialPage({
       {/* Documentation Links */}
       <section className="mt-20 rounded-3xl bg-white p-10">
         <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
-          📚 Further Reading
+          📚 Ship mobile apps faster
         </h2>
         <p className="mb-8 text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-400">
-          Explore our comprehensive documentation to learn more about NextNative
-          features and capabilities.
+          Explore detailed documentation to see features and shortcuts
+          NextNative gives you to ship mobile apps faster.
         </p>
         <div className="grid gap-6 md:grid-cols-2">
           <Link
