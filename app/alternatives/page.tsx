@@ -115,7 +115,7 @@ export default function AlternativesPage() {
         </div>
 
         {/* Quick Stats */}
-        <div className="mb-20 grid gap-6 sm:grid-cols-3">
+        <div className="mb-20 grid gap-6 sm:grid-cols-2">
           <div className="rounded-3xl border border-gray-200 bg-white p-8 text-center shadow-sm dark:border-gray-700 dark:bg-gray-900">
             <div className="text-primary mb-2 text-4xl font-bold">100%</div>
             <div className="text-lg text-gray-600 dark:text-gray-400">
@@ -128,12 +128,12 @@ export default function AlternativesPage() {
               Faster development time
             </div>
           </div>
-          <div className="rounded-3xl border border-gray-200 bg-white p-8 text-center shadow-sm dark:border-gray-700 dark:bg-gray-900">
+          {/* <div className="rounded-3xl border border-gray-200 bg-white p-8 text-center shadow-sm dark:border-gray-700 dark:bg-gray-900">
             <div className="text-primary mb-2 text-4xl font-bold">$149</div>
             <div className="text-lg text-gray-600 dark:text-gray-400">
               One-time, build unlimited apps
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Category Sections */}

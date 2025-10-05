@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { tutorials } from "./tutorials-data";
 import { comparisons } from "../../comparisons/[slug]/comparisons-data";
 import type { Metadata } from "next";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/prism";
 import {
   ChevronRight,
   Clock,
@@ -190,7 +192,7 @@ export default async function TutorialPage({
           {tutorial.steps.map((step, index) => (
             <div
               key={index}
-              className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm md:p-10 dark:border-gray-700 dark:bg-gray-900"
+              className="rounded-3xl bg-white p-8 shadow-sm md:p-10"
             >
               <div className="mb-6 flex items-start gap-5">
                 <div className="bg-primary flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full text-xl font-bold text-white">
@@ -201,30 +203,49 @@ export default async function TutorialPage({
                 </h3>
               </div>
 
-              <p className="mb-6 text-lg leading-relaxed text-gray-700 md:text-xl dark:text-gray-300">
-                {step.content}
-              </p>
+              <p
+                dangerouslySetInnerHTML={{ __html: step.content }}
+                className="mb-6 text-lg leading-relaxed text-gray-700 md:text-xl dark:text-gray-300"
+              ></p>
 
               {step.code && (
                 <div className="mb-6">
-                  {step.code.filename && (
-                    <div className="rounded-t-xl bg-gray-700 px-5 py-3 font-mono text-base text-gray-300">
-                      {step.code.filename}
-                    </div>
-                  )}
-                  <pre
+                  <div className="rounded-t-[0.7rem] bg-gray-700 px-5 py-3 font-mono text-base font-[500] text-white">
+                    {step.code.filename}
+
+                    {!step.code.filename && (
+                      <div className="flex items-center gap-1.5">
+                        <div className="h-2.5 w-2.5 rounded-full bg-gray-600"></div>
+                        <div className="h-2.5 w-2.5 rounded-full bg-gray-600"></div>
+                        <div className="h-2.5 w-2.5 rounded-full bg-gray-600"></div>
+                      </div>
+                    )}
+                  </div>
+                  {/* <pre
                     className={`overflow-x-auto bg-gray-900 p-6 text-base leading-relaxed ${step.code.filename ? "rounded-b-xl" : "rounded-xl"}`}
                   >
                     <code className="text-gray-100">{step.code.code}</code>
-                  </pre>
+                  </pre> */}
+                  <SyntaxHighlighter
+                    language={step.code.language}
+                    style={nightOwl}
+                    customStyle={{
+                      marginTop: "0",
+                      borderRadius: "0rem 0rem 0.7rem 0.7rem",
+                    }}
+                  >
+                    {step.code.code}
+                  </SyntaxHighlighter>
                 </div>
               )}
 
               {step.note && (
-                <div className="rounded-xl bg-amber-50 p-5 dark:bg-amber-900/20">
-                  <p className="text-base font-medium text-amber-900 md:text-lg dark:text-amber-200">
-                    💡 <strong>Note:</strong> {step.note}
-                  </p>
+                <div className="flex items-center gap-3 rounded-xl bg-green-100 p-5">
+                  <span className="text-xl">💡</span>
+                  <p
+                    dangerouslySetInnerHTML={{ __html: step.note }}
+                    className="text-base text-green-900 md:text-xl"
+                  ></p>
                 </div>
               )}
             </div>
@@ -233,9 +254,9 @@ export default async function TutorialPage({
       </section>
 
       {/* Next Steps */}
-      {tutorial.nextSteps.length > 0 && (
-        <section className="mb-16 rounded-3xl bg-gradient-to-br from-purple-50 to-blue-50 p-10 dark:from-purple-900/20 dark:to-blue-900/20">
-          <h2 className="mb-8 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+      {/* {tutorial.nextSteps.length > 0 && (
+        <section className="mb-16 rounded-3xl bg-white p-10">
+          <h2 className="mb-8 text-4xl font-bold text-gray-900 md:text-5xl">
             🚀 Next Steps
           </h2>
           <ul className="space-y-4">
@@ -249,7 +270,7 @@ export default async function TutorialPage({
             ))}
           </ul>
         </section>
-      )}
+      )} */}
 
       <div className="mt-24 mb-20 rounded-3xl bg-white p-16 text-center">
         <h2 className="mb-6 text-4xl font-bold md:text-5xl">
@@ -319,21 +340,21 @@ export default async function TutorialPage({
             <Link
               key={comparison.slug}
               href={`/comparisons/${comparison.slug}`}
-              className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg dark:border-gray-700 dark:bg-gray-900"
+              className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg"
             >
-              <h3 className="group-hover:text-primary mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+              <h3 className="group-hover:text-primary mx-auto w-fit text-lg font-semibold text-gray-900">
                 {comparison.title}
               </h3>
-              <p className="text-base text-gray-600 dark:text-gray-400">
+              {/* <p className="text-base text-gray-600 dark:text-gray-400">
                 {comparison.option1.name} vs {comparison.option2.name}
-              </p>
+              </p> */}
             </Link>
           ))}
         </div>
       </section>
 
       {/* Documentation Links */}
-      <section className="mt-20 rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 p-10 dark:from-gray-800/50 dark:to-gray-900/50">
+      <section className="mt-20 rounded-3xl bg-white p-10">
         <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
           📚 Further Reading
         </h2>

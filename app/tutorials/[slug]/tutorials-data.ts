@@ -627,7 +627,7 @@ export async function checkPremiumStatus(): Promise<boolean> {
     timeToComplete: "45 minutes",
     lastUpdated: "October 2025",
     summary:
-      "Transform your Next.js web app into a native iOS application using Capacitor. This comprehensive guide covers everything from initial setup to publishing on the App Store.",
+      "Turn your Next.js web app into a native iOS application using Capacitor. This step-by-step guide covers everything from initial setup to publishing on the App Store.",
     prerequisites: [
       "Next.js project ready",
       "macOS computer (required for iOS development)",
@@ -644,15 +644,19 @@ export async function checkPremiumStatus(): Promise<boolean> {
     steps: [
       {
         title: "Install Xcode and Command Line Tools",
-        content:
-          "Download Xcode from the Mac App Store (it's large, ~10GB). After installation, install the command line tools.",
+        content: `<div style="display: flex; flex-direction: column; gap: 16px;">
+        <div>Download Xcode from the Mac App Store (it's large, ~10GB).</div>
+         <div>After installation, install the command line tools.</div>
+         </div>`,
         code: {
           language: "bash",
-          code: `# Install command line tools
+          code: `# Verify installation
+xcode-select -p
+          
+# Install command line tools if not already installed
 xcode-select --install
 
-# Verify installation
-xcode-select -p`,
+`,
         },
         note: "Xcode is required for iOS development and can only run on macOS.",
       },
@@ -664,14 +668,30 @@ xcode-select -p`,
           language: "typescript",
           filename: "next.config.ts",
           code: `const nextConfig = {
-  output: 'export',
-  images: {
-    unoptimized: true,
-  },
-  trailingSlash: true,
+  // Export statically for native builds
+  ...(process.env.IS_NATIVE && {
+    env: {
+      IS_NATIVE: "true",
+    },
+    output: "export",
+    images: {
+      unoptimized: true,
+    },
+  }),
 };
 
 export default nextConfig;`,
+        },
+      },
+      {
+        title: "Update package.json scripts",
+        content:
+          "Add scripts to build and open the iOS project easily in dev mode.",
+        code: {
+          language: "json",
+          filename: "package.json",
+          code: `"mobile": "cross-env IS_NATIVE=true npm run build && cross-env IS_NATIVE=true npx cap sync",
+"mobile:dev": "cross-env IS_NATIVE=true npm run build && cross-env IS_NATIVE=true npx cap sync && npm run dev"`,
         },
       },
       {
@@ -698,7 +718,7 @@ const config: CapacitorConfig = {
   appName: 'Your App Name',
   webDir: 'out',
   ios: {
-    contentInset: 'automatic',
+    schema: 'YourAppName',
   }
 };
 
@@ -735,43 +755,60 @@ npx cap sync ios`,
       },
       {
         title: "Configure Signing in Xcode",
-        content:
-          "Set up code signing so you can run your app on devices and submit to the App Store.",
-        code: {
-          language: "text",
-          code: `1. Select your project in the left sidebar
-2. Select the "App" target
-3. Go to "Signing & Capabilities" tab
-4. Check "Automatically manage signing"
-5. Select your development team
-6. Xcode will create a provisioning profile`,
-        },
-        note: "You need an Apple Developer account to sign apps.",
+        content: `<div>
+          <div>Set up code signing so you can run your app on devices and submit to the App Store.</div>
+          <br/> 
+          <div>1. Select your project in the left sidebar</div>
+           <br/> 
+          <div>2. Select the <strong>App</strong> target</div>
+           <br/> 
+          <div>3. Go to <strong>Signing & Capabilities</strong> tab</div>
+           <br/> 
+          <div>4. Check <strong>Automatically manage signing</strong></div>
+           <br/> 
+          <div>5. Select your development team</div>
+           <br/> 
+          <div>6. Xcode will create a provisioning profile</div>
+          </div>`,
+        //         code: {
+        //           language: "text",
+        //           code: `1. Select your project in the left sidebar
+        // 2. Select the "App" target
+        // 3. Go to "Signing & Capabilities" tab
+        // 4. Check "Automatically manage signing"
+        // 5. Select your development team
+        // 6. Xcode will create a provisioning profile`,
+        //         },
+        note: `<div>You need an <a href=""https://developer.apple.com>Apple Developer account</a> to sign apps.</div>`,
       },
       {
         title: "Run on iOS Simulator",
-        content:
-          "Test your app on the iOS Simulator before deploying to a real device.",
-        code: {
-          language: "text",
-          code: `1. In Xcode, select a simulator (e.g., iPhone 15 Pro)
-2. Click the "Play" button or press Cmd+R
-3. Wait for the simulator to boot and your app to launch`,
-        },
-        note: "First launch can take a few minutes. Subsequent launches are faster.",
+        content: `<div>
+          <div>Test your app on the iOS Simulator before deploying to a real device.</div>
+          <br/> 
+          <div>1. In Xcode, select a simulator (e.g., iPhone 15 Pro)</div>
+           <br/> 
+          <div>2. Click the <strong>Play </strong> button or press Cmd+R</div>
+           <br/> 
+          <div>3. Wait for the simulator to boot and your app to launch</div>
+          </div>`,
+        note: "First launch can take a few minutes. Subsequent launches are lighting-fast.",
       },
       {
         title: "Test on a Real Device",
-        content:
-          "Connect your iPhone or iPad via USB to test on a real device.",
-        code: {
-          language: "text",
-          code: `1. Connect your iPhone via USB
-2. Trust the computer on your device
-3. Select your device in Xcode (top bar)
-4. Click "Play" to build and run
-5. Trust the developer certificate on your device`,
-        },
+        content: `<div>
+          <div>Connect your iPhone or iPad via USB to test on a real device.</div>
+          <br/> 
+          <div>1. Connect your iPhone <strong>via USB</strong></div>
+           <br/> 
+          <div>2. Trust the computer on your device</div>
+           <br/> 
+          <div>3. Select your device in Xcode <strong>(top bar)</strong></div>
+           <br/> 
+          <div>4. Click <strong>Play</strong> to build and run</div>
+           <br/> 
+          <div>5. Trust the <strong>developer certificate</strong> on your device</div>
+          </div>`,
         note: "Go to Settings → General → VPN & Device Management to trust the certificate.",
       },
     ],
