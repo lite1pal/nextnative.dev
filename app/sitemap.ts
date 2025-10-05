@@ -121,12 +121,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.9,
     },
-    {
-      url: "https://nextnative.dev/use-cases",
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
 
     ...posts.map((post) => ({
       url: `https://nextnative.dev/blog/${post.slug}`,
