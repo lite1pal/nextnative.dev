@@ -1,6 +1,7 @@
 // app/sitemap.ts
 import { prisma } from "@/prisma/client";
 import type { MetadataRoute } from "next";
+import { comparisons } from "./comparisons/[slug]/comparisons-data";
 
 export const revalidate = 600; // 10 minutes in seconds
 
@@ -45,6 +46,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "https://nextnative.dev/free-tools/play-store-privacy-policy",
   ];
 
+  const comparisonUrls = comparisons.map(
+    (comparison) => `https://nextnative.dev/comparisons/${comparison.slug}`,
+  );
+
   return [
     {
       url: "https://nextnative.dev/",
@@ -88,6 +93,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: "https://nextnative.dev/comparisons",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
 
     ...posts.map((post) => ({
       url: `https://nextnative.dev/blog/${post.slug}`,
@@ -106,6 +117,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1.0,
+    })),
+
+    ...comparisonUrls.map((url) => ({
+      url,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
     })),
   ];
 }
