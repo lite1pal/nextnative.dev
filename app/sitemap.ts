@@ -12,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     select: { slug: true, updatedAt: true },
   });
 
-  const lastModified = new Date("2025-10-04");
+  const lastModified = new Date("2025-10-05");
 
   const docs = [
     "https://nextnative.dev/docs",
