@@ -10,6 +10,9 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Script from "next/script";
+import CTASkeleton from "@/components/CTASkeleton";
+import { Suspense } from "react";
+import CTA from "@/components/CTA";
 
 // Generate static params for all tutorials
 export async function generateStaticParams() {
@@ -246,6 +249,22 @@ export default async function TutorialPage({
           </ul>
         </section>
       )}
+
+      <div className="mt-24 mb-20 rounded-3xl bg-white p-16 text-center">
+        <h2 className="mb-6 text-4xl font-bold md:text-5xl">
+          Ready to Build Your Mobile App?
+        </h2>
+        <p className="mb-10 text-xl md:text-2xl">
+          Get NextNative and start converting your Next.js website to a mobile
+          app in minutes.
+        </p>
+
+        <Suspense fallback={<CTASkeleton />}>
+          <Link href="/">
+            <CTA />
+          </Link>
+        </Suspense>
+      </div>
 
       {/* Related Tutorials */}
       {tutorial.relatedTutorials.length > 0 && (

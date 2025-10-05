@@ -184,7 +184,9 @@ export default function TutorialsPage() {
         </p>
 
         <Suspense fallback={<CTASkeleton />}>
-          <CTA />
+          <Link href="/">
+            <CTA />
+          </Link>
         </Suspense>
       </div>
     </div>

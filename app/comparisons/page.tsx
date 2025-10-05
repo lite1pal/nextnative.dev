@@ -68,7 +68,9 @@ export default function ComparisonsPage() {
           Get Started
         </Link> */}
         <Suspense fallback={<CTASkeleton />}>
-          <CTA />
+          <Link href="/">
+            <CTA />
+          </Link>
         </Suspense>
       </div>
     </div>
