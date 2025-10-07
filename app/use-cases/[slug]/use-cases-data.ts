@@ -34,7 +34,7 @@ export interface UseCase {
   summary: string;
   problemStatement: string;
   solution: string;
-  images?: { src: string; alt: string }[];
+  images?: { src: string; alt: string; isDark?: boolean }[];
   targetAudience: string[];
   keyFeatures: Feature[];
   coreCapabilities: string[];
@@ -624,6 +624,35 @@ export function useOrder() {
       "Building an AI-powered mobile app requires integrating AI services, camera APIs, secure backend endpoints, subscription management, device identification, and maintaining a freemium model - all while working across iOS and Android.",
     solution:
       "NextNative provides a complete AI plant identifier foundation with Capacitor Camera integration, secure API endpoints, RevenueCat subscription management, device-based free generation limits, and offline history storage.",
+    images: [
+      {
+        src: "/showcase/sproutly-1.png",
+        alt: "AI Plant Identifier App Mockup 1",
+        isDark: true,
+      },
+      {
+        src: "/showcase/sproutly-2.png",
+        alt: "AI Plant Identifier App Mockup 2",
+      },
+      {
+        src: "/showcase/sproutly-3.png",
+        alt: "AI Plant Identifier App Mockup 3",
+        isDark: true,
+      },
+      {
+        src: "/showcase/sproutly-4.png",
+        alt: "AI Plant Identifier App Mockup 4",
+        isDark: true,
+      },
+      {
+        src: "/showcase/sproutly-5.png",
+        alt: "AI Plant Identifier App Mockup 5",
+      },
+      {
+        src: "/showcase/sproutly-6.png",
+        alt: "AI Plant Identifier App Mockup 6",
+      },
+    ],
     targetAudience: [
       "Indie developers building AI apps",
       "Gardening enthusiasts creating tools",

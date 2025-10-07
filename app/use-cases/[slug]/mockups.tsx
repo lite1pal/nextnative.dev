@@ -7,6 +7,7 @@ interface MockupsProps {
   data: {
     src: string;
     alt: string;
+    isDark?: boolean;
   }[];
 }
 
@@ -14,7 +15,7 @@ function Mockups({ data }: MockupsProps) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2">
       {data?.map((item) => (
-        <IPhoneMockup isDark={false}>
+        <IPhoneMockup key={item.src} isDark={item.isDark}>
           <div>
             <Image
               src={item.src}
