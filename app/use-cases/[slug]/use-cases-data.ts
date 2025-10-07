@@ -34,6 +34,7 @@ export interface UseCase {
   summary: string;
   problemStatement: string;
   solution: string;
+  images?: { src: string; alt: string }[];
   targetAudience: string[];
   keyFeatures: Feature[];
   coreCapabilities: string[];
@@ -62,6 +63,12 @@ export const useCases: UseCase[] = [
       "Building a fitness app from scratch requires months of development, native expertise for iOS and Android, complex state management for workout data, and expensive cloud infrastructure.",
     solution:
       "NextNative provides a pre-built fitness app foundation with workout tracking, offline sync, and real-time progress analytics. Deploy to both platforms using your existing Next.js skills.",
+    images: [
+      { src: "/showcase/fitness-app-1.png", alt: "Fitness App Mockup 1" },
+      { src: "/showcase/fitness-app-2.png", alt: "Fitness App Mockup 2" },
+      { src: "/showcase/fitness-app-3.png", alt: "Fitness App Mockup 3" },
+      { src: "/showcase/fitness-app-4.png", alt: "Fitness App Mockup 4" },
+    ],
     targetAudience: [
       "Personal trainers building client apps",
       "Gym owners creating member apps",
@@ -309,6 +316,32 @@ const completeWorkout = async () => {
       "Food delivery apps require complex real-time features, payment processing, location tracking, multi-user roles (customers, restaurants, drivers), and must work flawlessly on both iOS and Android.",
     solution:
       "NextNative provides the complete infrastructure for a food delivery app including simulated order tracking, promo code system, menu customization, advanced filtering, and offline-first data persistence.",
+    images: [
+      {
+        src: "/showcase/food-delivery-app-1.png",
+        alt: "Food Delivery App Mockup 1",
+      },
+      {
+        src: "/showcase/food-delivery-app-2.png",
+        alt: "Food Delivery App Mockup 2",
+      },
+      {
+        src: "/showcase/food-delivery-app-3.png",
+        alt: "Food Delivery App Mockup 3",
+      },
+      {
+        src: "/showcase/food-delivery-app-4.png",
+        alt: "Food Delivery App Mockup 4",
+      },
+      {
+        src: "/showcase/food-delivery-app-5.png",
+        alt: "Food Delivery App Mockup 5",
+      },
+      {
+        src: "/showcase/food-delivery-app-6.png",
+        alt: "Food Delivery App Mockup 6",
+      },
+    ],
     targetAudience: [
       "Restaurant owners going digital",
       "Ghost kitchen operators",
@@ -575,6 +608,234 @@ export function useOrder() {
       "add-push-notifications-nextjs",
     ],
     relatedComparisons: ["nextjs-capacitor-vs-flutter"],
+  },
+  {
+    slug: "ai-plant-identifier-app",
+    title: "Build an AI Plant Identification App",
+    metaTitle:
+      "AI Plant Identifier App Template | Build Plant Recognition App with Next.js",
+    metaDescription:
+      "Create an AI-powered plant identification app with camera integration, history tracking, and premium subscriptions. Built with Next.js, Capacitor, and RevenueCat for iOS & Android.",
+    category: "education",
+    icon: "🌱",
+    summary:
+      "Launch an AI-powered plant identification app that uses camera or gallery photos to identify plants, provides care instructions, and includes a freemium monetization model with RevenueCat subscriptions.",
+    problemStatement:
+      "Building an AI-powered mobile app requires integrating AI services, camera APIs, secure backend endpoints, subscription management, device identification, and maintaining a freemium model - all while working across iOS and Android.",
+    solution:
+      "NextNative provides a complete AI plant identifier foundation with Capacitor Camera integration, secure API endpoints, RevenueCat subscription management, device-based free generation limits, and offline history storage.",
+    targetAudience: [
+      "Indie developers building AI apps",
+      "Gardening enthusiasts creating tools",
+      "EdTech startups in nature/science",
+      "Developers learning AI integration",
+      "Entrepreneurs validating AI product ideas",
+    ],
+    keyFeatures: [
+      {
+        icon: "📸",
+        title: "Camera Integration",
+        description:
+          "Capture plant photos with device camera or upload from gallery using Capacitor Camera API with base64 data URLs for persistence.",
+      },
+      {
+        icon: "🤖",
+        title: "AI Plant Identification",
+        description:
+          "Identify plants via secure backend API that returns plant name, scientific name, family, care instructions, and interesting facts.",
+      },
+      {
+        icon: "💎",
+        title: "RevenueCat Subscriptions",
+        description:
+          "Weekly and annual subscription plans with automatic pricing, purchase handling, and restoration using RevenueCat SDK.",
+      },
+      {
+        icon: "🎁",
+        title: "Freemium Model",
+        description:
+          "Device-based free generation tracking with backend API that limits non-premium users while allowing unlimited access for subscribers.",
+      },
+      {
+        icon: "📜",
+        title: "Identification History",
+        description:
+          "Offline-first history storage with plant images, identification data, timestamps, and ability to view or delete past identifications.",
+      },
+      {
+        icon: "🌿",
+        title: "Care Instructions",
+        description:
+          "Display detailed plant care information including light, water, soil, temperature requirements, and interesting facts about each species.",
+      },
+    ],
+    coreCapabilities: [
+      "Capacitor Camera integration (photo & gallery)",
+      "Base64 image data persistence across app restarts",
+      "AI plant identification via backend API",
+      "Device ID-based free generation limits",
+      "RevenueCat subscription management (weekly/annual)",
+      "Premium status detection and unlimited access",
+      "Automatic purchase restoration",
+      "Offline plant history storage",
+      "Plant data display with confidence levels",
+      "Delete history items",
+      "Premium upsell modals",
+      "Dark mode support",
+      "Tab navigation (Identify, History, Settings)",
+    ],
+    codeExamples: [
+      {
+        title: "Camera Integration with Capacitor",
+        description:
+          "Capture photos using Capacitor Camera API with persistent base64 data URLs.",
+        language: "typescript",
+        filename: "screens/identify-screen.tsx",
+        code: `import { Camera, CameraResultType } from '@capacitor/camera';
+
+const handleCamera = async () => {
+  try {
+    const photo = await Camera.getPhoto({
+      promptLabelHeader: 'Choose a photo',
+      quality: 90,
+      allowEditing: true,
+      resultType: CameraResultType.DataUrl, // Use DataUrl for persistence
+    });
+
+    // photo.dataUrl is a base64 data URL that persists across app restarts
+    const photoData = photo.dataUrl;
+
+    if (photoData) {
+      setPhoto(photoData);
+      await identifyPlant(photoData);
+    }
+  } catch (error) {
+    console.error('Error taking photo:', error);
+  }
+};`,
+      },
+      {
+        title: "Device-Based Free Generations",
+        description:
+          "Track free generation limits per device using Capacitor Device ID and backend API.",
+        language: "typescript",
+        filename: "hooks/useFreeGenerations.ts",
+        code: `import { Device } from '@capacitor/device';
+import { useState, useEffect } from 'react';
+
+export const useFreeGenerations = () => {
+  const [deviceId, setDeviceId] = useState<string>('');
+  const [remainingGenerations, setRemainingGenerations] = useState(0);
+
+  useEffect(() => {
+    const getDeviceId = async () => {
+      const info = await Device.getId();
+      setDeviceId(info.identifier);
+    };
+    getDeviceId();
+  }, []);
+
+  const fetchFreeGenerations = async () => {
+    const response = await fetch(
+      \`/api/free-generations?deviceId=\${deviceId}\`
+    );
+    const data = await response.json();
+    setRemainingGenerations(data.remainingGenerations);
+  };
+
+  const hasRemainingGenerations = remainingGenerations > 0;
+
+  return { 
+    deviceId, 
+    remainingGenerations, 
+    hasRemainingGenerations,
+    refreshFreeGenerations: fetchFreeGenerations 
+  };
+};`,
+      },
+      {
+        title: "RevenueCat Subscription Integration",
+        description:
+          "Implement premium subscriptions with purchase and restore functionality using RevenueCat.",
+        language: "typescript",
+        filename: "screens/premium-screen.tsx",
+        code: `import { useRevenueCat } from '@/services/revenue-cat';
+
+function PremiumScreen() {
+  const [selectedPlan, setSelectedPlan] = useState<'weekly' | 'annually'>('weekly');
+  
+  const { 
+    isPro, 
+    purchase, 
+    restore, 
+    pricing 
+  } = useRevenueCat();
+
+  const handlePurchase = async () => {
+    try {
+      await purchase(selectedPlan);
+      toast.success('Purchase successful! Enjoy premium features.');
+    } catch (err) {
+      console.error('Purchase failed:', err);
+    }
+  };
+
+  const handleRestore = async () => {
+    try {
+      await restore();
+      if (isPro) {
+        toast.success('Premium access restored successfully!');
+      } else {
+        toast.error('No previous purchases found.');
+      }
+    } catch (err) {
+      console.error('Restore failed:', err);
+    }
+  };
+
+  return (
+    <div>
+      <h1>Sproutly Premium</h1>
+      <p>Price: {pricing?.weekly?.price || 'Loading...'}</p>
+      <button onClick={handlePurchase}>Subscribe</button>
+      <button onClick={handleRestore}>Restore Purchases</button>
+    </div>
+  );
+}`,
+      },
+    ],
+    metrics: [
+      {
+        label: "Development Time",
+        value: "1-2 weeks",
+        description: "vs 2-4 months building from scratch",
+      },
+      {
+        label: "Cost Savings",
+        value: "$15,000+",
+        description: "Compared to custom AI app development",
+      },
+      {
+        label: "Monetization",
+        value: "Day 1",
+        description: "RevenueCat subscriptions ready to use",
+      },
+      {
+        label: "AI Integration",
+        value: "Pre-built",
+        description: "Secure backend API with AI service integration",
+      },
+    ],
+    timeSavings: "2-4 months",
+    costSavings: "$15,000-30,000",
+    relatedTutorials: [
+      "convert-nextjs-to-mobile-app",
+      "setup-in-app-purchases",
+    ],
+    relatedComparisons: [
+      "nextjs-capacitor-vs-react-native",
+      "pwa-vs-native-app",
+    ],
   },
   //   {
   //     slug: "social-media-app",

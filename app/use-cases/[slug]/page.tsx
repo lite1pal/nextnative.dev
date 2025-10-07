@@ -6,7 +6,6 @@ import {
   Clock,
   DollarSign,
   CheckCircle2,
-  Code2,
   BookOpen,
   TrendingUp,
 } from "lucide-react";
@@ -15,6 +14,7 @@ import Script from "next/script";
 import { Suspense } from "react";
 import CTASkeleton from "@/components/CTASkeleton";
 import CTA from "@/components/CTA";
+import Mockups from "./mockups";
 
 // Generate static params for all use cases
 export async function generateStaticParams() {
@@ -156,6 +156,10 @@ export default async function UseCasePage({
             {useCase.solution}
           </p>
         </section>
+      </div>
+
+      <div className="mb-16">
+        <Mockups data={useCase.images || []} />
       </div>
 
       {/* Target Audience */}
