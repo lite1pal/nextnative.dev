@@ -4,6 +4,8 @@ import { ChevronRight, Clock, DollarSign } from "lucide-react";
 import { Suspense } from "react";
 import CTASkeleton from "@/components/CTASkeleton";
 import CTA from "@/components/CTA";
+import IPhoneMockup from "@/components/note-taking/iphone-mockup";
+import Image from "next/image";
 
 const categories = [
   {
@@ -133,6 +135,29 @@ function UseCasesView() {
                         )}
                       </div>
                     </div>
+
+                    {/* Screenshots Preview */}
+                    {useCase.images && useCase.images.length > 0 && (
+                      <div className="mb-6">
+                        <div className="relative -mx-4 flex flex-wrap gap-3 overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 p-6 sm:gap-0">
+                          {useCase.images.slice(0, 4).map((image, idx) => (
+                            <div
+                              key={idx}
+                              className="relative mx-auto h-44 w-28 flex-shrink-0 overflow-hidden rounded-xl shadow-lg"
+                            >
+                              <Image
+                                src={image.src}
+                                alt={image.alt}
+                                className="h-full w-full object-cover"
+                                width={112}
+                                height={192}
+                                sizes="(max-width: 768px) 70vw, 28vw"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                     {/* Time & Cost Savings */}
                     <div className="mb-6 grid grid-cols-2 gap-4 rounded-2xl bg-gray-50 p-4 dark:bg-gray-800/50">
