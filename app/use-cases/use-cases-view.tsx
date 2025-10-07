@@ -7,22 +7,10 @@ import CTA from "@/components/CTA";
 
 const categories = [
   {
-    id: "health",
-    name: "Health & Fitness",
-    description: "Workout tracking, nutrition apps, and wellness platforms",
-    icon: "💪",
-  },
-  {
-    id: "commerce",
-    name: "E-commerce & Delivery",
-    description: "Shopping apps, food delivery, and marketplace platforms",
-    icon: "🛍️",
-  },
-  {
-    id: "social",
-    name: "Social & Community",
-    description: "Social networks, messaging, and community platforms",
-    icon: "👥",
+    id: "productivity",
+    name: "Productivity & Tools",
+    description: "Task managers, note-taking, and productivity apps",
+    icon: "✅",
   },
   {
     id: "education",
@@ -31,10 +19,22 @@ const categories = [
     icon: "📚",
   },
   {
-    id: "productivity",
-    name: "Productivity & Tools",
-    description: "Task managers, note-taking, and productivity apps",
-    icon: "✅",
+    id: "commerce",
+    name: "E-commerce & Delivery",
+    description: "Shopping apps, food delivery, and marketplace platforms",
+    icon: "🛍️",
+  },
+  {
+    id: "health",
+    name: "Health & Fitness",
+    description: "Workout tracking, nutrition apps, and wellness platforms",
+    icon: "💪",
+  },
+  {
+    id: "social",
+    name: "Social & Community",
+    description: "Social networks, messaging, and community platforms",
+    icon: "👥",
   },
 ];
 

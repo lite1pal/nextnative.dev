@@ -49,6 +49,581 @@ export interface UseCase {
 
 export const useCases: UseCase[] = [
   {
+    slug: "pomodoro-timer-app",
+    title: "Build a Pomodoro Timer & Focus App",
+    metaTitle:
+      "Pomodoro Timer App Template | Build Focus & Productivity App with Next.js",
+    metaDescription:
+      "Create a Pomodoro timer app with work/break intervals, session history, statistics, and local notifications. Built with Next.js and Capacitor for iOS & Android.",
+    category: "productivity",
+    icon: "⏱️",
+    summary:
+      "Launch a productivity-focused Pomodoro timer app with customizable work/break durations, offline session tracking, statistics dashboard, and local notifications for session completion.",
+    problemStatement:
+      "Building a timer app requires precise interval management, background execution, local notifications, offline data persistence, and statistics tracking - all while maintaining a clean, focused user experience across platforms.",
+    solution:
+      "NextNative provides a complete Pomodoro timer foundation with React Context state management, Capacitor Preferences for offline storage, Local Notifications for alerts, and a three-tab interface for timer, statistics, and settings.",
+    images: [
+      {
+        src: "/showcase/pomodoro-app-1.png",
+        alt: "Pomodoro Timer App Mockup 1",
+      },
+      {
+        src: "/showcase/pomodoro-app-2.png",
+        alt: "Pomodoro Timer App Mockup 2",
+      },
+      {
+        src: "/showcase/pomodoro-app-3.png",
+        alt: "Pomodoro Timer App Mockup 3",
+      },
+      {
+        src: "/showcase/pomodoro-app-4.png",
+        alt: "Pomodoro Timer App Mockup 4",
+      },
+    ],
+    targetAudience: [
+      "Productivity app developers",
+      "Students building portfolio projects",
+      "Indie developers creating focus tools",
+      "Teams needing custom time-tracking solutions",
+      "Developers learning mobile app patterns",
+    ],
+    keyFeatures: [
+      {
+        icon: "⏱️",
+        title: "Customizable Timer",
+        description:
+          "Set work duration (1-60 min) and break duration (1-30 min) with circular progress visualization and automatic mode switching.",
+      },
+      {
+        icon: "🔔",
+        title: "Local Notifications",
+        description:
+          "Receive native notifications when work sessions complete or break time ends using Capacitor Local Notifications.",
+      },
+      {
+        icon: "📊",
+        title: "Session Statistics",
+        description:
+          "Track total work sessions, work time, break time, today's sessions, and current streak with visual cards and icons.",
+      },
+      {
+        icon: "💾",
+        title: "Offline Storage",
+        description:
+          "All sessions and settings stored locally using Capacitor Preferences with automatic persistence across app restarts.",
+      },
+      {
+        icon: "🎯",
+        title: "Focus Modes",
+        description:
+          "Distinct work and break modes with different colors (indigo for work, green for break) and descriptive messages.",
+      },
+      {
+        icon: "🔄",
+        title: "Session History",
+        description:
+          "Complete session history with start times, durations, and completion status stored offline for later review.",
+      },
+    ],
+    coreCapabilities: [
+      "Countdown timer with minute:second display",
+      "Circular progress indicator with SVG",
+      "Play/pause/reset controls",
+      "Automatic work ↔ break mode switching",
+      "Customizable work duration (1-60 minutes)",
+      "Customizable break duration (1-30 minutes)",
+      "Local notification on session completion",
+      "Session history tracking",
+      "Today's statistics (sessions & time)",
+      "All-time statistics (total sessions, work time, break time)",
+      "Current streak calculation (consecutive days)",
+      "Delete all sessions functionality",
+      "Settings persistence with Capacitor Preferences",
+      "Dark mode support",
+      "Tab navigation (Timer, Statistics, Settings)",
+    ],
+    codeExamples: [
+      {
+        title: "Timer State Management with React Context",
+        description:
+          "Manage timer state globally using React Context and custom hook with Capacitor Preferences for persistence.",
+        language: "typescript",
+        filename: "hooks/usePomodoro.ts",
+        code: `import { useState, useEffect } from 'react';
+import { Preferences } from '@capacitor/preferences';
+
+const STORAGE_KEYS = {
+  SETTINGS: 'pomodoro-settings',
+  SESSIONS: 'pomodoro-sessions',
+  STATISTICS: 'pomodoro-statistics',
+};
+
+export function usePomodoro() {
+  const [settings, setSettings] = useState({
+    workDuration: 25,
+    breakDuration: 5,
+  });
+  
+  const [timer, setTimer] = useState({
+    minutes: 25,
+    seconds: 0,
+    isRunning: false,
+    mode: 'work',
+  });
+
+  // Load settings from storage
+  useEffect(() => {
+    const loadSettings = async () => {
+      const result = await Preferences.get({ 
+        key: STORAGE_KEYS.SETTINGS 
+      });
+      if (result.value) {
+        const loaded = JSON.parse(result.value);
+        setSettings(loaded);
+        setTimer(prev => ({ 
+          ...prev, 
+          minutes: loaded.workDuration 
+        }));
+      }
+    };
+    loadSettings();
+  }, []);
+
+  // Save settings when changed
+  const updateSettings = async (newSettings) => {
+    setSettings(newSettings);
+    await Preferences.set({
+      key: STORAGE_KEYS.SETTINGS,
+      value: JSON.stringify(newSettings),
+    });
+  };
+
+  return { settings, timer, updateSettings, setTimer };
+}`,
+      },
+      {
+        title: "Local Notifications on Session Complete",
+        description:
+          "Send native notifications when Pomodoro sessions complete using Capacitor Local Notifications.",
+        language: "typescript",
+        filename: "hooks/usePomodoro.ts",
+        code: `import { LocalNotifications } from '@capacitor/local-notifications';
+
+// Request notification permission on app load
+const requestNotificationPermission = async () => {
+  await LocalNotifications.requestPermissions();
+};
+
+// Send notification when session completes
+const switchMode = async () => {
+  const message = timer.mode === 'work'
+    ? 'Work session completed! Time for a break!'
+    : 'Break time is over! Ready to work?';
+
+  try {
+    await LocalNotifications.schedule({
+      notifications: [
+        {
+          title: 'Pomodoro Timer',
+          body: message,
+          id: Date.now(),
+          schedule: { at: new Date(Date.now() + 100) },
+        },
+      ],
+    });
+  } catch (error) {
+    console.error('Error sending notification:', error);
+  }
+
+  // Switch to next mode
+  setTimer({
+    minutes: timer.mode === 'work' ? breakDuration : workDuration,
+    seconds: 0,
+    isRunning: false,
+    mode: timer.mode === 'work' ? 'break' : 'work',
+  });
+};`,
+      },
+      {
+        title: "Statistics Calculation & Streak Tracking",
+        description:
+          "Calculate session statistics and track consecutive day streaks for gamification.",
+        language: "typescript",
+        filename: "hooks/usePomodoro.ts",
+        code: `const calculateStatistics = (sessions) => {
+  const today = new Date().setHours(0, 0, 0, 0);
+  const completedSessions = sessions.filter(s => s.completed);
+
+  const workSessions = completedSessions.filter(s => s.mode === 'work');
+  const breakSessions = completedSessions.filter(s => s.mode === 'break');
+  const todaySessions = workSessions.filter(s => s.startTime >= today);
+
+  return {
+    totalWorkSessions: workSessions.length,
+    totalWorkTime: workSessions.reduce((sum, s) => sum + s.duration, 0),
+    totalBreakTime: breakSessions.reduce((sum, s) => sum + s.duration, 0),
+    todayWorkSessions: todaySessions.length,
+    todayWorkTime: todaySessions.reduce((sum, s) => sum + s.duration, 0),
+    currentStreak: calculateStreak(workSessions),
+  };
+};
+
+const calculateStreak = (workSessions) => {
+  if (workSessions.length === 0) return 0;
+
+  const sorted = [...workSessions].sort((a, b) => b.startTime - a.startTime);
+  let streak = 0;
+  let currentDate = new Date().setHours(0, 0, 0, 0);
+
+  for (const session of sorted) {
+    const sessionDate = new Date(session.startTime).setHours(0, 0, 0, 0);
+    
+    // Check if session is today or yesterday (consecutive)
+    if (sessionDate === currentDate || 
+        sessionDate === currentDate - 86400000) {
+      streak++;
+      currentDate = sessionDate;
+    } else {
+      break;
+    }
+  }
+
+  return streak;
+};`,
+      },
+    ],
+    metrics: [
+      {
+        label: "Development Time",
+        value: "3-5 days",
+        description: "vs 3-4 weeks building from scratch",
+      },
+      {
+        label: "Cost Savings",
+        value: "$5,000+",
+        description: "Compared to custom timer app development",
+      },
+      {
+        label: "Features",
+        value: "Production Ready",
+        description: "Timer, statistics, notifications, and settings",
+      },
+      {
+        label: "Offline Support",
+        value: "100%",
+        description: "Full functionality without internet connection",
+      },
+    ],
+    timeSavings: "3-4 weeks",
+    costSavings: "$5,000-15,000",
+    relatedTutorials: [
+      "convert-nextjs-to-mobile-app",
+      "add-push-notifications-nextjs",
+    ],
+    relatedComparisons: ["pwa-vs-native-app"],
+  },
+  {
+    slug: "expense-tracker-app",
+    title: "Build an Expense Tracker & Budget Manager App",
+    metaTitle:
+      "Expense Tracker App Template | Build Budget Manager with Next.js & Capacitor",
+    metaDescription:
+      "Create a professional expense tracking app with category-based organization, date filtering, and analytics. Built with Next.js and Capacitor for iOS & Android.",
+    category: "productivity",
+    icon: "💰",
+    summary:
+      "Launch a full-featured expense tracking app with add/edit/delete functionality, category-based organization, date filtering, monthly analytics, and offline storage.",
+    problemStatement:
+      "Building a finance tracking app requires complex data management, real-time calculations, visual analytics, and secure offline storage - typically taking months to develop for both iOS and Android.",
+    solution:
+      "NextNative provides a complete expense tracker foundation with React Context state management, Capacitor Preferences for offline storage, category-based filtering, and a three-tab interface for expenses, analytics, and settings.",
+    images: [
+      {
+        src: "/showcase/expense-app-1.png",
+        alt: "Expense Tracker App Mockup 1",
+      },
+      {
+        src: "/showcase/expense-app-2.png",
+        alt: "Expense Tracker App Mockup 2",
+      },
+      {
+        src: "/showcase/expense-app-3.png",
+        alt: "Expense Tracker App Mockup 3",
+      },
+      {
+        src: "/showcase/expense-app-4.png",
+        alt: "Expense Tracker App Mockup 4",
+      },
+    ],
+    targetAudience: [
+      "Fintech startups validating MVPs",
+      "Personal finance coaches building client apps",
+      "Budget-conscious individuals tracking spending",
+      "Small business owners managing expenses",
+      "Developers building finance management tools",
+    ],
+    keyFeatures: [
+      {
+        icon: "💵",
+        title: "Expense Management",
+        description:
+          "Add, edit, and delete expenses with name, amount, category, and date. Full CRUD operations with instant updates.",
+      },
+      {
+        icon: "📊",
+        title: "Category Organization",
+        description:
+          "Organize expenses into 6 categories: Food, Transportation, Entertainment, Shopping, Bills, and Other.",
+      },
+      {
+        icon: "🔍",
+        title: "Smart Filtering",
+        description:
+          "Filter expenses by category and date range. View total amount for filtered results in real-time.",
+      },
+      {
+        icon: "📈",
+        title: "Monthly Analytics",
+        description:
+          "Track monthly total, daily average, category breakdown with percentages, and identify most expensive category.",
+      },
+      {
+        icon: "💾",
+        title: "Offline Storage",
+        description:
+          "All data stored locally using Capacitor Preferences. No internet required, no server costs.",
+      },
+      {
+        icon: "📱",
+        title: "Native UI",
+        description:
+          "Built with Ionic React components for native-feeling iOS and Android experience.",
+      },
+    ],
+    coreCapabilities: [
+      "Add expenses with custom name, amount, category, and date",
+      "Edit existing expenses with full data modification",
+      "Delete individual expenses with confirmation alert",
+      "Filter by 6 expense categories (Food, Transportation, etc.)",
+      "Filter by date range (start date and end date)",
+      "Calculate total amount for filtered expenses",
+      "Monthly overview with total spent and daily average",
+      "Daily spending breakdown for current month",
+      "Category breakdown with amount and percentage",
+      "Identify most expensive category automatically",
+      "Offline-first with Capacitor Preferences storage",
+      "Clear all data with confirmation",
+      "Three-tab navigation (Expenses, Analytics, Settings)",
+      "Dark mode support with Ionic theming",
+      "Responsive design for all screen sizes",
+    ],
+    codeExamples: [
+      {
+        title: "Expense State Management with React Context",
+        description:
+          "Centralized expense state using React Context pattern. Provides all CRUD operations and analytics to child components.",
+        language: "typescript",
+        filename: "ExpenseContext.tsx",
+        code: `"use client";
+
+import React, { createContext, useContext, ReactNode } from "react";
+import { useExpenses } from "./hooks/useExpenses";
+
+type ExpenseContextType = ReturnType<typeof useExpenses>;
+
+const ExpenseContext = createContext<ExpenseContextType | undefined>(undefined);
+
+export function ExpenseProvider({ children }: { children: ReactNode }) {
+  const expenseState = useExpenses();
+
+  return (
+    <ExpenseContext.Provider value={expenseState}>
+      {children}
+    </ExpenseContext.Provider>
+  );
+}
+
+export function useExpenseContext() {
+  const context = useContext(ExpenseContext);
+  if (context === undefined) {
+    throw new Error("useExpenseContext must be used within ExpenseProvider");
+  }
+  return context;
+}`,
+      },
+      {
+        title: "Offline Storage with Capacitor Preferences",
+        description:
+          "Persist expense data locally using Capacitor Preferences API. Auto-save on every change with load on mount.",
+        language: "typescript",
+        filename: "hooks/useExpenses.ts",
+        code: `import { useState, useEffect, useCallback } from "react";
+import { Preferences } from "@capacitor/preferences";
+import { Expense } from "../types";
+
+const EXPENSES_KEY = "expenses";
+
+export function useExpenses() {
+  const [expenses, setExpenses] = useState<Expense[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Load expenses from Capacitor Preferences on mount
+  useEffect(() => {
+    loadExpenses();
+  }, []);
+
+  // Save expenses to Capacitor Preferences whenever they change
+  useEffect(() => {
+    if (!isLoading) {
+      saveExpenses();
+    }
+  }, [expenses, isLoading]);
+
+  const loadExpenses = async () => {
+    try {
+      const { value } = await Preferences.get({ key: EXPENSES_KEY });
+      if (value) {
+        const parsed = JSON.parse(value);
+        setExpenses(parsed);
+      }
+    } catch (error) {
+      console.error("Failed to load expenses:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const saveExpenses = async () => {
+    try {
+      await Preferences.set({
+        key: EXPENSES_KEY,
+        value: JSON.stringify(expenses),
+      });
+    } catch (error) {
+      console.error("Failed to save expenses:", error);
+    }
+  };
+
+  const addExpense = useCallback((expenseData: Omit<Expense, "id">) => {
+    const newExpense: Expense = {
+      ...expenseData,
+      id: Date.now().toString(),
+    };
+    setExpenses((prev) => [...prev, newExpense]);
+  }, []);
+
+  const updateExpense = useCallback((id: string, updates: Partial<Expense>) => {
+    setExpenses((prev) =>
+      prev.map((expense) =>
+        expense.id === id ? { ...expense, ...updates } : expense
+      )
+    );
+  }, []);
+
+  const deleteExpense = useCallback((id: string) => {
+    setExpenses((prev) => prev.filter((expense) => expense.id !== id));
+  }, []);
+
+  return { expenses, addExpense, updateExpense, deleteExpense };
+}`,
+      },
+      {
+        title: "Monthly Analytics Calculation",
+        description:
+          "Calculate category breakdown, daily spending, monthly totals, and identify most expensive category from expense data.",
+        language: "typescript",
+        filename: "hooks/useExpenses.ts",
+        code: `import { useMemo } from "react";
+import { Expense, ExpenseAnalytics, DailySpending } from "../types";
+
+export function calculateAnalytics(expenses: Expense[]): ExpenseAnalytics | null {
+  if (expenses.length === 0) return null;
+
+  // Category breakdown
+  const categoryTotals = expenses.reduce((acc, expense) => {
+    acc[expense.category] = (acc[expense.category] || 0) + expense.amount;
+    return acc;
+  }, {} as Record<string, number>);
+
+  const categoryData = Object.entries(categoryTotals).map(
+    ([name, value]) => ({ name, value })
+  );
+
+  // Daily spending for current month
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  const monthEnd = new Date(year, month + 1, 0);
+  const daysInMonth = monthEnd.getDate();
+
+  const dailySpending: DailySpending[] = [];
+  for (let day = 1; day <= daysInMonth; day++) {
+    const date = new Date(year, month, day);
+    const dateStr = date.toISOString().split('T')[0]; // yyyy-MM-dd
+    const monthDay = date.toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric' 
+    });
+    
+    const total = expenses
+      .filter((e) => e.date === dateStr)
+      .reduce((sum, e) => sum + e.amount, 0);
+    
+    dailySpending.push({ date: monthDay, amount: total });
+  }
+
+  // Monthly total and average
+  const monthlyTotal = dailySpending.reduce(
+    (sum: number, day: DailySpending) => sum + day.amount,
+    0
+  );
+  const dailyAverage = monthlyTotal / daysInMonth;
+
+  // Most expensive category
+  const mostExpensive = categoryData.length > 0
+    ? categoryData.reduce((a, b) => (a.value > b.value ? a : b))
+    : { name: "None", value: 0 };
+
+  return {
+    categoryData,
+    dailySpending,
+    monthlyTotal,
+    dailyAverage,
+    mostExpensive,
+  };
+}`,
+      },
+    ],
+    metrics: [
+      {
+        label: "Development Time",
+        value: "2-4 days",
+        description: "vs 3-4 weeks building from scratch",
+      },
+      {
+        label: "Cost Savings",
+        value: "$4,000+",
+        description: "Compared to custom expense tracker development",
+      },
+      {
+        label: "Categories",
+        value: "6 Built-in",
+        description:
+          "Food, Transportation, Entertainment, Shopping, Bills, Other",
+      },
+      {
+        label: "Offline Support",
+        value: "100%",
+        description: "Full functionality without internet connection",
+      },
+    ],
+    timeSavings: "3-4 weeks",
+    costSavings: "$4,000-12,000",
+    relatedTutorials: ["convert-nextjs-to-mobile-app"],
+    relatedComparisons: ["capacitor-vs-flutter"],
+  },
+  {
     slug: "fitness-app",
     title: "Build a Fitness & Workout Tracking App",
     metaTitle:
@@ -296,10 +871,7 @@ const completeWorkout = async () => {
     timeSavings: "3-6 months",
     costSavings: "$25,000-50,000",
     relatedTutorials: ["convert-nextjs-to-mobile-app"],
-    relatedComparisons: [
-      "nextjs-capacitor-vs-react-native",
-      "pwa-vs-native-app",
-    ],
+    relatedComparisons: ["nextjs-vs-react-native", "pwa-vs-native-app"],
   },
   {
     slug: "food-delivery-app",
@@ -603,11 +1175,8 @@ export function useOrder() {
     ],
     timeSavings: "6-12 months",
     costSavings: "$30,000-80,000",
-    relatedTutorials: [
-      "convert-nextjs-to-mobile-app",
-      "add-push-notifications-nextjs",
-    ],
-    relatedComparisons: ["nextjs-capacitor-vs-flutter"],
+    relatedTutorials: ["convert-nextjs-to-mobile-app"],
+    relatedComparisons: ["capacitor-vs-react-native"],
   },
   {
     slug: "ai-plant-identifier-app",
@@ -861,289 +1430,9 @@ function PremiumScreen() {
       "convert-nextjs-to-mobile-app",
       "setup-in-app-purchases",
     ],
-    relatedComparisons: [
-      "nextjs-capacitor-vs-react-native",
-      "pwa-vs-native-app",
-    ],
+    relatedComparisons: ["nextjs-vs-react-native", "pwa-vs-native-app"],
   },
-  {
-    slug: "pomodoro-timer-app",
-    title: "Build a Pomodoro Timer & Focus App",
-    metaTitle:
-      "Pomodoro Timer App Template | Build Focus & Productivity App with Next.js",
-    metaDescription:
-      "Create a Pomodoro timer app with work/break intervals, session history, statistics, and local notifications. Built with Next.js and Capacitor for iOS & Android.",
-    category: "productivity",
-    icon: "⏱️",
-    summary:
-      "Launch a productivity-focused Pomodoro timer app with customizable work/break durations, offline session tracking, statistics dashboard, and local notifications for session completion.",
-    problemStatement:
-      "Building a timer app requires precise interval management, background execution, local notifications, offline data persistence, and statistics tracking - all while maintaining a clean, focused user experience across platforms.",
-    solution:
-      "NextNative provides a complete Pomodoro timer foundation with React Context state management, Capacitor Preferences for offline storage, Local Notifications for alerts, and a three-tab interface for timer, statistics, and settings.",
-    images: [
-      {
-        src: "/showcase/pomodoro-app-1.png",
-        alt: "Pomodoro Timer App Mockup 1",
-      },
-      {
-        src: "/showcase/pomodoro-app-2.png",
-        alt: "Pomodoro Timer App Mockup 2",
-      },
-      {
-        src: "/showcase/pomodoro-app-3.png",
-        alt: "Pomodoro Timer App Mockup 3",
-      },
-      {
-        src: "/showcase/pomodoro-app-4.png",
-        alt: "Pomodoro Timer App Mockup 4",
-      },
-    ],
-    targetAudience: [
-      "Productivity app developers",
-      "Students building portfolio projects",
-      "Indie developers creating focus tools",
-      "Teams needing custom time-tracking solutions",
-      "Developers learning mobile app patterns",
-    ],
-    keyFeatures: [
-      {
-        icon: "⏱️",
-        title: "Customizable Timer",
-        description:
-          "Set work duration (1-60 min) and break duration (1-30 min) with circular progress visualization and automatic mode switching.",
-      },
-      {
-        icon: "🔔",
-        title: "Local Notifications",
-        description:
-          "Receive native notifications when work sessions complete or break time ends using Capacitor Local Notifications.",
-      },
-      {
-        icon: "📊",
-        title: "Session Statistics",
-        description:
-          "Track total work sessions, work time, break time, today's sessions, and current streak with visual cards and icons.",
-      },
-      {
-        icon: "💾",
-        title: "Offline Storage",
-        description:
-          "All sessions and settings stored locally using Capacitor Preferences with automatic persistence across app restarts.",
-      },
-      {
-        icon: "🎯",
-        title: "Focus Modes",
-        description:
-          "Distinct work and break modes with different colors (indigo for work, green for break) and descriptive messages.",
-      },
-      {
-        icon: "🔄",
-        title: "Session History",
-        description:
-          "Complete session history with start times, durations, and completion status stored offline for later review.",
-      },
-    ],
-    coreCapabilities: [
-      "Countdown timer with minute:second display",
-      "Circular progress indicator with SVG",
-      "Play/pause/reset controls",
-      "Automatic work ↔ break mode switching",
-      "Customizable work duration (1-60 minutes)",
-      "Customizable break duration (1-30 minutes)",
-      "Local notification on session completion",
-      "Session history tracking",
-      "Today's statistics (sessions & time)",
-      "All-time statistics (total sessions, work time, break time)",
-      "Current streak calculation (consecutive days)",
-      "Delete all sessions functionality",
-      "Settings persistence with Capacitor Preferences",
-      "Dark mode support",
-      "Tab navigation (Timer, Statistics, Settings)",
-    ],
-    codeExamples: [
-      {
-        title: "Timer State Management with React Context",
-        description:
-          "Manage timer state globally using React Context and custom hook with Capacitor Preferences for persistence.",
-        language: "typescript",
-        filename: "hooks/usePomodoro.ts",
-        code: `import { useState, useEffect } from 'react';
-import { Preferences } from '@capacitor/preferences';
 
-const STORAGE_KEYS = {
-  SETTINGS: 'pomodoro-settings',
-  SESSIONS: 'pomodoro-sessions',
-  STATISTICS: 'pomodoro-statistics',
-};
-
-export function usePomodoro() {
-  const [settings, setSettings] = useState({
-    workDuration: 25,
-    breakDuration: 5,
-  });
-  
-  const [timer, setTimer] = useState({
-    minutes: 25,
-    seconds: 0,
-    isRunning: false,
-    mode: 'work',
-  });
-
-  // Load settings from storage
-  useEffect(() => {
-    const loadSettings = async () => {
-      const result = await Preferences.get({ 
-        key: STORAGE_KEYS.SETTINGS 
-      });
-      if (result.value) {
-        const loaded = JSON.parse(result.value);
-        setSettings(loaded);
-        setTimer(prev => ({ 
-          ...prev, 
-          minutes: loaded.workDuration 
-        }));
-      }
-    };
-    loadSettings();
-  }, []);
-
-  // Save settings when changed
-  const updateSettings = async (newSettings) => {
-    setSettings(newSettings);
-    await Preferences.set({
-      key: STORAGE_KEYS.SETTINGS,
-      value: JSON.stringify(newSettings),
-    });
-  };
-
-  return { settings, timer, updateSettings, setTimer };
-}`,
-      },
-      {
-        title: "Local Notifications on Session Complete",
-        description:
-          "Send native notifications when Pomodoro sessions complete using Capacitor Local Notifications.",
-        language: "typescript",
-        filename: "hooks/usePomodoro.ts",
-        code: `import { LocalNotifications } from '@capacitor/local-notifications';
-
-// Request notification permission on app load
-const requestNotificationPermission = async () => {
-  await LocalNotifications.requestPermissions();
-};
-
-// Send notification when session completes
-const switchMode = async () => {
-  const message = timer.mode === 'work'
-    ? 'Work session completed! Time for a break!'
-    : 'Break time is over! Ready to work?';
-
-  try {
-    await LocalNotifications.schedule({
-      notifications: [
-        {
-          title: 'Pomodoro Timer',
-          body: message,
-          id: Date.now(),
-          schedule: { at: new Date(Date.now() + 100) },
-        },
-      ],
-    });
-  } catch (error) {
-    console.error('Error sending notification:', error);
-  }
-
-  // Switch to next mode
-  setTimer({
-    minutes: timer.mode === 'work' ? breakDuration : workDuration,
-    seconds: 0,
-    isRunning: false,
-    mode: timer.mode === 'work' ? 'break' : 'work',
-  });
-};`,
-      },
-      {
-        title: "Statistics Calculation & Streak Tracking",
-        description:
-          "Calculate session statistics and track consecutive day streaks for gamification.",
-        language: "typescript",
-        filename: "hooks/usePomodoro.ts",
-        code: `const calculateStatistics = (sessions) => {
-  const today = new Date().setHours(0, 0, 0, 0);
-  const completedSessions = sessions.filter(s => s.completed);
-
-  const workSessions = completedSessions.filter(s => s.mode === 'work');
-  const breakSessions = completedSessions.filter(s => s.mode === 'break');
-  const todaySessions = workSessions.filter(s => s.startTime >= today);
-
-  return {
-    totalWorkSessions: workSessions.length,
-    totalWorkTime: workSessions.reduce((sum, s) => sum + s.duration, 0),
-    totalBreakTime: breakSessions.reduce((sum, s) => sum + s.duration, 0),
-    todayWorkSessions: todaySessions.length,
-    todayWorkTime: todaySessions.reduce((sum, s) => sum + s.duration, 0),
-    currentStreak: calculateStreak(workSessions),
-  };
-};
-
-const calculateStreak = (workSessions) => {
-  if (workSessions.length === 0) return 0;
-
-  const sorted = [...workSessions].sort((a, b) => b.startTime - a.startTime);
-  let streak = 0;
-  let currentDate = new Date().setHours(0, 0, 0, 0);
-
-  for (const session of sorted) {
-    const sessionDate = new Date(session.startTime).setHours(0, 0, 0, 0);
-    
-    // Check if session is today or yesterday (consecutive)
-    if (sessionDate === currentDate || 
-        sessionDate === currentDate - 86400000) {
-      streak++;
-      currentDate = sessionDate;
-    } else {
-      break;
-    }
-  }
-
-  return streak;
-};`,
-      },
-    ],
-    metrics: [
-      {
-        label: "Development Time",
-        value: "3-5 days",
-        description: "vs 3-4 weeks building from scratch",
-      },
-      {
-        label: "Cost Savings",
-        value: "$5,000+",
-        description: "Compared to custom timer app development",
-      },
-      {
-        label: "Features",
-        value: "Production Ready",
-        description: "Timer, statistics, notifications, and settings",
-      },
-      {
-        label: "Offline Support",
-        value: "100%",
-        description: "Full functionality without internet connection",
-      },
-    ],
-    timeSavings: "3-4 weeks",
-    costSavings: "$5,000-15,000",
-    relatedTutorials: [
-      "convert-nextjs-to-mobile-app",
-      "add-push-notifications-nextjs",
-    ],
-    relatedComparisons: [
-      "nextjs-capacitor-vs-react-native",
-      "pwa-vs-native-app",
-    ],
-  },
   //   {
   //     slug: "social-media-app",
   //     title: "Build a Social Media & Community App",
