@@ -866,6 +866,284 @@ function PremiumScreen() {
       "pwa-vs-native-app",
     ],
   },
+  {
+    slug: "pomodoro-timer-app",
+    title: "Build a Pomodoro Timer & Focus App",
+    metaTitle:
+      "Pomodoro Timer App Template | Build Focus & Productivity App with Next.js",
+    metaDescription:
+      "Create a Pomodoro timer app with work/break intervals, session history, statistics, and local notifications. Built with Next.js and Capacitor for iOS & Android.",
+    category: "productivity",
+    icon: "⏱️",
+    summary:
+      "Launch a productivity-focused Pomodoro timer app with customizable work/break durations, offline session tracking, statistics dashboard, and local notifications for session completion.",
+    problemStatement:
+      "Building a timer app requires precise interval management, background execution, local notifications, offline data persistence, and statistics tracking - all while maintaining a clean, focused user experience across platforms.",
+    solution:
+      "NextNative provides a complete Pomodoro timer foundation with React Context state management, Capacitor Preferences for offline storage, Local Notifications for alerts, and a three-tab interface for timer, statistics, and settings.",
+    images: [
+      {
+        src: "/showcase/pomodoro-app-1.png",
+        alt: "Pomodoro Timer App Mockup 1",
+      },
+      {
+        src: "/showcase/pomodoro-app-2.png",
+        alt: "Pomodoro Timer App Mockup 2",
+      },
+      {
+        src: "/showcase/pomodoro-app-3.png",
+        alt: "Pomodoro Timer App Mockup 3",
+      },
+      {
+        src: "/showcase/pomodoro-app-4.png",
+        alt: "Pomodoro Timer App Mockup 4",
+      },
+    ],
+    targetAudience: [
+      "Productivity app developers",
+      "Students building portfolio projects",
+      "Indie developers creating focus tools",
+      "Teams needing custom time-tracking solutions",
+      "Developers learning mobile app patterns",
+    ],
+    keyFeatures: [
+      {
+        icon: "⏱️",
+        title: "Customizable Timer",
+        description:
+          "Set work duration (1-60 min) and break duration (1-30 min) with circular progress visualization and automatic mode switching.",
+      },
+      {
+        icon: "🔔",
+        title: "Local Notifications",
+        description:
+          "Receive native notifications when work sessions complete or break time ends using Capacitor Local Notifications.",
+      },
+      {
+        icon: "📊",
+        title: "Session Statistics",
+        description:
+          "Track total work sessions, work time, break time, today's sessions, and current streak with visual cards and icons.",
+      },
+      {
+        icon: "💾",
+        title: "Offline Storage",
+        description:
+          "All sessions and settings stored locally using Capacitor Preferences with automatic persistence across app restarts.",
+      },
+      {
+        icon: "🎯",
+        title: "Focus Modes",
+        description:
+          "Distinct work and break modes with different colors (indigo for work, green for break) and descriptive messages.",
+      },
+      {
+        icon: "🔄",
+        title: "Session History",
+        description:
+          "Complete session history with start times, durations, and completion status stored offline for later review.",
+      },
+    ],
+    coreCapabilities: [
+      "Countdown timer with minute:second display",
+      "Circular progress indicator with SVG",
+      "Play/pause/reset controls",
+      "Automatic work ↔ break mode switching",
+      "Customizable work duration (1-60 minutes)",
+      "Customizable break duration (1-30 minutes)",
+      "Local notification on session completion",
+      "Session history tracking",
+      "Today's statistics (sessions & time)",
+      "All-time statistics (total sessions, work time, break time)",
+      "Current streak calculation (consecutive days)",
+      "Delete all sessions functionality",
+      "Settings persistence with Capacitor Preferences",
+      "Dark mode support",
+      "Tab navigation (Timer, Statistics, Settings)",
+    ],
+    codeExamples: [
+      {
+        title: "Timer State Management with React Context",
+        description:
+          "Manage timer state globally using React Context and custom hook with Capacitor Preferences for persistence.",
+        language: "typescript",
+        filename: "hooks/usePomodoro.ts",
+        code: `import { useState, useEffect } from 'react';
+import { Preferences } from '@capacitor/preferences';
+
+const STORAGE_KEYS = {
+  SETTINGS: 'pomodoro-settings',
+  SESSIONS: 'pomodoro-sessions',
+  STATISTICS: 'pomodoro-statistics',
+};
+
+export function usePomodoro() {
+  const [settings, setSettings] = useState({
+    workDuration: 25,
+    breakDuration: 5,
+  });
+  
+  const [timer, setTimer] = useState({
+    minutes: 25,
+    seconds: 0,
+    isRunning: false,
+    mode: 'work',
+  });
+
+  // Load settings from storage
+  useEffect(() => {
+    const loadSettings = async () => {
+      const result = await Preferences.get({ 
+        key: STORAGE_KEYS.SETTINGS 
+      });
+      if (result.value) {
+        const loaded = JSON.parse(result.value);
+        setSettings(loaded);
+        setTimer(prev => ({ 
+          ...prev, 
+          minutes: loaded.workDuration 
+        }));
+      }
+    };
+    loadSettings();
+  }, []);
+
+  // Save settings when changed
+  const updateSettings = async (newSettings) => {
+    setSettings(newSettings);
+    await Preferences.set({
+      key: STORAGE_KEYS.SETTINGS,
+      value: JSON.stringify(newSettings),
+    });
+  };
+
+  return { settings, timer, updateSettings, setTimer };
+}`,
+      },
+      {
+        title: "Local Notifications on Session Complete",
+        description:
+          "Send native notifications when Pomodoro sessions complete using Capacitor Local Notifications.",
+        language: "typescript",
+        filename: "hooks/usePomodoro.ts",
+        code: `import { LocalNotifications } from '@capacitor/local-notifications';
+
+// Request notification permission on app load
+const requestNotificationPermission = async () => {
+  await LocalNotifications.requestPermissions();
+};
+
+// Send notification when session completes
+const switchMode = async () => {
+  const message = timer.mode === 'work'
+    ? 'Work session completed! Time for a break!'
+    : 'Break time is over! Ready to work?';
+
+  try {
+    await LocalNotifications.schedule({
+      notifications: [
+        {
+          title: 'Pomodoro Timer',
+          body: message,
+          id: Date.now(),
+          schedule: { at: new Date(Date.now() + 100) },
+        },
+      ],
+    });
+  } catch (error) {
+    console.error('Error sending notification:', error);
+  }
+
+  // Switch to next mode
+  setTimer({
+    minutes: timer.mode === 'work' ? breakDuration : workDuration,
+    seconds: 0,
+    isRunning: false,
+    mode: timer.mode === 'work' ? 'break' : 'work',
+  });
+};`,
+      },
+      {
+        title: "Statistics Calculation & Streak Tracking",
+        description:
+          "Calculate session statistics and track consecutive day streaks for gamification.",
+        language: "typescript",
+        filename: "hooks/usePomodoro.ts",
+        code: `const calculateStatistics = (sessions) => {
+  const today = new Date().setHours(0, 0, 0, 0);
+  const completedSessions = sessions.filter(s => s.completed);
+
+  const workSessions = completedSessions.filter(s => s.mode === 'work');
+  const breakSessions = completedSessions.filter(s => s.mode === 'break');
+  const todaySessions = workSessions.filter(s => s.startTime >= today);
+
+  return {
+    totalWorkSessions: workSessions.length,
+    totalWorkTime: workSessions.reduce((sum, s) => sum + s.duration, 0),
+    totalBreakTime: breakSessions.reduce((sum, s) => sum + s.duration, 0),
+    todayWorkSessions: todaySessions.length,
+    todayWorkTime: todaySessions.reduce((sum, s) => sum + s.duration, 0),
+    currentStreak: calculateStreak(workSessions),
+  };
+};
+
+const calculateStreak = (workSessions) => {
+  if (workSessions.length === 0) return 0;
+
+  const sorted = [...workSessions].sort((a, b) => b.startTime - a.startTime);
+  let streak = 0;
+  let currentDate = new Date().setHours(0, 0, 0, 0);
+
+  for (const session of sorted) {
+    const sessionDate = new Date(session.startTime).setHours(0, 0, 0, 0);
+    
+    // Check if session is today or yesterday (consecutive)
+    if (sessionDate === currentDate || 
+        sessionDate === currentDate - 86400000) {
+      streak++;
+      currentDate = sessionDate;
+    } else {
+      break;
+    }
+  }
+
+  return streak;
+};`,
+      },
+    ],
+    metrics: [
+      {
+        label: "Development Time",
+        value: "3-5 days",
+        description: "vs 3-4 weeks building from scratch",
+      },
+      {
+        label: "Cost Savings",
+        value: "$5,000+",
+        description: "Compared to custom timer app development",
+      },
+      {
+        label: "Features",
+        value: "Production Ready",
+        description: "Timer, statistics, notifications, and settings",
+      },
+      {
+        label: "Offline Support",
+        value: "100%",
+        description: "Full functionality without internet connection",
+      },
+    ],
+    timeSavings: "3-4 weeks",
+    costSavings: "$5,000-15,000",
+    relatedTutorials: [
+      "convert-nextjs-to-mobile-app",
+      "add-push-notifications-nextjs",
+    ],
+    relatedComparisons: [
+      "nextjs-capacitor-vs-react-native",
+      "pwa-vs-native-app",
+    ],
+  },
   //   {
   //     slug: "social-media-app",
   //     title: "Build a Social Media & Community App",
