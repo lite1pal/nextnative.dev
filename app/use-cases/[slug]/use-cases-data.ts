@@ -624,6 +624,298 @@ export function calculateAnalytics(expenses: Expense[]): ExpenseAnalytics | null
     relatedComparisons: ["capacitor-vs-flutter"],
   },
   {
+    slug: "flashcard-learning-app",
+    title: "Build a Flashcard & Spaced Repetition Learning App",
+    metaTitle:
+      "Flashcard App Template | Build Learning App with Next.js & Capacitor",
+    metaDescription:
+      "Create a powerful flashcard learning app with quiz mode, flip animations, and progress tracking. Built with Next.js and Capacitor for iOS & Android.",
+    category: "education",
+    icon: "🎴",
+    summary:
+      "Launch a full-featured flashcard learning app with add/edit/delete cards, interactive quiz mode with flip animations, accuracy tracking, and detailed statistics.",
+    problemStatement:
+      "Building an educational flashcard app requires complex UI animations, state management for quiz logic, accurate progress tracking, and offline data persistence - typically taking weeks to develop properly.",
+    solution:
+      "NextNative provides a complete flashcard app foundation with React Context state management, Capacitor Preferences for offline storage, CSS flip animations, and a three-tab interface for cards, quiz, and statistics.",
+    images: [
+      {
+        src: "/showcase/flashcard-app-1.png",
+        alt: "Flashcard Learning App Mockup 1",
+      },
+      {
+        src: "/showcase/flashcard-app-2.png",
+        alt: "Flashcard Learning App Mockup 2",
+      },
+      {
+        src: "/showcase/flashcard-app-3.png",
+        alt: "Flashcard Learning App Mockup 3",
+      },
+      {
+        src: "/showcase/flashcard-app-4.png",
+        alt: "Flashcard Learning App Mockup 4",
+      },
+    ],
+    targetAudience: [
+      "Educators creating study materials",
+      "Students building personalized study tools",
+      "EdTech startups validating MVPs",
+      "Language learning app developers",
+      "Test prep companies building practice tools",
+    ],
+    keyFeatures: [
+      {
+        icon: "🃏",
+        title: "Card Management",
+        description:
+          "Add, edit, and delete flashcards with question and answer fields. Full CRUD operations with instant updates.",
+      },
+      {
+        icon: "🔄",
+        title: "Interactive Quiz Mode",
+        description:
+          "Take quizzes with smooth flip animations to reveal answers. Track correct/incorrect responses in real-time.",
+      },
+      {
+        icon: "📊",
+        title: "Progress Tracking",
+        description:
+          "Track quiz results, accuracy percentages, and learning progress over time with detailed statistics.",
+      },
+      {
+        icon: "🎯",
+        title: "Accuracy Metrics",
+        description:
+          "View overall accuracy, total correct/incorrect answers, and performance trends across all quizzes.",
+      },
+      {
+        icon: "💾",
+        title: "Offline Storage",
+        description:
+          "All flashcards and quiz results stored locally using Capacitor Preferences. No internet required.",
+      },
+      {
+        icon: "📱",
+        title: "Native UI",
+        description:
+          "Built with Ionic React components for smooth native iOS and Android experience.",
+      },
+    ],
+    coreCapabilities: [
+      "Add flashcards with custom questions and answers",
+      "Edit existing flashcards with full data modification",
+      "Delete individual flashcards with confirmation",
+      "Interactive quiz mode with progress indicator",
+      "Smooth 3D flip animation to reveal answers",
+      "Self-assessment with correct/incorrect marking",
+      "Real-time score tracking during quizzes",
+      "Quiz results summary with accuracy percentage",
+      "Overall statistics with total cards and quizzes",
+      "Average accuracy calculation across all quizzes",
+      "Quiz history with timestamps and scores",
+      "Last reviewed date tracking for each card",
+      "Offline-first with Capacitor Preferences storage",
+      "Clear all flashcards with confirmation",
+      "Clear quiz history with confirmation",
+      "Three-tab navigation (Cards, Quiz, Statistics)",
+      "Dark mode support with Ionic theming",
+    ],
+    codeExamples: [
+      {
+        title: "Flashcard State Management with React Context",
+        description:
+          "Centralized flashcard and quiz state using React Context pattern. Provides CRUD operations and statistics to all screens.",
+        language: "typescript",
+        filename: "FlashcardContext.tsx",
+        code: `"use client";
+
+import React, { createContext, useContext, ReactNode } from "react";
+import { useFlashcards } from "./hooks/useFlashcards";
+
+type FlashcardContextType = ReturnType<typeof useFlashcards>;
+
+const FlashcardContext = createContext<FlashcardContextType | undefined>(
+  undefined
+);
+
+export function FlashcardProvider({ children }: { children: ReactNode }) {
+  const flashcardState = useFlashcards();
+
+  return (
+    <FlashcardContext.Provider value={flashcardState}>
+      {children}
+    </FlashcardContext.Provider>
+  );
+}
+
+export function useFlashcardContext() {
+  const context = useContext(FlashcardContext);
+  if (context === undefined) {
+    throw new Error(
+      "useFlashcardContext must be used within FlashcardProvider"
+    );
+  }
+  return context;
+}`,
+      },
+      {
+        title: "Offline Storage with Capacitor Preferences",
+        description:
+          "Persist flashcards and quiz results locally using Capacitor Preferences API. Auto-save on every change.",
+        language: "typescript",
+        filename: "hooks/useFlashcards.ts",
+        code: `import { useState, useEffect, useCallback } from "react";
+import { Preferences } from "@capacitor/preferences";
+import { Flashcard, QuizResult } from "../types";
+
+const FLASHCARDS_KEY = "flashcards";
+const QUIZ_RESULTS_KEY = "quiz-results";
+
+export function useFlashcards() {
+  const [flashcards, setFlashcards] = useState<Flashcard[]>([]);
+  const [quizResults, setQuizResults] = useState<QuizResult[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Load data from Capacitor Preferences on mount
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  // Save flashcards whenever they change
+  useEffect(() => {
+    if (!isLoading) {
+      saveFlashcards();
+    }
+  }, [flashcards, isLoading]);
+
+  const loadData = async () => {
+    try {
+      const [flashcardsData, quizResultsData] = await Promise.all([
+        Preferences.get({ key: FLASHCARDS_KEY }),
+        Preferences.get({ key: QUIZ_RESULTS_KEY }),
+      ]);
+
+      if (flashcardsData.value) {
+        setFlashcards(JSON.parse(flashcardsData.value));
+      }
+      if (quizResultsData.value) {
+        setQuizResults(JSON.parse(quizResultsData.value));
+      }
+    } catch (error) {
+      console.error("Failed to load flashcard data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const saveFlashcards = async () => {
+    try {
+      await Preferences.set({
+        key: FLASHCARDS_KEY,
+        value: JSON.stringify(flashcards),
+      });
+    } catch (error) {
+      console.error("Failed to save flashcards:", error);
+    }
+  };
+
+  const addFlashcard = useCallback((question: string, answer: string) => {
+    const newCard: Flashcard = {
+      id: Date.now().toString(),
+      question,
+      answer,
+      createdAt: new Date().toISOString(),
+    };
+    setFlashcards((prev) => [...prev, newCard]);
+  }, []);
+
+  return { flashcards, addFlashcard, /* ... other methods */ };
+}`,
+      },
+      {
+        title: "3D Flip Animation for Flashcards",
+        description:
+          "CSS-based 3D flip animation to reveal answers. Uses transform and backface-visibility for smooth transitions.",
+        language: "typescript",
+        filename: "screens/quiz-screen.tsx",
+        code: `// Flashcard container with perspective
+<div
+  style={{
+    perspective: "1000px",
+  }}
+>
+  <div
+    style={{
+      position: "relative",
+      width: "100%",
+      height: "300px",
+      transition: "transform 0.6s",
+      transformStyle: "preserve-3d",
+      transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
+    }}
+  >
+    {/* Question Side (Front) */}
+    <IonCard
+      style={{
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+        backfaceVisibility: "hidden",
+        WebkitBackfaceVisibility: "hidden",
+      }}
+    >
+      <IonCardContent>
+        <h2>{currentCard.question}</h2>
+      </IonCardContent>
+    </IonCard>
+
+    {/* Answer Side (Back) */}
+    <IonCard
+      style={{
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+        backfaceVisibility: "hidden",
+        WebkitBackfaceVisibility: "hidden",
+        transform: "rotateY(180deg)",
+      }}
+    >
+      <IonCardContent>
+        <h2>{currentCard.answer}</h2>
+      </IonCardContent>
+    </IonCard>
+  </div>
+</div>`,
+      },
+    ],
+    metrics: [
+      {
+        label: "Development Time",
+        value: "2-3 days",
+        description: "vs 2-3 weeks building from scratch",
+      },
+      {
+        label: "Cost Savings",
+        value: "$3,000+",
+        description: "Compared to custom flashcard app development",
+      },
+      {
+        label: "Features",
+        value: "Production Ready",
+        description: "Cards, quiz mode, statistics, and progress tracking",
+      },
+      {
+        label: "Offline Support",
+        value: "100%",
+        description: "Full functionality without internet connection",
+      },
+    ],
+    timeSavings: "2-3 weeks",
+    costSavings: "$3,000-10,000",
+    relatedTutorials: ["convert-nextjs-to-mobile-app"],
+    relatedComparisons: ["nextjs-vs-react-native", "capacitor-vs-react-native"],
+  },
+  {
     slug: "fitness-app",
     title: "Build a Fitness & Workout Tracking App",
     metaTitle:
