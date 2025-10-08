@@ -4,6 +4,7 @@ import type { MetadataRoute } from "next";
 import { comparisons } from "./comparisons/[slug]/comparisons-data";
 import { tutorials } from "./tutorials/[slug]/tutorials-data";
 import { alternatives } from "./alternatives/[slug]/alternatives-data";
+import { useCases } from "./use-cases/[slug]/use-cases-data";
 
 export const revalidate = 600; // 10 minutes in seconds
 
@@ -12,7 +13,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     select: { slug: true, updatedAt: true },
   });
 
-  const lastModified = new Date("2025-10-05");
+  const baseUrl = "https://nextnative.dev";
+  const currentDate = new Date();
+  const staticPagesLastModified = new Date("2025-10-07");
 
   const docs = [
     "https://nextnative.dev/docs",
@@ -60,106 +63,133 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     (alternative) => `https://nextnative.dev/alternatives/${alternative.slug}`,
   );
 
+  const useCaseUrls = useCases.map(
+    (useCase) => `https://nextnative.dev/use-cases/${useCase.slug}`,
+  );
+
   return [
+    // Core Pages
     {
-      url: "https://nextnative.dev/",
-      lastModified,
-      changeFrequency: "weekly",
+      url: `${baseUrl}/`,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
       priority: 1.0,
     },
     {
-      url: "https://nextnative.dev/blog",
-      lastModified,
-      changeFrequency: "weekly",
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: "daily" as const,
       priority: 0.9,
     },
     {
-      url: "https://nextnative.dev/convert-website-to-app",
-      lastModified,
-      changeFrequency: "monthly",
+      url: `${baseUrl}/convert-website-to-app`,
+      lastModified: staticPagesLastModified,
+      changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     {
-      url: "https://nextnative.dev/showcase",
-      lastModified,
-      changeFrequency: "monthly",
+      url: `${baseUrl}/showcase`,
+      lastModified: staticPagesLastModified,
+      changeFrequency: "monthly" as const,
       priority: 0.7,
     },
     {
-      url: "https://nextnative.dev/contact",
-      lastModified,
-      changeFrequency: "yearly",
+      url: `${baseUrl}/contact`,
+      lastModified: staticPagesLastModified,
+      changeFrequency: "yearly" as const,
       priority: 0.4,
     },
     {
-      url: "https://nextnative.dev/pricing",
-      lastModified,
-      changeFrequency: "monthly",
+      url: `${baseUrl}/pricing`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
       priority: 0.9,
     },
     {
-      url: "https://nextnative.dev/mvp-app-development",
-      lastModified,
-      changeFrequency: "monthly",
+      url: `${baseUrl}/mvp-app-development`,
+      lastModified: staticPagesLastModified,
+      changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     {
-      url: "https://nextnative.dev/comparisons",
-      lastModified,
-      changeFrequency: "monthly",
+      url: `${baseUrl}/comparisons`,
+      lastModified: staticPagesLastModified,
+      changeFrequency: "monthly" as const,
       priority: 0.9,
     },
     {
-      url: "https://nextnative.dev/tutorials",
-      lastModified,
-      changeFrequency: "monthly",
+      url: `${baseUrl}/tutorials`,
+      lastModified: staticPagesLastModified,
+      changeFrequency: "monthly" as const,
       priority: 0.9,
     },
     {
-      url: "https://nextnative.dev/alternatives",
-      lastModified,
-      changeFrequency: "monthly",
+      url: `${baseUrl}/alternatives`,
+      lastModified: staticPagesLastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/use-cases`,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
       priority: 0.9,
     },
 
+    // Blog Posts
     ...posts.map((post) => ({
-      url: `https://nextnative.dev/blog/${post.slug}`,
+      url: `${baseUrl}/blog/${post.slug}`,
       lastModified: post.updatedAt,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
 
+    // Free Tools
     ...freeTools.map((freeTool) => ({
       url: freeTool,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.9,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
     })),
 
+    // Documentation
     ...docs.map((doc) => ({
       url: doc,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1.0,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
     })),
 
+    // Comparisons
     ...comparisonUrls.map((url) => ({
       url,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
+      lastModified: staticPagesLastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     })),
 
+    // Tutorials
     ...tutorialUrls.map((url) => ({
       url,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
+      lastModified: staticPagesLastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     })),
 
+    // Alternatives
     ...alternativeUrls.map((url) => ({
       url,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
+      lastModified: staticPagesLastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+
+    // Use Cases
+    ...useCaseUrls.map((url) => ({
+      url,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
     })),
   ];
 }
