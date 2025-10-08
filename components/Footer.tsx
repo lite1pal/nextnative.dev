@@ -49,6 +49,8 @@ function FooterLinkGroup({
   title: string;
   links: FooterLink[];
 }) {
+  const isLegal = title.toLowerCase().includes("legal");
+
   return (
     <div className="flex flex-col gap-4">
       <h3 className="text-lg font-[500]">{title}</h3>
@@ -58,6 +60,7 @@ function FooterLinkGroup({
             key={link.label}
             href={link.href}
             target={link.target || "_self"}
+            rel={isLegal ? "nofollow noopener" : undefined}
             onClick={() => trackEvent(`Footer_${link.label}_clicked`)}
             className="text-gray hover:text-foreground transition-colors"
           >

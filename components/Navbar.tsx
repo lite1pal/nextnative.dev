@@ -143,6 +143,7 @@ function Navbar() {
             onClick={() => {
               trackEvent("Navbar_Contact_clicked");
             }}
+            rel="nofollow noopener"
           >
             <Button variant="secondary">Contact</Button>
           </Link>
@@ -208,6 +209,7 @@ function Navbar() {
               setIsMenuOpen(false);
               trackEvent("Navbar_Contact_clicked");
             }}
+            rel="nofollow noopener"
           >
             <Button variant="secondary">Contact</Button>
           </Link>

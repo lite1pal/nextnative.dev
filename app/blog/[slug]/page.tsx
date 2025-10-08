@@ -13,6 +13,7 @@ import { JSDOM } from "jsdom"; // install: npm i jsdom
 import TableOfContents from "./TableOfContents";
 import MobileCTA from "./MobileCTA";
 import MobileCTAClient from "./MobileCTA";
+import PostInternalLinks from "./PostInternalLinks";
 
 function extractHeadings(html: string) {
   const dom = new JSDOM(html);
@@ -155,6 +156,8 @@ export default async function BlogPostPage({
             className="drop-cap max-w-2xl lg:px-16 xl:px-0"
             dangerouslySetInnerHTML={{ __html: contentWithAnchors }}
           />
+
+          <PostInternalLinks />
 
           <script
             type="application/ld+json"
