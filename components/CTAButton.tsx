@@ -15,6 +15,7 @@ function CTAButton() {
         }
       }}
       variant="primary"
+      data-fast-goal="cta_clicked"
     >
       Get NextNative now
     </Button>
