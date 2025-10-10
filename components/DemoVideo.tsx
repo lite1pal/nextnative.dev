@@ -25,11 +25,11 @@ function DemoVideo() {
   return (
     <div
       ref={videoRef}
-      className="flex flex-col mt-10 sm:mb-20 sm:px-20 md:py-20"
+      className="mt-10 flex flex-col sm:mb-20 sm:px-20 md:py-20"
     >
-      <div className="flex flex-col md:flex-row sm:items-center justify-between gap-3 mb-2">
+      <div className="mb-2 flex flex-col justify-between gap-3 sm:items-center md:flex-row">
         <div></div>
-        <span className={`text-base sm:text-xl font-[500] text-gray`}>
+        <span className={`text-gray text-base font-[500] sm:text-xl`}>
           Just 3 minutes to see how it works ⚡
         </span>
       </div>
@@ -37,11 +37,11 @@ function DemoVideo() {
       <StarburstSign position="bottom-right" rotation={180}>
         <div
           style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-          className={`max-w-[962px] xl:max-w-[1260px] h-full xl:h-[620px] rounded-[20px] overflow-hidden relative bg-white transition-all duration-700`}
+          className={`relative h-full max-w-[962px] overflow-hidden rounded-[20px] bg-white transition-all duration-700 xl:h-[620px] xl:max-w-[1260px]`}
         >
           {isPlaying ? (
             <iframe
-              className="w-full h-full"
+              className="h-full w-full"
               src={embedUrl}
               title="NextNative Demo Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -50,7 +50,7 @@ function DemoVideo() {
           ) : (
             <div
               onClick={handleVideoClick}
-              className="w-full group cursor-pointer h-full relative"
+              className="group relative h-full w-full cursor-pointer"
             >
               <div className="absolute inset-0 z-10" />
               <Image
@@ -58,12 +58,12 @@ function DemoVideo() {
                 alt="NextNative demo - Build cross-platform mobile apps with web technologies"
                 width={1920}
                 height={1080}
-                className="w-full h-full object-cover"
+                className="h-full w-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                <div className="w-[72px] h-[72px] group-hover:scale-125 group-hover:bg-primary/90 transition-all duration-300 rounded-full bg-primary flex items-center justify-center">
-                  <Play className="text-white fill-white w-8 h-8" />
+              <div className="absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+                <div className="group-hover:bg-primary/90 bg-primary flex h-[72px] w-[72px] items-center justify-center rounded-full transition-all duration-300 group-hover:scale-125">
+                  <Play className="h-8 w-8 fill-white text-white" />
                 </div>
               </div>
             </div>

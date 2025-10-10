@@ -8,7 +8,10 @@ import { trackEvent } from "@/services/custom-analytics";
 
 function AppsBuiltWithNextNative() {
   return (
-    <div className="relative overflow-hidden pt-20 pb-0">
+    <div
+      className="relative overflow-hidden pt-20 pb-0"
+      data-fast-scroll="scroll_to_apps_built_with"
+    >
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <Subheading

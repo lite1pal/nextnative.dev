@@ -81,14 +81,14 @@ function ToolCard({ tool, index }: { tool: Tool; index: number }) {
     <div className="group">
       <div
         // style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-        className={`rounded-3xl sm:p-6 h-full transition-shadow duration-300 flex flex-col`}
+        className={`flex h-full flex-col rounded-3xl transition-shadow duration-300 sm:p-6`}
       >
         {/* <h3 className="text-xl font-[500] mb-4">{tool.alt}</h3> */}
         <div
           style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-          className={`${tool.src.includes("capacitor") && "px-20 sm:px-6"} rounded-2xl bg-white p-6 mb-4 flex items-center justify-center group-hover:scale-[0.98] transition-transform duration-300`}
+          className={`${tool.src.includes("capacitor") && "px-20 sm:px-6"} mb-4 flex items-center justify-center rounded-2xl bg-white p-6 transition-transform duration-300 group-hover:scale-[0.98]`}
         >
-          <div className={`relative w-full h-36`}>
+          <div className={`relative h-36 w-full`}>
             <Image
               src={tool.src}
               alt={tool.alt}
@@ -97,7 +97,7 @@ function ToolCard({ tool, index }: { tool: Tool; index: number }) {
             />
           </div>
         </div>
-        <p className="text-lg text-gray-500 font-[500]">{tool.description}</p>
+        <p className="text-lg font-[500] text-gray-500">{tool.description}</p>
       </div>
     </div>
   );
@@ -116,22 +116,25 @@ function SetupByDefault() {
   };
 
   return (
-    <div className="py-20 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+    <div
+      className="relative overflow-hidden py-20"
+      data-fast-scroll="scroll_to_setup_by_default"
+    >
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-16 text-center">
           <Subheading
             heading1="Everything you need,"
             heading2="setup by default"
-            className="text-start md:text-center md:items-center"
+            className="text-start md:items-center md:text-center"
           />
 
-          <p className="mt-6 text-lg max-w-2xl text-start md:text-center self-start w-fit md:mx-auto">
+          <p className="mt-6 w-fit max-w-2xl self-start text-start text-lg md:mx-auto md:text-center">
             Stop wasting time on configuration. Start with a fully-featured
             foundation and focus on what makes your app unique.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {tools.map((tool, index) => (
             <ToolCard key={tool.alt} tool={tool} index={index} />
           ))}
