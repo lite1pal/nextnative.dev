@@ -10,7 +10,8 @@ function CTABlogButton({ post }: { post: { slug: string } }) {
         trackEvent(`BlogPostCTA_${post.slug}_clicked`);
       }}
       href="/"
-      className="inline-block mt-4 bg-primary text-white px-4 py-2 rounded-lg hover:bg-white hover:text-primary transition-colors font-medium border border-primary"
+      className="bg-primary hover:text-primary border-primary mt-4 inline-block rounded-lg border px-4 py-2 font-medium text-white transition-colors hover:bg-white"
+      data-fast-goal={`extra_cta_clicked`}
     >
       Get Started now
     </Link>
