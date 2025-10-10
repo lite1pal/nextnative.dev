@@ -58,7 +58,11 @@ export default function ThankYouPage({
       const response = await fetch("/api/submit-username", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ paymentId, githubUsername }),
+        body: JSON.stringify({
+          paymentId,
+          githubUsername,
+          amount: paymentData.settlement_amount / 100,
+        }),
       });
 
       if (!response.ok) throw new Error("Failed to submit username");
@@ -82,12 +86,12 @@ export default function ThankYouPage({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white rounded-xl mx-auto shadow-2xl max-w-lg w-full p-6 sm:p-8"
+      className="mx-auto w-full max-w-lg rounded-xl bg-white p-6 shadow-2xl sm:p-8"
     >
-      <h1 className="text-3xl font-bold text-gray-800 mb-4">
+      <h1 className="mb-4 text-3xl font-bold text-gray-800">
         Complete your NextNative purchase
       </h1>
-      <p className="text-gray-600 mb-6">
+      <p className="mb-6 text-gray-600">
         Enter your GitHub username to get access to the private repository.
       </p>
 
@@ -106,7 +110,7 @@ export default function ThankYouPage({
             <div>
               <label
                 htmlFor="githubUsername"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="mb-1 block text-sm font-medium text-gray-700"
               >
                 GitHub Username
               </label>
@@ -115,7 +119,7 @@ export default function ThankYouPage({
                 id="githubUsername"
                 value={githubUsername}
                 onChange={(e) => setGithubUsername(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                className="w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 placeholder="e.g., johndoe"
                 required
                 aria-describedby="githubUsername-error"
@@ -126,26 +130,26 @@ export default function ThankYouPage({
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="text-red-500 text-sm flex items-center gap-1"
+                className="flex items-center gap-1 text-sm text-red-500"
                 id="githubUsername-error"
               >
-                <XCircleIcon className="w-4 h-4" />
+                <XCircleIcon className="h-4 w-4" />
                 {error}
               </motion.p>
             )}
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full py-2 cursor-pointer px-4 rounded-lg text-white font-medium transition-colors ${
+              className={`w-full cursor-pointer rounded-lg px-4 py-2 font-medium text-white transition-colors ${
                 isLoading
-                  ? "bg-blue-400 cursor-not-allowed"
+                  ? "cursor-not-allowed bg-blue-400"
                   : "bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               }`}
             >
               {isLoading ? (
                 <span className="flex items-center justify-center gap-2">
                   <svg
-                    className="animate-spin h-5 w-5 text-white"
+                    className="h-5 w-5 animate-spin text-white"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -186,14 +190,14 @@ function SuccessMessage() {
       exit={{ opacity: 0 }}
       className="text-center"
     >
-      <CheckCircleIcon className="w-12 h-12 text-green-500 mx-auto mb-4" />
+      <CheckCircleIcon className="mx-auto mb-4 h-12 w-12 text-green-500" />
       <p className="text-lg text-gray-800">
         Username submitted successfully and you have been invited to the
         NextNative repository!
       </p>
       <GoToDocsButton />
 
-      <div className="flex mt-5 items-center justify-center">
+      <div className="mt-5 flex items-center justify-center">
         <img
           src="/how-to-accept-invite.gif"
           className="rounded-xl"
@@ -211,7 +215,7 @@ function GoToDocsButton() {
       <p>
         To start building your dream app, please check the{" "}
         <a
-          href="https://docs.nextnative.dev"
+          href="https://nextnative.dev/docs"
           className="text-blue-600 underline"
         >
           documentation
@@ -232,16 +236,16 @@ function InvitedMessage({ productId }: { productId?: string }) {
       exit={{ opacity: 0 }}
       className="text-center"
     >
-      <CheckCircleIcon className="w-12 h-12 text-green-500 mx-auto mb-4" />
-      <p className="text-2xl text-gray-800 font-medium">
+      <CheckCircleIcon className="mx-auto mb-4 h-12 w-12 text-green-500" />
+      <p className="text-2xl font-medium text-gray-800">
         You're in! Your GitHub invite is on the way 🚀
       </p>
-      <p className="text-gray-600 mt-2 text-xl">
+      <p className="mt-2 text-xl text-gray-600">
         Welcome to the fast lane of mobile development.
       </p>
 
       {isAllIn && (
-        <div className="mt-6 space-y-2 text-left text-gray-700 max-w-md mx-auto">
+        <div className="mx-auto mt-6 max-w-md space-y-2 text-left text-gray-700">
           <p>
             📱 Here's your{" "}
             <a
@@ -280,18 +284,18 @@ function InvitedMessage({ productId }: { productId?: string }) {
 
 function GoToRepositoryButton() {
   return (
-    <div className="flex flex-col gap-5 items-center">
+    <div className="flex flex-col items-center gap-5">
       <a
         href="https://github.com/lite1pal/nextnative_boilerplate"
-        className="mt-4 inline-block text-blue-600 hover:text-blue-800 underline"
+        className="mt-4 inline-block text-blue-600 underline hover:text-blue-800"
       >
         <button
-          className={`w-full py-2 cursor-pointer px-8 mt-3 rounded-lg text-white font-medium transition-colors bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
+          className={`mt-3 w-full cursor-pointer rounded-lg bg-blue-600 px-8 py-2 font-medium text-white transition-colors hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
         >
           Go to the NextNative repository
         </button>
       </a>
-      <p className="text-gray-600 text-xs max-w-md sm:text-center">
+      <p className="max-w-md text-xs text-gray-600 sm:text-center">
         If the page is not found, make sure that you're logged in Github account
         with the same username that you gave in the form.
       </p>

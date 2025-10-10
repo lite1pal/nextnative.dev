@@ -99,7 +99,7 @@ If you're using Capacitor (like NextNative), you can:
 These assets were generated using the free app icon and splash screen generator at https://nextnative.dev
 
 For more mobile app development tools and resources, visit:
-- NextNative Documentation: https://docs.nextnative.dev
+- NextNative Documentation: https://nextnative.dev/docs
 - Mobile App Templates: https://nextnative.dev/templates
 - Development Blog: https://nextnative.dev/blog
 

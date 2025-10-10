@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
     if (isNaN(page) || page < 1) {
       return NextResponse.json(
         { error: "Invalid page parameter" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -62,7 +62,7 @@ export async function GET(request: NextRequest) {
     console.error("Error fetching blog posts:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

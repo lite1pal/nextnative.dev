@@ -108,7 +108,7 @@ const faqItems = [
         Yeah, you'll need both to test on real devices.
         <br />
         <br /> But don't stress - I've got{" "}
-        <a href="https://docs.nextnative.dev">clear guides</a> to help you set
+        <a href="https://nextnative.dev/docs">clear guides</a> to help you set
         everything up. <br />
         <br />
         Plus, you can do 99% of development right in your browser.
@@ -233,7 +233,7 @@ const faqItems = [
         Please review{" "}
         <a
           className="text-primary underline"
-          href="https://docs.nextnative.dev"
+          href="https://nextnative.dev/docs"
         >
           the features and benefits
         </a>{" "}
