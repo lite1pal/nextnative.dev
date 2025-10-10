@@ -37,7 +37,7 @@ export default function RootLayout({
         <Script
           data-website-id="68665e138b39cc32bf5cf8ad"
           data-domain="nextnative.dev"
-          src="https://datafa.st/js/script.js"
+          src="/js/script.js"
           strategy="afterInteractive"
         />
         {/* Meta Pixel base code */}

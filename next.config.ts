@@ -1,7 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // output: "export",
+  async rewrites() {
+    return [
+      {
+        source: "/js/script.js",
+        destination: "https://datafa.st/js/script.js",
+      },
+      {
+        source: "/api/events",
+        destination: "https://datafa.st/api/events",
+      },
+    ];
+  },
 
   eslint: {
     // Warning: This allows production builds to successfully complete even if
