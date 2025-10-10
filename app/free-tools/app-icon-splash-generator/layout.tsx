@@ -29,14 +29,6 @@ export const metadata: Metadata = {
     description:
       "Upload one image and instantly get all required app icon and splash sizes for iOS & Android. 100% free, no signup.",
     locale: "en_US",
-    images: [
-      {
-        url: "/og/app-icon-splash-generator.png", // ensure this exists (1200×630)
-        width: 1200,
-        height: 630,
-        alt: "App Icon & Splash Screen Generator – NextNative",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -45,7 +37,6 @@ export const metadata: Metadata = {
     title: "Free App Icon & Splash Screen Generator",
     description:
       "Create iOS & Android app icons and splash screens from one image. Free, fast, no signup.",
-    images: ["/og/app-icon-splash-generator.png"],
   },
   keywords: [
     // core intents
