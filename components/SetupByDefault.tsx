@@ -116,10 +116,7 @@ function SetupByDefault() {
   };
 
   return (
-    <div
-      className="relative overflow-hidden py-20"
-      data-fast-scroll="scroll_to_setup_by_default"
-    >
+    <div className="relative overflow-hidden py-20">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <Subheading

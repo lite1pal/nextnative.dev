@@ -269,10 +269,7 @@ const faqItems = [
 
 function FAQ() {
   return (
-    <div
-      className="mx-auto flex flex-col gap-10 py-12 md:py-20"
-      data-fast-scroll="scroll_to_faq_section"
-    >
+    <div className="mx-auto flex flex-col gap-10 py-12 md:py-20">
       <Subheading heading1="Got a question?" heading2="I got an answer!" />
 
       <div className="ml-auto w-full xl:max-w-1/2">

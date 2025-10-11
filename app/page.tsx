@@ -127,10 +127,7 @@ export default function Home() {
 
       <QuickStart />
 
-      <div
-        className="text-center max-md:mt-24 md:mb-16"
-        data-fast-scroll="scroll_to_see_what_you_can_build"
-      >
+      <div className="text-center max-md:mt-24 md:mb-16">
         <Subheading
           heading1="See what"
           heading2="you can build in days"
@@ -146,10 +143,7 @@ export default function Home() {
 
       <SocialProof />
 
-      <div
-        className="mx-auto mt-16 max-w-2xl"
-        data-fast-scroll="scroll_to_video_testimonial"
-      >
+      <div className="mx-auto mt-16 max-w-2xl">
         <VideoTestimonial
           name={videoTestimonial?.name as string}
           videoSrc={videoTestimonial?.videoSrc!}

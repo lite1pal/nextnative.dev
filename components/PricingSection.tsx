@@ -82,7 +82,6 @@ function PricingSection() {
     <div
       id="pricing"
       className="mx-auto flex max-w-[1000px] flex-col items-center gap-4 py-12 text-center md:py-20"
-      data-fast-scroll="scroll_to_pricing_section"
     >
       <Subheading
         heading1="One-time payment,"

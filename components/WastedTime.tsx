@@ -129,10 +129,7 @@ function WastedTime() {
   const totalTime = "3+ weeks!";
 
   return (
-    <div
-      className="relative overflow-hidden py-6 md:py-24"
-      data-fast-scroll="scroll_to_wasted_time"
-    >
+    <div className="relative overflow-hidden py-6 md:py-24">
       <div className="mx-auto max-w-5xl">
         <h2
           className={`mb-12 text-center text-3xl font-[500] transition-all duration-700 md:mb-16 md:text-5xl`}
