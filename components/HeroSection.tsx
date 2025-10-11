@@ -53,7 +53,7 @@ function HeroSection({
         {ctaButton}
 
         {includeRatingStars && (
-          <div className="flex gap-2">
+          <div className="flex gap-5 sm:gap-2">
             <div className="relative -top-1.5">
               <AvatarList />
             </div>

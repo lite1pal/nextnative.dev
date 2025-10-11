@@ -17,8 +17,9 @@ async function LovedByMakers() {
     isError = true;
   }
   return (
-    <div className="font-medium text-gray-500 pl-2">
-      Loved by <span className="text-foreground">{customersCount}</span> makers
+    <div className="pl-2 font-medium text-gray-500">
+      Loved by <span className="text-foreground">{customersCount}+</span>{" "}
+      teams/devs
     </div>
   );
 }

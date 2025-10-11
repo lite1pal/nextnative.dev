@@ -20,7 +20,7 @@ function Button({
   type = "button",
 }: ButtonProps) {
   const defaultClasses =
-    "w-fit rounded-[16px] cursor-pointer font-[500] transition-all duration-300";
+    "w-fit rounded-[12px] sm:rounded-[16px] cursor-pointer font-[500] transition-all duration-300";
 
   const variantClasses = {
     primary:

@@ -66,9 +66,9 @@ async function NextNativeCard({ post }: { post: { slug: string } }) {
             <div className="pl-2 text-xs font-medium text-gray-500">
               Loved by{" "}
               {!isError && (
-                <span className="text-foreground">{customersCount}</span>
+                <span className="text-foreground">{customersCount}+</span>
               )}{" "}
-              makers
+              teams/devs
             </div>
           </div>
         </div>
