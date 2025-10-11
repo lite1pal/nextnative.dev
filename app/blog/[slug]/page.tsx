@@ -11,7 +11,6 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { JSDOM } from "jsdom"; // install: npm i jsdom
 import TableOfContents from "./TableOfContents";
-import MobileCTA from "./MobileCTA";
 import MobileCTAClient from "./MobileCTA";
 import PostInternalLinks from "./PostInternalLinks";
 
@@ -201,19 +200,19 @@ export default async function BlogPostPage({
       </aside>
 
       {/* Pop-up */}
-      <script
+      {/* <script
         async
         src="https://eocampaign1.com/form/9870388e-6ee8-11f0-acfe-733f9fcd04f6.js"
         data-form="9870388e-6ee8-11f0-acfe-733f9fcd04f6"
-      ></script>
+      ></script> */}
 
       {/* Slide-in */}
-      <script
+      {/* <script
         className="shadow-lg"
         async
         src="https://eocampaign1.com/form/b5043f12-6ef3-11f0-826d-d372b1117e0b.js"
         data-form="b5043f12-6ef3-11f0-826d-d372b1117e0b"
-      ></script>
+      ></script> */}
 
       <MobileCTAClient showAfterPx={350}>
         <Suspense fallback={<NextNativeCardSkeleton />}>
