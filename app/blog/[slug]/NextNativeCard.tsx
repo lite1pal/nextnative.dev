@@ -48,7 +48,7 @@ async function NextNativeCard({ post }: { post: { slug: string } }) {
           Skip native dev. Use Next.js + Capacitor to go live fast.
         </p>
         <CTABlogButton post={{ slug: post.slug }} />
-        {isError ? (
+        {/* {isError ? (
           <p className="mt-3 text-xs font-medium text-pink-600">
             🎁 50% off limited offer
           </p>
@@ -56,7 +56,7 @@ async function NextNativeCard({ post }: { post: { slug: string } }) {
           <p className="mt-3 text-xs font-medium text-pink-600">
             🎁 50% off – {discountLimit - customersCount} left
           </p>
-        )}
+        )} */}
         <div className="mt-5 flex items-center gap-2">
           <div className="relative">
             <AvatarList size="sm" />

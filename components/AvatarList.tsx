@@ -69,7 +69,7 @@ export function AvatarList({
       {data.map((item) => (
         <div
           key={item.name}
-          className="group relative z-0 -ml-4 flex scale-100 items-center -space-x-4 transition-all duration-200 ease-in-out xl:hover:z-10 xl:hover:scale-110"
+          className="pointer-events-none relative z-0 -ml-4 flex scale-100 items-center -space-x-4 transition-all duration-200 ease-in-out"
         >
           <div className="relative overflow-hidden rounded-full">
             <div className="bg-size animate-bg-position pointer-events-none absolute h-full w-full from-violet-500 from-30% via-cyan-400 via-50% to-pink-500 to-80% bg-[length:300%_auto] opacity-15 xl:group-hover:bg-gradient-to-r" />
