@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
     // 2. Send a welcome email
     // 3. Track the conversion in analytics
 
-    sendMessageToTelegram("✅ New playground access request: " + email);
+    await sendMessageToTelegram("✅ New playground access request: " + email);
 
     // You could also send to your email service
     // await sendToEmailService(email, "playground-access");
