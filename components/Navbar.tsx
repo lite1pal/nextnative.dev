@@ -139,13 +139,14 @@ function Navbar() {
           </Link>
         ) : (
           <Link
-            href="/contact"
+            href="/playground"
             onClick={() => {
-              trackEvent("Navbar_Contact_clicked");
+              trackEvent("Navbar_TryForFree_clicked");
+              window?.datafast("try_for_free_clicked_from_navbar");
             }}
             rel="nofollow noopener"
           >
-            <Button variant="secondary">Contact</Button>
+            <Button variant="secondary">Try for Free</Button>
           </Link>
         )}
       </div>
@@ -204,14 +205,15 @@ function Navbar() {
           </Link>
 
           <Link
-            href="/contact"
+            href="/playground"
             onClick={() => {
               setIsMenuOpen(false);
-              trackEvent("Navbar_Contact_clicked");
+              trackEvent("Navbar_TryForFree_clicked");
+              window?.datafast("try_for_free_clicked_from_navbar");
             }}
             rel="nofollow noopener"
           >
-            <Button variant="secondary">Contact</Button>
+            <Button variant="secondary">Try for Free</Button>
           </Link>
         </div>
       )}
