@@ -8,6 +8,7 @@ function CTAButton() {
     <Button
       onClick={() => {
         trackEvent("CTA_clicked");
+        window?.datafast("cta_clicked");
         // window.location.href = dodoPaymentLinks.allAccess;
         const el = document.getElementById("pricing");
         if (el) {
@@ -15,7 +16,6 @@ function CTAButton() {
         }
       }}
       variant="primary"
-      data-fast-goal="cta_clicked"
     >
       Get NextNative now
     </Button>
