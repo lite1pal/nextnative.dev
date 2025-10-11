@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import CTAButton from "./CTAButton";
+import CTAButtonSecondary from "./CTASecondary";
 
 async function CTA({ className }: { className?: string }) {
   let customersCount = 20;
@@ -25,13 +26,16 @@ async function CTA({ className }: { className?: string }) {
 
   return (
     <div className={cn("flex flex-col gap-4 xl:items-center", className)}>
-      <CTAButton />
+      <div className="flex flex-col gap-3 md:flex-row">
+        <CTAButton />
+        <CTAButtonSecondary />
+      </div>
 
       {isError ? (
         <ErrorCase />
       ) : (
         <div className="flex flex-col">
-          <p className="font-medium text-gray-500 flex items-center gap-2">
+          <p className="flex items-center gap-2 font-medium text-gray-500">
             <span className="text-xl">🎁</span>
             <span className="sm:text-xl">
               <span className="text-red-500">50% off</span> for the first{" "}
@@ -52,7 +56,7 @@ export default CTA;
 function ErrorCase() {
   return (
     <div className="flex flex-col">
-      <p className="font-medium text-gray-500 flex items-center gap-2">
+      <p className="flex items-center gap-2 font-medium text-gray-500">
         <span className="text-xl">🎁</span>
         <span className="sm:text-xl">
           <span className="text-red-500">50% off </span>limited time offer
