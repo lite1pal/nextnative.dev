@@ -17,7 +17,7 @@ function CTAButtonSecondary() {
         variant="primary"
         className="hover:bg-primary border-primary text-primary border-2 bg-transparent px-4 hover:text-white md:px-10"
       >
-        Try for Free
+        Try for free
       </Button>
     </Link>
   );

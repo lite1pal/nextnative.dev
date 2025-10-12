@@ -146,7 +146,7 @@ function Navbar() {
             }}
             rel="nofollow noopener"
           >
-            <Button variant="secondary">Try for Free</Button>
+            <Button variant="secondary">Try for free</Button>
           </Link>
         )}
       </div>
@@ -213,7 +213,7 @@ function Navbar() {
             }}
             rel="nofollow noopener"
           >
-            <Button variant="secondary">Try for Free</Button>
+            <Button variant="secondary">Try for free</Button>
           </Link>
         </div>
       )}

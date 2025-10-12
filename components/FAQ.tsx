@@ -248,9 +248,9 @@ const faqItems = [
         Just reach out via email{" "}
         <a
           className="text-primary underline"
-          href="mailto:deniskatarasenko6@gmail.com"
+          href="mailto:denistarasenko@nextnative.dev"
         >
-          deniskatarasenko6@gmail.com
+          denistarasenko@nextnative.dev
         </a>
         , or via Twitter/X{" "}
         <a
