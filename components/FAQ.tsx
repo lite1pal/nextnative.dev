@@ -176,8 +176,8 @@ const faqItems = [
     question: "How often is NextNative updated?",
     answer: (
       <>
-        I ship a lot and use NextNative for my own apps (like Lasting Habits),
-        so it gets regular update.
+        I ship a lot and use NextNative for my own apps (like Lasting Habits or
+        Sproutly AI), so it gets regular update.
         <br />
         <br />
         <span className="text-primary">🔄 Last update: Oct 7, 2025</span>
