@@ -122,19 +122,15 @@ function Navbar() {
           Blog
         </Link>
 
-        {isBlog || isComponentPage ? (
+        {isComponentPage ? (
           <Link
             href="/"
             onClick={() => {
-              if (isComponentPage) {
-                trackEvent("Navbar_ComponentPage_UnlockAllComponents_clicked");
-              } else {
-                trackEvent("Navbar_BlogPage_LaunchYourApp_clicked");
-              }
+              trackEvent("Navbar_ComponentPage_UnlockAllComponents_clicked");
             }}
           >
             <Button variant="primary" className="py-2 md:px-8 md:py-2">
-              {isComponentPage ? "Unlock all components" : "Launch your app"}
+              Unlock all components
             </Button>
           </Link>
         ) : (

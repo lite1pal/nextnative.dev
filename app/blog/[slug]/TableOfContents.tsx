@@ -47,7 +47,7 @@ export default function TableOfContents({
         <span>Table of Contents</span>
       </div>
       <ul className="space-y-5">
-        {headings.map((h) => (
+        {headings.slice(0, 4).map((h) => (
           <li key={h.id} className={h.level === "h3" ? "ml-4" : ""}>
             <a
               href={`#${h.id}`}
