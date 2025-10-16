@@ -8,10 +8,10 @@ function CTASkeleton() {
       <CTAButton />
 
       <div className="flex flex-col">
-        <p className="font-medium text-gray-500 flex items-center gap-2">
+        <p className="flex items-center gap-2 font-medium text-gray-500">
           <span className="text-xl">🎁</span>
           <span className="sm:text-xl">
-            <span className="text-red-500">50% off</span> for the first 25
+            <span className="text-red-500">40% off</span> for the first 25
             customers, <span className="text-red-500">5 left</span>
           </span>
         </p>

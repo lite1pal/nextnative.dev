@@ -38,7 +38,7 @@ async function CTA({ className }: { className?: string }) {
           <p className="flex items-center gap-2 font-medium text-gray-500">
             <span className="text-xl">🎁</span>
             <span className="sm:text-xl">
-              <span className="text-red-500">50% off</span> for the first{" "}
+              <span className="text-red-500">40% off</span> for the first{" "}
               {discountLimit} customers,{" "}
               <span className="text-red-500">
                 {discountLimit - customersCount} left
@@ -59,7 +59,7 @@ function ErrorCase() {
       <p className="flex items-center gap-2 font-medium text-gray-500">
         <span className="text-xl">🎁</span>
         <span className="sm:text-xl">
-          <span className="text-red-500">50% off </span>limited time offer
+          <span className="text-red-500">40% off </span>limited time offer
         </span>
       </p>
     </div>

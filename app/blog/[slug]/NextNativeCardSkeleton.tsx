@@ -21,7 +21,7 @@ function NextNativeCardSkeleton() {
         <CTABlogButton post={{ slug: "" }} />
 
         <p className="mt-3 text-xs font-medium text-pink-600">
-          🎁 50% off – 5 left
+          🎁 40% off – 5 left
         </p>
         <div className="mt-5 flex items-center gap-2">
           <div className="relative">
