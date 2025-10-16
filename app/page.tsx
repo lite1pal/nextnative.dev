@@ -236,12 +236,12 @@ export default function Home() {
 
       <TestimonialsSection />
 
+      <FAQ />
       <CallToAction
         title="Start building in minutes."
         subtitle="Save weeks of work."
         buttonText="Launch mobile apps"
       />
-      <FAQ />
     </div>
   );
 }
