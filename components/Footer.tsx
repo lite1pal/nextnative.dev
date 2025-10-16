@@ -35,6 +35,93 @@ const productLinks: FooterLink[] = [
   },
 ];
 
+const freeToolsLinks: FooterLink[] = [
+  { label: "App Idea Generator", href: "/free-tools/app-idea-generator" },
+  { label: "App Name Generator", href: "/free-tools/app-name-generator" },
+  {
+    label: "App Revenue Calculator",
+    href: "/free-tools/app-revenue-calculator",
+  },
+  {
+    label: "App Store Metadata Generator",
+    href: "/free-tools/app-store-metadata-generator",
+  },
+  {
+    label: "App Store Screenshot Generator",
+    href: "/free-tools/app-store-screenshot-generator",
+  },
+  {
+    label: "Capacitor Config Generator",
+    href: "/free-tools/capacitor-config-generator",
+  },
+  {
+    label: "iOS Bundle ID Generator",
+    href: "/free-tools/ios-bundle-id-generator",
+  },
+  {
+    label: "Play Store Privacy Policy",
+    href: "/free-tools/play-store-privacy-policy",
+  },
+  {
+    label: "Privacy Policy Generator",
+    href: "/free-tools/app-privacy-policy-generator",
+  },
+  {
+    label: "PWA Manifest Generator",
+    href: "/free-tools/pwa-manifest-generator",
+  },
+  {
+    label: "Splash Screen Generator",
+    href: "/free-tools/app-icon-splash-generator",
+  },
+];
+
+const examplesLinks: FooterLink[] = [
+  {
+    label: "Pomodoro Timer & Focus App",
+    href: "/use-cases/pomodoro-timer-app",
+  },
+  {
+    label: "Expense Tracker & Budget Manager App",
+    href: "/use-cases/expense-tracker-app",
+  },
+  {
+    label: "Flashcard & Spaced Repetition Learning App",
+    href: "/use-cases/flashcard-learning-app",
+  },
+  {
+    label: "AI Plant Identification App",
+    href: "/use-cases/ai-plant-identifier-app",
+  },
+  {
+    label: "Food Delivery & Restaurant App",
+    href: "/use-cases/food-delivery-app",
+  },
+  {
+    label: "Fitness & Workout Tracking App",
+    href: "/use-cases/fitness-app",
+  },
+];
+
+const tutorialsLinks: FooterLink[] = [
+  {
+    label: "API Routes & Fetching from a Next.js Mobile App",
+    href: "/docs/features/nextjs-api",
+  },
+  {
+    label: "Connect Supabase in a Next.js Mobile App",
+    href: "/docs/features/database",
+  },
+  {
+    label: "Firebase Authentication Setup for iOS & Android",
+    href: "/docs/features/authorization",
+  },
+  {
+    label: "Set Up In-App Purchases & Subscriptions with RevenueCat",
+    href: "/docs/features/in-app-purchases",
+  },
+];
+
 const legalLinks: FooterLink[] = [
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
@@ -45,18 +132,37 @@ const legalLinks: FooterLink[] = [
 function FooterLinkGroup({
   title,
   links,
+  titleLink,
 }: {
   title: string;
   links: FooterLink[];
+  titleLink?: string;
 }) {
   const isLegal = title.toLowerCase().includes("legal");
 
+  const header = titleLink ? (
+    <h3 className="text-lg font-[500]">
+      <Link
+        onClick={() => trackEvent(`Footer_${title}_clicked`)}
+        prefetch={false}
+        href={titleLink}
+        className="hover:underline"
+      >
+        {title}
+      </Link>
+    </h3>
+  ) : (
+    <h3 className="text-lg font-[500]">{title}</h3>
+  );
+
   return (
     <div className="flex flex-col gap-4">
-      <h3 className="text-lg font-[500]">{title}</h3>
+      {/* <h3 className="text-lg font-[500]">{title}</h3> */}
+      {header}
       <div className="flex flex-col gap-3">
         {links.map((link) => (
           <Link
+            prefetch={false}
             key={link.label}
             href={link.href}
             target={link.target || "_self"}
@@ -144,13 +250,33 @@ function Footer() {
                 </svg>
               </a>
             </div>
+            <div className="mt-5 hidden md:block">
+              <FooterLinkGroup title="Legal" links={legalLinks} />
+            </div>
           </div>
 
           {/* Links sections */}
           <div className="col-span-1 md:col-span-8 md:ml-auto">
-            <div className="grid grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 gap-12 gap-y-16 md:grid-cols-2">
               <FooterLinkGroup title="Product" links={productLinks} />
-              <FooterLinkGroup title="Legal" links={legalLinks} />
+              <FooterLinkGroup
+                title="Free Tools"
+                titleLink="/free-tools"
+                links={freeToolsLinks}
+              />
+              <FooterLinkGroup
+                title="Tutorials"
+                titleLink="/docs"
+                links={tutorialsLinks}
+              />
+              <FooterLinkGroup
+                title="App Examples"
+                titleLink="/use-cases"
+                links={examplesLinks}
+              />
+              <div className="block md:hidden">
+                <FooterLinkGroup title="Legal" links={legalLinks} />
+              </div>
             </div>
           </div>
         </div>
