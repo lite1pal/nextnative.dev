@@ -67,6 +67,10 @@ const freeToolsLinks: FooterLink[] = [
     href: "/free-tools/app-privacy-policy-generator",
   },
   {
+    label: "Preview Website on Mobile Device",
+    href: "/convert-website-to-app",
+  },
+  {
     label: "PWA Manifest Generator",
     href: "/free-tools/pwa-manifest-generator",
   },
