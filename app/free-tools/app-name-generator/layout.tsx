@@ -17,21 +17,12 @@ export const metadata: Metadata = {
     title: "App Name Generator",
     description:
       "Get unique app name ideas with styles and domain suggestions. Copy or export to CSV.",
-    images: [
-      {
-        url: "/og/app-name-generator.png",
-        width: 1200,
-        height: 630,
-        alt: "App Name Generator – NextNative",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "App Name Generator | NextNative",
     description:
       "Free tool to create mobile app name ideas with domain suggestions.",
-    images: ["/og/app-name-generator.png"],
   },
   keywords: [
     "app name generator",

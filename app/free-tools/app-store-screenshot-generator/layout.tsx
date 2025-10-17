@@ -17,21 +17,12 @@ export const metadata: Metadata = {
     title: "App Store Screenshot Generator | NextNative",
     description:
       "Create App Store & Google Play screenshots right in your browser — titles, backgrounds, and export to PNG.",
-    images: [
-      {
-        url: "/og/app-store-screenshot-generator.png",
-        width: 1200,
-        height: 630,
-        alt: "App Store Screenshot Generator – NextNative",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "App Store Screenshot Generator | Free Tool",
     description:
       "Upload images, add text overlays, pick iOS/Play presets, and export PNGs. 100% browser-based.",
-    images: ["/og/app-store-screenshot-generator.png"],
   },
   keywords: [
     "app store screenshot generator",

@@ -38,14 +38,6 @@ export const metadata: Metadata = {
       "From idea to App Store in weeks. Build your MVP app with Next.js + Capacitor. Trusted process to avoid rejections and launch faster.",
     url: "https://nextnative.dev/mvp-app-development",
     siteName: "NextNative",
-    images: [
-      {
-        url: "/mvp-agency/og-image-mvp.png", // export a screenshot of hero
-        width: 1200,
-        height: 630,
-        alt: "MVP App Development Services by NextNative",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
@@ -54,7 +46,6 @@ export const metadata: Metadata = {
     title: "MVP App Development Services | NextNative",
     description:
       "Build your minimum viable product with Next.js + Capacitor. From scratch or web-to-mobile conversion, get your app live on iOS & Android in weeks.",
-    images: ["/mvp-agency/og-image-mvp.png"],
   },
 };
 

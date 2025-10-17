@@ -14,21 +14,12 @@ export const metadata: Metadata = {
     title: "Convert Website to App – iOS & Android with Capacitor",
     description:
       "Wrap your website with a native shell, add icons & splash, and publish to the App Store and Google Play.",
-    images: [
-      {
-        url: "/og/convert-website-to-app.png",
-        width: 1200,
-        height: 630,
-        alt: "Convert Website to App – NextNative",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Convert Website to App | NextNative",
     description:
       "Free preview tool + 3-step guide to ship your web app to the App Store and Google Play.",
-    images: ["/og/convert-website-to-app.png"],
   },
   keywords: [
     "convert website to app",

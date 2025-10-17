@@ -29,14 +29,6 @@ export const metadata: Metadata = {
     description:
       "Create your iOS Bundle ID in reverse domain format for App Store, Xcode, or Capacitor apps. Free and instant.",
     locale: "en_US",
-    images: [
-      {
-        url: "/og/ios-bundle-id-generator.png",
-        width: 1200,
-        height: 630,
-        alt: "iOS Bundle ID Generator – NextNative",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -45,7 +37,6 @@ export const metadata: Metadata = {
     title: "Free iOS Bundle ID Generator | NextNative",
     description:
       "Generate valid iOS Bundle IDs instantly. Use it for your Xcode or Capacitor app configuration. 100% free.",
-    images: ["/og/ios-bundle-id-generator.png"],
   },
   keywords: [
     "bundle id generator",

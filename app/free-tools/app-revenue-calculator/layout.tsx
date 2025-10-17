@@ -29,14 +29,6 @@ export const metadata: Metadata = {
     description:
       "Instantly calculate your net profit after App Store and RevenueCat fees. Perfect for indie developers and app founders.",
     locale: "en_US",
-    images: [
-      {
-        url: "/og/app-revenue-calculator.png", // (make a 1200×630 OG image later)
-        width: 1200,
-        height: 630,
-        alt: "App Revenue Calculator – NextNative",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -45,7 +37,6 @@ export const metadata: Metadata = {
     title: "Free App Revenue Calculator | NextNative",
     description:
       "Estimate your app profit after App Store and RevenueCat fees instantly. Built for indie developers.",
-    images: ["/og/app-revenue-calculator.png"],
   },
   keywords: [
     "app revenue calculator",

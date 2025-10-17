@@ -17,21 +17,12 @@ export const metadata: Metadata = {
     title: "App Store Metadata Generator",
     description:
       "Create App Store & Google Play metadata instantly: titles, subtitles, keywords, and descriptions.",
-    images: [
-      {
-        url: "/og/app-store-metadata-generator.png",
-        width: 1200,
-        height: 630,
-        alt: "App Store Metadata Generator – NextNative",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "App Store Metadata Generator | NextNative",
     description:
       "Free tool to create App Store & Play Store metadata: titles, keywords CSV, descriptions. Copy or download JSON.",
-    images: ["/og/app-store-metadata-generator.png"],
   },
   keywords: [
     "app store metadata generator",

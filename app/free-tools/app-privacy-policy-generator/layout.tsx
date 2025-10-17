@@ -22,21 +22,12 @@ export const metadata: Metadata = {
     title: "App Privacy Policy Generator | Free Template for Developers",
     description:
       "Instantly generate a customizable app privacy policy. Works for iOS, Android, and web apps.",
-    images: [
-      {
-        url: "/og/app-privacy-policy-generator.png",
-        width: 1200,
-        height: 630,
-        alt: "App Privacy Policy Generator – NextNative",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Free App Privacy Policy Generator | NextNative",
     description:
       "Create your app's privacy policy instantly. App Store & Google Play compliant. 100% free.",
-    images: ["/og/app-privacy-policy-generator.png"],
   },
   keywords: [
     "app privacy policy generator",

@@ -17,21 +17,12 @@ export const metadata: Metadata = {
     title: "Play Store Privacy Policy Generator",
     description:
       "Generate a privacy policy tailored to your Android app’s permissions and SDKs. Free and instant.",
-    images: [
-      {
-        url: "/og/play-store-privacy-policy.png",
-        width: 1200,
-        height: 630,
-        alt: "Play Store Privacy Policy Generator – NextNative",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Play Store Privacy Policy Generator",
     description:
       "Free generator for Android privacy policies. Toggle permissions & SDKs, copy or download.",
-    images: ["/og/play-store-privacy-policy.png"],
   },
   keywords: [
     "play store privacy policy generator",

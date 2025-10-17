@@ -10,14 +10,6 @@ export const metadata = {
     title: "NextNative Mobile Apps",
     description:
       "Explore real iOS and Android apps built using Next.js + Capacitor.",
-    images: [
-      {
-        url: "/showcase/og-showcase.png",
-        width: 1200,
-        height: 630,
-        alt: "Showcase of apps built with NextNative",
-      },
-    ],
   },
 };
 

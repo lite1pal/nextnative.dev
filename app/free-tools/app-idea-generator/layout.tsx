@@ -19,21 +19,12 @@ export const metadata: Metadata = {
     title: "Free App Idea Generator",
     description:
       "Generate unique app ideas with features and monetization models. Build your favorite with NextNative.",
-    images: [
-      {
-        url: "/og/app-idea-generator.png",
-        width: 1200,
-        height: 630,
-        alt: "App Idea Generator – NextNative",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "App Idea Generator | NextNative",
     description:
       "Fresh mobile app ideas with one click. Free and fun for indie devs.",
-    images: ["/og/app-idea-generator.png"],
   },
   keywords: [
     "app ideas",

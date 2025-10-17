@@ -29,14 +29,6 @@ export const metadata: Metadata = {
     description:
       "Quickly create a valid capacitor.config.ts for your app — includes plugins, colors, and runtime settings.",
     locale: "en_US",
-    images: [
-      {
-        url: "/og/capacitor-config-generator.png",
-        width: 1200,
-        height: 630,
-        alt: "Capacitor Config Generator – NextNative",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -45,7 +37,6 @@ export const metadata: Metadata = {
     title: "Capacitor Config Generator | NextNative.dev",
     description:
       "Generate capacitor.config.ts online — official schema, no setup, instant copy & paste.",
-    images: ["/og/capacitor-config-generator.png"],
   },
   keywords: [
     "capacitor config generator",

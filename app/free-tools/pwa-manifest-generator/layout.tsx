@@ -29,14 +29,6 @@ export const metadata: Metadata = {
     description:
       "Quickly create a valid manifest.json for your Progressive Web App. Supports Next.js, React, and Capacitor setups.",
     locale: "en_US",
-    images: [
-      {
-        url: "/og/pwa-manifest-generator.png", // create a 1200×630 OG image
-        width: 1200,
-        height: 630,
-        alt: "PWA Manifest Generator – NextNative",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -45,7 +37,6 @@ export const metadata: Metadata = {
     title: "Free PWA Manifest Generator | NextNative.dev",
     description:
       "Generate a valid manifest.json for your PWA in seconds — name, colors, icons, and more. Free and easy.",
-    images: ["/og/pwa-manifest-generator.png"],
   },
   keywords: [
     "pwa manifest generator",

@@ -21,21 +21,12 @@ export const metadata: Metadata = {
     title: "Free Tools for Mobile App Developers",
     description:
       "Generate app icons, manifests, policies and more. Ship faster with Next.js + Capacitor.",
-    images: [
-      {
-        url: "/og/free-tools.png",
-        width: 1200,
-        height: 630,
-        alt: "Free Tools – NextNative",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Free Tools for Mobile App Developers | NextNative",
     description:
       "Instant generators for app icons, splash screens, privacy policy, PWA manifest, and more.",
-    images: ["/og/free-tools.png"],
   },
   keywords: [
     "free app developer tools",
