@@ -40,7 +40,7 @@ const EmailForm = () => {
     setIsSubmitted(true);
     try {
       sendMessageToTelegram(
-        "Message from /contact page:\n" + JSON.stringify(formData, null, 2)
+        "Message from /contact page:\n" + JSON.stringify(formData, null, 2),
       );
 
       setFormData({ name: "", email: "", message: "" });
@@ -60,12 +60,12 @@ const EmailForm = () => {
 
   return (
     <div className="py-12">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="flex flex-col gap-6 mb-12">
+      <div className="mx-auto max-w-[1200px]">
+        <div className="mb-12 flex flex-col gap-6">
           <h1 className="text-4xl font-[500]">
             Contact me about <HighlightedSpan>NextNative</HighlightedSpan>
           </h1>
-          <p className="text-gray text-lg hidden sm:block">
+          <p className="text-gray hidden text-lg sm:block">
             Have questions, feedback, or just want to say hi? <br />
             Fill out the form below and I'll get back to you as soon as I can.
           </p>
@@ -88,7 +88,7 @@ const EmailForm = () => {
                 onChange={handleChange}
                 required
                 style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-                className="flex-1 text-lg w-full px-6 py-2 md:py-4 bg-white border-2 border-gray/0 rounded-xl text-foreground placeholder:text-gray focus:outline-none focus:border-primary"
+                className="border-gray/0 text-foreground placeholder:text-gray focus:border-primary w-full flex-1 rounded-xl border-2 bg-white px-6 py-2 text-lg focus:outline-none md:py-4"
               />
             </div>
 
@@ -107,7 +107,7 @@ const EmailForm = () => {
                 onChange={handleChange}
                 required
                 style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-                className="flex-1 w-full text-lg px-6 py-2 md:py-4 bg-white border-2 border-gray/0 rounded-xl text-foreground placeholder:text-gray focus:outline-none focus:border-primary"
+                className="border-gray/0 text-foreground placeholder:text-gray focus:border-primary w-full flex-1 rounded-xl border-2 bg-white px-6 py-2 text-lg focus:outline-none md:py-4"
               />
             </div>
           </div>
@@ -127,13 +127,13 @@ const EmailForm = () => {
               required
               rows={4}
               style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-              className="flex-1 w-full px-6 text-lg py-2 md:py-4 bg-white border-2 border-gray/0 rounded-xl text-foreground placeholder:text-gray focus:outline-none focus:border-primary"
+              className="border-gray/0 text-foreground placeholder:text-gray focus:border-primary w-full flex-1 rounded-xl border-2 bg-white px-6 py-2 text-lg focus:outline-none md:py-4"
             />
           </div>
 
           {isSubmitted ? (
             <div className="flex flex-col items-center gap-4 py-8">
-              <div className="text-xl font-semibold text-primary">
+              <div className="text-primary text-xl font-semibold">
                 Message sent!
               </div>
               <div className="text-gray text-lg">
