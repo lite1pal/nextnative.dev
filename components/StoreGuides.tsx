@@ -67,7 +67,7 @@ function StoreGuides() {
           {/* Google Play Guide */}
           <div
             style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-            className="rounded-2xl bg-white p-6"
+            className="max-h-[500px] rounded-2xl bg-white p-6"
           >
             <div className="mb-10 flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center">
