@@ -13,7 +13,7 @@ function ShowcaseSection() {
         trackEvent("Demo_Apps_Showcase_clicked");
       }}
       id="interactive-demo"
-      className="flex justify-center max-md:scale-[0.6] h-[500px] max-md:left-10 relative sm:h-full md:py-16 space-x-[-200px]"
+      className="relative flex h-[500px] justify-center space-x-[-200px] max-md:left-10 max-md:scale-[0.6] sm:h-full md:py-16"
     >
       <div className="rotate-[-30deg]">
         <IPhoneMockup isDark={false}>
@@ -23,12 +23,12 @@ function ShowcaseSection() {
               alt={"Note-taking app screenshot"}
               width={400}
               height={800}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
         </IPhoneMockup>
       </div>
-      <div className="rotate-[0deg] z-20">
+      <div className="z-20 rotate-[0deg]">
         <IPhoneMockup isDark={true}>
           <div>
             <Image
@@ -36,7 +36,7 @@ function ShowcaseSection() {
               alt={"AI Plant identification app screenshot"}
               width={400}
               height={800}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
         </IPhoneMockup>
@@ -45,11 +45,11 @@ function ShowcaseSection() {
         <IPhoneMockup isDark={false}>
           <div>
             <Image
-              src={"/showcase/pomodoro-dark.png"}
-              alt={"Note-taking app screenshot"}
+              src={"/showcase/bill-organizer/screen-3-2.png"}
+              alt={"Bill Organizer - Matcharge"}
               width={400}
               height={800}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
         </IPhoneMockup>
