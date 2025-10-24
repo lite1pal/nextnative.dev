@@ -2,21 +2,20 @@
 
 import IPhoneMockup from "@/components/note-taking/iphone-mockup";
 import { trackEvent } from "@/services/custom-analytics";
-import { Wrench } from "lucide-react";
-import dynamic from "next/dynamic";
 import Image from "next/image";
-import toast from "react-hot-toast";
 
 const apps = [
   {
-    logo: "/showcase/logo-lastinghabits.png", // Add to your /public folder
-    name: "Lasting Habits: A Habit Tracker",
+    logo: "/showcase/bill-organizer/logo.png",
+    name: "Bill Organizer - Matcharge",
     description:
-      "Build habits that last. A minimal tracker with daily streaks and reminders.",
-    image: "/showcase/lastinghabits.png", // Add to your /public folder
+      "Track subscriptions in a calm, visual way to avoid surprise charges and understand your spending habits.",
+    image: "/showcase/bill-organizer/screen-3-2.png", // Add to your /public folder
     storeLinks: {
-      appStore: "https://apps.apple.com/ua/app/lasting-habits/id6736766976",
+      appStore:
+        "https://apps.apple.com/ua/app/sproutly-ai-plant-identifier/id6748902696",
       googlePlay: "soon",
+      website: "https://matcharge.app/?via=nextnative",
     },
   },
   {
@@ -30,6 +29,18 @@ const apps = [
         "https://apps.apple.com/ua/app/sproutly-ai-plant-identifier/id6748902696",
       googlePlay:
         "https://play.google.com/store/apps/details?id=com.sproutly.app",
+    },
+  },
+  {
+    logo: "/showcase/logo-lastinghabits.png", // Add to your /public folder
+    name: "Lasting Habits: A Habit Tracker",
+    description:
+      "Build habits that last. A minimal tracker with daily streaks and reminders.",
+    image: "/showcase/lastinghabits.png", // Add to your /public folder
+    storeLinks: {
+      appStore: "https://apps.apple.com/ua/app/lasting-habits/id6736766976",
+      googlePlay: "soon",
+      website: "https://lasting-habits.vercel.app",
     },
   },
   // {
@@ -57,11 +68,14 @@ const apps = [
   // },
 ];
 
-function Apps() {
+function Apps({ maxApps = 10 }: { maxApps?: number }) {
   return (
     <div className="gap-10 gap-y-20 rounded-xl xl:grid xl:grid-cols-2">
-      {apps.map((app: any) => (
-        <article key={app.name} className="flex flex-col items-center gap-4">
+      {apps.slice(0, maxApps).map((app: any) => (
+        <article
+          key={app.name}
+          className="mx-auto flex flex-col items-center gap-4"
+        >
           {/* Heading + description */}
           <div className="flex max-w-md flex-col gap-3 text-center">
             <div className="mb-4 flex justify-center">
@@ -118,6 +132,21 @@ function Apps() {
                   />
                 </a>
               )}
+
+            {app.storeLinks?.website && (
+              <a
+                href={app.storeLinks.website}
+                target="_blank"
+                rel="noopener"
+                onClick={() => {
+                  trackEvent(`Website_${app.name}_clicked`);
+                }}
+                className="hover:text-primary flex w-[200px] items-center justify-center rounded-lg border-black bg-white py-5 text-xl font-[500] transition"
+              >
+                Visit Website
+              </a>
+            )}
+
             {/* <div
               onClick={() => {
                 toast.success("Coming soon to Google Play!", {

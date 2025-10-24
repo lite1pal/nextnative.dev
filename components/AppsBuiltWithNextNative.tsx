@@ -24,7 +24,7 @@ function AppsBuiltWithNextNative() {
         </div>
 
         <div className="flex flex-col items-center gap-10 rounded-xl sm:bg-white sm:py-10">
-          <Apps />
+          <Apps maxApps={2} />
           <Link
             onClick={() => trackEvent("SeeMoreApps_clicked")}
             href="/showcase"
