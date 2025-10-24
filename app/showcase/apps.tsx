@@ -13,7 +13,7 @@ const apps = [
     image: "/showcase/bill-organizer/screen-3-2.png", // Add to your /public folder
     storeLinks: {
       appStore:
-        "https://apps.apple.com/ua/app/sproutly-ai-plant-identifier/id6748902696",
+        "https://apps.apple.com/us/app/bill-organizer-matcharge/id6752604627",
       googlePlay: "soon",
       website: "https://matcharge.app/?via=nextnative",
     },
