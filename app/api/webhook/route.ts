@@ -77,7 +77,7 @@ export async function POST(request: Request) {
       if (tpl) {
         const { name, link } = tpl;
 
-        trackEvent(
+        await trackEvent(
           `💰 Template_payment_succeeded - ${name} - ${email} 🎉`,
           false,
         );
@@ -85,7 +85,7 @@ export async function POST(request: Request) {
         // Send welcome email
         try {
           const emailResult = await sendWelcomeTemplateEmail({
-            email: payload.data.customer.email,
+            email,
             link,
           });
 
