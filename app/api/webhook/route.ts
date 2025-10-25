@@ -15,18 +15,15 @@ const TEMPLATE_CATALOG: Record<string, { name: string; link: string }> = {
     name: "Pomodoro App Template",
     link: process.env.POMODORO_TEMPLATE_DOWNLOAD_LINK!,
   },
-  pdt_e9mUw084cWnu0tz: {
-    name: "Pomodoro App Template Test",
-    link: process.env.POMODORO_TEMPLATE_DOWNLOAD_LINK!,
-  },
   // add more as you ship them
   // "pdt_XXXX": { name: "Expense Tracker Template", link: process.env.EXPENSE_TEMPLATE_LINK! },
 };
 
 // ⚡ NextNative products
 const NEXTNATIVE_PRODUCTS: Record<string, { name: string }> = {
-  pdt_oJrNhvmTecy5gmoEulOBk: { name: "NextNative All Access" },
-  pdt_0qXNmdS7RszEjaA2IDyfM: { name: "NextNative Starter" },
+  pdt_oJrNhvmTecy5gmoEulOBk: { name: "All-in" },
+  pdt_0qXNmdS7RszEjaA2IDyfM: { name: "Starter" },
+  pdt_e9mUw084cWnu0tz: { name: "Test" },
 };
 
 function isSucceededOneTimePayment(p: any) {
@@ -53,10 +50,6 @@ export async function POST(request: Request) {
 
     // ✅ Ignore non one-time succeeded payments early (prevents 500s from other event types)
     if (!isSucceededOneTimePayment(payload)) {
-      await trackEvent(
-        "ℹ️ Webhook ignored (not succeeded one-time payment)",
-        false,
-      );
       return NextResponse.json({ ok: true, ignored: true }, { status: 200 });
     }
 
@@ -132,13 +125,13 @@ export async function POST(request: Request) {
         },
       });
       // Update customer count
-      await prisma.globalNumber.update({
-        where: {
-          id: "99c3a4be-4565-451b-813e-82bf381568d7",
-          title: "customers",
-        },
-        data: { value: { increment: 1 } },
-      });
+      // await prisma.globalNumber.update({
+      //   where: {
+      //     id: "99c3a4be-4565-451b-813e-82bf381568d7",
+      //     title: "customers",
+      //   },
+      //   data: { value: { increment: 1 } },
+      // });
 
       // Send welcome email
       try {
