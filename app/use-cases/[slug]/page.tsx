@@ -11,10 +11,11 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Script from "next/script";
-import { Suspense } from "react";
-import CTASkeleton from "@/components/CTASkeleton";
-import CTA from "@/components/CTA";
 import Mockups from "./mockups";
+import CTAButton from "@/components/CTAButton";
+import CTAButtonSecondary from "@/components/CTASecondary";
+import PurchaseButton from "./purchase-button";
+import HighlightedSpan from "@/components/HighlightedSpan";
 
 // Generate static params for all use cases
 export async function generateStaticParams() {
@@ -136,6 +137,80 @@ export default async function UseCasePage({
           {useCase.summary}
         </p>
       </header>
+
+      {/* Purchase Section */}
+      {useCase.forSale && (
+        <section className="mb-16 rounded-3xl bg-white p-8 shadow-lg md:p-12">
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+            <div className="flex flex-1 flex-col items-center gap-5 md:items-start">
+              <h3 className="mb-3 text-3xl font-semibold text-gray-900 md:text-4xl">
+                Get this template <HighlightedSpan>today</HighlightedSpan>
+              </h3>
+              <p className="mb-4 text-lg leading-9 text-gray-700 md:text-xl dark:text-gray-300">
+                <span className="flex items-center gap-2">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="text-primary"
+                  >
+                    <path
+                      d="M20 6L9 17L4 12"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  Get the complete React code for this template.
+                </span>
+                <span className="flex items-center gap-2">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="text-primary"
+                  >
+                    <path
+                      d="M20 6L9 17L4 12"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  Convert it to a mobile app yourself using Capacitor.
+                </span>
+              </p>
+            </div>
+            <div className="flex flex-col items-center gap-10">
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl font-medium text-gray-500 line-through dark:text-gray-400">
+                    ${useCase.pricing.originalPrice}
+                  </span>
+                  <span className="text-primary text-5xl font-bold">
+                    ${useCase.pricing.price}
+                  </span>
+                </div>
+                {/* <span className="bg-primary rounded-full px-4 py-2 text-base font-semibold text-white">
+                {Math.round(
+                  ((useCase.pricing.originalPrice - useCase.pricing.price) /
+                    useCase.pricing.originalPrice) *
+                    100,
+                )}
+                % OFF
+              </span> */}
+              </div>
+              <PurchaseButton link={useCase.pricing.link!} />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Problem & Solution */}
       <div className="mb-16 grid gap-8 md:grid-cols-2">
@@ -289,7 +364,7 @@ export default async function UseCasePage({
       {/* Time & Cost Savings */}
       <section className="mb-16">
         <div className="grid gap-8">
-          <div className="rounded-3xl bg-gradient-to-br from-green-50 to-emerald-50 p-10 dark:from-green-900/20 dark:to-emerald-900/20">
+          <div className="rounded-3xl bg-white p-10">
             <div className="mb-4 flex items-center gap-4">
               <Clock className="h-10 w-10 text-green-600" />
               <h3 className="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
@@ -318,18 +393,97 @@ export default async function UseCasePage({
       </section>
 
       {/* CTA */}
-      <section className="mb-16 rounded-3xl bg-white bg-gradient-to-r p-16 text-center">
-        <h2 className="mb-6 text-4xl font-bold md:text-5xl">
-          Ready to Build Your{" "}
-          {useCase.title.replace("Build a ", "").replace("Build an ", "")}?
-        </h2>
-        <p className="mx-auto mb-10 max-w-2xl text-xl opacity-90 md:text-2xl">
-          Get NextNative and start building your app today.
-        </p>
+      <section className="mb-16 rounded-3xl p-10 md:p-16">
+        <div className="mb-12 text-center">
+          <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+            Ready to Build Your{" "}
+            {useCase.title.replace("Build a ", "").replace("Build an ", "")}?
+          </h2>
+          <p className="mx-auto mb-10 max-w-2xl text-xl text-gray-700 md:text-2xl dark:text-gray-300">
+            Choose your path to building production-ready mobile apps.
+          </p>
+        </div>
 
-        <Suspense fallback={<CTASkeleton />}>
-          <CTA />
-        </Suspense>
+        {useCase.forSale ? (
+          <div className="grid gap-8 md:grid-cols-2">
+            {/* Individual Template Purchase */}
+            {useCase.forSale && (
+              <div className="border-primary rounded-2xl border-2 bg-white p-8 shadow-lg dark:bg-gray-900">
+                <div className="mb-6 text-center">
+                  <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
+                    Buy This Template
+                  </h3>
+                  <p className="text-base text-gray-600 dark:text-gray-400">
+                    React code only • You handle Capacitor setup
+                  </p>
+                </div>
+                <div className="mb-6 text-center">
+                  <div className="mb-2 flex items-center justify-center gap-2">
+                    <span className="text-xl text-gray-500 line-through dark:text-gray-400">
+                      ${useCase.pricing.originalPrice}
+                    </span>
+                    {/* <span className="bg-primary/20 text-primary rounded-full px-3 py-1 text-sm font-semibold">
+                  {Math.round(
+                    ((useCase.pricing.originalPrice - useCase.pricing.price) /
+                      useCase.pricing.originalPrice) *
+                      100,
+                  )}
+                  % OFF
+                </span> */}
+                  </div>
+                  <div className="text-primary text-5xl font-bold">
+                    ${useCase.pricing.price}
+                  </div>
+                  <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    One-time payment
+                  </p>
+                </div>
+                <div className="flex justify-center">
+                  <PurchaseButton link={useCase.pricing.link!} />
+                </div>
+              </div>
+            )}
+
+            {/* Full NextNative Package */}
+            <div className="rounded-2xl border-2 border-gray-300 bg-white p-8 shadow-lg dark:border-gray-700 dark:bg-gray-900">
+              <div className="mb-6 text-center">
+                <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
+                  Get Full NextNative
+                </h3>
+                <p className="text-base text-gray-600 dark:text-gray-400">
+                  All templates + framework & features
+                </p>
+              </div>
+              <div className="mb-6 text-center">
+                <div className="mb-2">
+                  <span className="inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                    Best Value
+                  </span>
+                </div>
+
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                  Includes all templates
+                </p>
+              </div>
+              {/* <Suspense fallback={<CTASkeleton />}>
+              <CTA />
+            </Suspense> */}
+              <div className="flex flex-col items-center gap-3">
+                <Link href="/#pricing">
+                  <CTAButton />
+                </Link>
+                <CTAButtonSecondary />
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col justify-center gap-3 md:flex-row">
+            <Link href="/#pricing">
+              <CTAButton />
+            </Link>
+            <CTAButtonSecondary />
+          </div>
+        )}
       </section>
 
       {/* Related Tutorials */}
@@ -396,34 +550,34 @@ export default async function UseCasePage({
       )}
 
       {/* Documentation Links */}
-      <section className="rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 p-10 dark:from-gray-800/50 dark:to-gray-900/50">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
+      <section className="rounded-3xl">
+        <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
           📖 Learn More
         </h2>
-        <p className="mb-8 text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-400">
+        <p className="mb-8 text-lg leading-relaxed text-gray-600 md:text-xl">
           Explore our documentation to learn everything about building mobile
           apps with NextNative.
         </p>
         <div className="grid gap-6 md:grid-cols-2">
           <Link
             href="https://nextnative.dev/docs"
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg dark:border-gray-700 dark:bg-gray-900"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
           >
-            <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+            <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900">
               📚 Full Documentation
             </h3>
-            <p className="text-base leading-relaxed text-gray-600 dark:text-gray-400">
+            <p className="text-base leading-relaxed text-gray-600">
               Complete guides and API references for NextNative.
             </p>
           </Link>
           <Link
             href="https://nextnative.dev/docs/tutorials/ship-in-5-minutes"
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg dark:border-gray-700 dark:bg-gray-900"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
           >
-            <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+            <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900">
               🚀 Quick Start
             </h3>
-            <p className="text-base leading-relaxed text-gray-600 dark:text-gray-400">
+            <p className="text-base leading-relaxed text-gray-600">
               Get your app running in just 5 minutes.
             </p>
           </Link>

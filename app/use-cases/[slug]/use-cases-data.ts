@@ -45,6 +45,12 @@ export interface UseCase {
   relatedTutorials: string[];
   relatedComparisons: string[];
   screenshot?: string;
+  forSale?: boolean;
+  pricing: {
+    price: number;
+    originalPrice: number;
+    link?: string;
+  };
 }
 
 export const useCases: UseCase[] = [
@@ -322,6 +328,12 @@ const calculateStreak = (workSessions) => {
       "add-push-notifications-nextjs",
     ],
     relatedComparisons: ["pwa-vs-native-app"],
+    forSale: true,
+    pricing: {
+      price: 19,
+      originalPrice: 39,
+      link: "https://checkout.dodopayments.com/buy/pdt_eiP4ixzuoeUYrtknt7wZB?session=sess_h7Opa61p7v",
+    },
   },
   {
     slug: "expense-tracker-app",
@@ -622,6 +634,10 @@ export function calculateAnalytics(expenses: Expense[]): ExpenseAnalytics | null
     costSavings: "$4,000-12,000",
     relatedTutorials: ["convert-nextjs-to-mobile-app"],
     relatedComparisons: ["capacitor-vs-flutter"],
+    pricing: {
+      price: 29,
+      originalPrice: 49,
+    },
   },
   {
     slug: "flashcard-learning-app",
@@ -914,6 +930,10 @@ export function useFlashcards() {
     costSavings: "$3,000-10,000",
     relatedTutorials: ["convert-nextjs-to-mobile-app"],
     relatedComparisons: ["nextjs-vs-react-native", "capacitor-vs-react-native"],
+    pricing: {
+      price: 19,
+      originalPrice: 39,
+    },
   },
   {
     slug: "fitness-app",
@@ -1164,6 +1184,10 @@ const completeWorkout = async () => {
     costSavings: "$25,000-50,000",
     relatedTutorials: ["convert-nextjs-to-mobile-app"],
     relatedComparisons: ["nextjs-vs-react-native", "pwa-vs-native-app"],
+    pricing: {
+      price: 39,
+      originalPrice: 69,
+    },
   },
   {
     slug: "food-delivery-app",
@@ -1469,6 +1493,10 @@ export function useOrder() {
     costSavings: "$30,000-80,000",
     relatedTutorials: ["convert-nextjs-to-mobile-app"],
     relatedComparisons: ["capacitor-vs-react-native"],
+    pricing: {
+      price: 49,
+      originalPrice: 89,
+    },
   },
   {
     slug: "ai-plant-identifier-app",
@@ -1723,6 +1751,10 @@ function PremiumScreen() {
       "setup-in-app-purchases",
     ],
     relatedComparisons: ["nextjs-vs-react-native", "pwa-vs-native-app"],
+    pricing: {
+      price: 39,
+      originalPrice: 69,
+    },
   },
 
   //   {

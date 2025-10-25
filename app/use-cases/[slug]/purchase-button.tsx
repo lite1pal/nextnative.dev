@@ -1,0 +1,22 @@
+"use client";
+
+interface PurchaseButtonProps {
+  link: string;
+}
+
+export default function PurchaseButton({ link }: PurchaseButtonProps) {
+  return (
+    <div className="flex flex-col gap-3">
+      <a
+        href={link}
+        className="bg-primary hover:bg-primary/90 rounded-full px-10 py-5 text-xl font-semibold text-white shadow-xl transition-all hover:shadow-2xl"
+      >
+        Purchase Template
+      </a>
+
+      <p className="text-center text-gray-500">
+        One-time payment • Lifetime access
+      </p>
+    </div>
+  );
+}

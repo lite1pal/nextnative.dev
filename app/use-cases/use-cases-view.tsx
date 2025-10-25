@@ -1,11 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import { useCases } from "./[slug]/use-cases-data";
 import { ChevronRight, Clock, DollarSign } from "lucide-react";
-import { Suspense } from "react";
-import CTASkeleton from "@/components/CTASkeleton";
-import CTA from "@/components/CTA";
-import IPhoneMockup from "@/components/note-taking/iphone-mockup";
 import Image from "next/image";
+import CTAButton from "@/components/CTAButton";
+import CTAButtonSecondary from "@/components/CTASecondary";
 
 const categories = [
   {
@@ -181,6 +181,49 @@ function UseCasesView() {
                       </div>
                     </div>
 
+                    {/* Pricing & Purchase Button */}
+                    <div className="border-primary/20 from-primary/5 to-primary/10 mb-6 flex items-center justify-between rounded-2xl border-2 bg-gradient-to-r p-4">
+                      <div>
+                        <div className="mb-1 flex items-center gap-2">
+                          <span className="font-medium text-gray-500 line-through">
+                            ${useCase.pricing.originalPrice}
+                          </span>
+                          {/* <span className="bg-primary/20 text-primary rounded-full px-2 py-0.5 text-xs font-semibold">
+                            {Math.round(
+                              ((useCase.pricing.originalPrice -
+                                useCase.pricing.price) /
+                                useCase.pricing.originalPrice) *
+                                100,
+                            )}
+                            % OFF
+                          </span> */}
+                        </div>
+                        <div className="text-primary text-4xl font-semibold">
+                          ${useCase.pricing.price}
+                        </div>
+                      </div>
+
+                      {useCase.forSale ? (
+                        <a
+                          href={useCase.pricing.link}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            // Purchase logic will be added here
+                          }}
+                          className="bg-primary hover:bg-primary/90 rounded-full px-6 py-3 text-base font-semibold text-white transition-all hover:shadow-lg"
+                        >
+                          Purchase
+                        </a>
+                      ) : (
+                        <div className="text-lg">
+                          Soon for sale <br />
+                          <span className="text-gray-500">
+                            (but already included in NextNative)
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
                     {/* View Details Link */}
                     <div className="group-hover:text-primary flex items-center gap-2 text-base font-medium text-gray-900 transition-colors dark:text-white">
                       View Full Details
@@ -213,7 +256,7 @@ function UseCasesView() {
       </div> */}
 
       {/* Bottom CTA */}
-      <div className="mt-16 rounded-2xl bg-white p-16 text-center">
+      <div className="mt-16 flex flex-col items-center gap-5 rounded-2xl bg-white p-16 text-center">
         <h2 className="mb-4 text-5xl font-bold text-gray-900">
           Ready to build your mobile app?
         </h2>
@@ -222,11 +265,12 @@ function UseCasesView() {
           with Next.js + Capacitor in minutes.
         </p>
 
-        <Suspense fallback={<CTASkeleton />}>
-          <Link href="/">
-            <CTA />
+        <div className="flex flex-col gap-3 md:flex-row">
+          <Link href="/#pricing">
+            <CTAButton />
           </Link>
-        </Suspense>
+          <CTAButtonSecondary />
+        </div>
       </div>
 
       {/* Why Choose NextNative */}

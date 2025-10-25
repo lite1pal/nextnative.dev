@@ -1,6 +1,6 @@
 import { prisma } from "@/prisma/client";
 import { trackEvent } from "@/services/custom-analytics";
-import { sendWelcomeEmail } from "@/services/resend";
+import { sendWelcomeEmail, sendWelcomeTemplateEmail } from "@/services/resend";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
@@ -8,6 +8,34 @@ import { NextResponse } from "next/server";
 import { Webhook } from "standardwebhooks";
 
 const webhook = new Webhook(process.env.DODOPAYMENTS_WEBHOOK_SECRET!);
+
+// Template products
+const TEMPLATE_CATALOG: Record<string, { name: string; link: string }> = {
+  pdt_eiP4ixzuoeUYrtknt7wZB: {
+    name: "Pomodoro App Template",
+    link: process.env.POMODORO_TEMPLATE_DOWNLOAD_LINK!,
+  },
+  pdt_e9mUw084cWnu0tz: {
+    name: "Pomodoro App Template Test",
+    link: process.env.POMODORO_TEMPLATE_DOWNLOAD_LINK!,
+  },
+  // add more as you ship them
+  // "pdt_XXXX": { name: "Expense Tracker Template", link: process.env.EXPENSE_TEMPLATE_LINK! },
+};
+
+// ⚡ NextNative products
+const NEXTNATIVE_PRODUCTS: Record<string, { name: string }> = {
+  pdt_oJrNhvmTecy5gmoEulOBk: { name: "NextNative All Access" },
+  pdt_0qXNmdS7RszEjaA2IDyfM: { name: "NextNative Starter" },
+};
+
+function isSucceededOneTimePayment(p: any) {
+  return (
+    p?.data?.payload_type === "Payment" &&
+    p?.type === "payment.succeeded" &&
+    !p?.data?.subscription_id
+  );
+}
 
 export async function POST(request: Request) {
   try {
@@ -23,24 +51,81 @@ export async function POST(request: Request) {
     await webhook.verify(rawBody, webhookHeaders);
     const payload = JSON.parse(rawBody) as any;
 
+    // ✅ Ignore non one-time succeeded payments early (prevents 500s from other event types)
+    if (!isSucceededOneTimePayment(payload)) {
+      trackEvent("ℹ️ Webhook ignored (not succeeded one-time payment)", false);
+      return NextResponse.json({ ok: true, ignored: true }, { status: 200 });
+    }
+
     if (!payload.data?.customer?.email) {
       throw new Error("Missing customer email in payload");
     }
+    const email = payload.data.customer.email;
 
-    if (
-      payload.data.payload_type === "Payment" &&
-      payload.type === "payment.succeeded" &&
-      !payload.data.subscription_id
-    ) {
+    const productId = payload.data?.product_cart?.[0]?.product_id as
+      | string
+      | undefined;
+
+    if (!productId) {
+      trackEvent("💰 Missing product ID in payload 💔", false);
+      throw new Error("Missing product ID in payload");
+    }
+
+    // Handle template purchases
+    try {
+      const tpl = TEMPLATE_CATALOG[productId];
+      if (tpl) {
+        const { name, link } = tpl;
+
+        trackEvent(
+          `💰 Template_payment_succeeded - ${name} - ${email} 🎉`,
+          false,
+        );
+
+        // Send welcome email
+        try {
+          const emailResult = await sendWelcomeTemplateEmail({
+            email: payload.data.customer.email,
+            link,
+          });
+
+          if (emailResult.success) {
+            trackEvent("📧 Welcome email sent - " + email + " ✉️", false);
+            console.log("Welcome email sent successfully");
+          } else {
+            trackEvent("📧 Welcome email failed - " + email + " ❌", false);
+            console.error("Failed to send welcome email:", emailResult.message);
+          }
+        } catch (emailError) {
+          trackEvent("📧 Welcome email error - " + email + " 💥", false);
+          console.error("Welcome email error:", emailError);
+        }
+        return NextResponse.json(
+          { message: "Webhook received" },
+          { status: 200 },
+        );
+      }
+    } catch (templateError: any) {
+      console.error("Template purchase handling error:", templateError);
       trackEvent(
-        "💰 Payment_succeeded - " + payload.data.customer.email + " 🎉",
+        "💰 Error on webhook - " + templateError.message + " 💔",
+        false,
+      );
+    }
+
+    // Handle NextNative purchases
+    const nn = NEXTNATIVE_PRODUCTS[productId];
+    if (nn) {
+      const { name } = nn;
+      trackEvent(
+        `💰 NextNative_payment_succeeded - ${name} - ${email} 🎉`,
         false,
       );
       console.log("Payment succeeded");
       await prisma.purchase.create({
         data: {
           paymentId: payload.data.payment_id,
-          email: payload.data.customer.email,
+          email: email,
         },
       });
       // Update customer count
@@ -55,28 +140,19 @@ export async function POST(request: Request) {
       // Send welcome email
       try {
         const emailResult = await sendWelcomeEmail({
-          email: payload.data.customer.email,
+          email,
           link: `https://nextnative.dev/thank-you?payment_id=${payload.data.payment_id}&status=succeeded`,
         });
 
         if (emailResult.success) {
-          trackEvent(
-            "📧 Welcome email sent - " + payload.data.customer.email + " ✉️",
-            false,
-          );
+          trackEvent("📧 Welcome email sent - " + email + " ✉️", false);
           console.log("Welcome email sent successfully");
         } else {
-          trackEvent(
-            "📧 Welcome email failed - " + payload.data.customer.email + " ❌",
-            false,
-          );
+          trackEvent("📧 Welcome email failed - " + email + " ❌", false);
           console.error("Failed to send welcome email:", emailResult.message);
         }
       } catch (emailError) {
-        trackEvent(
-          "📧 Welcome email error - " + payload.data.customer.email + " 💥",
-          false,
-        );
+        trackEvent("📧 Welcome email error - " + email + " 💥", false);
         console.error("Welcome email error:", emailError);
       }
 
