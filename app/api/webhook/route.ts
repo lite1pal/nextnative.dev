@@ -53,7 +53,10 @@ export async function POST(request: Request) {
 
     // ✅ Ignore non one-time succeeded payments early (prevents 500s from other event types)
     if (!isSucceededOneTimePayment(payload)) {
-      trackEvent("ℹ️ Webhook ignored (not succeeded one-time payment)", false);
+      await trackEvent(
+        "ℹ️ Webhook ignored (not succeeded one-time payment)",
+        false,
+      );
       return NextResponse.json({ ok: true, ignored: true }, { status: 200 });
     }
 
@@ -67,7 +70,7 @@ export async function POST(request: Request) {
       | undefined;
 
     if (!productId) {
-      trackEvent("💰 Missing product ID in payload 💔", false);
+      await trackEvent("💰 Missing product ID in payload 💔", false);
       throw new Error("Missing product ID in payload");
     }
 
@@ -117,7 +120,7 @@ export async function POST(request: Request) {
     const nn = NEXTNATIVE_PRODUCTS[productId];
     if (nn) {
       const { name } = nn;
-      trackEvent(
+      await trackEvent(
         `💰 NextNative_payment_succeeded - ${name} - ${email} 🎉`,
         false,
       );
@@ -162,7 +165,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Webhook received" }, { status: 200 });
   } catch (err: any) {
     console.error(err);
-    trackEvent("💰 Error on webhook - " + err.message + " 💔", false);
+    await trackEvent("💰 Error on webhook - " + err.message + " 💔", false);
     return NextResponse.json({ message: "Webhook failed" }, { status: 500 });
   }
 }
