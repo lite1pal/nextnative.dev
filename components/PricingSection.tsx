@@ -6,6 +6,7 @@ import HighlightedSpan from "./HighlightedSpan";
 import StarburstSign from "./StarburstSign";
 import Subheading from "./Subheading";
 import { trackEvent } from "@/services/custom-analytics";
+import Link from "next/link";
 
 const isWaitlist = false;
 
@@ -26,7 +27,17 @@ interface PricingFeature {
 
 const pricingFeatures: PricingFeature[] = [
   { text: "Next.js boilerplate" },
-  // { text: "3 real apps included" },
+  {
+    text: (
+      <Link
+        className="border-primary hover:border-opacity-0 hover:text-primary border-b border-dashed transition-all"
+        href="/use-cases"
+        onClick={() => window?.datafast("apps_included_clicked_from_pricing")}
+      >
+        7 premium apps included
+      </Link>
+    ),
+  },
   { text: "Secure backend" },
   { text: "Database" },
   { text: "Authentication" },
@@ -40,7 +51,16 @@ const pricingFeatures: PricingFeature[] = [
 
 const pricingFeaturesStarter: PricingFeature[] = [
   { text: "Next.js boilerplate" },
-  // { text: "3 real apps included" },
+  {
+    text: (
+      <Link
+        className="border-primary hover:border-opacity-0 hover:text-primary border-b border-dashed transition-all"
+        href="/use-cases"
+      >
+        7 premium apps included
+      </Link>
+    ),
+  },
   { text: "Secure backend" },
   { text: "Database" },
   { text: "Authentication" },
