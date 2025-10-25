@@ -162,7 +162,7 @@ export async function sendWelcomeTemplateEmail(
   data: WelcomeEmailData,
 ): Promise<EmailOctopusResponse> {
   try {
-    const emailContent = generateWelcomeEmailHTML(data.link);
+    const emailContent = generateWelcomeTemplateEmailHTML(data.link);
 
     const { error } = await resend.emails.send({
       from: "Denis from NextNative <nextnative@updates.denistarasenko.com>",
