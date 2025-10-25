@@ -32,7 +32,10 @@ const pricingFeatures: PricingFeature[] = [
       <Link
         className="border-primary hover:text-primary border-b border-dashed transition-all"
         href="/use-cases"
-        onClick={() => window?.datafast("apps_included_clicked_from_pricing")}
+        onClick={() => {
+          window?.datafast("apps_included_clicked_from_pricing");
+          trackEvent("Apps Included - Pricing Section");
+        }}
       >
         7 premium apps included
       </Link>
@@ -56,6 +59,10 @@ const pricingFeaturesStarter: PricingFeature[] = [
       <Link
         className="border-primary hover:border-opacity-0 hover:text-primary border-b border-dashed transition-all"
         href="/use-cases"
+        onClick={() => {
+          window?.datafast("apps_included_clicked_from_pricing");
+          trackEvent("Apps Included - Pricing Section");
+        }}
       >
         7 premium apps included
       </Link>
