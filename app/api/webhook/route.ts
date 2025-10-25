@@ -23,7 +23,6 @@ const TEMPLATE_CATALOG: Record<string, { name: string; link: string }> = {
 const NEXTNATIVE_PRODUCTS: Record<string, { name: string }> = {
   pdt_oJrNhvmTecy5gmoEulOBk: { name: "All-in" },
   pdt_0qXNmdS7RszEjaA2IDyfM: { name: "Starter" },
-  pdt_e9mUw084cWnu0tz: { name: "Test" },
 };
 
 function isSucceededOneTimePayment(p: any) {
@@ -125,13 +124,13 @@ export async function POST(request: Request) {
         },
       });
       // Update customer count
-      // await prisma.globalNumber.update({
-      //   where: {
-      //     id: "99c3a4be-4565-451b-813e-82bf381568d7",
-      //     title: "customers",
-      //   },
-      //   data: { value: { increment: 1 } },
-      // });
+      await prisma.globalNumber.update({
+        where: {
+          id: "99c3a4be-4565-451b-813e-82bf381568d7",
+          title: "customers",
+        },
+        data: { value: { increment: 1 } },
+      });
 
       // Send welcome email
       try {
