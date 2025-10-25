@@ -6,6 +6,7 @@ import { ChevronRight, Clock, DollarSign } from "lucide-react";
 import Image from "next/image";
 import CTAButton from "@/components/CTAButton";
 import CTAButtonSecondary from "@/components/CTASecondary";
+import { trackEvent } from "@/services/custom-analytics";
 
 const categories = [
   {
@@ -208,6 +209,8 @@ function UseCasesView() {
                           href={useCase.pricing.link}
                           onClick={(e) => {
                             e.stopPropagation();
+                            window?.datafast("purchase_clicked_from_use_cases");
+                            trackEvent("CTA Template - " + useCase.title);
                             // Purchase logic will be added here
                           }}
                           className="bg-primary hover:bg-primary/90 rounded-full px-6 py-3 text-base font-semibold text-white transition-all hover:shadow-lg"
