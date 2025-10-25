@@ -30,7 +30,7 @@ const pricingFeatures: PricingFeature[] = [
   {
     text: (
       <Link
-        className="border-primary hover:border-opacity-0 hover:text-primary border-b border-dashed transition-all"
+        className="border-primary hover:text-primary border-b border-dashed transition-all"
         href="/use-cases"
         onClick={() => window?.datafast("apps_included_clicked_from_pricing")}
       >
