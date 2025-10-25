@@ -161,7 +161,7 @@ function UseCasesView() {
                     )}
 
                     {/* Time & Cost Savings */}
-                    <div className="mb-6 grid grid-cols-2 gap-4 rounded-2xl bg-gray-50 p-4 dark:bg-gray-800/50">
+                    {/* <div className="mb-6 grid grid-cols-2 gap-4 rounded-2xl bg-gray-50 p-4 dark:bg-gray-800/50">
                       <div>
                         <div className="mb-1 flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                           <Clock className="h-4 w-4" />
@@ -180,7 +180,7 @@ function UseCasesView() {
                           {useCase.costSavings}
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
                     {/* Pricing & Purchase Button */}
                     <div className="border-primary/20 from-primary/5 to-primary/10 mb-6 flex items-center justify-between rounded-2xl border-2 bg-gradient-to-r p-4">
