@@ -77,7 +77,7 @@ function Apps({ maxApps = 10 }: { maxApps?: number }) {
           className="mx-auto flex flex-col items-center gap-4"
         >
           {/* Heading + description */}
-          <div className="flex max-w-md flex-col gap-3 text-center">
+          <div className="flex max-w-xs flex-col gap-3 text-center md:max-w-md">
             <div className="mb-4 flex justify-center">
               {app.logo && (
                 <Image
@@ -141,7 +141,7 @@ function Apps({ maxApps = 10 }: { maxApps?: number }) {
                 onClick={() => {
                   trackEvent(`Website_${app.name}_clicked`);
                 }}
-                className="hover:text-primary flex w-[200px] items-center justify-center rounded-lg border-black bg-white py-5 text-xl font-[500] transition"
+                className="hover:text-primary flex w-[200px] items-center justify-center rounded-lg border-black bg-white py-5 text-xl font-[500] transition max-md:mt-10"
               >
                 Visit Website
               </a>
