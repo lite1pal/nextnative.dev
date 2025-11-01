@@ -168,7 +168,7 @@ function Apps({ maxApps = 10 }: { maxApps?: number }) {
             </div> */}
           </div>
 
-          <div className="relative max-sm:left-12 max-sm:max-h-[770px]">
+          <div className="pointer-events-none relative max-sm:left-12 max-sm:max-h-[770px]">
             <IPhoneMockup isDark={false}>
               {app.realDemo ? (
                 <app.realDemo />
