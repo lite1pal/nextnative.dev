@@ -117,13 +117,13 @@ function PricingSection() {
       />
 
       {/* Halloween Discount Badge */}
-      {/* <div className="flex items-center gap-2 rounded-full bg-orange-400 px-4 py-2 text-white shadow-lg">
-        <span className="text-2xl">🎃</span>
+      <div className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-white shadow-lg">
+        <span className="text-2xl">🔥</span>
         <span className="text-base sm:text-lg">
-          Use code <span className="font-bold">HALLOWEEN25</span> for extra 25%
-          OFF
+          Use code <span className="font-bold">BLACKFRIDAY30</span> for extra
+          30% OFF
         </span>
-      </div> */}
+      </div>
 
       <div className="mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:px-4">
         {/* Starter Plan Card */}
