@@ -47,7 +47,7 @@ async function addAnchorsToHeadings(html: string): Promise<string> {
   return result.toString();
 }
 
-export const revalidate = 86400; // Revalidate every 10 minutes
+export const revalidate = 86400; // Revalidate every day
 
 export async function generateMetadata({
   params,

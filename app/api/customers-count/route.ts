@@ -1,7 +1,6 @@
 import { prisma } from "@/prisma/client";
 
 export async function GET() {
-  // Simulate a database call
   const customersCount = await prisma.globalNumber.findUnique({
     where: {
       id: "99c3a4be-4565-451b-813e-82bf381568d7",
