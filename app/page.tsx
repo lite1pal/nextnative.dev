@@ -34,6 +34,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 86400;
+
 export default function Home() {
   const videoTestimonial = testimonials.find(
     (testimonial) => testimonial.type === "video" && testimonial.name === "Leo",
