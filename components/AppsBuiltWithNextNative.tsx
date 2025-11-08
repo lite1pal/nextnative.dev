@@ -28,7 +28,7 @@ function AppsBuiltWithNextNative() {
           <Link
             onClick={() => trackEvent("SeeMoreApps_clicked")}
             href="/showcase"
-            className="w-full max-w-sm max-sm:-mt-16"
+            className="w-full max-w-sm max-sm:-mt-24"
           >
             <Button className="w-full py-4" variant="secondary">
               See more apps

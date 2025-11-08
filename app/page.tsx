@@ -95,7 +95,7 @@ export default function Home() {
           </Suspense>
         }
       />
-      <div className="grid grid-cols-1 items-center gap-8 sm:gap-16 lg:grid-cols-2 xl:hidden">
+      {/* <div className="grid grid-cols-1 items-center gap-8 sm:gap-16 lg:grid-cols-2 xl:hidden">
         <div className="mx-auto max-w-xl">
           <Image
             className="relative z-10 h-full w-full object-cover"
@@ -108,7 +108,7 @@ export default function Home() {
             quality={25}
           />
         </div>
-      </div>
+      </div> */}
 
       <Testimonial
         imgSrc={""}

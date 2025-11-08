@@ -25,7 +25,7 @@ function DemoVideo() {
   return (
     <div
       ref={videoRef}
-      className="mt-10 flex flex-col sm:mb-20 sm:px-20 md:py-20"
+      className="mt-16 mb-10 flex flex-col sm:mt-10 sm:mb-20 sm:px-20 md:py-20"
     >
       <div className="mb-2 flex flex-col justify-between gap-3 sm:items-center md:flex-row">
         <div></div>
