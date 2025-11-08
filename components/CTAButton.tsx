@@ -6,9 +6,8 @@ import Button from "./Button";
 function CTAButton() {
   return (
     <Button
-      onClick={() => {
-        trackEvent("CTA_clicked");
-        window?.datafast("cta_clicked");
+      onClick={async () => {
+        await trackEvent("CTA_clicked");
         // window.location.href = dodoPaymentLinks.allAccess;
         const el = document.getElementById("pricing");
         if (el) {
