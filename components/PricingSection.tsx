@@ -131,7 +131,7 @@ function PricingSection() {
           <span
             className={`pointer-events-none ml-auto text-sm font-[500] text-red-500 opacity-0 sm:text-xl`}
           >
-            limited launch %60 discount
+            limited launch 40% discount
           </span>
           <div
             style={{
