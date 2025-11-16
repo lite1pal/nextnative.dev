@@ -368,7 +368,7 @@ function PreviewSection({
 }: PreviewSectionProps) {
   if (!sourceImageUrl) {
     return (
-      <div className="mb-8">
+      <div className="mb-8" id="preview-section-placeholder">
         <h3 className="mb-5 text-xl font-semibold text-gray-900 dark:text-gray-100">
           Preview
         </h3>
@@ -389,7 +389,7 @@ function PreviewSection({
   }
 
   return (
-    <div className="mb-8">
+    <div className="mb-8" id="preview-section">
       <h3 className="mb-5 text-xl font-semibold text-gray-900 dark:text-gray-100">
         Preview
       </h3>
@@ -577,7 +577,6 @@ export default function AppIconSplashGenerator() {
       setErrorMessage(null);
       if (file.size > 10 * 1024 * 1024) {
         setErrorMessage("File size must be less than 10MB");
-        trackEvent("FreeTools_Error_file_too_large");
         return;
       }
 
@@ -590,12 +589,10 @@ export default function AppIconSplashGenerator() {
           setErrorMessage(
             "⚠️ Image resolution is low. For best results, use an image at least 1024×1024 pixels.",
           );
-          trackEvent("FreeTools_Warning_low_resolution");
         }
 
         setSourceImage(img);
         setSourceImageUrl(url);
-        trackEvent("FreeTools_ImageUploaded");
 
         // Generate previews immediately with current state values at time of upload
         generatePreviews(img, {
@@ -641,7 +638,6 @@ export default function AppIconSplashGenerator() {
     try {
       setErrorMessage(null);
       setShowSuccessCard(false);
-      trackEvent("FreeTools_Generate_Clicked");
       await generateAndDownload(sourceImage, {
         appName,
         backgroundColor,
@@ -652,7 +648,6 @@ export default function AppIconSplashGenerator() {
     } catch (error) {
       console.error(error);
       setErrorMessage("Failed to generate assets. Please try again.");
-      trackEvent("FreeTools_Error_generation_failed");
     }
   }, [
     sourceImage,
@@ -727,7 +722,6 @@ export default function AppIconSplashGenerator() {
       if ((e.metaKey || e.ctrlKey) && e.key === "Enter" && sourceImage) {
         e.preventDefault();
         handleGenerate();
-        trackEvent("FreeTools_Keyboard_Generate");
       }
     };
 
@@ -751,7 +745,7 @@ export default function AppIconSplashGenerator() {
           </p>
 
           {/* Social proof / usage stats */}
-          <div className="mx-auto mb-10 flex flex-wrap items-center justify-center gap-6 text-base text-gray-700 dark:text-gray-300">
+          <div className="mx-auto flex flex-wrap items-center justify-center gap-6 text-base text-gray-700 dark:text-gray-300">
             <div className="flex items-center gap-2">
               <span className="text-3xl" aria-hidden="true">
                 ⚡
@@ -786,9 +780,8 @@ export default function AppIconSplashGenerator() {
             </div>
           </div>
 
-          <ButtonNextNative
+          {/* <ButtonNextNative
             onClick={() => {
-              trackEvent("FreeTools_CTA_clicked");
               const el = document.getElementById("upload-form");
               if (el) {
                 el.scrollIntoView({ behavior: "smooth" });
@@ -797,30 +790,7 @@ export default function AppIconSplashGenerator() {
             variant="primary"
           >
             Upload your image now
-          </ButtonNextNative>
-          <DemoImageButton
-            onUseDemoImage={async () => {
-              try {
-                trackEvent("FreeTools_DemoImage_used");
-                const response = await fetch(
-                  "/showcase/bill-organizer/logo.png",
-                );
-                const blob = await response.blob();
-                const file = new File([blob], "demo-app-icon.png", {
-                  type: blob.type || "image/png",
-                });
-                handleImageUpload(file);
-                const el = document.getElementById("upload-form");
-                if (el) {
-                  el.scrollIntoView({ behavior: "smooth" });
-                }
-              } catch (err) {
-                console.error("Failed to load demo image", err);
-                setErrorMessage("Failed to load demo image. Please try again.");
-                trackEvent("FreeTools_Error_demo_image_failed");
-              }
-            }}
-          />
+          </ButtonNextNative> */}
         </div>
 
         {/* Main Content */}
@@ -835,6 +805,33 @@ export default function AppIconSplashGenerator() {
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
           />
+          <div className="mb-5 flex items-center justify-center">
+            <DemoImageButton
+              onUseDemoImage={async () => {
+                try {
+                  const response = await fetch(
+                    "/showcase/bill-organizer/logo.png",
+                  );
+                  const blob = await response.blob();
+                  const file = new File([blob], "demo-app-icon.png", {
+                    type: blob.type || "image/png",
+                  });
+                  handleImageUpload(file);
+                  const el = document.getElementById(
+                    "preview-section-placeholder",
+                  );
+                  if (el) {
+                    el.scrollIntoView({ behavior: "smooth" });
+                  }
+                } catch (err) {
+                  console.error("Failed to load demo image", err);
+                  setErrorMessage(
+                    "Failed to load demo image. Please try again.",
+                  );
+                }
+              }}
+            />
+          </div>
 
           <OptionsForm
             appName={appName}
@@ -858,7 +855,7 @@ export default function AppIconSplashGenerator() {
             disabled={!sourceImage}
           />
 
-          <ErrorMessage message={errorMessage} />
+          {/* <ErrorMessage message={errorMessage} /> */}
           <SuccessShareCard visible={showSuccessCard} />
         </div>
 
