@@ -679,8 +679,6 @@ export default function AppIconSplashGenerator() {
     } catch (err) {
       console.error("Failed to load saved settings", err);
     }
-
-    trackEvent("FreeTools_Viewed");
   }, []);
 
   // Persist settings when they change
