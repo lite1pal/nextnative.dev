@@ -78,11 +78,11 @@ export default function AppIconGeneratorLayout({
 }) {
   return (
     <main>
-      <div className="mx-auto mt-10 max-w-xl">
+      {/* <div className="mx-auto mt-10 max-w-xl">
         <Suspense fallback={<NextNativeCardSkeleton />}>
           <NextNativeCard post={{ slug: "free-tool" }} />
         </Suspense>
-      </div>
+      </div> */}
       {children}
     </main>
   );

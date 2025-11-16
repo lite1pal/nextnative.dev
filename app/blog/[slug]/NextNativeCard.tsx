@@ -1,5 +1,4 @@
 import HighlightedSpan from "@/components/HighlightedSpan";
-import Logo from "@/components/Logo";
 import CTABlogButton from "./CTABlogButton";
 import LogoSymbol from "@/components/LogoSymbol";
 import Link from "next/link";
