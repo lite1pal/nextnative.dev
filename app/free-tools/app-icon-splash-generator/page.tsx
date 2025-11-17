@@ -2,7 +2,7 @@
 
 // Note: Metadata needs to be handled by a parent layout since this is a client component
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect, Suspense } from "react";
 import {
   Upload,
   Download,
@@ -17,6 +17,8 @@ import { Input } from "@/components/ui/input";
 import { useIconGenerator } from "@/hooks/use-icon-generator";
 import HighlightedSpan from "@/components/HighlightedSpan";
 import { trackEvent } from "@/services/custom-analytics";
+import NextNativeCard from "@/app/blog/[slug]/NextNativeCard";
+import NextNativeCardSkeleton from "@/app/blog/[slug]/NextNativeCardSkeleton";
 
 // Small UI components for clarity and modularity
 
