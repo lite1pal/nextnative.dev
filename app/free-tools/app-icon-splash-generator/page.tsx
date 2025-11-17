@@ -19,6 +19,7 @@ import HighlightedSpan from "@/components/HighlightedSpan";
 import { trackEvent } from "@/services/custom-analytics";
 import NextNativeCard from "@/app/blog/[slug]/NextNativeCard";
 import NextNativeCardSkeleton from "@/app/blog/[slug]/NextNativeCardSkeleton";
+import NextNativeCardClient from "@/app/blog/[slug]/NextNativeCardClient";
 
 // Small UI components for clarity and modularity
 
@@ -793,6 +794,10 @@ export default function AppIconSplashGenerator() {
           >
             Upload your image now
           </ButtonNextNative> */}
+
+          <div className="mx-auto mt-10 max-w-xl">
+            <NextNativeCardClient post={{ slug: "free-tool" }} />
+          </div>
         </div>
 
         {/* Main Content */}
