@@ -120,8 +120,7 @@ function PricingSection() {
       <div className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-white shadow-lg">
         <span className="text-2xl">🔥</span>
         <span className="text-base sm:text-lg">
-          Use code <span className="font-bold">BLACKFRIDAY20</span> for extra
-          20% OFF
+          Use code <span className="font-bold">BLACKFRIDAY20</span>
         </span>
       </div>
 
