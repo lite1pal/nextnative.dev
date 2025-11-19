@@ -117,13 +117,13 @@ function PricingSection() {
       />
 
       {/* Halloween Discount Badge */}
-      {/* <div className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-white shadow-lg">
+      <div className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-white shadow-lg">
         <span className="text-2xl">🔥</span>
         <span className="text-base sm:text-lg">
-          Use code <span className="font-bold">BLACKFRIDAY30</span> for extra
-          30% OFF
+          Use code <span className="font-bold">BLACKFRIDAY20</span> for extra
+          20% OFF
         </span>
-      </div> */}
+      </div>
 
       <div className="mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:px-4">
         {/* Starter Plan Card */}
@@ -151,7 +151,7 @@ function PricingSection() {
                 </span>
                 <div className="flex items-end gap-2">
                   <h3 className="text-3xl leading-none font-[500] sm:text-4xl md:text-[54px]">
-                    $149
+                    $125
                   </h3>
                   <span className="text-gray text-lg sm:text-xl md:text-2xl">
                     /forever
@@ -211,7 +211,7 @@ function PricingSection() {
           <span className={`text-gray ml-auto text-sm font-[500] sm:text-xl`}>
             limited launch discount{" "}
             <span className="text-red-500">
-              40% off, {discountLimit - customersCount} left
+              50% off, {discountLimit - customersCount} left
             </span>{" "}
           </span>
 
@@ -233,7 +233,7 @@ function PricingSection() {
                 </span>
                 <div className="flex items-end gap-2">
                   <h3 className="text-3xl leading-none font-[500] sm:text-4xl md:text-[54px]">
-                    <HighlightedSpan>$179</HighlightedSpan>
+                    <HighlightedSpan>$149</HighlightedSpan>
                   </h3>
                   <span className="text-gray text-lg sm:text-xl md:text-2xl">
                     /forever
