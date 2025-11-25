@@ -146,6 +146,33 @@ export default async function TutorialPage({
         </p>
       </header>
 
+      {/* High-intent shortcut CTA – only for the convert-nextjs-to-mobile-app tutorial */}
+      {slug === "convert-nextjs-to-mobile-app" && (
+        <section className="border-primary/20 bg-primary/5 mb-16 rounded-3xl border p-8 md:p-10">
+          <h2 className="mb-3 text-2xl font-semibold text-gray-900 md:text-3xl dark:text-white">
+            Don&apos;t want to wire all this by hand?
+          </h2>
+          <p className="mb-6 text-lg text-gray-700 md:text-xl dark:text-gray-300">
+            This tutorial shows every step to convert your Next.js app with
+            Capacitor. If you&apos;d rather skip the boilerplate and start from
+            a ready-made Next.js + Capacitor starter with auth, payments, push
+            notifications and 7 example apps already wired up, check out
+            NextNative.
+          </p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Link
+              href="/"
+              className="bg-primary hover:bg-primary/90 inline-flex justify-center rounded-full px-6 py-3 text-base font-semibold text-white shadow-md transition"
+            >
+              See the full starter kit →
+            </Link>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              One-time license, unlimited apps. 14-day money-back guarantee.
+            </p>
+          </div>
+        </section>
+      )}
+
       {/* Prerequisites */}
       {tutorial.prerequisites.length > 0 && (
         <section className="mb-16 rounded-3xl bg-blue-50 p-10 dark:bg-blue-900/20">
@@ -168,7 +195,7 @@ export default async function TutorialPage({
       {/* What You'll Learn */}
       <section className="bg-primary/5 mb-16 rounded-3xl p-10">
         <h2 className="mb-6 flex items-center gap-3 text-3xl font-semibold text-gray-900 md:text-4xl dark:text-white">
-          🎯 What You'll Learn
+          🎯 What You&apos;ll Learn
         </h2>
         <ul className="space-y-4">
           {tutorial.whatYoullLearn.map((item, index) => (
@@ -221,11 +248,6 @@ export default async function TutorialPage({
                       </div>
                     )}
                   </div>
-                  {/* <pre
-                    className={`overflow-x-auto bg-gray-900 p-6 text-base leading-relaxed ${step.code.filename ? "rounded-b-xl" : "rounded-xl"}`}
-                  >
-                    <code className="text-gray-100">{step.code.code}</code>
-                  </pre> */}
                   <SyntaxHighlighter
                     language={step.code.language}
                     style={nightOwl}
@@ -253,32 +275,16 @@ export default async function TutorialPage({
         </div>
       </section>
 
-      {/* Next Steps */}
-      {/* {tutorial.nextSteps.length > 0 && (
-        <section className="mb-16 rounded-3xl bg-white p-10">
-          <h2 className="mb-8 text-4xl font-bold text-gray-900 md:text-5xl">
-            🚀 Next Steps
-          </h2>
-          <ul className="space-y-4">
-            {tutorial.nextSteps.map((step, index) => (
-              <li key={index} className="flex items-start gap-4">
-                <ChevronRight className="text-primary mt-1 h-6 w-6 flex-shrink-0" />
-                <span className="text-lg leading-relaxed text-gray-700 md:text-xl dark:text-gray-300">
-                  {step}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )} */}
-
+      {/* Main CTA */}
       <div className="mt-24 mb-20 rounded-3xl bg-white p-16 text-center">
         <h2 className="mb-6 text-4xl font-bold md:text-5xl">
-          Ready to Build Your Mobile App?
+          Turn this tutorial into a shipped app
         </h2>
         <p className="mb-10 text-xl md:text-2xl">
-          Get NextNative and start converting your Next.js website to a mobile
-          app in minutes.
+          You can follow every step manually, or start from a production-ready
+          Next.js + Capacitor starter with auth, payments, push notifications
+          and 7 mobile apps included. One-time license, unlimited projects,
+          14-day refund if it&apos;s not a fit.
         </p>
 
         <Suspense fallback={<CTASkeleton />}>
@@ -345,9 +351,6 @@ export default async function TutorialPage({
               <h3 className="group-hover:text-primary mx-auto w-fit text-lg font-semibold text-gray-900">
                 {comparison.title}
               </h3>
-              {/* <p className="text-base text-gray-600 dark:text-gray-400">
-                {comparison.option1.name} vs {comparison.option2.name}
-              </p> */}
             </Link>
           ))}
         </div>

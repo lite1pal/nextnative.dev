@@ -119,9 +119,6 @@ const config: CapacitorConfig = {
   appId: 'com.yourcompany.appname',
   appName: 'Your App Name',
   webDir: 'out',
-  server: {
-    androidScheme: 'https'
-  }
 };
 
 export default config;`,
