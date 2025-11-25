@@ -396,9 +396,8 @@ export default async function UseCasePage({
           </p>
         </div>
 
-        {useCase.forSale ? (
+        {/* {useCase.forSale ? (
           <div className="grid gap-8 md:grid-cols-2">
-            {/* Individual Template Purchase */}
             {useCase.forSale && (
               <div className="border-primary rounded-2xl border-2 bg-white p-8 shadow-lg dark:bg-gray-900">
                 <div className="mb-6 text-center">
@@ -414,14 +413,6 @@ export default async function UseCasePage({
                     <span className="text-xl text-gray-500 line-through dark:text-gray-400">
                       ${useCase.pricing.originalPrice}
                     </span>
-                    {/* <span className="bg-primary/20 text-primary rounded-full px-3 py-1 text-sm font-semibold">
-                  {Math.round(
-                    ((useCase.pricing.originalPrice - useCase.pricing.price) /
-                      useCase.pricing.originalPrice) *
-                      100,
-                  )}
-                  % OFF
-                </span> */}
                   </div>
                   <div className="text-primary text-5xl font-bold">
                     ${useCase.pricing.price}
@@ -436,7 +427,6 @@ export default async function UseCasePage({
               </div>
             )}
 
-            {/* Full NextNative Package */}
             <div className="rounded-2xl border-2 border-gray-300 bg-white p-8 shadow-lg dark:border-gray-700 dark:bg-gray-900">
               <div className="mb-6 text-center">
                 <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
@@ -457,9 +447,7 @@ export default async function UseCasePage({
                   Includes all templates
                 </p>
               </div>
-              {/* <Suspense fallback={<CTASkeleton />}>
-              <CTA />
-            </Suspense> */}
+
               <div className="flex flex-col items-center gap-3">
                 <Link href="/#pricing">
                   <CTAButton />
@@ -475,7 +463,13 @@ export default async function UseCasePage({
             </Link>
             <CTAButtonSecondary />
           </div>
-        )}
+        )} */}
+        <div className="flex flex-col justify-center gap-3 md:flex-row">
+          <Link href="/#pricing">
+            <CTAButton />
+          </Link>
+          <CTAButtonSecondary />
+        </div>
       </section>
 
       {/* Related Tutorials */}
