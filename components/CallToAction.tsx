@@ -2,6 +2,10 @@ import { Suspense } from "react";
 import CTA from "./CTA";
 import Subheading from "./Subheading";
 import CTASkeleton from "./CTASkeleton";
+import { AvatarList } from "./AvatarList";
+import RatingSvg from "./RatingSvg";
+import LovedByMakers from "./LovedByMakers";
+import LovedByMakersSkeleton from "./LovedByMakersSkeleton";
 
 interface CallToActionProps {
   title: string;
@@ -25,10 +29,21 @@ function CallToAction({
         heading2={subtitle}
         className="md:items-center"
       />
-      <div className="relative">
+      <div className="relative flex flex-col gap-10 sm:items-center">
         <Suspense fallback={<CTASkeleton />}>
           <CTA className="md:items-center" />
         </Suspense>
+        <div className="flex gap-5 sm:gap-2">
+          <div className="relative -top-1.5">
+            <AvatarList />
+          </div>
+          <div className="flex flex-col">
+            <RatingSvg />
+            <Suspense fallback={<LovedByMakersSkeleton />}>
+              <LovedByMakers />
+            </Suspense>
+          </div>
+        </div>
       </div>
     </div>
   );

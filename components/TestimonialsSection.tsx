@@ -101,12 +101,12 @@ export const testimonials = [
     videoSrc: "/testimonials/Product Review for Next Native.mp4",
     testimonial: (
       <div>
-        "Thank you so much. I bought your product and I freaking loved it!!!{" "}
+        "Thank you so much. I bought your product and I freaking loved it!{" "}
         <br /> <br />
-        I'm free finally as I'm no longer relying for FE developer to hook up my
-        backend.
+        I'm finally free as I'm no longer relying for a frontend developer to
+        hook up my backend.
         <br />
-        <br />I can do this myself."
+        <br />I can do this myself!"
       </div>
     ),
     showStars: true,

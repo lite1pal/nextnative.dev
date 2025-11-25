@@ -27,6 +27,10 @@ import HeroSection from "@/components/HeroSection";
 import ToolCard from "@/components/ToolCard";
 import CTA from "@/components/CTA";
 import CTASkeleton from "@/components/CTASkeleton";
+import { AvatarList } from "@/components/AvatarList";
+import RatingSvg from "@/components/RatingSvg";
+import LovedByMakers from "@/components/LovedByMakers";
+import LovedByMakersSkeleton from "@/components/LovedByMakersSkeleton";
 
 export const metadata: Metadata = {
   alternates: {
@@ -111,51 +115,6 @@ export default function Home() {
       </div> */}
 
       <Testimonial
-        imgSrc={""}
-        letters="S"
-        name="Happy customer"
-        showStars
-        url="https://microlaunch.net/p/nextnative"
-        testimonial={
-          <div>
-            Insane product & a great founder behind it - I've been trying to
-            mess around creating mobile apps &{" "}
-            <span className="bg-primary rounded p-1 font-[500] text-white">
-              I'm getting there bit by bit w/ this helping me hugely!!
-            </span>
-          </div>
-        }
-      />
-
-      <QuickStart />
-
-      <div className="text-center max-md:mt-24 md:mb-16">
-        <Subheading
-          heading1="See what"
-          heading2="you can build in days"
-          className="text-start md:items-center md:text-center"
-        />
-
-        <p className="mt-6 w-fit max-w-2xl self-start text-start text-lg md:mx-auto md:text-center">
-          Real apps. Real features. Fully cross-platform.
-        </p>
-      </div>
-
-      <ShowcaseSection />
-
-      <SocialProof />
-
-      <div className="mx-auto mt-16 max-w-2xl">
-        <VideoTestimonial
-          name={videoTestimonial?.name as string}
-          videoSrc={videoTestimonial?.videoSrc!}
-          testimonial={videoTestimonial?.testimonial}
-          showStars={videoTestimonial?.showStars}
-          className="my-0 max-w-none"
-        />
-      </div>
-
-      <Testimonial
         imgSrc={"/testimonials/vitaliy.jpeg"}
         name="Vitalii Zabrodskyi"
         description="Senior .NET Developer"
@@ -188,11 +147,114 @@ export default function Home() {
         }
       />
 
+      <QuickStart />
+
+      <div className="text-center max-md:mt-24 md:mb-16">
+        <Subheading
+          heading1="See what"
+          heading2="you can build in days"
+          className="text-start md:items-center md:text-center"
+        />
+
+        <p className="mt-6 w-fit max-w-2xl self-start text-start text-lg md:mx-auto md:text-center">
+          Real apps. Real features. Fully cross-platform.
+        </p>
+      </div>
+
+      <ShowcaseSection />
+
+      <div className="flex flex-col gap-10 max-sm:mt-16 sm:items-center">
+        <Suspense fallback={<CTASkeleton />}>
+          <CTA />
+        </Suspense>
+        <div className="flex gap-5 sm:gap-2">
+          <div className="relative -top-1.5">
+            <AvatarList />
+          </div>
+          <div className="flex flex-col">
+            <RatingSvg />
+            <Suspense fallback={<LovedByMakersSkeleton />}>
+              <LovedByMakers />
+            </Suspense>
+          </div>
+        </div>
+      </div>
+
+      <SocialProof />
+
+      {/* <div className="mx-auto mt-16 max-w-2xl">
+        <VideoTestimonial
+          name={videoTestimonial?.name as string}
+          videoSrc={videoTestimonial?.videoSrc!}
+          testimonial={videoTestimonial?.testimonial}
+          showStars={videoTestimonial?.showStars}
+          className="my-0 max-w-none"
+        />
+      </div> */}
+
+      <Testimonial
+        imgSrc={""}
+        letters="S"
+        name="Happy customer"
+        showStars
+        url="https://microlaunch.net/p/nextnative"
+        testimonial={
+          <div>
+            Insane product & a great founder behind it - I've been trying to
+            mess around creating mobile apps &{" "}
+            <span className="bg-primary rounded p-1 font-[500] text-white">
+              I'm getting there bit by bit w/ this helping me hugely!!
+            </span>
+          </div>
+        }
+      />
+
       <WastedTime />
 
       <SetupByDefault />
 
+      <Testimonial
+        imgSrc={"/testimonials/terry.jpg"}
+        name="Terry Carson"
+        description="Developer"
+        showStars
+        testimonial={
+          <div>
+            NextNative is a great tool for{" "}
+            <span className="bg-primary rounded p-1 font-[500] text-white">
+              rapidly developing
+            </span>{" "}
+            cross-platform mobile apps, especially if you are coming from a
+            Next.js background.
+            <br />
+            <br />
+            It provides a structured starting point with modern tooling to get
+            your project{" "}
+            <span className="bg-primary rounded p-1 font-[500] text-white">
+              off the ground quickly.
+            </span>
+          </div>
+        }
+      />
+
       <AppsBuiltWithNextNative />
+
+      <div className="mt-10 flex flex-col gap-10 sm:items-center">
+        <Suspense fallback={<CTASkeleton />}>
+          <CTA />
+        </Suspense>
+        <div className="flex gap-5 sm:gap-2">
+          <div className="relative -top-1.5">
+            <AvatarList />
+          </div>
+          <div className="flex flex-col">
+            <RatingSvg />
+            <Suspense fallback={<LovedByMakersSkeleton />}>
+              <LovedByMakers />
+            </Suspense>
+          </div>
+        </div>
+      </div>
 
       <DemoVideo />
 
@@ -208,6 +270,23 @@ export default function Home() {
             alt={feature.alt}
           />
         ))}
+      </div>
+
+      <div className="flex flex-col gap-10 sm:mt-10 sm:items-center">
+        <Suspense fallback={<CTASkeleton />}>
+          <CTA />
+        </Suspense>
+        <div className="flex gap-5 sm:gap-2">
+          <div className="relative -top-1.5">
+            <AvatarList />
+          </div>
+          <div className="flex flex-col">
+            <RatingSvg />
+            <Suspense fallback={<LovedByMakersSkeleton />}>
+              <LovedByMakers />
+            </Suspense>
+          </div>
+        </div>
       </div>
 
       <div className="mx-auto my-16 flex w-fit flex-col items-center gap-3">
@@ -234,9 +313,36 @@ export default function Home() {
 
       <Spend5Minutes />
 
+      <div className="mx-auto mt-16 mb-16 max-w-2xl">
+        <VideoTestimonial
+          name={videoTestimonial?.name as string}
+          videoSrc={videoTestimonial?.videoSrc!}
+          testimonial={videoTestimonial?.testimonial}
+          showStars={videoTestimonial?.showStars}
+          className="my-0 max-w-none"
+        />
+      </div>
+
       <PricingSection />
 
       <TestimonialsSection />
+
+      <div className="mb-10 flex flex-col gap-10 sm:mt-10 sm:items-center">
+        <Suspense fallback={<CTASkeleton />}>
+          <CTA />
+        </Suspense>
+        <div className="flex gap-5 sm:gap-2">
+          <div className="relative -top-1.5">
+            <AvatarList />
+          </div>
+          <div className="flex flex-col">
+            <RatingSvg />
+            <Suspense fallback={<LovedByMakersSkeleton />}>
+              <LovedByMakers />
+            </Suspense>
+          </div>
+        </div>
+      </div>
 
       <FAQ />
       <CallToAction

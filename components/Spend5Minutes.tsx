@@ -15,17 +15,26 @@ function Spend5Minutes() {
         </span>
       </div>
 
-      <div>
+      {/* <div>
         <span className="text-foreground">
           Skip the boring configuration of{" "}
         </span>
         authentication, database setup, API integration, and native mobile
         capabilities.
+      </div> */}
+
+      <div>
+        Skip <span className="text-foreground">the boring parts:</span>
+      </div>
+      <div className="flex flex-col">
+        <div>🔐 Auth & secure backend</div>
+        <div>🗄️ Database & storage</div>
+        <div>🔌 API integration</div>
+        <div>📱 Native mobile capabilities</div>
       </div>
 
       <div>
-        Turn <span className="text-foreground">weeks of technical setup</span>{" "}
-        into
+        Turn <span className="text-foreground">weeks of setup</span> into
         <span className="text-foreground">
           {" "}
           minutes of productive development!
