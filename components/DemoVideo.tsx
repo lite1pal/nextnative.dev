@@ -30,7 +30,8 @@ function DemoVideo() {
       <div className="mb-2 flex flex-col justify-between gap-3 sm:items-center md:flex-row">
         <div></div>
         <span className={`text-gray text-base font-[500] sm:text-xl`}>
-          Just 3 minutes to see how it works ⚡
+          See how to build & run a real iOS/Android app in minutes, using your
+          existing Next.js skills ⚡
         </span>
       </div>
 

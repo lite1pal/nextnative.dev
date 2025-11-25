@@ -26,7 +26,7 @@ interface PricingFeature {
 }
 
 const pricingFeatures: PricingFeature[] = [
-  { text: "Next.js boilerplate" },
+  { text: "Next.js + Capacitor boilerplate" },
   {
     text: (
       <Link
@@ -37,23 +37,24 @@ const pricingFeatures: PricingFeature[] = [
           trackEvent("Apps Included - Pricing Section");
         }}
       >
-        7 premium apps included
+        7 premium template apps included
       </Link>
     ),
   },
-  { text: "Secure backend" },
-  { text: "Database" },
-  { text: "Authentication" },
+  { text: "Secure backend & Database" },
+  { text: "Authentication & Onboarding flow" },
   { text: "Push notifications" },
-  { text: "Onboarding flow" },
+  // { text: "Onboarding flow" },
   { text: "In-App Purchases & Subscriptions" },
-  { text: "App Store/Google Play guides" },
-  { text: "3 months email support" },
   { text: "Lifetime updates" },
+  { text: "App Store/Google Play launch guides" },
+  { text: "3 months developer support" },
+  { text: "Hands-on help if you get stuck" },
+  { text: "Team license - unlimited team members" },
 ];
 
 const pricingFeaturesStarter: PricingFeature[] = [
-  { text: "Next.js boilerplate" },
+  { text: "Next.js + Capacitor boilerplate" },
   {
     text: (
       <Link
@@ -64,17 +65,24 @@ const pricingFeaturesStarter: PricingFeature[] = [
           trackEvent("Apps Included - Pricing Section");
         }}
       >
-        7 premium apps included
+        7 premium template apps included
       </Link>
     ),
   },
-  { text: "Secure backend" },
-  { text: "Database" },
-  { text: "Authentication" },
+  { text: "Secure backend + database" },
+  { text: "Authentication + onboarding flow" },
   { text: "Push notifications" },
-  { text: "Onboarding flow" },
+  // { text: "Onboarding flow" },
   { text: "In-App Purchases & Subscriptions" },
   { text: "Lifetime updates" },
+  {
+    text: (
+      <div className="text-gray-500">App Store/Google Play launch guides</div>
+    ),
+  },
+  { text: <div className="text-gray-500">3 months developer support</div> },
+  { text: <div className="text-gray-500">Hands-on help if you get stuck</div> },
+  { text: <div className="text-gray-500">Team license</div> },
 ];
 
 function PricingSection() {
@@ -170,7 +178,7 @@ function PricingSection() {
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
-                      className="text-primary"
+                      className={`${index >= 7 ? "text-gray-400" : "text-primary"}`}
                     >
                       <path
                         d="M20 6L9 17L4 12"
@@ -199,6 +207,8 @@ function PricingSection() {
 
                 <span className="text-gray font-[500]">
                   Pay once, build unlimited apps!
+                  <br />
+                  14-day money-back guarantee. No risk.
                 </span>
               </div>
             </div>
@@ -289,6 +299,8 @@ function PricingSection() {
 
                 <span className="text-gray font-[500]">
                   Pay once, build unlimited apps!
+                  <br />
+                  14-day money-back guarantee. No risk.
                 </span>
               </div>
             </div>
