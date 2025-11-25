@@ -183,21 +183,13 @@ function UseCasesView() {
                     </div> */}
 
                     {/* Pricing & Purchase Button */}
-                    <div className="border-primary/20 from-primary/5 to-primary/10 mb-6 flex items-center justify-between rounded-2xl border-2 bg-gradient-to-r p-4">
+                    {/* <div className="border-primary/20 from-primary/5 to-primary/10 mb-6 flex items-center justify-between rounded-2xl border-2 bg-gradient-to-r p-4">
                       <div>
                         <div className="mb-1 flex items-center gap-2">
                           <span className="font-medium text-gray-500 line-through">
                             ${useCase.pricing.originalPrice}
                           </span>
-                          {/* <span className="bg-primary/20 text-primary rounded-full px-2 py-0.5 text-xs font-semibold">
-                            {Math.round(
-                              ((useCase.pricing.originalPrice -
-                                useCase.pricing.price) /
-                                useCase.pricing.originalPrice) *
-                                100,
-                            )}
-                            % OFF
-                          </span> */}
+                          
                         </div>
                         <div className="text-primary text-4xl font-semibold">
                           ${useCase.pricing.price}
@@ -225,7 +217,7 @@ function UseCasesView() {
                           </span>
                         </div>
                       )}
-                    </div>
+                    </div> */}
 
                     {/* View Details Link */}
                     <div className="group-hover:text-primary flex items-center gap-2 text-base font-medium text-gray-900 transition-colors dark:text-white">
