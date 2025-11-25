@@ -15,17 +15,97 @@ const faqItems = [
     question: "What exactly am I getting here?",
     answer: (
       <>
-        You're getting a complete Next.js boilerplate optimized for
-        cross-platform development with Capacitor. This allows you to build
-        native iOS and Android apps using your web skills.
-        <br />
-        <br /> The package includes pre-configured essential features: payment
-        processing, database integration, user authentication, push
-        notifications, and production-ready template apps you can start with.
+        You're getting a production-ready Next.js + Capacitor boilerplate that
+        lets you ship real iOS & Android apps using your existing web stack.
         <br />
         <br />
-        I've handled all the complex technical setup so you can focus on
-        building your app's unique features right away.
+        Inside the kit you’ll find:
+        <ul className="mt-2 ml-5 list-disc space-y-1">
+          <li>Next.js + Capacitor setup wired together and tested</li>
+          <li>
+            7 production-ready template apps (Messenger, Pomodoro, Sproutly AI,
+            etc.)
+          </li>
+          <li>Secure backend + database (auth, users, data models)</li>
+          <li>Payments, in-app purchases & subscriptions already integrated</li>
+          <li>Push notifications, onboarding flows, settings screens</li>
+          <li>App Store / Google Play launch guides + 3 months dev support</li>
+        </ul>
+        <br />
+        In practice, this means you start from a working mobile app and
+        customize it, instead of spending weeks wiring up the basics from
+        scratch.
+      </>
+    ),
+  },
+  {
+    question: "Who is NextNative for (and not for)?",
+    answer: (
+      <>
+        NextNative is for:
+        <ul className="mt-2 ml-5 list-disc space-y-1">
+          <li>
+            Web devs comfortable with React / Next.js who want to ship on mobile
+            fast
+          </li>
+          <li>
+            Indie hackers and small teams who don’t want to learn a whole new
+            stack
+          </li>
+          <li>
+            Agencies who need to deliver production apps for clients quickly
+          </li>
+        </ul>
+        <br />
+        It’s probably <span className="font-semibold">not</span> for you if:
+        <ul className="mt-2 ml-5 list-disc space-y-1">
+          <li>You're looking for pure native Swift/Kotlin code</li>
+          <li>You're a complete beginner who has never built a React app</li>
+          <li>You need a very custom 3D / game-engine style app</li>
+        </ul>
+        <br />
+        If you can ship a basic app with React/Next.js today, you’ll feel at
+        home here.
+      </>
+    ),
+  },
+  {
+    question: "Can I use this for multiple apps or client projects?",
+    answer: (
+      <>
+        Yes. Both plans let you use NextNative for unlimited projects.
+        <br />
+        <br />
+        The difference is:
+        <ul className="mt-2 ml-5 list-disc space-y-1">
+          <li>
+            <span className="font-semibold">Starter</span> – one developer can
+            use the kit commercially across unlimited apps and clients.
+          </li>
+          <li>
+            <span className="font-semibold">All-in</span> – team license, so
+            your whole team can use it on unlimited projects.
+          </li>
+        </ul>
+        <br />
+        You don’t pay per app or per install – just a one-time license.
+      </>
+    ),
+  },
+  {
+    question: "What if I already have a Next.js web app?",
+    answer: (
+      <>
+        That’s a great starting point.
+        <br />
+        <br />
+        You can reuse most of your existing pages, components and logic inside
+        the NextNative structure, then plug into the mobile-specific pieces:
+        navigation, auth, native APIs, and store builds.
+        <br />
+        <br />
+        Many devs start by dropping in their existing Next.js project and wiring
+        up mobile-only features step by step.
       </>
     ),
   },
@@ -51,140 +131,38 @@ const faqItems = [
     question: "Capacitor vs React Native?",
     answer: (
       <>
-        Great question!
+        React Native uses its own component system and bridge, so you’re
+        learning a parallel mobile ecosystem instead of building on your web
+        skills.
         <br />
         <br />
-        React Native uses a custom renderer and its own component system, so
-        you're not really writing web code, you're learning a parallel mobile
-        ecosystem.
+        Capacitor lets you keep using your existing stack (Next.js, React,
+        Tailwind) and wraps it in a native shell with access to device APIs.
         <br />
         <br />
-        Capacitor, on the other hand, lets you use your existing web stack
-        (Next.js, Tailwind, etc.) and runs it in a WebView, giving you direct
-        access to native APIs via plugins.
-        <br />
-        <br />
-        TL;DR: If you're a web dev who wants to ship on mobile fast, Capacitor
-        is simpler and more familiar.
+        If you're a web dev who wants to ship real apps quickly, Capacitor is
+        simpler and more familiar. If you need pixel-perfect native UI for a
+        huge consumer app and have a dedicated mobile team, React Native or pure
+        native might fit better.
       </>
     ),
   },
-
-  {
-    question: "Can I use my favorite UI libraries?",
-    answer: (
-      <>
-        Absolutely!
-        <br />
-        <br /> While the starter comes with TailwindCSS pre-configured, you can
-        use any UI library you want - DaisyUI, ShadcnUI, you name it. <br />
-        <br />
-        The architecture is designed to be flexible, so you can make it your
-        own.
-      </>
-    ),
-  },
-  {
-    question: "Is this TypeScript or JavaScript?",
-    answer: (
-      <>
-        It's all TypeScript!
-        <br />
-        <br />I believe it makes your life easier in the long run. But don't
-        worry if you're new to TypeScript, the code is written in a way that's
-        easy to understand and modify.
-        <br />
-        <br />
-        If you prefer JavaScript, you can easily convert it. Just change the
-        file extensions and remove the type annotations. The core logic will
-        remain the same, and you'll still have all the features you need.
-      </>
-    ),
-  },
-  {
-    question: "Do I need to deal with Xcode and Android Studio?",
-    answer: (
-      <>
-        Yeah, you'll need both to test on real devices.
-        <br />
-        <br /> But don't stress - I've got{" "}
-        <a href="https://nextnative.dev/docs">clear guides</a> to help you set
-        everything up. <br />
-        <br />
-        Plus, you can do 99% of development right in your browser.
-      </>
-    ),
-  },
-  {
-    question: "How long until I can publish to the stores?",
-    answer: (
-      <>
-        The initial store setup and review process can take a few days. <br />
-        <br />
-        Apple and Google need to review your app, and they might have questions.
-        <br />
-        <br />
-        But once you're set up, future updates and publishing are lightning
-        fast!
-        <br />
-        <br />
-        I've included detailed guides to help you through the process.
-      </>
-    ),
-  },
-  {
-    question: "When do I get the App Store / Play Store guides?",
-    answer: (
-      <>
-        The App Store (iOS) and Google Play (Android) guides are delivered
-        immediately after purchase.
-      </>
-    ),
-  },
-  {
-    question: "Can I use Next.js server actions?",
-    answer: "Nope, but you can use Next.js Serverless API endpoints instead.",
-  },
-  // {
-  //   question: "How long does it take to launch an app?",
-  //   answer: (
-  //     <>
-  //       With NextNative, you can have a basic app running in 5 minutes!
-  //       <br />
-  //       <br />
-  //       The real timeline depends on your app's complexity. <br />
-  //       <br />
-  //       Way faster than starting from scratch!
-  //     </>
-  //   ),
-  // },
   {
     question: "Do I need to know mobile development?",
     answer: (
       <>
-        Nope! If you know React and Next.js, you're good to go.
+        No. If you know React and Next.js, you’re good.
         <br />
         <br />
-        Capacitor handles all the mobile-specific stuff behind the scenes.
+        Capacitor handles the mobile-specific bridge behind the scenes.
+        NextNative gives you working examples of navigation, auth, payments,
+        configs, etc.
         <br />
         <br />
-        You just write React code like you normally would!
+        You just write React code like you normally would.
       </>
     ),
   },
-  {
-    question: "How often is NextNative updated?",
-    answer: (
-      <>
-        I ship a lot and use NextNative for my own apps (like Lasting Habits or
-        Sproutly AI), so it gets regular update.
-        <br />
-        <br />
-        <span className="text-primary">🔄 Last update: Oct 7, 2025</span>
-      </>
-    ),
-  },
-
   {
     question: "Can I see some apps built with NextNative?",
     answer: (
@@ -223,6 +201,121 @@ const faqItems = [
       </>
     ),
   },
+  {
+    question: "Can I use Next.js Server Actions?",
+    answer: (
+      <>
+        Not in the mobile shell itself.
+        <br />
+        <br />
+        For mobile, NextNative uses Next.js API routes instead of Server
+        Actions. You still get type-safe server code, but with a simpler, proven
+        deployment model that works great with Capacitor builds.
+        <br />
+        <br />
+        If you already use Server Actions on the web side, you can keep them
+        there and expose the same logic through API endpoints for the mobile
+        app.
+      </>
+    ),
+  },
+  {
+    question: "How often is NextNative updated?",
+    answer: (
+      <>
+        I use NextNative for my own apps (like Lasting Habits and Sproutly AI),
+        so it gets regular updates whenever there’s a real-world need.
+        <br />
+        <br />
+        You get all new features, improvements and fixes as part of your
+        one-time purchase.
+        <br />
+        <br />
+        <span className="text-primary">🔄 Last update: Oct 7, 2025</span>
+        {/* Optionally link to a changelog page here */}
+      </>
+    ),
+  },
+  {
+    question: "Do I need to deal with Xcode and Android Studio?",
+    answer: (
+      <>
+        Yes – you’ll need both to test on real devices and create store builds.
+        <br />
+        <br />
+        But don’t stress: I’ve got{" "}
+        <a
+          className="text-primary underline"
+          href="https://nextnative.dev/docs"
+        >
+          clear step-by-step guides
+        </a>{" "}
+        for Xcode and Android Studio, with the exact commands and screenshots I
+        use.
+        <br />
+        <br />
+        Day to day, you can still do 99% of development in your browser and
+        editor. You only open the native tools when you’re ready to ship.
+      </>
+    ),
+  },
+
+  {
+    question: "Can I use my favorite UI libraries?",
+    answer: (
+      <>
+        Absolutely.
+        <br />
+        <br />
+        NextNative comes with Tailwind CSS pre-configured, but you can use any
+        UI library you want – DaisyUI, shadcn/ui, your own design system, etc.
+        <br />
+        <br />
+        The architecture is designed to be flexible, so you can make it your
+        own.
+      </>
+    ),
+  },
+  {
+    question: "Is this TypeScript or JavaScript?",
+    answer: (
+      <>
+        It’s all TypeScript.
+        <br />
+        <br />
+        That gives you better DX and fewer runtime bugs. The code is written in
+        a clear, easy-to-follow way, so even if you’re new to TS you can still
+        understand and modify it.
+        <br />
+        <br />
+        Prefer JavaScript? You can convert pieces gradually – change file
+        extensions and strip types. The core logic stays the same.
+      </>
+    ),
+  },
+  {
+    question:
+      "How long until I can publish, and when do I get the App Store / Play Store guides?",
+    answer: (
+      <>
+        The initial store account setup and first review usually takes a few
+        days (Apple and Google need to review your app and might have
+        questions).
+        <br />
+        <br />
+        After that, updates are much faster – often hours.
+        <br />
+        <br />
+        All App Store (iOS) and Google Play (Android) launch guides are
+        delivered immediately after purchase, so you can follow them step by
+        step from day one.
+        <br />
+        <br />
+        And if you get stuck, you can email me and I’ll help.
+      </>
+    ),
+  },
+
   {
     question: "What if it's not what I expected?",
     answer: (
