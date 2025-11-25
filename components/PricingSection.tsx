@@ -69,8 +69,8 @@ const pricingFeaturesStarter: PricingFeature[] = [
       </Link>
     ),
   },
-  { text: "Secure backend + database" },
-  { text: "Authentication + onboarding flow" },
+  { text: "Secure backend & Database" },
+  { text: "Authentication & Onboarding flow" },
   { text: "Push notifications" },
   // { text: "Onboarding flow" },
   { text: "In-App Purchases & Subscriptions" },
