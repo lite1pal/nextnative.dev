@@ -227,44 +227,82 @@ const faqItems = [
     question: "What if it's not what I expected?",
     answer: (
       <>
-        I don't offer refunds because you get immediate access to all the code.
+        I want you to feel confident about your purchase. If you join and feel
+        that NextNative isn’t the right fit, just reach out within 14 days and
+        I’ll refund you in full, no questions asked.
         <br />
         <br />
-        Please review{" "}
-        <a
-          className="text-primary underline"
-          href="https://nextnative.dev/docs"
-        >
-          the features and benefits
-        </a>{" "}
-        to ensure it meets your needs before purchasing.
-        <br />
-        <br /> NextNative gets better with every update, so you'll always have
-        access to the latest features and improvements.
-        <br />
-        <br /> But in any case, I'm super responsive to questions and feedback.
+        You’ll get immediate access to all the source code, mobile-related
+        logic, and templates, so you can evaluate everything properly before
+        making your final decision.
         <br />
         <br />
-        Just reach out via email{" "}
+        If you have any questions or need guidance, I'm always here to help.
+        <br />
+        <br />
+        Just email{" "}
         <a
           className="text-primary underline"
           href="mailto:denistarasenko@nextnative.dev"
         >
           denistarasenko@nextnative.dev
-        </a>
-        , or via Twitter/X{" "}
+        </a>{" "}
+        or message me on Twitter/X{" "}
         <a
           target="_blank"
           className="text-primary underline"
           href="https://x.com/shipwithdenis"
         >
           @shipwithdenis
-        </a>{" "}
-        if you need help! <br />
-        <br />I want you to succeed with this.
+        </a>
+        .
+        <br />
+        <br />I genuinely want you to succeed and ship great apps faster 💚
       </>
     ),
   },
+  // {
+  //   question: "What if it's not what I expected?",
+  //   answer: (
+  //     <>
+  //       I don't offer refunds because you get immediate access to all the code.
+  //       <br />
+  //       <br />
+  //       Please review{" "}
+  //       <a
+  //         className="text-primary underline"
+  //         href="https://nextnative.dev/docs"
+  //       >
+  //         the features and benefits
+  //       </a>{" "}
+  //       to ensure it meets your needs before purchasing.
+  //       <br />
+  //       <br /> NextNative gets better with every update, so you'll always have
+  //       access to the latest features and improvements.
+  //       <br />
+  //       <br /> But in any case, I'm super responsive to questions and feedback.
+  //       <br />
+  //       <br />
+  //       Just reach out via email{" "}
+  //       <a
+  //         className="text-primary underline"
+  //         href="mailto:denistarasenko@nextnative.dev"
+  //       >
+  //         denistarasenko@nextnative.dev
+  //       </a>
+  //       , or via Twitter/X{" "}
+  //       <a
+  //         target="_blank"
+  //         className="text-primary underline"
+  //         href="https://x.com/shipwithdenis"
+  //       >
+  //         @shipwithdenis
+  //       </a>{" "}
+  //       if you need help! <br />
+  //       <br />I want you to succeed with this.
+  //     </>
+  //   ),
+  // },
 ];
 
 function FAQ() {
