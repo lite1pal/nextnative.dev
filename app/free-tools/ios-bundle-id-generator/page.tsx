@@ -24,7 +24,7 @@ export default function BundleIdGenerator() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl px-6 py-16 text-center">
+    <div className="mx-auto max-w-2xl py-16 text-center">
       <h1 className="mb-3 text-4xl font-bold text-gray-900 dark:text-white">
         iOS Bundle ID Generator 🍎
       </h1>

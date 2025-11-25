@@ -198,7 +198,7 @@ export default function AppIdeaGenerator() {
   };
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
+    <div className="mx-auto max-w-3xl py-16">
       <h1 className="mb-2 text-center text-4xl font-bold text-gray-900 dark:text-white">
         App Idea Generator 💡
       </h1>

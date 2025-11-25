@@ -675,7 +675,7 @@ export default function AppStoreScreenshotGenerator() {
   }, [uploads.length, previewIndex, saveConfig, downloadAllForPreset]);
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-16">
+    <div className="mx-auto max-w-7xl py-16">
       <div className="mb-12 text-center">
         <h1 className="mb-3 bg-gradient-to-r bg-clip-text text-5xl font-bold">
           App Store Screenshot Generator 📱

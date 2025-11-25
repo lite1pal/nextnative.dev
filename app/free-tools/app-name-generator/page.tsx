@@ -240,7 +240,7 @@ export default function AppNameGeneratorPage() {
   };
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-16">
+    <div className="mx-auto max-w-6xl py-16">
       <h1 className="mb-2 text-center text-4xl font-bold text-gray-900 dark:text-white">
         App Name Generator 🔤
       </h1>

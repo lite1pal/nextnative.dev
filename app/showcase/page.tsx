@@ -16,7 +16,7 @@ export const metadata = {
 export default function ShowcasePage() {
   return (
     <div className="py-12">
-      <div className="mx-auto max-w-[1200px] px-4">
+      <div className="mx-auto max-w-[1200px]">
         <div className="mt-16 mb-12 flex flex-col items-center gap-6 text-center">
           <h1 className="mb-6 text-[44px] leading-[60px] font-[600] md:text-[74px] md:leading-[91px]">
             Mobile apps built & published

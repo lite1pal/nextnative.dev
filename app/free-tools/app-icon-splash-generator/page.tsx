@@ -733,7 +733,7 @@ export default function AppIconSplashGenerator() {
   }, [sourceImage, handleGenerate]);
 
   return (
-    <div className="mx-auto w-full max-w-[962px] px-4 py-12 xl:max-w-[1260px] xl:px-0">
+    <div className="mx-auto w-full max-w-[962px] py-12 xl:max-w-[1260px]">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
         <div className="mb-12 py-10 text-center">

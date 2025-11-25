@@ -120,7 +120,7 @@ function Page() {
   }, []);
 
   return (
-    <div className="mx-auto w-full max-w-[962px] px-4 py-12 xl:max-w-[1260px] xl:px-0">
+    <div className="mx-auto w-full max-w-[962px] py-12 xl:max-w-[1260px]">
       {/* JSON-LD */}
       <script
         type="application/ld+json"

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function UseCasesPage() {
   return (
-    <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+    <div className="mx-auto max-w-7xl py-16">
       <div className="mb-20 text-center">
         <h1 className="mb-8 text-5xl leading-tight font-bold text-gray-900 md:text-6xl lg:text-7xl dark:text-white">
           Mobile App <span className="text-primary">Use Cases</span>

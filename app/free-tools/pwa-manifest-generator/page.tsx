@@ -46,7 +46,7 @@ export default function PwaManifestGenerator() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl px-6 py-16">
+    <div className="mx-auto max-w-2xl py-16">
       <h1 className="mb-3 text-center text-4xl font-bold text-gray-900 dark:text-white">
         PWA Manifest Generator ⚙️
       </h1>
