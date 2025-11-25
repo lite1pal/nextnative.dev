@@ -101,7 +101,7 @@ const faqItems = [
         <br />
         You can reuse most of your existing pages, components and logic inside
         the NextNative structure, then plug into the mobile-specific pieces:
-        navigation, auth, native APIs, and store builds.
+        navigation, auth, native APIs, payments, and store builds.
         <br />
         <br />
         Many devs start by dropping in their existing Next.js project and wiring
