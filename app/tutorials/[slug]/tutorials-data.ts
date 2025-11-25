@@ -625,12 +625,14 @@ export async function checkPremiumStatus(): Promise<boolean> {
     lastUpdated: "October 2025",
     summary:
       "Turn your Next.js web app into a native iOS application using Capacitor. This step-by-step guide covers everything from initial setup to publishing on the App Store.",
+
     prerequisites: [
       "Next.js project ready",
       "macOS computer (required for iOS development)",
       "Xcode installed from Mac App Store",
       "Apple Developer account ($99/year)",
     ],
+
     whatYoullLearn: [
       "Configure Next.js for iOS development",
       "Set up Capacitor for iOS",
@@ -638,52 +640,56 @@ export async function checkPremiumStatus(): Promise<boolean> {
       "Add iOS-specific features",
       "Prepare for App Store submission",
     ],
+
     steps: [
       {
+        title: "Before You Start",
+        content: `
+      Most web developers waste days fighting provisioning profiles, signing errors, and iOS build failures.
+      <br/><br/>
+      This guide shows the cleanest, modern workflow that actually works — even if you’ve never shipped an iOS app before.
+      <br/><br/>
+      This is the exact setup used to publish <strong>Sproutly AI</strong> and <strong>Lasting Habits</strong> to the App Store.
+    `,
+      },
+
+      {
         title: "Install Xcode and Command Line Tools",
-        content: `<div style="display: flex; flex-direction: column; gap: 16px;">
-        <div>Download Xcode from the Mac App Store (it's large, ~10GB).</div>
-         <div>After installation, install the command line tools.</div>
-         </div>`,
+        content: `
+      Download Xcode from the Mac App Store (it's ~10GB). After installation, install command-line tools.
+      `,
         code: {
           language: "bash",
           code: `# Verify installation
 xcode-select -p
-          
-# Install command line tools if not already installed
-xcode-select --install
 
-`,
+# Install command line tools if needed
+xcode-select --install`,
         },
-        note: "Xcode is required for iOS development and can only run on macOS.",
+        note: "Xcode is required for iOS development and works only on macOS.",
       },
+
       {
         title: "Configure Next.js for Static Export",
         content:
-          "iOS apps need static files. Configure Next.js to export a static site.",
+          "iOS apps need static files. Configure Next.js to export a static version for Capacitor.",
         code: {
           language: "typescript",
           filename: "next.config.ts",
           code: `const nextConfig = {
-  // Export statically for native builds
   ...(process.env.IS_NATIVE && {
-    env: {
-      IS_NATIVE: "true",
-    },
     output: "export",
-    images: {
-      unoptimized: true,
-    },
-  }),
+    images: { unoptimized: true },
+  })
 };
 
 export default nextConfig;`,
         },
       },
+
       {
         title: "Update package.json scripts",
-        content:
-          "Add scripts to build and open the iOS project easily in dev mode.",
+        content: "Add scripts to build and open the iOS project easily.",
         code: {
           language: "json",
           filename: "package.json",
@@ -691,131 +697,123 @@ export default nextConfig;`,
 "mobile:dev": "cross-env IS_NATIVE=true npm run build && cross-env IS_NATIVE=true npx cap sync && npm run dev"`,
         },
       },
+
       {
         title: "Install and Initialize Capacitor",
-        content:
-          "Add Capacitor to your Next.js project and configure it for iOS.",
+        content: "Add Capacitor to your project.",
         code: {
           language: "bash",
-          code: `npm install @capacitor/core @capacitor/cli @capacitor/ios
+          code: `npm install @capacitor/core @capacitor/cli
 npx cap init`,
         },
-        note: "When prompted, enter your app name and bundle ID (e.g., com.yourcompany.appname).",
+        note: "Enter your app name and bundle ID (e.g., com.yourcompany.app).",
       },
+
       {
         title: "Update Capacitor Config",
-        content: "Configure Capacitor to use the correct build directory.",
+        content: "Configure Capacitor to use your build directory.",
         code: {
           language: "typescript",
           filename: "capacitor.config.ts",
           code: `import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.yourcompany.appname',
+  appId: 'com.yourcompany.app',
   appName: 'Your App Name',
   webDir: 'out',
-  ios: {
-    schema: 'YourAppName',
-  }
 };
 
 export default config;`,
         },
       },
+
       {
         title: "Add iOS Platform",
-        content:
-          "Add the iOS platform to your project. This creates an ios folder with an Xcode project.",
+        content: "Create the native iOS project folder.",
         code: {
           language: "bash",
           code: `npx cap add ios`,
         },
       },
+
       {
-        title: "Build Your Next.js App",
+        title: "Build and Sync",
         content: "Build your Next.js app and sync it with the iOS project.",
         code: {
           language: "bash",
           code: `npm run build
 npx cap sync ios`,
         },
-        note: "Run 'npx cap sync ios' every time you update your web code.",
+        note: "Run sync whenever you change your web code.",
       },
+
       {
         title: "Open in Xcode",
-        content:
-          "Open your iOS project in Xcode to configure signing and build settings.",
+        content: "Open your project in Xcode to configure signing.",
         code: {
           language: "bash",
           code: `npx cap open ios`,
         },
       },
+
       {
-        title: "Configure Signing in Xcode",
-        content: `<div>
-          <div>Set up code signing so you can run your app on devices and submit to the App Store.</div>
-          <br/> 
-          <div>1. Select your project in the left sidebar</div>
-           <br/> 
-          <div>2. Select the <strong>App</strong> target</div>
-           <br/> 
-          <div>3. Go to <strong>Signing & Capabilities</strong> tab</div>
-           <br/> 
-          <div>4. Check <strong>Automatically manage signing</strong></div>
-           <br/> 
-          <div>5. Select your development team</div>
-           <br/> 
-          <div>6. Xcode will create a provisioning profile</div>
-          </div>`,
-        //         code: {
-        //           language: "text",
-        //           code: `1. Select your project in the left sidebar
-        // 2. Select the "App" target
-        // 3. Go to "Signing & Capabilities" tab
-        // 4. Check "Automatically manage signing"
-        // 5. Select your development team
-        // 6. Xcode will create a provisioning profile`,
-        //         },
-        note: `<div>You need an <a href=""https://developer.apple.com>Apple Developer account</a> to sign apps.</div>`,
+        title: "Configure Signing for Real Devices & App Store",
+        content: `
+      <div>
+      1. Select your project in the left sidebar <br/>
+      2. Select the <strong>App</strong> target <br/>
+      3. Go to <strong>Signing & Capabilities</strong> tab <br/>
+      4. Enable <strong>Automatically manage signing</strong> <br/>
+      5. Select your development team
+      </div>`,
+        note: `<div>You need an <a href="https://developer.apple.com" target="_blank">Apple Developer account</a> to sign apps.</div>`,
       },
+
       {
         title: "Run on iOS Simulator",
-        content: `<div>
-          <div>Test your app on the iOS Simulator before deploying to a real device.</div>
-          <br/> 
-          <div>1. In Xcode, select a simulator (e.g., iPhone 15 Pro)</div>
-           <br/> 
-          <div>2. Click the <strong>Play </strong> button or press Cmd+R</div>
-           <br/> 
-          <div>3. Wait for the simulator to boot and your app to launch</div>
-          </div>`,
-        note: "First launch can take a few minutes. Subsequent launches are lighting-fast.",
+        content: `
+      In Xcode: select a simulator (e.g., iPhone 15 Pro), then press <strong>Cmd+R</strong>.
+      `,
+        note: "First run is slow, subsequent runs are instant.",
       },
+
       {
         title: "Test on a Real Device",
-        content: `<div>
-          <div>Connect your iPhone or iPad via USB to test on a real device.</div>
-          <br/> 
-          <div>1. Connect your iPhone <strong>via USB</strong></div>
-           <br/> 
-          <div>2. Trust the computer on your device</div>
-           <br/> 
-          <div>3. Select your device in Xcode <strong>(top bar)</strong></div>
-           <br/> 
-          <div>4. Click <strong>Play</strong> to build and run</div>
-           <br/> 
-          <div>5. Trust the <strong>developer certificate</strong> on your device</div>
-          </div>`,
-        note: "Go to Settings → General → VPN & Device Management to trust the certificate.",
+        content: `
+      1. Connect your iPhone via USB <br/>
+      2. Trust the computer <br/>
+      3. Select your device and Run <br/>
+      `,
+        note: "On device: Settings → General → VPN & Device Management → Trust Certificate",
+      },
+
+      {
+        title: "💡 Common Issues & Fixes",
+        content: `
+      • Build errors after sync? Run: <strong>npx cap sync ios</strong> + build clean<br/>
+      • App stuck on splash screen? Ensure static export is enabled<br/>
+      • Signing errors? Re-enable “Automatically manage signing”<br/>
+      `,
+      },
+
+      {
+        title: "🚀 Bonus: Production-Ready Template",
+        content: `
+      Want to skip setup and start from a working iOS app?
+      <br/><br/>
+      <a href="https://nextnative.dev/#pricing" class="text-primary underline font-semibold">See what's included in NextNative →</a>
+      `,
       },
     ],
+
     nextSteps: [
-      "Add app icon and splash screen",
+      "Add app icon & splash screen",
       "Configure display name and version",
-      "Add privacy descriptions for permissions",
-      "Test on multiple iOS versions",
+      "Add permissions descriptions for privacy",
+      "Test multiple iOS versions",
       "Prepare for App Store submission",
     ],
+
     relatedTutorials: [
       "convert-nextjs-to-mobile-app",
       "deploy-to-app-store",
