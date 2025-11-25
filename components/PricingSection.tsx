@@ -125,10 +125,11 @@ function PricingSection() {
       />
 
       {/* Halloween Discount Badge */}
-      <div className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-white shadow-lg">
+      <div className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-white shadow-lg max-sm:self-start">
         <span className="text-2xl">🔥</span>
         <span className="text-base sm:text-lg">
-          Use code <span className="font-bold">BLACKFRIDAY20</span>
+          Use code <span className="font-bold">BLACKFRIDAY20</span> for{" "}
+          <span className="font-bold">20%</span> off
         </span>
       </div>
 
@@ -194,21 +195,21 @@ function PricingSection() {
               </div>
 
               <div className="mt-auto flex flex-col gap-2">
+                <span className="text-gray mt-7 font-[500]">
+                  14-day money-back guarantee.
+                </span>
                 <Button
                   onClick={() => {
                     trackEvent("PricingSection_GetNextNative_Starter_clicked");
                     handleGetNextnative(dodoPaymentLinks.starter);
                   }}
                   variant="secondary"
-                  className="mt-7 flex w-full items-center justify-center gap-2 py-5 text-[18px]"
+                  className="flex w-full items-center justify-center gap-2 py-5 text-[18px]"
                 >
                   Get NextNative
                 </Button>
-
                 <span className="text-gray font-[500]">
                   Pay once, build unlimited apps!
-                  <br />
-                  14-day money-back guarantee. No risk.
                 </span>
               </div>
             </div>
@@ -278,12 +279,15 @@ function PricingSection() {
               </div>
 
               <div className="mt-auto flex flex-col gap-2">
+                <span className="text-gray mt-7 font-[500]">
+                  14-day money-back guarantee.
+                </span>
                 <StarburstSign
                   size="small"
                   rotation={90}
                   position="top-right"
                   className="mx-auto w-full"
-                  svgClassName="top-[-5px] right-[-25px]"
+                  svgClassName="top-[-25px] right-[-25px]"
                 >
                   <Button
                     onClick={() => {
@@ -291,7 +295,7 @@ function PricingSection() {
                       handleGetNextnative(dodoPaymentLinks.allAccess);
                     }}
                     variant="primary"
-                    className="mt-7 flex w-full items-center justify-center gap-2 py-4 text-[18px]"
+                    className="flex w-full items-center justify-center gap-2 py-4 text-[18px]"
                   >
                     Get NextNative
                   </Button>
@@ -299,8 +303,6 @@ function PricingSection() {
 
                 <span className="text-gray font-[500]">
                   Pay once, build unlimited apps!
-                  <br />
-                  14-day money-back guarantee. No risk.
                 </span>
               </div>
             </div>
