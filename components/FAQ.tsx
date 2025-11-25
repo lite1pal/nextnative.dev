@@ -26,9 +26,9 @@ const faqItems = [
             7 production-ready template apps (Messenger, Pomodoro, Sproutly AI,
             etc.)
           </li>
-          <li>Secure backend + database (auth, users, data models)</li>
+          <li>Secure backend + database</li>
           <li>Payments, in-app purchases & subscriptions already integrated</li>
-          <li>Push notifications, onboarding flows, settings screens</li>
+          <li>Push notifications, onboarding flows</li>
           <li>App Store / Google Play launch guides + 3 months dev support</li>
         </ul>
         <br />
@@ -351,6 +351,13 @@ const faqItems = [
         <br />
         <span className="text-primary">🔄 Last update: Oct 7, 2025</span>
         {/* Optionally link to a changelog page here */}
+        <br />
+        <br />
+        <span className="text-lg font-semibold">🛠 Currently working on:</span>
+        <ul className="mt-2 ml-4 space-y-1">
+          <li>1. Supabase / JWT Authentication option</li>
+          <li>2. Biometrics / Face ID / Touch ID</li>
+        </ul>
       </>
     ),
   },
