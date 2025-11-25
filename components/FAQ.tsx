@@ -110,44 +110,6 @@ const faqItems = [
     ),
   },
   {
-    question: "What is Capacitor?",
-    answer: (
-      <>
-        Capacitor is an open-source native runtime developed by the Ionic team.
-        <br />
-        <br />
-        It lets you run modern web apps (like those built with Next.js or React)
-        as native apps on iOS and Android, with full access to native features
-        like the camera, GPS, offline storage, haptics, and more.
-        <br />
-        <br />
-        Unlike React Native, you write standard web code (HTML, CSS, and
-        JavaScript), and Capacitor wraps it in a native shell that can access
-        platform APIs.
-      </>
-    ),
-  },
-  {
-    question: "Capacitor vs React Native?",
-    answer: (
-      <>
-        React Native uses its own component system and bridge, so you’re
-        learning a parallel mobile ecosystem instead of building on your web
-        skills.
-        <br />
-        <br />
-        Capacitor lets you keep using your existing stack (Next.js, React,
-        Tailwind) and wraps it in a native shell with access to device APIs.
-        <br />
-        <br />
-        If you're a web dev who wants to ship real apps quickly, Capacitor is
-        simpler and more familiar. If you need pixel-perfect native UI for a
-        huge consumer app and have a dedicated mobile team, React Native or pure
-        native might fit better.
-      </>
-    ),
-  },
-  {
     question: "Do I need to know mobile development?",
     answer: (
       <>
@@ -160,6 +122,66 @@ const faqItems = [
         <br />
         <br />
         You just write React code like you normally would.
+      </>
+    ),
+  },
+  {
+    question:
+      "How long until I can publish, and when do I get the App Store / Play Store guides?",
+    answer: (
+      <>
+        The initial store account setup and first review usually takes a few
+        days (Apple and Google need to review your app and might have
+        questions).
+        <br />
+        <br />
+        After that, updates are much faster – often hours.
+        <br />
+        <br />
+        All App Store (iOS) and Google Play (Android) launch guides are
+        delivered immediately after purchase, so you can follow them step by
+        step from day one.
+        <br />
+        <br />
+        And if you get stuck, you can email me and I’ll help.
+      </>
+    ),
+  },
+  {
+    question: "What if it's not what I expected?",
+    answer: (
+      <>
+        I want you to feel confident about your purchase. If you join and feel
+        that NextNative isn’t the right fit, just reach out within 14 days and
+        I’ll refund you in full, no questions asked.
+        <br />
+        <br />
+        You’ll get immediate access to all the source code, mobile-related
+        logic, and templates, so you can evaluate everything properly before
+        making your final decision.
+        <br />
+        <br />
+        If you have any questions or need guidance, I'm always here to help.
+        <br />
+        <br />
+        Just email{" "}
+        <a
+          className="text-primary underline"
+          href="mailto:denistarasenko@nextnative.dev"
+        >
+          denistarasenko@nextnative.dev
+        </a>{" "}
+        or message me on Twitter/X{" "}
+        <a
+          target="_blank"
+          className="text-primary underline"
+          href="https://x.com/shipwithdenis"
+        >
+          @shipwithdenis
+        </a>
+        .
+        <br />
+        <br />I genuinely want you to succeed and ship great apps faster 💚
       </>
     ),
   },
@@ -202,6 +224,45 @@ const faqItems = [
     ),
   },
   {
+    question: "What is Capacitor?",
+    answer: (
+      <>
+        Capacitor is an open-source native runtime developed by the Ionic team.
+        <br />
+        <br />
+        It lets you run modern web apps (like those built with Next.js or React)
+        as native apps on iOS and Android, with full access to native features
+        like the camera, GPS, offline storage, haptics, and more.
+        <br />
+        <br />
+        Unlike React Native, you write standard web code (HTML, CSS, and
+        JavaScript), and Capacitor wraps it in a native shell that can access
+        platform APIs.
+      </>
+    ),
+  },
+  {
+    question: "Capacitor vs React Native?",
+    answer: (
+      <>
+        React Native uses its own component system and bridge, so you’re
+        learning a parallel mobile ecosystem instead of building on your web
+        skills.
+        <br />
+        <br />
+        Capacitor lets you keep using your existing stack (Next.js, React,
+        Tailwind) and wraps it in a native shell with access to device APIs.
+        <br />
+        <br />
+        If you're a web dev who wants to ship real apps quickly, Capacitor is
+        simpler and more familiar. If you need pixel-perfect native UI for a
+        huge consumer app and have a dedicated mobile team, React Native or pure
+        native might fit better.
+      </>
+    ),
+  },
+
+  {
     question: "Can I use Next.js Server Actions?",
     answer: (
       <>
@@ -216,23 +277,6 @@ const faqItems = [
         If you already use Server Actions on the web side, you can keep them
         there and expose the same logic through API endpoints for the mobile
         app.
-      </>
-    ),
-  },
-  {
-    question: "How often is NextNative updated?",
-    answer: (
-      <>
-        I use NextNative for my own apps (like Lasting Habits and Sproutly AI),
-        so it gets regular updates whenever there’s a real-world need.
-        <br />
-        <br />
-        You get all new features, improvements and fixes as part of your
-        one-time purchase.
-        <br />
-        <br />
-        <span className="text-primary">🔄 Last update: Oct 7, 2025</span>
-        {/* Optionally link to a changelog page here */}
       </>
     ),
   },
@@ -294,108 +338,22 @@ const faqItems = [
     ),
   },
   {
-    question:
-      "How long until I can publish, and when do I get the App Store / Play Store guides?",
+    question: "How often is NextNative updated?",
     answer: (
       <>
-        The initial store account setup and first review usually takes a few
-        days (Apple and Google need to review your app and might have
-        questions).
+        I use NextNative for my own apps (like Lasting Habits and Sproutly AI),
+        so it gets regular updates whenever there’s a real-world need.
         <br />
         <br />
-        After that, updates are much faster – often hours.
+        You get all new features, improvements and fixes as part of your
+        one-time purchase.
         <br />
         <br />
-        All App Store (iOS) and Google Play (Android) launch guides are
-        delivered immediately after purchase, so you can follow them step by
-        step from day one.
-        <br />
-        <br />
-        And if you get stuck, you can email me and I’ll help.
+        <span className="text-primary">🔄 Last update: Oct 7, 2025</span>
+        {/* Optionally link to a changelog page here */}
       </>
     ),
   },
-
-  {
-    question: "What if it's not what I expected?",
-    answer: (
-      <>
-        I want you to feel confident about your purchase. If you join and feel
-        that NextNative isn’t the right fit, just reach out within 14 days and
-        I’ll refund you in full, no questions asked.
-        <br />
-        <br />
-        You’ll get immediate access to all the source code, mobile-related
-        logic, and templates, so you can evaluate everything properly before
-        making your final decision.
-        <br />
-        <br />
-        If you have any questions or need guidance, I'm always here to help.
-        <br />
-        <br />
-        Just email{" "}
-        <a
-          className="text-primary underline"
-          href="mailto:denistarasenko@nextnative.dev"
-        >
-          denistarasenko@nextnative.dev
-        </a>{" "}
-        or message me on Twitter/X{" "}
-        <a
-          target="_blank"
-          className="text-primary underline"
-          href="https://x.com/shipwithdenis"
-        >
-          @shipwithdenis
-        </a>
-        .
-        <br />
-        <br />I genuinely want you to succeed and ship great apps faster 💚
-      </>
-    ),
-  },
-  // {
-  //   question: "What if it's not what I expected?",
-  //   answer: (
-  //     <>
-  //       I don't offer refunds because you get immediate access to all the code.
-  //       <br />
-  //       <br />
-  //       Please review{" "}
-  //       <a
-  //         className="text-primary underline"
-  //         href="https://nextnative.dev/docs"
-  //       >
-  //         the features and benefits
-  //       </a>{" "}
-  //       to ensure it meets your needs before purchasing.
-  //       <br />
-  //       <br /> NextNative gets better with every update, so you'll always have
-  //       access to the latest features and improvements.
-  //       <br />
-  //       <br /> But in any case, I'm super responsive to questions and feedback.
-  //       <br />
-  //       <br />
-  //       Just reach out via email{" "}
-  //       <a
-  //         className="text-primary underline"
-  //         href="mailto:denistarasenko@nextnative.dev"
-  //       >
-  //         denistarasenko@nextnative.dev
-  //       </a>
-  //       , or via Twitter/X{" "}
-  //       <a
-  //         target="_blank"
-  //         className="text-primary underline"
-  //         href="https://x.com/shipwithdenis"
-  //       >
-  //         @shipwithdenis
-  //       </a>{" "}
-  //       if you need help! <br />
-  //       <br />I want you to succeed with this.
-  //     </>
-  //   ),
-  // },
 ];
 
 function FAQ() {
