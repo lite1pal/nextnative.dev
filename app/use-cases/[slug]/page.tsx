@@ -139,7 +139,7 @@ export default async function UseCasePage({
       </header>
 
       {/* Purchase Section */}
-      {useCase.forSale && (
+      {/* {useCase.forSale && (
         <section className="mb-16 rounded-3xl bg-white p-8 shadow-lg md:p-12">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex flex-1 flex-col items-center gap-5 md:items-start">
@@ -197,20 +197,12 @@ export default async function UseCasePage({
                     ${useCase.pricing.price}
                   </span>
                 </div>
-                {/* <span className="bg-primary rounded-full px-4 py-2 text-base font-semibold text-white">
-                {Math.round(
-                  ((useCase.pricing.originalPrice - useCase.pricing.price) /
-                    useCase.pricing.originalPrice) *
-                    100,
-                )}
-                % OFF
-              </span> */}
               </div>
               <PurchaseButton link={useCase.pricing.link!} />
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* Problem & Solution */}
       <div className="mb-16 grid gap-8 md:grid-cols-2">
