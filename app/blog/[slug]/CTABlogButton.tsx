@@ -9,11 +9,11 @@ function CTABlogButton({ post }: { post: { slug: string } }) {
       onClick={() => {
         trackEvent(`BlogPostCTA_${post.slug}_clicked`);
       }}
-      href="/playground"
+      href="/"
       className="bg-primary hover:text-primary border-primary mt-4 inline-block rounded-lg border-2 px-4 py-2 font-medium text-white transition-colors hover:bg-white lg:px-16 lg:py-3 lg:text-xl"
       data-fast-goal={`extra_try_free_cta_clicked`}
     >
-      Try for Free
+      Learn more
     </Link>
   );
 }
