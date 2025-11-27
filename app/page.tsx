@@ -121,7 +121,7 @@ export default function Home() {
         showStars
         testimonial={
           <div>
-            I’m really pumped about it! The setup seems super easy, and I{" "}
+            The setup seems super easy, and I{" "}
             <span className="bg-primary rounded p-1 font-[500] text-white">
               can’t wait to finally build my app!
             </span>
