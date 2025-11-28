@@ -5,6 +5,7 @@ import Button from "./Button";
 import HighlightedSpan from "./HighlightedSpan";
 import StarburstSign from "./StarburstSign";
 import Subheading from "./Subheading";
+import CountdownTimer from "./CountdownTimer";
 import { trackEvent } from "@/services/custom-analytics";
 import Link from "next/link";
 
@@ -124,13 +125,16 @@ function PricingSection() {
         className="text-start md:items-center md:text-center"
       />
 
-      {/* Halloween Discount Badge */}
-      <div className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-white shadow-lg max-sm:self-start">
-        <span className="text-2xl">🔥</span>
-        <span className="text-base sm:text-lg">
-          Use code <span className="font-bold">BLACKFRIDAY20</span> for{" "}
-          <span className="font-bold">20%</span> off
-        </span>
+      {/* Black Friday Discount + Countdown */}
+      <div className="flex items-center gap-3 max-sm:self-start">
+        <div className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-white shadow-lg">
+          <span className="text-2xl">🔥</span>
+          <span className="text-base sm:text-lg">
+            Use code <span className="font-bold">BLACKFRIDAY20</span> for{" "}
+            <span className="font-bold">20%</span> off
+          </span>
+        </div>
+        <CountdownTimer targetISO="2025-12-01T00:00:00Z" className="text-sm" />
       </div>
 
       <div className="mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:px-4">
