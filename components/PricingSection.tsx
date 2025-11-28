@@ -126,7 +126,7 @@ function PricingSection() {
       />
 
       {/* Black Friday Discount + Countdown */}
-      <div className="flex items-center gap-3 max-sm:self-start">
+      <div className="flex flex-col items-center gap-3 max-sm:self-start lg:flex-row">
         <div className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-white shadow-lg">
           <span className="text-2xl">🔥</span>
           <span className="text-base sm:text-lg">
