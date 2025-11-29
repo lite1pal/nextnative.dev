@@ -16,17 +16,37 @@ function getTimeLeft(target: Date) {
   return { total, days, hours, minutes, seconds };
 }
 
+type TimeLeft = ReturnType<typeof getTimeLeft> | null;
+
 export default function CountdownTimer({
   targetISO,
   className = "",
 }: CountdownProps) {
-  const target = new Date(targetISO);
-  const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(target));
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(null);
 
   useEffect(() => {
-    const id = setInterval(() => setTimeLeft(getTimeLeft(target)), 1000);
+    const target = new Date(targetISO);
+
+    // set initial value on client
+    setTimeLeft(getTimeLeft(target));
+
+    const id = setInterval(() => {
+      setTimeLeft(getTimeLeft(target));
+    }, 1000);
+
     return () => clearInterval(id);
   }, [targetISO]);
+
+  // what both server and client render initially (no Date.now here)
+  if (!timeLeft) {
+    return (
+      <div
+        className={`rounded-full bg-white p-2 px-8 text-xl text-black ${className}`}
+      >
+        <span className="font-medium">Offer ends soon…</span>
+      </div>
+    );
+  }
 
   const { days, hours, minutes, seconds, total } = timeLeft;
 
