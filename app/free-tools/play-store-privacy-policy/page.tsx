@@ -387,28 +387,28 @@ export default function PlayStorePrivacyPolicyGenerator() {
             <input
               value={appName}
               onChange={(e) => setAppName(e.target.value)}
-              className="input"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             />
           </Field>
           <Field label="Package name (applicationId)">
             <input
               value={packageName}
               onChange={(e) => setPackageName(e.target.value)}
-              className="input"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             />
           </Field>
           <Field label="Developer / Publisher">
             <input
               value={developer}
               onChange={(e) => setDeveloper(e.target.value)}
-              className="input"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             />
           </Field>
           <Field label="Company (legal entity)">
             <input
               value={company}
               onChange={(e) => setCompany(e.target.value)}
-              className="input"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             />
           </Field>
           <Field label="Contact email">
@@ -416,35 +416,35 @@ export default function PlayStorePrivacyPolicyGenerator() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="input"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             />
           </Field>
           <Field label="Website">
             <input
               value={website}
               onChange={(e) => setWebsite(e.target.value)}
-              className="input"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             />
           </Field>
           <Field label="Business address">
             <input
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              className="input"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             />
           </Field>
           <Field label="Country / Region">
             <input
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              className="input"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             />
           </Field>
           <Field label="Data deletion request email (optional)">
             <input
               value={dataDeletionEmail}
               onChange={(e) => setDataDeletionEmail(e.target.value)}
-              className="input"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             />
           </Field>
           <Field label="Effective date">
@@ -452,7 +452,7 @@ export default function PlayStorePrivacyPolicyGenerator() {
               type="date"
               value={effective}
               onChange={(e) => setEffective(e.target.value)}
-              className="input"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             />
           </Field>
         </div>
@@ -572,18 +572,21 @@ export default function PlayStorePrivacyPolicyGenerator() {
           className="h-[520px] w-full rounded-xl border border-gray-300 bg-white p-3 font-mono text-sm whitespace-pre-wrap text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
         />
         <div className="mt-4 flex flex-wrap gap-2">
-          <button onClick={copy} className="btn-primary">
+          <button
+            onClick={copy}
+            className="inline-flex items-center justify-center rounded-lg bg-purple-600 px-4 py-2 text-sm font-medium text-white hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:outline-none"
+          >
             Copy
           </button>
           <button
             onClick={() => download("md")}
-            className="btn-outline text-green-700"
+            className="inline-flex items-center justify-center rounded-lg border border-purple-600 px-4 py-2 text-sm font-medium text-purple-700 hover:bg-purple-50 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:outline-none"
           >
             Download .md
           </button>
           <button
             onClick={() => download("txt")}
-            className="btn-outline text-green-700"
+            className="inline-flex items-center justify-center rounded-lg border border-purple-600 px-4 py-2 text-sm font-medium text-purple-700 hover:bg-purple-50 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:outline-none"
           >
             Download .txt
           </button>

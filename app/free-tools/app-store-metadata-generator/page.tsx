@@ -276,23 +276,35 @@ export default function AppStoreMetadataGenerator() {
             <code className="break-words">{out.iosSubtitle}</code>
           </Field>
           <Field label="Keywords CSV (≤100)">
-            <textarea readOnly value={out.iosKeywords} className="textarea" />
+            <textarea
+              readOnly
+              value={out.iosKeywords}
+              className="w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            />
           </Field>
           <Field label="Full description (≤4000)">
             <textarea
               readOnly
               value={out.iosDescription}
-              className="textarea h-56"
+              className="h-56 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             />
           </Field>
         </Card>
 
         <Card title="Google Play">
           <Field label="Short description (≤80)">
-            <textarea readOnly value={out.gpShort} className="textarea" />
+            <textarea
+              readOnly
+              value={out.gpShort}
+              className="w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            />
           </Field>
           <Field label="Full description (≤4000)">
-            <textarea readOnly value={out.gpLong} className="textarea h-56" />
+            <textarea
+              readOnly
+              value={out.gpLong}
+              className="h-56 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            />
           </Field>
         </Card>
 
@@ -314,15 +326,22 @@ export default function AppStoreMetadataGenerator() {
         </Card>
 
         <Card title="Download JSON">
-          <textarea readOnly value={bundle} className="textarea h-48" />
+          <textarea
+            readOnly
+            value={bundle}
+            className="h-48 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+          />
           <div className="mt-3 flex justify-center gap-3">
             <button
               onClick={() => navigator.clipboard.writeText(bundle)}
-              className="btn-primary bg-green-600 text-white hover:bg-green-700"
+              className="inline-flex items-center justify-center rounded-lg bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none"
             >
               Copy
             </button>
-            <button onClick={download} className="btn-outline text-green-700">
+            <button
+              onClick={download}
+              className="inline-flex items-center justify-center rounded-lg border border-green-600 px-4 py-2 text-sm font-medium text-green-700 hover:bg-green-50 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none"
+            >
               Download
             </button>
           </div>
