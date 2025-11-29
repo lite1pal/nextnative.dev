@@ -69,28 +69,28 @@ export default function Home() {
           <ToolCard
             tool="Next.js"
             bullets={["API Routes", "A single codebase"]}
-            img="/tools/nextjs-dark.jpeg"
+            img="/tools/nextjs-dark.webp"
           />
         }
         rightTop={
           <ToolCard
             tool="Capacitor"
             bullets={["Native functionality", "Cross-platform support"]}
-            img="/tools/cap-small.png"
+            img="/tools/cap-small.webp"
           />
         }
         leftBottom={
           <ToolCard
             tool="Tailwind"
             bullets={["Utility classes", "Responsive design"]}
-            img="/tools/tailwind.png"
+            img="/tools/tailwind.webp"
           />
         }
         rightBottom={
           <ToolCard
             tool="RevenueCat"
             bullets={["One-time payments", "Subscriptions"]}
-            img="/tools/revenuecat-small.png"
+            img="/tools/revenuecat-small.webp"
           />
         }
         ctaButton={
@@ -99,20 +99,6 @@ export default function Home() {
           </Suspense>
         }
       />
-      {/* <div className="grid grid-cols-1 items-center gap-8 sm:gap-16 lg:grid-cols-2 xl:hidden">
-        <div className="mx-auto max-w-xl">
-          <Image
-            className="relative z-10 h-full w-full object-cover"
-            src="/mobile-hero-img.webp"
-            alt="Tools included in NextNative"
-            priority
-            width={600}
-            height={600}
-            sizes="(max-width: 1279px) 80vw, 0vw"
-            quality={25}
-          />
-        </div>
-      </div> */}
 
       <Testimonial
         imgSrc={"/testimonials/vitaliy.jpeg"}

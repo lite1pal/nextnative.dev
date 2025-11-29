@@ -10,11 +10,11 @@ export default function ToolCard({ tool, bullets, img }: any) {
         <div className="h-[60px] w-[60px] overflow-hidden rounded-[10px]">
           <Image
             src={img}
-            width={300}
-            height={300}
+            width={120}
+            height={120}
             className="h-full w-full object-cover"
             alt={tool}
-            sizes={"(max-width: 1279px) 1vw, 80vw"}
+            sizes={"60px"}
           />
         </div>
 

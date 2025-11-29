@@ -74,14 +74,6 @@ export default function RootLayout({
           />
         </noscript>
         <Toaster />
-        {/* <main className="flex relative overflow-hidden flex-col">
-          <BackgroundSVG />
-          <Container>
-            <Navbar />
-            {children}
-            <Footer />
-          </Container>
-        </main> */}
         <LayoutWrapper>{children}</LayoutWrapper>
         <Analytics />
       </body>

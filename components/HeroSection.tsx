@@ -1,8 +1,4 @@
-import Image from "next/image";
-import CTA from "./CTA";
-import { cn } from "@/lib/utils";
 import { Suspense } from "react";
-import CTASkeleton from "./CTASkeleton";
 import LovedByMakers from "./LovedByMakers";
 import LovedByMakersSkeleton from "./LovedByMakersSkeleton";
 import { AvatarList } from "./AvatarList";
