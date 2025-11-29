@@ -93,11 +93,7 @@ export default function Home() {
             img="/tools/revenuecat-small.webp"
           />
         }
-        ctaButton={
-          <Suspense fallback={<CTASkeleton />}>
-            <CTA />
-          </Suspense>
-        }
+        ctaButton={<CTA />}
       />
 
       <Testimonial
@@ -150,9 +146,7 @@ export default function Home() {
       <ShowcaseSection />
 
       <div className="flex flex-col gap-10 max-sm:mt-16 sm:items-center">
-        <Suspense fallback={<CTASkeleton />}>
-          <CTA />
-        </Suspense>
+        <CTA />
         <div className="flex gap-5 sm:gap-2">
           <div className="relative -top-1.5">
             <AvatarList />
@@ -167,16 +161,6 @@ export default function Home() {
       </div>
 
       <SocialProof />
-
-      {/* <div className="mx-auto mt-16 max-w-2xl">
-        <VideoTestimonial
-          name={videoTestimonial?.name as string}
-          videoSrc={videoTestimonial?.videoSrc!}
-          testimonial={videoTestimonial?.testimonial}
-          showStars={videoTestimonial?.showStars}
-          className="my-0 max-w-none"
-        />
-      </div> */}
 
       <Testimonial
         imgSrc={""}
@@ -226,9 +210,7 @@ export default function Home() {
       <AppsBuiltWithNextNative />
 
       <div className="mt-10 flex flex-col gap-10 sm:items-center">
-        <Suspense fallback={<CTASkeleton />}>
-          <CTA />
-        </Suspense>
+        <CTA />
         <div className="flex gap-5 sm:gap-2">
           <div className="relative -top-1.5">
             <AvatarList />
@@ -259,9 +241,7 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col gap-10 sm:mt-10 sm:items-center">
-        <Suspense fallback={<CTASkeleton />}>
-          <CTA />
-        </Suspense>
+        <CTA />
         <div className="flex gap-5 sm:gap-2">
           <div className="relative -top-1.5">
             <AvatarList />
@@ -314,9 +294,7 @@ export default function Home() {
       <TestimonialsSection />
 
       <div className="mb-10 flex flex-col gap-10 sm:mt-10 sm:items-center">
-        <Suspense fallback={<CTASkeleton />}>
-          <CTA />
-        </Suspense>
+        <CTA />
         <div className="flex gap-5 sm:gap-2">
           <div className="relative -top-1.5">
             <AvatarList />

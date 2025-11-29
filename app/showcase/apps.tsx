@@ -141,7 +141,7 @@ function Apps({ maxApps = 10 }: { maxApps?: number }) {
                 onClick={() => {
                   trackEvent(`Website_${app.name}_clicked`);
                 }}
-                className="hover:text-primary flex w-[200px] items-center justify-center rounded-lg border-black bg-white py-5 text-xl font-[500] transition max-md:mt-10"
+                className="hover:text-primary flex w-[200px] items-center justify-center rounded-lg border-black bg-white py-5 text-xl font-[500] max-md:mt-10"
               >
                 Visit Website
               </a>
