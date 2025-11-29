@@ -113,6 +113,15 @@ function Navbar() {
           Pricing
         </Link>
         <Link
+          href="/#faq"
+          onClick={() => {
+            trackEvent("Navbar_FAQ_clicked");
+          }}
+          className="hover:text-primary cursor-pointer text-base transition-colors md:text-lg"
+        >
+          FAQ
+        </Link>
+        <Link
           href="/blog"
           onClick={() => {
             trackEvent("Navbar_Blog_clicked");
@@ -140,7 +149,6 @@ function Navbar() {
               trackEvent("Navbar_TryForFree_clicked");
               window?.datafast("try_for_free_clicked_from_navbar");
             }}
-            rel="nofollow noopener"
           >
             <Button variant="secondary">Try for free</Button>
           </Link>
@@ -199,6 +207,16 @@ function Navbar() {
           >
             Blog
           </Link>
+          <Link
+            href="/#faq"
+            onClick={() => {
+              setIsMenuOpen(false);
+              trackEvent("Navbar_FAQ_clicked");
+            }}
+            className="hover:text-primary cursor-pointer text-base transition-colors md:text-lg"
+          >
+           FAQ
+          </Link>
 
           <Link
             href="/playground"
@@ -207,7 +225,6 @@ function Navbar() {
               trackEvent("Navbar_TryForFree_clicked");
               window?.datafast("try_for_free_clicked_from_navbar");
             }}
-            rel="nofollow noopener"
           >
             <Button variant="secondary">Try for free</Button>
           </Link>
