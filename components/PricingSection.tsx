@@ -134,7 +134,7 @@ function PricingSection() {
             <span className="font-bold">20%</span> off
           </span>
         </div>
-        <CountdownTimer targetISO="2025-12-01T00:00:00Z" className="text-sm" />
+        {/* <CountdownTimer targetISO="2025-12-01T00:00:00Z" className="text-sm" /> */}
       </div>
 
       <div className="mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:px-4">
