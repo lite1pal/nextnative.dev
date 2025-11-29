@@ -215,7 +215,7 @@ function Navbar() {
             }}
             className="hover:text-primary cursor-pointer text-base transition-colors md:text-lg"
           >
-           FAQ
+            FAQ
           </Link>
 
           <Link
