@@ -31,10 +31,6 @@ const faqItems = [
           <li>Push notifications, onboarding flows</li>
           <li>App Store / Google Play launch guides + 3 months dev support</li>
         </ul>
-        <br />
-        In practice, this means you start from a working mobile app and
-        customize it, instead of spending weeks wiring up the basics from
-        scratch.
       </>
     ),
   },
@@ -117,8 +113,6 @@ const faqItems = [
         <br />
         <br />
         Capacitor handles the mobile-specific bridge behind the scenes.
-        NextNative gives you working examples of navigation, auth, payments,
-        configs, etc.
         <br />
         <br />
         You just write React code like you normally would.
