@@ -28,39 +28,10 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
-
-const DEFAULT_COUNT = 45;
+import { useCustomersCount } from "@/hooks/use-customers-count";
 
 export default function LovedByMakers() {
-  const [count, setCount] = useState<number>(DEFAULT_COUNT);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function load() {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/customers-count`,
-        );
-        if (!res.ok) return;
-
-        const data = await res.json();
-        if (!cancelled && typeof data.count === "number") {
-          setCount(data.count);
-        }
-      } catch (err) {
-        console.error("Error loading customers count:", err);
-        // stay on DEFAULT_COUNT
-      }
-    }
-
-    load();
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const count = useCustomersCount();
 
   return (
     <div className="pl-2 font-medium text-gray-500">
