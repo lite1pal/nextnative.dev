@@ -202,6 +202,7 @@ function TryForFreeButton({
           (window as any).datafast("try_for_free_clicked_from_navbar");
         }
       }}
+      prefetch={false}
     >
       <Button variant="secondary">Try for free</Button>
     </Link>

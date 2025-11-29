@@ -12,6 +12,7 @@ function CTAButtonSecondary() {
         trackEvent("CTA_try_for_free_clicked");
         window?.datafast("try_for_free_clicked_from_herosection");
       }}
+      prefetch={false}
     >
       <Button
         variant="primary"
