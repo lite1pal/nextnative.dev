@@ -26,19 +26,15 @@ import HighlightedSpan from "@/components/HighlightedSpan";
 import HeroSection from "@/components/HeroSection";
 import ToolCard from "@/components/ToolCard";
 import CTA from "@/components/CTA";
-import CTASkeleton from "@/components/CTASkeleton";
 import { AvatarList } from "@/components/AvatarList";
 import RatingSvg from "@/components/RatingSvg";
 import LovedByMakers from "@/components/LovedByMakers";
-import LovedByMakersSkeleton from "@/components/LovedByMakersSkeleton";
 
 export const metadata: Metadata = {
   alternates: {
     canonical: "https://nextnative.dev",
   },
 };
-
-export const revalidate = 86400;
 
 export default function Home() {
   const videoTestimonial = testimonials.find(
