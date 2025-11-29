@@ -195,7 +195,11 @@ function TryForFreeButton({
       onClick={() => {
         setIsMenuOpen(false);
         trackEvent("Navbar_TryForFree_clicked");
-        window?.datafast("try_for_free_clicked_from_navbar");
+
+        // safe guard
+        if (typeof (window as any)?.datafast === "function") {
+          (window as any).datafast("try_for_free_clicked_from_navbar");
+        }
       }}
     >
       <Button variant="secondary">Try for free</Button>
