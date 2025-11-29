@@ -15,6 +15,7 @@ export default function ToolCard({ tool, bullets, img }: any) {
             className="h-full w-full object-cover"
             alt={tool}
             sizes={"60px"}
+            priority
           />
         </div>
 

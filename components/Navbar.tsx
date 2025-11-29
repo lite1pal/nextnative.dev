@@ -88,7 +88,8 @@ function Navbar() {
   return (
     <div
       className={cn(
-        "navbar sticky top-0 z-50 flex items-center justify-between py-4 transition-all duration-300 md:py-5",
+        "navbar sticky top-0 z-50 flex items-center justify-between py-4 md:py-5",
+        isBlog && "transition-all duration-300",
         scrolled && isBlog
           ? "top-3 mx-auto rounded-full bg-white px-8 shadow-xl md:py-4"
           : "bg-transparent",
@@ -150,7 +151,7 @@ function NavbarItem({
 
         item.scrollFunction?.();
       }}
-      className="hover:text-primary cursor-pointer text-base transition-colors md:text-lg"
+      className="hover:text-primary cursor-pointer text-base md:text-lg"
     >
       {item.label}
     </Link>
