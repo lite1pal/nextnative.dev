@@ -9,7 +9,7 @@ import DemoVideo from "@/components/DemoVideo";
 import Testimonial from "@/components/Testimonial";
 import SetupByDefault from "@/components/SetupByDefault";
 import Image from "next/image";
-import { ReactNode, Suspense } from "react";
+import { ReactNode } from "react";
 import Subheading from "@/components/Subheading";
 import { ChevronUp } from "lucide-react";
 import ShowcaseSection from "@/components/ShowcaseSection";
@@ -153,9 +153,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col">
             <RatingSvg />
-            <Suspense fallback={<LovedByMakersSkeleton />}>
-              <LovedByMakers />
-            </Suspense>
+            <LovedByMakers />
           </div>
         </div>
       </div>
@@ -217,9 +215,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col">
             <RatingSvg />
-            <Suspense fallback={<LovedByMakersSkeleton />}>
-              <LovedByMakers />
-            </Suspense>
+            <LovedByMakers />
           </div>
         </div>
       </div>
@@ -248,9 +244,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col">
             <RatingSvg />
-            <Suspense fallback={<LovedByMakersSkeleton />}>
-              <LovedByMakers />
-            </Suspense>
+            <LovedByMakers />
           </div>
         </div>
       </div>
@@ -301,9 +295,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col">
             <RatingSvg />
-            <Suspense fallback={<LovedByMakersSkeleton />}>
-              <LovedByMakers />
-            </Suspense>
+            <LovedByMakers />
           </div>
         </div>
       </div>
