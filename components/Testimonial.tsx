@@ -40,10 +40,9 @@ function Testimonial({
             <Image
               src={imgSrc}
               alt="Profile picture"
-              width={100}
-              height={100}
+              width={70}
+              height={70}
               className="h-[80px] w-[80px] rounded-full object-cover"
-              sizes="25vw"
             />
           ) : (
             <div className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-green-400 object-cover">
