@@ -32,13 +32,11 @@ function NextNativeCard({ post }: { post: { slug: string } }) {
         <CTABlogButton post={{ slug: post.slug }} />
 
         <div className="mt-5 flex items-center gap-2">
-          <div className="relative">
-            <AvatarList size="sm" />
-          </div>
+          <AvatarList />
           <div className="flex flex-col items-start">
             <RatingSvg />
             <div className="pl-2 text-xs font-medium text-gray-500">
-              Loved by <span className="text-foreground">{count}+</span>
+              Loved by <span className="text-foreground">{count}+</span>{" "}
               teams/devs
             </div>
           </div>

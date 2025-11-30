@@ -1,14 +1,18 @@
-export default function RatingSvg() {
+import Image from "next/image";
+
+export default function RatingSvg({
+  priority = false,
+}: {
+  priority?: boolean;
+}) {
   return (
-    <img
+    <Image
       src="/stars.svg"
       width={109}
       height={25}
       alt="5 out of 5 stars"
-      loading="lazy"
-      decoding="async"
-      fetchPriority="low"
       style={{ display: "inline-block" }}
+      priority={priority}
     />
   );
 }

@@ -262,7 +262,7 @@ function NextNativeUpsellCard() {
         {/* Social proof */}
         <div className="mt-5 flex items-center gap-2">
           <div className="relative">
-            <AvatarList size="sm" />
+            <AvatarList />
           </div>
           <div className="flex flex-col items-start">
             <RatingSvg />

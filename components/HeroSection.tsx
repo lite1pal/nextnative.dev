@@ -48,9 +48,9 @@ function HeroSection({
 
         {includeRatingStars && (
           <div className="-mt-2.5 flex items-center gap-5 sm:gap-2">
-            <AvatarList />
+            <AvatarList priority />
             <div className="flex flex-col">
-              <RatingSvg />
+              <RatingSvg priority />
               <LovedByMakers />
             </div>
           </div>
