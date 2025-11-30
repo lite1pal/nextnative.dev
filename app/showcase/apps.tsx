@@ -43,35 +43,12 @@ const apps = [
       website: "https://lasting-habits.vercel.app",
     },
   },
-  // {
-  //   logo: "/showcase/logo-pomodoro.png",
-  //   name: "Pomodoro Timer",
-  //   description:
-  //     "A focused pomodoro timer app with work and break sessions. Do more in less time!",
-  //   image: "/showcase/pomodoro.png", // Add to your /public folder
-  //   storeLinks: {
-  //     appStore: "",
-  //     googlePlay: "",
-  //   },
-  // },
-  // {
-  //   logo: "/showcase/logo-thinknest.png",
-  //   name: "ThinkNestAI",
-  //   description:
-  //     "A note-taking app powered by AI. Write, summarize, and organize your thoughts.",
-  //   // image: "/showcase/pomodoro.png", // Add to your /public folder
-  //   realDemo: NoteList,
-  //   storeLinks: {
-  //     appStore: "",
-  //     googlePlay: "",
-  //   },
-  // },
 ];
 
 function Apps({ maxApps = 10 }: { maxApps?: number }) {
   return (
     <div className="gap-10 gap-y-20 rounded-xl xl:grid xl:grid-cols-2">
-      {apps.slice(0, maxApps).map((app: any) => (
+      {apps.slice(0, maxApps).map((app: any, i) => (
         <article
           key={app.name}
           className="mx-auto flex flex-col items-center gap-4"
@@ -86,6 +63,7 @@ function Apps({ maxApps = 10 }: { maxApps?: number }) {
                   width={80}
                   height={80}
                   className="rounded-xl"
+                  priority={i < 2}
                 />
               )}
             </div>
@@ -111,6 +89,7 @@ function Apps({ maxApps = 10 }: { maxApps?: number }) {
                   width={200}
                   height={200}
                   alt="Download on the App Store"
+                  priority={i < 2}
                 />
               </a>
             )}
@@ -129,6 +108,7 @@ function Apps({ maxApps = 10 }: { maxApps?: number }) {
                     width={247}
                     height={247}
                     alt="Download on Google Play"
+                    priority={i < 2}
                   />
                 </a>
               )}
