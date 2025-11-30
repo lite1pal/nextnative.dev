@@ -11,13 +11,13 @@ interface Tool {
 }
 const tools: Tool[] = [
   {
-    src: "/tools/nextjs.png",
+    src: "/tools/nextjs.webp",
     alt: "Next.js Serverless API",
     isRectangular: true,
     description: "Build fullstack apps with API routes in the same codebase",
   },
   {
-    src: "/tools/capacitor.png",
+    src: "/tools/capacitor.webp",
     alt: "Capacitor",
     isRectangular: true,
     description: "Access native features like camera, GPS, and offline storage",
@@ -60,30 +60,10 @@ const tools: Tool[] = [
   },
 ];
 
-// Function to assign a gradient color based on index
-function getGradientColor(index: number) {
-  const colors = [
-    "from-purple-400 to-purple-600",
-    "from-amber-400 to-orange-500",
-    "from-emerald-400 to-emerald-600",
-    "from-slate-400 to-slate-600",
-    "from-blue-400 to-blue-600",
-    "from-teal-400 to-teal-600",
-  ];
-
-  return colors[index % colors.length];
-}
-
-function ToolCard({ tool, index }: { tool: Tool; index: number }) {
-  const gradientColor = getGradientColor(index);
-
+function ToolCard({ tool }: { tool: Tool }) {
   return (
     <div className="group">
-      <div
-        // style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-        className={`flex h-full flex-col rounded-3xl sm:p-6`}
-      >
-        {/* <h3 className="text-xl font-[500] mb-4">{tool.alt}</h3> */}
+      <div className={`flex h-full flex-col rounded-3xl sm:p-6`}>
         <div
           style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
           className={`${tool.src.includes("capacitor") && "px-20 sm:px-6"} mb-4 flex items-center justify-center rounded-2xl bg-white p-6`}
@@ -104,17 +84,6 @@ function ToolCard({ tool, index }: { tool: Tool; index: number }) {
 }
 
 function SetupByDefault() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
   return (
     <div className="relative overflow-hidden py-20">
       <div className="mx-auto max-w-7xl">
@@ -133,7 +102,7 @@ function SetupByDefault() {
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {tools.map((tool, index) => (
-            <ToolCard key={tool.alt} tool={tool} index={index} />
+            <ToolCard key={tool.alt} tool={tool} />
           ))}
         </div>
       </div>

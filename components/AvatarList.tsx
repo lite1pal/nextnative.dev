@@ -13,8 +13,9 @@ export function AvatarList({
       <Image
         src={"/testimonials/customers-new-1.webp"}
         alt={"NextNative Customers"}
-        width={260}
+        width={265}
         height={260}
+        className="max-h-[77px]"
         priority={priority}
       />
     </div>
