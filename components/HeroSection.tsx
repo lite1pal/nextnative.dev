@@ -1,6 +1,4 @@
-import { Suspense } from "react";
 import LovedByMakers from "./LovedByMakers";
-import LovedByMakersSkeleton from "./LovedByMakersSkeleton";
 import { AvatarList } from "./AvatarList";
 import RatingSvg from "./RatingSvg";
 
@@ -49,10 +47,8 @@ function HeroSection({
         {ctaButton}
 
         {includeRatingStars && (
-          <div className="flex gap-5 sm:gap-2">
-            <div className="relative -top-1.5">
-              <AvatarList />
-            </div>
+          <div className="-mt-2.5 flex items-center gap-5 sm:gap-2">
+            <AvatarList />
             <div className="flex flex-col">
               <RatingSvg />
               <LovedByMakers />

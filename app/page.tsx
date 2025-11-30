@@ -143,10 +143,8 @@ export default function Home() {
 
       <div className="flex flex-col gap-10 max-sm:mt-16 sm:items-center">
         <CTA />
-        <div className="flex gap-5 sm:gap-2">
-          <div className="relative -top-1.5">
-            <AvatarList />
-          </div>
+        <div className="flex items-center gap-5 sm:gap-2">
+          <AvatarList />
           <div className="flex flex-col">
             <RatingSvg />
             <LovedByMakers />
