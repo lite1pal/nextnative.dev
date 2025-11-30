@@ -102,14 +102,11 @@ export default async function TutorialPage({
 
       {/* Breadcrumbs */}
       <nav className="mb-10 flex items-center gap-2 text-base text-gray-600 md:text-lg">
-        <Link href="/" className="hover:text-primary transition-colors">
+        <Link href="/" className="hover:text-primary">
           Home
         </Link>
         <ChevronRight className="h-4 w-4" />
-        <Link
-          href="/tutorials"
-          className="hover:text-primary transition-colors"
-        >
+        <Link href="/tutorials" className="hover:text-primary">
           Tutorials
         </Link>
         <ChevronRight className="h-4 w-4" />
@@ -285,11 +282,9 @@ export default async function TutorialPage({
           14-day refund if it&apos;s not a fit.
         </p>
 
-        <Suspense fallback={<CTASkeleton />}>
-          <Link href="/">
-            <CTA />
-          </Link>
-        </Suspense>
+        <Link href="/">
+          <CTA />
+        </Link>
       </div>
 
       {/* Related Tutorials */}
@@ -306,7 +301,7 @@ export default async function TutorialPage({
                 <Link
                   key={related!.slug}
                   href={`/tutorials/${related!.slug}`}
-                  className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:shadow-xl"
+                  className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-xl"
                 >
                   <div className="mb-4 flex items-center gap-3">
                     <span
@@ -344,7 +339,7 @@ export default async function TutorialPage({
             <Link
               key={comparison.slug}
               href={`/comparisons/${comparison.slug}`}
-              className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg"
+              className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg"
             >
               <h3 className="group-hover:text-primary mx-auto w-fit text-lg font-semibold text-gray-900">
                 {comparison.title}
@@ -366,7 +361,7 @@ export default async function TutorialPage({
         <div className="grid gap-6 md:grid-cols-2">
           <Link
             href="https://nextnative.dev/docs"
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 hover:shadow-lg"
           >
             <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900">
               📖 Full Documentation
@@ -378,7 +373,7 @@ export default async function TutorialPage({
           </Link>
           <Link
             href="https://nextnative.dev/docs/tutorials/ship-in-5-minutes"
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 hover:shadow-lg"
           >
             <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900">
               🚀 Quick Start Guide
@@ -390,7 +385,7 @@ export default async function TutorialPage({
           </Link>
           <Link
             href="https://nextnative.dev/docs/features/push-notifications"
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 hover:shadow-lg"
           >
             <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900">
               🔔 Push Notifications
@@ -402,7 +397,7 @@ export default async function TutorialPage({
           </Link>
           <Link
             href="https://nextnative.dev/docs/features/in-app-purchases"
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 hover:shadow-lg"
           >
             <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900">
               💰 In-App Purchases

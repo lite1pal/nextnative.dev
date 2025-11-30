@@ -172,7 +172,7 @@ function FooterLinkGroup({
             target={link.target || "_self"}
             rel={isLegal ? "nofollow noopener" : undefined}
             onClick={() => trackEvent(`Footer_${link.label}_clicked`)}
-            className="text-gray hover:text-foreground transition-colors"
+            className="text-gray hover:text-primary"
           >
             {link.label}
           </Link>

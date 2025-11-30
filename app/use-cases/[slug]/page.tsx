@@ -251,7 +251,7 @@ export default async function UseCasePage({
           {useCase.keyFeatures.map((feature, index) => (
             <div
               key={index}
-              className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:shadow-lg"
+              className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-lg"
             >
               <div className="mb-4 text-5xl">{feature.icon}</div>
               <h3 className="mb-3 text-2xl font-semibold text-gray-900">
@@ -479,7 +479,7 @@ export default async function UseCasePage({
               <Link
                 key={tutorialSlug}
                 href={`/tutorials/${tutorialSlug}`}
-                className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-xl"
+                className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-xl"
               >
                 <div className="mb-3 flex items-center gap-2">
                   <BookOpen className="text-primary h-5 w-5" />
@@ -510,7 +510,7 @@ export default async function UseCasePage({
               <Link
                 key={comparisonSlug}
                 href={`/comparisons/${comparisonSlug}`}
-                className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-xl"
+                className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-xl"
               >
                 <div className="mb-3 flex items-center gap-2">
                   <TrendingUp className="text-primary h-5 w-5" />
@@ -543,7 +543,7 @@ export default async function UseCasePage({
         <div className="grid gap-6 md:grid-cols-2">
           <Link
             href="https://nextnative.dev/docs"
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 hover:shadow-lg"
           >
             <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900">
               📚 Full Documentation
@@ -554,7 +554,7 @@ export default async function UseCasePage({
           </Link>
           <Link
             href="https://nextnative.dev/docs/tutorials/ship-in-5-minutes"
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 hover:shadow-lg"
           >
             <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900">
               🚀 Quick Start

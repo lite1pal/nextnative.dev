@@ -83,7 +83,7 @@ function UseCasesView() {
                   <Link
                     key={useCase.slug}
                     href={`/use-cases/${useCase.slug}`}
-                    className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:shadow-xl"
+                    className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-xl"
                   >
                     {/* Icon & Category Badge */}
                     <div className="mb-5 flex items-center justify-between">
@@ -201,7 +201,7 @@ function UseCasesView() {
                             trackEvent("CTA Template - " + useCase.title);
                             // Purchase logic will be added here
                           }}
-                          className="bg-primary hover:bg-primary/90 rounded-full px-6 py-3 text-base font-semibold text-white transition-all hover:shadow-lg"
+                          className="bg-primary hover:bg-primary/90 rounded-full px-6 py-3 text-base font-semibold text-white hover:shadow-lg"
                         >
                           Purchase
                         </a>
@@ -216,9 +216,9 @@ function UseCasesView() {
                     </div> */}
 
                     {/* View Details Link */}
-                    <div className="group-hover:text-primary flex items-center gap-2 text-base font-medium text-gray-900 transition-colors">
+                    <div className="group-hover:text-primary flex items-center gap-2 text-base font-medium text-gray-900">
                       View Full Details
-                      <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                      <ChevronRight className="h-5 w-5" />
                     </div>
                   </Link>
                 ))}
@@ -239,7 +239,7 @@ function UseCasesView() {
         </p>
         <Link
           href="/#pricing"
-          className="bg-primary hover:bg-primary/90 inline-flex items-center gap-2 rounded-full px-10 py-5 text-xl font-semibold text-white transition-colors"
+          className="bg-primary hover:bg-primary/90 inline-flex items-center gap-2 rounded-full px-10 py-5 text-xl font-semibold text-white"
         >
           Get Started
           <ChevronRight className="h-6 w-6" />

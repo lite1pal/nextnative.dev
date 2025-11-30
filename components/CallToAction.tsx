@@ -30,18 +30,14 @@ function CallToAction({
         className="md:items-center"
       />
       <div className="relative flex flex-col gap-10 sm:items-center">
-        <Suspense fallback={<CTASkeleton />}>
-          <CTA className="md:items-center" />
-        </Suspense>
+        <CTA className="md:items-center" />
         <div className="flex gap-5 sm:gap-2">
           <div className="relative -top-1.5">
             <AvatarList />
           </div>
           <div className="flex flex-col">
             <RatingSvg />
-            <Suspense fallback={<LovedByMakersSkeleton />}>
-              <LovedByMakers />
-            </Suspense>
+            <LovedByMakers />
           </div>
         </div>
       </div>

@@ -55,9 +55,7 @@ function HeroSection({
             </div>
             <div className="flex flex-col">
               <RatingSvg />
-              <Suspense fallback={<LovedByMakersSkeleton />}>
-                <LovedByMakers />
-              </Suspense>
+              <LovedByMakers />
             </div>
           </div>
         )}

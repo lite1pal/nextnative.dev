@@ -38,7 +38,7 @@ function DemoVideo() {
       <StarburstSign position="bottom-right" rotation={180}>
         <div
           style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-          className={`relative h-full max-w-[962px] overflow-hidden rounded-[20px] bg-white transition-all duration-700 xl:h-[620px] xl:max-w-[1260px]`}
+          className={`relative h-full max-w-[962px] overflow-hidden rounded-[20px] bg-white xl:h-[620px] xl:max-w-[1260px]`}
         >
           {isPlaying ? (
             <iframe
@@ -63,7 +63,7 @@ function DemoVideo() {
                 loading="lazy"
               />
               <div className="absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
-                <div className="group-hover:bg-primary/90 bg-primary flex h-[72px] w-[72px] items-center justify-center rounded-full transition-all duration-300 group-hover:scale-125">
+                <div className="group-hover:bg-primary/90 bg-primary flex h-[72px] w-[72px] items-center justify-center rounded-full group-hover:scale-110">
                   <Play className="h-8 w-8 fill-white text-white" />
                 </div>
               </div>

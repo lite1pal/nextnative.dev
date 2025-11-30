@@ -28,17 +28,17 @@ function VideoTestimonial({
   return (
     <div
       className={cn(
-        `flex flex-col rounded-xl bg-white text-lg md:text-[22px] mx-auto max-w-[759.07px] my-16`,
-        className
+        `mx-auto my-16 flex max-w-[759.07px] flex-col rounded-xl bg-white text-lg md:text-[22px]`,
+        className,
       )}
     >
       {/* Video or Poster Section */}
-      <div className="relative rounded-t-xl overflow-hidden">
+      <div className="relative overflow-hidden rounded-t-xl">
         {isPlaying ? (
           <video
             autoPlay
             controls
-            className="w-full h-auto rounded-t-xl"
+            className="h-auto w-full rounded-t-xl"
             onEnded={() => setIsPlaying(false)}
           >
             <source src={videoSrc} type="video/mp4" />
@@ -46,7 +46,7 @@ function VideoTestimonial({
           </video>
         ) : (
           <div
-            className="relative cursor-pointer group"
+            className="group relative cursor-pointer"
             onClick={() => {
               setIsPlaying(true);
               trackEvent("video_testimonial_play");
@@ -55,29 +55,29 @@ function VideoTestimonial({
             <Image
               src={poster}
               alt={`${name} testimonial placeholder`}
-              className="w-full h-auto object-cover"
+              className="h-auto w-full object-cover"
               width={759}
               height={427}
               sizes="20vw"
             />
 
             {/* Play Button */}
-            <div className="absolute inset-0 flex items-center justify-center bg-black/10 hover:bg-black/20 transition-colors">
-              <div className="bg-primary rounded-full p-4">
-                <Play className="w-8 h-8 text-white ml-1" fill="currentColor" />
+            <div className="absolute inset-0 flex items-center justify-center bg-black/10">
+              <div className="bg-primary rounded-full p-4 group-hover:scale-110">
+                <Play className="ml-1 h-8 w-8 text-white" fill="currentColor" />
               </div>
             </div>
 
             {/* Name and Stars */}
-            <div className="absolute bottom-4 right-4 bg-black/70 rounded-lg px-3 py-2 text-white">
+            <div className="absolute right-4 bottom-4 rounded-lg bg-black/70 px-3 py-2 text-white">
               <div className="flex items-center gap-2">
-                <span className="font-semibold text-xl">{name}</span>
+                <span className="text-xl font-semibold">{name}</span>
                 {showStars && (
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
                       <svg
                         key={i}
-                        className="w-5 h-5 text-yellow-400 fill-current"
+                        className="h-5 w-5 fill-current text-yellow-400"
                         viewBox="0 0 24 24"
                       >
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -93,7 +93,7 @@ function VideoTestimonial({
 
       {/* Testimonial Text */}
       <div>
-        <blockquote className="text-xl md:text-2xl font-medium bg-primary rounded-b-xl px-6 py-6 text-white">
+        <blockquote className="bg-primary rounded-b-xl px-6 py-6 text-xl font-medium text-white md:text-2xl">
           {testimonial}
         </blockquote>
       </div>

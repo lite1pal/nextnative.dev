@@ -356,11 +356,9 @@ export default async function ComparisonPage({
           {comparison.cta.text}
         </h2>
         <p className="mb-8 text-lg md:text-xl">{comparison.cta.description}</p>
-        <Suspense fallback={<CTASkeleton />}>
-          <Link href="/">
-            <CTA />
-          </Link>
-        </Suspense>
+        <Link href="/">
+          <CTA />
+        </Link>
       </section>
 
       {/* Related Tutorials */}

@@ -349,11 +349,9 @@ export default async function AlternativePage({
             {alternative.cta.description}
           </p>
 
-          <Suspense fallback={<CTASkeleton />}>
-            <Link href="/">
-              <CTA />
-            </Link>
-          </Suspense>
+          <Link href="/">
+            <CTA />
+          </Link>
         </div>
 
         {/* Related Tutorials */}

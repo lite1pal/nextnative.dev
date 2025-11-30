@@ -1,31 +1,15 @@
+"use client";
+
 import HighlightedSpan from "@/components/HighlightedSpan";
 import CTABlogButton from "./CTABlogButton";
 import LogoSymbol from "@/components/LogoSymbol";
 import Link from "next/link";
 import { AvatarList } from "@/components/AvatarList";
 import RatingSvg from "@/components/RatingSvg";
+import { useCustomersCount } from "@/hooks/use-customers-count";
 
-async function NextNativeCard({ post }: { post: { slug: string } }) {
-  let customersCount = 20;
-  let discountLimit = 25;
-  let isError = false;
-
-  try {
-    const res = await fetch(`${process.env.API_URL}/customers-count`, {
-      next: { revalidate: 84600 },
-    });
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch customers count");
-    }
-    const data = await res.json();
-    customersCount = data.count || 20;
-
-    discountLimit = Math.ceil((customersCount + 1) / 5) * 5;
-  } catch (error) {
-    console.error("Error calculating discount limit:", error);
-    isError = true;
-  }
+function NextNativeCard({ post }: { post: { slug: string } }) {
+  const count = useCustomersCount();
 
   return (
     <div
@@ -37,25 +21,16 @@ async function NextNativeCard({ post }: { post: { slug: string } }) {
           <div className="relative top-[2px]">
             <LogoSymbol />
           </div>
-          {/* <p className="text-2xl font-[500]">nextnative</p> */}
         </Link>
         <h3 className="mt-7 text-2xl font-semibold">
           Launch mobile apps 10x faster with{" "}
           <HighlightedSpan>Next.js</HighlightedSpan>
         </h3>
-        <p className="mt-2 text-sm text-gray-600">
+        <p className="mt-2 mb-4 text-sm text-gray-600">
           Skip native dev. Use Next.js + Capacitor to go live fast.
         </p>
         <CTABlogButton post={{ slug: post.slug }} />
-        {/* {isError ? (
-          <p className="mt-3 text-xs font-medium text-pink-600">
-            🎁 40% off limited offer
-          </p>
-        ) : (
-          <p className="mt-3 text-xs font-medium text-pink-600">
-            🎁 40% off – {discountLimit - customersCount} left
-          </p>
-        )} */}
+
         <div className="mt-5 flex items-center gap-2">
           <div className="relative">
             <AvatarList size="sm" />
@@ -63,10 +38,7 @@ async function NextNativeCard({ post }: { post: { slug: string } }) {
           <div className="flex flex-col items-start">
             <RatingSvg />
             <div className="pl-2 text-xs font-medium text-gray-500">
-              Loved by{" "}
-              {!isError && (
-                <span className="text-foreground">{customersCount}+</span>
-              )}{" "}
+              Loved by <span className="text-foreground">{count}+</span>
               teams/devs
             </div>
           </div>

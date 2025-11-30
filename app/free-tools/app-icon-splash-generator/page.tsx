@@ -1,8 +1,6 @@
 "use client";
 
-// Note: Metadata needs to be handled by a parent layout since this is a client component
-
-import { useState, useRef, useCallback, useEffect, Suspense } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import {
   Upload,
   Download,
@@ -12,40 +10,11 @@ import {
   CornerDownRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ButtonNextNative from "@/components/Button";
 import { Input } from "@/components/ui/input";
 import { useIconGenerator } from "@/hooks/use-icon-generator";
 import HighlightedSpan from "@/components/HighlightedSpan";
 import { trackEvent } from "@/services/custom-analytics";
 import NextNativeCard from "@/app/blog/[slug]/NextNativeCard";
-import NextNativeCardSkeleton from "@/app/blog/[slug]/NextNativeCardSkeleton";
-import NextNativeCardClient from "@/app/blog/[slug]/NextNativeCardClient";
-
-// Small UI components for clarity and modularity
-
-interface ErrorMessageProps {
-  message: string | null;
-}
-
-function ErrorMessage({ message }: ErrorMessageProps) {
-  if (!message) return null;
-
-  const isWarning = message.startsWith("⚠️");
-
-  return (
-    <div
-      role="alert"
-      aria-live="polite"
-      className={`mt-4 rounded-lg border px-5 py-4 text-left text-base ${
-        isWarning
-          ? "border-yellow-200 bg-yellow-50 text-yellow-900"
-          : "border-red-200 bg-red-50 text-red-900"
-      }`}
-    >
-      {message}
-    </div>
-  );
-}
 
 interface SuccessShareCardProps {
   visible: boolean;
@@ -773,7 +742,7 @@ export default function AppIconSplashGenerator() {
           </ButtonNextNative> */}
 
           <div className="mx-auto mt-10 max-w-xl">
-            <NextNativeCardClient post={{ slug: "free-tool" }} />
+            <NextNativeCard post={{ slug: "free-tool" }} />
           </div>
         </div>
 

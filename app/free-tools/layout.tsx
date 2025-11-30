@@ -49,9 +49,7 @@ export default function FreeToolsLayout({
     <main>
       {children}
       <div className="mx-auto max-w-xl">
-        <Suspense fallback={<NextNativeCardSkeleton />}>
-          <NextNativeCard post={{ slug: "free-tool" }} />
-        </Suspense>
+        <NextNativeCard post={{ slug: "free-tool" }} />
       </div>
     </main>
   );

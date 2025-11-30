@@ -105,7 +105,7 @@ export default function TutorialsPage() {
                   <Link
                     key={tutorial.slug}
                     href={`/tutorials/${tutorial.slug}`}
-                    className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:shadow-xl"
+                    className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-xl"
                   >
                     {/* Tutorial Meta */}
                     <div className="mb-5 flex flex-wrap items-center gap-3">
@@ -160,9 +160,9 @@ export default function TutorialsPage() {
                     </div>
 
                     {/* Read More Link */}
-                    <div className="group-hover:text-primary mt-5 flex items-center gap-2 text-base font-medium text-gray-900 transition-colors">
+                    <div className="group-hover:text-primary mt-5 flex items-center gap-2 text-base font-medium text-gray-900">
                       Start Tutorial
-                      <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                      <ChevronRight className="h-5 w-5" />
                     </div>
                   </Link>
                 ))}
@@ -182,11 +182,9 @@ export default function TutorialsPage() {
           app in minutes.
         </p>
 
-        <Suspense fallback={<CTASkeleton />}>
-          <Link href="/">
-            <CTA />
-          </Link>
-        </Suspense>
+        <Link href="/">
+          <CTA />
+        </Link>
       </div>
     </div>
   );

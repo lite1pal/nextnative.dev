@@ -76,14 +76,5 @@ export default function AppIconGeneratorLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <main>
-      {/* <div className="mx-auto mt-10 max-w-xl">
-        <Suspense fallback={<NextNativeCardSkeleton />}>
-          <NextNativeCard post={{ slug: "free-tool" }} />
-        </Suspense>
-      </div> */}
-      {children}
-    </main>
-  );
+  return <main>{children}</main>;
 }

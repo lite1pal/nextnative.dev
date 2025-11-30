@@ -193,9 +193,7 @@ export default async function BlogPostPage({
         <div className="sticky top-36">
           <TableOfContents headings={headings} />
 
-          <Suspense fallback={<NextNativeCardSkeleton />}>
-            <NextNativeCard post={{ slug }} />
-          </Suspense>
+          <NextNativeCard post={{ slug }} />
         </div>
       </aside>
 
@@ -215,9 +213,7 @@ export default async function BlogPostPage({
       ></script> */}
 
       <MobileCTAClient showAfterPx={350}>
-        <Suspense fallback={<NextNativeCardSkeleton />}>
-          <NextNativeCard post={{ slug }} />
-        </Suspense>
+        <NextNativeCard post={{ slug }} />
       </MobileCTAClient>
     </main>
   );

@@ -126,9 +126,9 @@ export default function AlternativesPage() {
             <div className="text-primary mb-2 text-4xl font-bold">3-5x</div>
             <div className="text-lg text-gray-600">Faster development time</div>
           </div>
-          {/* <div className="rounded-3xl border border-gray-200 bg-white p-8 text-center shadow-sm dark:border-gray-700 dark:bg-gray-900">
+          {/* <div className="rounded-3xl border border-gray-200 bg-white p-8 text-center shadow-sm">
             <div className="text-primary mb-2 text-4xl font-bold">$149</div>
-            <div className="text-lg text-gray-600 dark:text-gray-400">
+            <div className="text-lg text-gray-600">
               One-time, build unlimited apps
             </div>
           </div> */}
@@ -254,11 +254,9 @@ export default function AlternativesPage() {
             app in minutes.
           </p>
 
-          <Suspense fallback={<CTASkeleton />}>
-            <Link href="/">
-              <CTA />
-            </Link>
-          </Suspense>
+          <Link href="/">
+            <CTA />
+          </Link>
         </div>
       </div>
     </>
