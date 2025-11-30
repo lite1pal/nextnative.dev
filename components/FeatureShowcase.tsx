@@ -42,8 +42,8 @@ function FeatureCard({ feature }: { feature: Feature }) {
     <div
       className={cn(
         "group relative overflow-hidden rounded-3xl bg-gray-50",
-        "transition-all duration-300 hover:shadow-xl",
-        feature.className
+        "hover:shadow-xl",
+        feature.className,
       )}
     >
       <div className="relative aspect-[16/10] w-full overflow-hidden">
@@ -51,13 +51,13 @@ function FeatureCard({ feature }: { feature: Feature }) {
           src={feature.image}
           alt={feature.title}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
       </div>
 
       <div className="absolute bottom-0 p-6 text-white">
-        <h3 className="text-xl md:text-2xl font-[500] mb-2">{feature.title}</h3>
+        <h3 className="mb-2 text-xl font-[500] md:text-2xl">{feature.title}</h3>
         <p className="text-gray-200">{feature.description}</p>
       </div>
     </div>
@@ -69,7 +69,7 @@ function FeatureShowcase() {
     <div className="py-12 md:py-20">
       <div className="flex flex-col gap-8 md:gap-12">
         <div className="text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-[40px] font-[500] mb-4">
+          <h2 className="mb-4 text-2xl font-[500] sm:text-3xl md:text-[40px]">
             Everything you need to build great apps
           </h2>
           <p className="text-gray text-lg md:text-xl">
@@ -77,7 +77,7 @@ function FeatureShowcase() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} />
           ))}

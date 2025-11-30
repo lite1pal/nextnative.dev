@@ -29,7 +29,7 @@ function WastedTimeItem({
     >
       {/* Timeline dot - hidden on mobile, shown on md+ */}
       <div
-        className={`bg-primary absolute left-1/2 hidden h-3 w-3 -translate-x-1/2 rounded-full transition-all duration-700 md:block`}
+        className={`bg-primary absolute left-1/2 hidden h-3 w-3 -translate-x-1/2 rounded-full md:block`}
       />
 
       {/* Mobile timeline dot and line */}
@@ -38,7 +38,7 @@ function WastedTimeItem({
 
       {/* Content card */}
       <div
-        className={`ml-10 w-[90%] rounded-lg bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-md md:ml-0 md:w-[calc(50%-20px)] md:p-5`}
+        className={`ml-10 w-[90%] rounded-2xl bg-white p-4 md:ml-0 md:w-[calc(50%-20px)] md:p-5`}
         style={{
           boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)",
           transitionDelay: `${index * 5}ms`,
@@ -132,7 +132,7 @@ function WastedTime() {
     <div className="relative overflow-hidden py-6 md:py-24">
       <div className="mx-auto max-w-5xl">
         <h2
-          className={`mb-12 text-center text-3xl font-[500] transition-all duration-700 md:mb-16 md:text-5xl`}
+          className={`mb-12 text-center text-3xl font-[500] md:mb-16 md:text-5xl`}
         >
           Wasting <span className="text-primary">time</span> on...
         </h2>
@@ -140,7 +140,7 @@ function WastedTime() {
         <div className="relative">
           {/* Timeline vertical line - hidden on mobile */}
           <div
-            className={`bg-primary absolute left-1/2 hidden h-full w-[3px] -translate-x-1/2 transition-transform duration-1000 md:block`}
+            className={`bg-primary absolute left-1/2 hidden h-full w-[3px] -translate-x-1/2 md:block`}
             style={{ transformOrigin: "top" }}
           ></div>
 
@@ -175,7 +175,7 @@ function WastedTime() {
         </div>
 
         <div
-          className={`mx-auto mt-16 text-center text-xl transition-all duration-700 sm:text-2xl md:mt-20 md:text-4xl`}
+          className={`mx-auto mt-16 text-center text-xl sm:text-2xl md:mt-20 md:text-4xl`}
         >
           <HighlightedSpan>
             <div className="flex items-center justify-center gap-2 md:gap-3">

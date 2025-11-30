@@ -26,13 +26,13 @@ export default function ComparisonsPage() {
           <Link
             key={comparison.slug}
             href={`/comparisons/${comparison.slug}`}
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-xl"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 hover:shadow-xl"
           >
             <div className="mb-4 flex items-center justify-between">
               <h2 className="group-hover:text-primary text-2xl font-bold text-gray-900">
                 {comparison.title}
               </h2>
-              <ChevronRight className="group-hover:text-primary h-6 w-6 text-gray-400 transition-transform group-hover:translate-x-1" />
+              <ChevronRight className="group-hover:text-primary h-6 w-6 text-gray-400" />
             </div>
             <div className="mb-4 space-y-2">
               <div className="flex items-center gap-2 text-sm">
@@ -61,7 +61,7 @@ export default function ComparisonsPage() {
         </p>
         {/* <Link
           href="/pricing"
-          className="bg-primary hover:bg-primary/90 inline-block rounded-full px-8 py-3 font-semibold text-white transition-all"
+          className="bg-primary hover:bg-primary/90 inline-block rounded-full px-8 py-3 font-semibold text-white"
         >
           Get Started
         </Link> */}

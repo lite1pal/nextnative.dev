@@ -81,12 +81,12 @@ function ToolCard({ tool, index }: { tool: Tool; index: number }) {
     <div className="group">
       <div
         // style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-        className={`flex h-full flex-col rounded-3xl transition-shadow duration-300 sm:p-6`}
+        className={`flex h-full flex-col rounded-3xl sm:p-6`}
       >
         {/* <h3 className="text-xl font-[500] mb-4">{tool.alt}</h3> */}
         <div
           style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-          className={`${tool.src.includes("capacitor") && "px-20 sm:px-6"} mb-4 flex items-center justify-center rounded-2xl bg-white p-6 transition-transform duration-300 group-hover:scale-[0.98]`}
+          className={`${tool.src.includes("capacitor") && "px-20 sm:px-6"} mb-4 flex items-center justify-center rounded-2xl bg-white p-6`}
         >
           <div className={`relative h-36 w-full`}>
             <Image

@@ -154,11 +154,7 @@ function Page() {
               <p className="text-lg text-gray-600">{tool.description}</p>
 
               <span className="text-primary mt-10 inline-flex items-center gap-1 text-xl font-[500]">
-                Use tool{" "}
-                <ArrowRight
-                  className="mt-0.5 transition-transform group-hover:translate-x-1"
-                  size={20}
-                />
+                Use tool <ArrowRight className="mt-0.5" size={20} />
               </span>
             </Link>
           ))}

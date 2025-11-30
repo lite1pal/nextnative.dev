@@ -116,14 +116,11 @@ export default async function AlternativePage({
       <div className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
         {/* Breadcrumbs */}
         <nav className="mb-10 flex items-center gap-2 text-base text-gray-600 md:text-lg">
-          <Link href="/" className="hover:text-primary transition-colors">
+          <Link href="/" className="hover:text-primary">
             Home
           </Link>
           <ChevronRight className="h-4 w-4" />
-          <Link
-            href="/alternatives"
-            className="hover:text-primary transition-colors"
-          >
+          <Link href="/alternatives" className="hover:text-primary">
             Alternatives
           </Link>
           <ChevronRight className="h-4 w-4" />
@@ -367,7 +364,7 @@ export default async function AlternativePage({
               <Link
                 key={tutorial.slug}
                 href={`/tutorials/${tutorial.slug}`}
-                className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md"
+                className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md"
               >
                 <h4 className="group-hover:text-primary mb-2 text-lg font-semibold text-gray-900">
                   {tutorial.title}
@@ -389,7 +386,7 @@ export default async function AlternativePage({
               <Link
                 key={comparison.slug}
                 href={`/comparisons/${comparison.slug}`}
-                className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md"
+                className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md"
               >
                 <h4 className="group-hover:text-primary mb-2 text-lg font-semibold text-gray-900">
                   {comparison.title}

@@ -35,8 +35,7 @@ export default function LovedByMakers() {
 
   return (
     <div className="pl-2 font-medium text-gray-500">
-      Loved by <span className="text-foreground transition-all">{count}+</span>{" "}
-      teams/devs
+      Loved by <span className="text-foreground">{count}+</span> teams/devs
     </div>
   );
 }

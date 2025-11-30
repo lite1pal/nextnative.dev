@@ -99,14 +99,11 @@ export default async function UseCasePage({
 
       {/* Breadcrumbs */}
       <nav className="mb-10 flex items-center gap-2 text-base text-gray-600 md:text-lg">
-        <Link href="/" className="hover:text-primary transition-colors">
+        <Link href="/" className="hover:text-primary">
           Home
         </Link>
         <ChevronRight className="h-4 w-4" />
-        <Link
-          href="/use-cases"
-          className="hover:text-primary transition-colors"
-        >
+        <Link href="/use-cases" className="hover:text-primary">
           Use Cases
         </Link>
         <ChevronRight className="h-4 w-4" />

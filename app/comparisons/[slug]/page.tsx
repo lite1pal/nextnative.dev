@@ -81,14 +81,11 @@ export default async function ComparisonPage({
 
       {/* Breadcrumbs */}
       <nav className="mb-10 flex items-center gap-2 text-base text-gray-600">
-        <Link href="/" className="hover:text-primary transition-colors">
+        <Link href="/" className="hover:text-primary">
           Home
         </Link>
         <ChevronRight className="h-4 w-4" />
-        <Link
-          href="/comparisons"
-          className="hover:text-primary transition-colors"
-        >
+        <Link href="/comparisons" className="hover:text-primary">
           Comparisons
         </Link>
         <ChevronRight className="h-4 w-4" />
@@ -148,7 +145,7 @@ export default async function ComparisonPage({
               {comparison.features.map((feature, index) => (
                 <tr
                   key={index}
-                  className="border-b border-gray-100 transition-colors hover:bg-gray-50"
+                  className="border-b border-gray-100 hover:bg-gray-50"
                 >
                   <td className="p-5 text-base font-medium text-gray-900 md:text-lg">
                     {feature.feature}
@@ -325,7 +322,7 @@ export default async function ComparisonPage({
           {comparison.faqs.map((faq, index) => (
             <div
               key={index}
-              className="rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition-shadow hover:shadow-md"
+              className="rounded-3xl border border-gray-200 bg-white p-7 shadow-sm hover:shadow-md"
             >
               <h3 className="mb-4 text-xl leading-tight font-semibold text-gray-900 md:text-2xl">
                 {faq.question}
@@ -374,7 +371,7 @@ export default async function ComparisonPage({
             <Link
               key={tutorial.slug}
               href={`/tutorials/${tutorial.slug}`}
-              className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg"
+              className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg"
             >
               <h3 className="group-hover:text-primary mb-3 text-lg font-semibold text-gray-900">
                 {tutorial.title}
@@ -401,7 +398,7 @@ export default async function ComparisonPage({
               <Link
                 key={related.slug}
                 href={`/comparisons/${related.slug}`}
-                className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg"
+                className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg"
               >
                 <h3 className="group-hover:text-primary mb-3 text-lg font-semibold text-gray-900">
                   {related.title}

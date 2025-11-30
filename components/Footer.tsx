@@ -198,7 +198,7 @@ function Footer() {
                 href="https://x.com/shipwithdenis"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray hover:text-foreground transition-colors"
+                className="text-gray hover:text-foreground"
               >
                 <svg
                   className="h-6 w-6"
@@ -214,7 +214,7 @@ function Footer() {
                 href="https://github.com/lite1pal"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray hover:text-foreground transition-colors"
+                className="text-gray hover:text-foreground"
               >
                 <svg
                   className="h-6 w-6"
@@ -234,7 +234,7 @@ function Footer() {
                 href="https://www.linkedin.com/in/denis-tarasenko-nextnative/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray hover:text-foreground transition-colors"
+                className="text-gray hover:text-foreground"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
