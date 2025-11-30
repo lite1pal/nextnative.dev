@@ -33,7 +33,7 @@ export default function ConvertWebsiteToAppPage() {
         </h1>
         <p className="mx-auto mb-8 max-w-2xl text-gray-600">
           Turn any Next.js or web app into real iOS & Android apps using
-          Capacitor — no rewrites, no native headaches. Try the preview below.
+          Capacitor. No rewrites, no native headaches. Try the preview below.
         </p>
         <form
           onSubmit={handlePreview}
@@ -156,16 +156,6 @@ export default function ConvertWebsiteToAppPage() {
         <div className="space-y-4">
           <details className="rounded-xl border border-gray-200 p-4">
             <summary className="cursor-pointer font-medium">
-              Will my site work if it blocks iframes?
-            </summary>
-            <p className="mt-2 text-gray-600">
-              Yes. App Store apps use a native WebView, not an iframe. Even if a
-              domain sets <code>X-Frame-Options</code>, it will still render in
-              the app shell.
-            </p>
-          </details>
-          <details className="rounded-xl border border-gray-200 p-4">
-            <summary className="cursor-pointer font-medium">
               Can I access native features like camera or push notifications?
             </summary>
             <p className="mt-2 text-gray-600">
@@ -189,14 +179,6 @@ export default function ConvertWebsiteToAppPage() {
               {
                 "@type": "FAQPage",
                 mainEntity: [
-                  {
-                    "@type": "Question",
-                    name: "Will my site work if it blocks iframes?",
-                    acceptedAnswer: {
-                      "@type": "Answer",
-                      text: "Yes. App Store apps use a native WebView, not an iframe. Even if a domain sets X-Frame-Options, it will still render in the app shell.",
-                    },
-                  },
                   {
                     "@type": "Question",
                     name: "Can I access native features like camera or push notifications?",
@@ -229,6 +211,8 @@ import LogoSymbol from "@/components/LogoSymbol";
 import { AvatarList } from "@/components/AvatarList";
 import RatingSvg from "@/components/RatingSvg";
 import IPhoneMockup from "@/components/note-taking/iphone-mockup";
+import CTA from "@/components/CTA";
+import CTABlogButton from "../blog/[slug]/CTABlogButton";
 
 function NextNativeUpsellCard() {
   return (
@@ -247,19 +231,16 @@ function NextNativeUpsellCard() {
         </h4>
 
         <p className="mt-2 max-w-md text-base text-gray-600">
-          You’re already <strong>85%</strong> there. NextNative handles the
-          final stretch: icons, splash screens, native APIs, store configs, and
-          production builds.
+          You’re already <strong>85%</strong> there.
+          <br />
+          <br />
+          With NextNative you're getting a production-ready Next.js + Capacitor
+          boilerplate that lets you ship real iOS & Android apps using your
+          existing web stack.
         </p>
 
-        <Link
-          href="/#pricing"
-          className="mx-auto mt-5 rounded-xl bg-green-600 px-4 py-3 text-center font-semibold text-white shadow-sm transition hover:scale-[1.01] hover:bg-green-700"
-        >
-          ⚡ Get NextNative now
-        </Link>
+        <CTABlogButton post={{ slug: "converter" }} />
 
-        {/* Social proof */}
         <div className="mt-5 flex items-center gap-2">
           <div className="relative">
             <AvatarList />
@@ -267,7 +248,7 @@ function NextNativeUpsellCard() {
           <div className="flex flex-col items-start">
             <RatingSvg />
             <div className="pl-2 text-sm font-medium text-gray-500">
-              Loved by <strong>35+</strong> teams & indie devs
+              Loved by <strong>45+</strong> teams/devs
             </div>
           </div>
         </div>
