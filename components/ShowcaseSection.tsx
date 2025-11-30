@@ -20,7 +20,7 @@ function ShowcaseSection() {
           <div>
             <Image
               src={"/showcase/lastinghabits.png"}
-              alt={"Note-taking app screenshot"}
+              alt={"Lasting Habits App Screenshot"}
               width={400}
               height={800}
               className="absolute inset-0 h-full w-full object-cover"
