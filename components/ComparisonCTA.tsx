@@ -23,10 +23,10 @@ export default function ComparisonCTA() {
   return (
     <section className="from-primary/5 to-primary/10 my-16 rounded-3xl bg-gradient-to-br p-8 md:my-32 md:p-12">
       <div className="mb-8 text-center">
-        <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
+        <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
           Not sure which framework to choose?
         </h2>
-        <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
+        <p className="mx-auto max-w-2xl text-lg text-gray-600">
           Compare Next.js with other mobile frameworks to make the right
           decision for your project.
         </p>
@@ -37,12 +37,12 @@ export default function ComparisonCTA() {
           <Link
             key={comparison.slug}
             href={`/comparisons/${comparison.slug}`}
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg dark:border-gray-700 dark:bg-gray-900"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
           >
-            <h3 className="group-hover:text-primary mb-2 font-semibold text-gray-900 dark:text-white">
+            <h3 className="group-hover:text-primary mb-2 font-semibold text-gray-900">
               {comparison.title}
             </h3>
-            <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">
+            <p className="mb-3 text-sm text-gray-600">
               {comparison.description}
             </p>
             <div className="text-primary flex items-center gap-1 text-sm font-medium">

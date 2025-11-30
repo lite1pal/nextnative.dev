@@ -83,16 +83,12 @@ export default async function UseCasePage({
   };
 
   const categoryColors = {
-    health: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
-    commerce: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-    social:
-      "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
-    education:
-      "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-    productivity:
-      "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
-    entertainment:
-      "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200",
+    health: "bg-red-100 text-red-800",
+    commerce: "bg-blue-100 text-blue-800",
+    social: "bg-purple-100 text-purple-800",
+    education: "bg-green-100 text-green-800",
+    productivity: "bg-yellow-100 text-yellow-800",
+    entertainment: "bg-pink-100 text-pink-800",
   };
 
   return (
@@ -102,7 +98,7 @@ export default async function UseCasePage({
       </Script>
 
       {/* Breadcrumbs */}
-      <nav className="mb-10 flex items-center gap-2 text-base text-gray-600 md:text-lg dark:text-gray-400">
+      <nav className="mb-10 flex items-center gap-2 text-base text-gray-600 md:text-lg">
         <Link href="/" className="hover:text-primary transition-colors">
           Home
         </Link>
@@ -114,7 +110,7 @@ export default async function UseCasePage({
           Use Cases
         </Link>
         <ChevronRight className="h-4 w-4" />
-        <span className="text-gray-900 dark:text-white">{useCase.title}</span>
+        <span className="text-gray-900">{useCase.title}</span>
       </nav>
 
       {/* Header */}
@@ -129,11 +125,11 @@ export default async function UseCasePage({
           </span>
         </div>
 
-        <h1 className="mb-8 text-5xl leading-tight font-bold text-gray-900 md:text-6xl lg:text-7xl dark:text-white">
+        <h1 className="mb-8 text-5xl leading-tight font-bold text-gray-900 md:text-6xl lg:text-7xl">
           {useCase.title}
         </h1>
 
-        <p className="text-xl leading-relaxed text-gray-600 md:text-2xl lg:text-3xl dark:text-gray-400">
+        <p className="text-xl leading-relaxed text-gray-600 md:text-2xl lg:text-3xl">
           {useCase.summary}
         </p>
       </header>
@@ -146,7 +142,7 @@ export default async function UseCasePage({
               <h3 className="mb-3 text-3xl font-semibold text-gray-900 md:text-4xl">
                 Get this template <HighlightedSpan>today</HighlightedSpan>
               </h3>
-              <p className="mb-4 text-lg leading-9 text-gray-700 md:text-xl dark:text-gray-300">
+              <p className="mb-4 text-lg leading-9 text-gray-700 md:text-xl ">
                 <span className="flex items-center gap-2">
                   <svg
                     width="24"
@@ -190,7 +186,7 @@ export default async function UseCasePage({
             <div className="flex flex-col items-center gap-10">
               <div className="flex flex-wrap items-center gap-4">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-medium text-gray-500 line-through dark:text-gray-400">
+                  <span className="text-2xl font-medium text-gray-500 line-through">
                     ${useCase.pricing.originalPrice}
                   </span>
                   <span className="text-primary text-5xl font-bold">
@@ -206,11 +202,11 @@ export default async function UseCasePage({
 
       {/* Problem & Solution */}
       <div className="mb-16 grid gap-8 md:grid-cols-2">
-        <section className="rounded-3xl bg-red-50 p-10 dark:bg-red-900/20">
+        <section className="rounded-3xl bg-red-50 p-10">
           <h2 className="mb-6 flex items-center gap-3 text-3xl font-semibold text-gray-900 md:text-4xl">
             😓 The Problem
           </h2>
-          <p className="text-lg leading-relaxed text-gray-700 md:text-xl dark:text-gray-300">
+          <p className="text-lg leading-relaxed text-gray-700 md:text-xl">
             {useCase.problemStatement}
           </p>
         </section>
@@ -238,7 +234,7 @@ export default async function UseCasePage({
           {useCase.targetAudience.map((audience, index) => (
             <li key={index} className="flex items-start gap-4">
               <CheckCircle2 className="mt-1 h-6 w-6 flex-shrink-0 text-blue-600" />
-              <span className="text-lg leading-relaxed text-gray-700 md:text-xl dark:text-gray-300">
+              <span className="text-lg leading-relaxed text-gray-700 md:text-xl">
                 {audience}
               </span>
             </li>
@@ -248,20 +244,20 @@ export default async function UseCasePage({
 
       {/* Key Features */}
       <section className="mb-16">
-        <h2 className="mb-10 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+        <h2 className="mb-10 text-4xl font-bold text-gray-900 md:text-5xl">
           🚀 Key Features
         </h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {useCase.keyFeatures.map((feature, index) => (
             <div
               key={index}
-              className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:shadow-lg dark:border-gray-700 dark:bg-gray-900"
+              className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:shadow-lg"
             >
               <div className="mb-4 text-5xl">{feature.icon}</div>
-              <h3 className="mb-3 text-2xl font-semibold text-gray-900 dark:text-white">
+              <h3 className="mb-3 text-2xl font-semibold text-gray-900">
                 {feature.title}
               </h3>
-              <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+              <p className="text-lg leading-relaxed text-gray-600">
                 {feature.description}
               </p>
             </div>
@@ -271,14 +267,14 @@ export default async function UseCasePage({
 
       {/* Core Capabilities */}
       <section className="bg-primary/5 mb-16 rounded-3xl p-10">
-        <h2 className="mb-8 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+        <h2 className="mb-8 text-4xl font-bold text-gray-900 md:text-5xl">
           💎 What's Included
         </h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {useCase.coreCapabilities.map((capability, index) => (
             <div key={index} className="flex items-start gap-4">
               <CheckCircle2 className="text-primary mt-1 h-6 w-6 flex-shrink-0" />
-              <span className="text-lg leading-relaxed text-gray-700 md:text-xl dark:text-gray-300">
+              <span className="text-lg leading-relaxed text-gray-700 md:text-xl">
                 {capability}
               </span>
             </div>
@@ -288,24 +284,24 @@ export default async function UseCasePage({
 
       {/* Code Examples */}
       {/* <section className="mb-16">
-        <h2 className="mb-10 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+        <h2 className="mb-10 text-4xl font-bold text-gray-900 md:text-5xl">
           💻 Code Examples
         </h2>
         <div className="space-y-12">
           {useCase.codeExamples.map((example, index) => (
             <div
               key={index}
-              className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm md:p-10 dark:border-gray-700 dark:bg-gray-900"
+              className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm md:p-10"
             >
               <div className="mb-6 flex items-start gap-5">
                 <div className="bg-primary flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full">
                   <Code2 className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="mb-2 text-2xl font-semibold text-gray-900 md:text-3xl dark:text-white">
+                  <h3 className="mb-2 text-2xl font-semibold text-gray-900 md:text-3xl">
                     {example.title}
                   </h3>
-                  <p className="text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-400">
+                  <p className="text-lg leading-relaxed text-gray-600 md:text-xl">
                     {example.description}
                   </p>
                 </div>
@@ -330,7 +326,7 @@ export default async function UseCasePage({
 
       {/* Metrics */}
       <section className="mb-16">
-        <h2 className="mb-10 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+        <h2 className="mb-10 text-4xl font-bold text-gray-900 md:text-5xl">
           📊 Performance Metrics
         </h2>
         <div className="grid gap-8 md:grid-cols-2">
@@ -342,10 +338,10 @@ export default async function UseCasePage({
               <div className="text-primary mb-3 text-4xl font-bold md:text-5xl">
                 {metric.value}
               </div>
-              <div className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+              <div className="mb-2 text-xl font-semibold text-gray-900">
                 {metric.label}
               </div>
-              <div className="text-base text-gray-600 dark:text-gray-400">
+              <div className="text-base text-gray-600">
                 {metric.description}
               </div>
             </div>
@@ -359,24 +355,24 @@ export default async function UseCasePage({
           <div className="rounded-3xl bg-white p-10">
             <div className="mb-4 flex items-center gap-4">
               <Clock className="h-10 w-10 text-green-600" />
-              <h3 className="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
+              <h3 className="text-3xl font-bold text-gray-900 md:text-4xl">
                 Save {useCase.timeSavings}
               </h3>
             </div>
-            <p className="text-lg leading-relaxed text-gray-700 md:text-xl dark:text-gray-300">
+            <p className="text-lg leading-relaxed text-gray-700 md:text-xl">
               Launch your app in weeks instead of months. Skip the learning
               curve and start with production-ready code.
             </p>
           </div>
 
-          <div className="rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-50 p-10 dark:from-blue-900/20 dark:to-indigo-900/20">
+          <div className="rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-50 p-10">
             <div className="mb-4 flex items-center gap-4">
               <DollarSign className="h-10 w-10 text-blue-600" />
-              <h3 className="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
+              <h3 className="text-3xl font-bold text-gray-900 md:text-4xl">
                 Save {useCase.costSavings}
               </h3>
             </div>
-            <p className="text-lg leading-relaxed text-gray-700 md:text-xl dark:text-gray-300">
+            <p className="text-lg leading-relaxed text-gray-700 md:text-xl">
               Avoid expensive agency fees and native development costs. Build
               once, deploy everywhere.
             </p>
@@ -387,11 +383,11 @@ export default async function UseCasePage({
       {/* CTA */}
       <section className="mb-16 rounded-3xl p-10 md:p-16">
         <div className="mb-12 text-center">
-          <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+          <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
             Ready to Build Your{" "}
             {useCase.title.replace("Build a ", "").replace("Build an ", "")}?
           </h2>
-          <p className="mx-auto mb-10 max-w-2xl text-xl text-gray-700 md:text-2xl dark:text-gray-300">
+          <p className="mx-auto mb-10 max-w-2xl text-xl text-gray-700 md:text-2xl">
             Choose your path to building production-ready mobile apps.
           </p>
         </div>
@@ -399,25 +395,25 @@ export default async function UseCasePage({
         {/* {useCase.forSale ? (
           <div className="grid gap-8 md:grid-cols-2">
             {useCase.forSale && (
-              <div className="border-primary rounded-2xl border-2 bg-white p-8 shadow-lg dark:bg-gray-900">
+              <div className="border-primary rounded-2xl border-2 bg-white p-8 shadow-lg">
                 <div className="mb-6 text-center">
-                  <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
+                  <h3 className="mb-2 text-2xl font-bold text-gray-900">
                     Buy This Template
                   </h3>
-                  <p className="text-base text-gray-600 dark:text-gray-400">
+                  <p className="text-base text-gray-600">
                     React code only • You handle Capacitor setup
                   </p>
                 </div>
                 <div className="mb-6 text-center">
                   <div className="mb-2 flex items-center justify-center gap-2">
-                    <span className="text-xl text-gray-500 line-through dark:text-gray-400">
+                    <span className="text-xl text-gray-500 line-through">
                       ${useCase.pricing.originalPrice}
                     </span>
                   </div>
                   <div className="text-primary text-5xl font-bold">
                     ${useCase.pricing.price}
                   </div>
-                  <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                  <p className="mt-2 text-sm text-gray-600">
                     One-time payment
                   </p>
                 </div>
@@ -427,23 +423,23 @@ export default async function UseCasePage({
               </div>
             )}
 
-            <div className="rounded-2xl border-2 border-gray-300 bg-white p-8 shadow-lg dark:border-gray-700 dark:bg-gray-900">
+            <div className="rounded-2xl border-2 border-gray-300 bg-white p-8 shadow-lg">
               <div className="mb-6 text-center">
-                <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
+                <h3 className="mb-2 text-2xl font-bold text-gray-900">
                   Get Full NextNative
                 </h3>
-                <p className="text-base text-gray-600 dark:text-gray-400">
+                <p className="text-base text-gray-600">
                   All templates + framework & features
                 </p>
               </div>
               <div className="mb-6 text-center">
                 <div className="mb-2">
-                  <span className="inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                  <span className="inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-700">
                     Best Value
                   </span>
                 </div>
 
-                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                <p className="mt-2 text-sm text-gray-600">
                   Includes all templates
                 </p>
               </div>
@@ -475,7 +471,7 @@ export default async function UseCasePage({
       {/* Related Tutorials */}
       {useCase.relatedTutorials.length > 0 && (
         <section className="mb-16">
-          <h2 className="mb-8 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+          <h2 className="mb-8 text-4xl font-bold text-gray-900 md:text-5xl">
             📚 Related Tutorials
           </h2>
           <div className="grid gap-8 md:grid-cols-3">
@@ -483,7 +479,7 @@ export default async function UseCasePage({
               <Link
                 key={tutorialSlug}
                 href={`/tutorials/${tutorialSlug}`}
-                className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-xl dark:border-gray-700 dark:bg-gray-900"
+                className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-xl"
               >
                 <div className="mb-3 flex items-center gap-2">
                   <BookOpen className="text-primary h-5 w-5" />
@@ -491,7 +487,7 @@ export default async function UseCasePage({
                     Tutorial
                   </span>
                 </div>
-                <h3 className="group-hover:text-primary text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="group-hover:text-primary text-lg font-semibold text-gray-900">
                   {tutorialSlug
                     .split("-")
                     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -506,7 +502,7 @@ export default async function UseCasePage({
       {/* Related Comparisons */}
       {useCase.relatedComparisons.length > 0 && (
         <section className="mb-16">
-          <h2 className="mb-8 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+          <h2 className="mb-8 text-4xl font-bold text-gray-900 md:text-5xl">
             ⚖️ Related Comparisons
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
@@ -514,7 +510,7 @@ export default async function UseCasePage({
               <Link
                 key={comparisonSlug}
                 href={`/comparisons/${comparisonSlug}`}
-                className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-xl dark:border-gray-700 dark:bg-gray-900"
+                className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-xl"
               >
                 <div className="mb-3 flex items-center gap-2">
                   <TrendingUp className="text-primary h-5 w-5" />
@@ -522,7 +518,7 @@ export default async function UseCasePage({
                     Comparison
                   </span>
                 </div>
-                <h3 className="group-hover:text-primary text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="group-hover:text-primary text-lg font-semibold text-gray-900">
                   {comparisonSlug
                     .split("-")
                     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))

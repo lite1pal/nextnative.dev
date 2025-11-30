@@ -47,10 +47,10 @@ export default function PwaManifestGenerator() {
 
   return (
     <div className="mx-auto max-w-2xl py-16">
-      <h1 className="mb-3 text-center text-4xl font-bold text-gray-900 dark:text-white">
+      <h1 className="mb-3 text-center text-4xl font-bold text-gray-900">
         PWA Manifest Generator ⚙️
       </h1>
-      <p className="mb-10 text-center text-gray-600 dark:text-gray-400">
+      <p className="mb-10 text-center text-gray-600">
         Generate a valid <code>manifest.json</code> for your Progressive Web
         App. No signup, no backend — just instant copy & download.
       </p>
@@ -62,7 +62,7 @@ export default function PwaManifestGenerator() {
             <input
               value={appName}
               onChange={(e) => setAppName(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
             />
           </label>
           <label className="flex flex-col">
@@ -70,7 +70,7 @@ export default function PwaManifestGenerator() {
             <input
               value={shortName}
               onChange={(e) => setShortName(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
             />
           </label>
           <label className="flex flex-col">
@@ -78,7 +78,7 @@ export default function PwaManifestGenerator() {
             <input
               value={startUrl}
               onChange={(e) => setStartUrl(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
             />
           </label>
           <label className="flex flex-col">
@@ -86,7 +86,7 @@ export default function PwaManifestGenerator() {
             <select
               value={display}
               onChange={(e) => setDisplay(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
             >
               <option>standalone</option>
               <option>fullscreen</option>
@@ -99,7 +99,7 @@ export default function PwaManifestGenerator() {
             <select
               value={orientation}
               onChange={(e) => setOrientation(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
             >
               <option>portrait</option>
               <option>landscape</option>
@@ -111,7 +111,7 @@ export default function PwaManifestGenerator() {
               type="color"
               value={themeColor}
               onChange={(e) => setThemeColor(e.target.value)}
-              className="h-10 w-full cursor-pointer rounded-xl border border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-800"
+              className="h-10 w-full cursor-pointer rounded-xl border border-gray-300 bg-white"
             />
           </label>
           <label className="flex flex-col">
@@ -120,19 +120,19 @@ export default function PwaManifestGenerator() {
               type="color"
               value={backgroundColor}
               onChange={(e) => setBackgroundColor(e.target.value)}
-              className="h-10 w-full cursor-pointer rounded-xl border border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-800"
+              className="h-10 w-full cursor-pointer rounded-xl border border-gray-300 bg-white"
             />
           </label>
         </div>
 
         <div className="mt-10">
-          <h2 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+          <h2 className="mb-2 text-xl font-semibold text-gray-900">
             Generated manifest.json
           </h2>
           <textarea
             readOnly
             value={manifestString}
-            className="h-80 w-full rounded-xl border border-gray-300 bg-gray-50 p-3 font-mono text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+            className="h-80 w-full rounded-xl border border-gray-300 bg-gray-50 p-3 font-mono text-sm text-gray-800"
           />
           <div className="mt-4 flex justify-center gap-4">
             <button
@@ -143,14 +143,14 @@ export default function PwaManifestGenerator() {
             </button>
             <button
               onClick={downloadManifest}
-              className="rounded-xl border border-green-600 px-4 py-2 font-semibold text-green-600 hover:bg-green-50 dark:hover:bg-gray-800"
+              className="rounded-xl border border-green-600 px-4 py-2 font-semibold text-green-600 hover:bg-green-50"
             >
               Download
             </button>
           </div>
         </div>
 
-        <p className="mt-10 text-center text-gray-500 dark:text-gray-400">
+        <p className="mt-10 text-center text-gray-500">
           Built with ❤️ by{" "}
           <a
             href="https://nextnative.dev"

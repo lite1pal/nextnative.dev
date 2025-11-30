@@ -331,7 +331,7 @@ export default function PlayStorePrivacyPolicyGenerator() {
         <h1 className="mb-3 bg-clip-text text-5xl font-bold">
           Play Store Privacy Policy Generator 🔐
         </h1>
-        <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-400">
+        <p className="mx-auto max-w-3xl text-lg text-gray-600">
           Generate a comprehensive, Play-Store-ready privacy policy for your
           Android app in seconds. Choose your app type, customize settings, and
           export in multiple formats.
@@ -342,8 +342,8 @@ export default function PlayStorePrivacyPolicyGenerator() {
           <span className="flex items-center gap-1">💾 Save & Load Config</span>
           <span className="flex items-center gap-1">⚡ Live Preview</span>
         </div>
-        <div className="mt-4 rounded-lg bg-yellow-50 p-3 dark:bg-yellow-900/20">
-          <p className="text-sm text-yellow-800 dark:text-yellow-200">
+        <div className="mt-4 rounded-lg bg-yellow-50 p-3">
+          <p className="text-sm text-yellow-800">
             <strong>⚠️ Legal Disclaimer:</strong> This is a template for
             convenience only and does not constitute legal advice. Consult with
             a lawyer and review Google Play policies, GDPR, CCPA, and your SDK
@@ -353,8 +353,8 @@ export default function PlayStorePrivacyPolicyGenerator() {
       </div>
 
       {/* App Type Presets */}
-      <section className="mb-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
-        <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+      <section className="mb-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h2 className="mb-4 text-lg font-semibold text-gray-900">
           🎯 Quick Start: Choose App Type
         </h2>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
@@ -362,13 +362,11 @@ export default function PlayStorePrivacyPolicyGenerator() {
             <button
               key={preset.id}
               onClick={() => applyPreset(preset)}
-              className="group flex flex-col items-center rounded-xl border-2 border-gray-200 bg-white p-4 text-center transition-all hover:border-purple-500 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-purple-400"
+              className="group flex flex-col items-center rounded-xl border-2 border-gray-200 bg-white p-4 text-center transition-all hover:border-purple-500 hover:shadow-md"
             >
               <span className="mb-2 text-3xl">{preset.icon}</span>
-              <span className="font-medium text-gray-900 dark:text-white">
-                {preset.name}
-              </span>
-              <span className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+              <span className="font-medium text-gray-900">{preset.name}</span>
+              <span className="mt-1 text-xs text-gray-500">
                 {preset.description}
               </span>
             </button>
@@ -377,8 +375,8 @@ export default function PlayStorePrivacyPolicyGenerator() {
       </section>
 
       {/* Form */}
-      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
-        <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h2 className="mb-4 text-lg font-semibold text-gray-900">
           1) App & Developer Information
         </h2>
 
@@ -387,28 +385,28 @@ export default function PlayStorePrivacyPolicyGenerator() {
             <input
               value={appName}
               onChange={(e) => setAppName(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
             />
           </Field>
           <Field label="Package name (applicationId)">
             <input
               value={packageName}
               onChange={(e) => setPackageName(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
             />
           </Field>
           <Field label="Developer / Publisher">
             <input
               value={developer}
               onChange={(e) => setDeveloper(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
             />
           </Field>
           <Field label="Company (legal entity)">
             <input
               value={company}
               onChange={(e) => setCompany(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
             />
           </Field>
           <Field label="Contact email">
@@ -416,35 +414,35 @@ export default function PlayStorePrivacyPolicyGenerator() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
             />
           </Field>
           <Field label="Website">
             <input
               value={website}
               onChange={(e) => setWebsite(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
             />
           </Field>
           <Field label="Business address">
             <input
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
             />
           </Field>
           <Field label="Country / Region">
             <input
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
             />
           </Field>
           <Field label="Data deletion request email (optional)">
             <input
               value={dataDeletionEmail}
               onChange={(e) => setDataDeletionEmail(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
             />
           </Field>
           <Field label="Effective date">
@@ -452,15 +450,15 @@ export default function PlayStorePrivacyPolicyGenerator() {
               type="date"
               value={effective}
               onChange={(e) => setEffective(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
             />
           </Field>
         </div>
 
-        <h2 className="mt-8 mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+        <h2 className="mt-8 mb-4 text-lg font-semibold text-gray-900">
           2) 📦 SDKs & Services Used
         </h2>
-        <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">
+        <p className="mb-3 text-sm text-gray-600">
           Select the third-party services and SDKs integrated in your app:
         </p>
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -478,7 +476,7 @@ export default function PlayStorePrivacyPolicyGenerator() {
           ].map(([k, label, desc]) => (
             <label
               key={k}
-              className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 p-3 transition-colors hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800/50 dark:hover:bg-gray-800"
+              className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 p-3 transition-colors hover:bg-gray-100"
             >
               <input
                 type="checkbox"
@@ -487,21 +485,17 @@ export default function PlayStorePrivacyPolicyGenerator() {
                 className="mt-1 h-4 w-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500"
               />
               <div className="flex-1">
-                <div className="font-medium text-gray-900 dark:text-white">
-                  {label}
-                </div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">
-                  {desc}
-                </div>
+                <div className="font-medium text-gray-900">{label}</div>
+                <div className="text-xs text-gray-500">{desc}</div>
               </div>
             </label>
           ))}
         </div>
 
-        <h2 className="mt-8 mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+        <h2 className="mt-8 mb-4 text-lg font-semibold text-gray-900">
           3) 🔓 Android Permissions
         </h2>
-        <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">
+        <p className="mb-3 text-sm text-gray-600">
           Select the device permissions your app requests:
         </p>
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -516,7 +510,7 @@ export default function PlayStorePrivacyPolicyGenerator() {
           ].map(([k, label, desc]) => (
             <label
               key={k}
-              className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 p-3 transition-colors hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800/50 dark:hover:bg-gray-800"
+              className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 p-3 transition-colors hover:bg-gray-100"
             >
               <input
                 type="checkbox"
@@ -525,30 +519,26 @@ export default function PlayStorePrivacyPolicyGenerator() {
                 className="mt-1 h-4 w-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500"
               />
               <div className="flex-1">
-                <div className="font-medium text-gray-900 dark:text-white">
-                  {label}
-                </div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">
-                  {desc}
-                </div>
+                <div className="font-medium text-gray-900">{label}</div>
+                <div className="text-xs text-gray-500">{desc}</div>
               </div>
             </label>
           ))}
         </div>
 
         {/* Save/Load Config */}
-        <div className="mt-8 border-t border-gray-200 pt-6 dark:border-gray-700">
-          <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-white">
+        <div className="mt-8 border-t border-gray-200 pt-6">
+          <h3 className="mb-3 text-sm font-semibold text-gray-900">
             💾 Configuration
           </h3>
           <div className="grid grid-cols-2 gap-3">
             <button
               onClick={saveConfig}
-              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium hover:bg-gray-50"
             >
               💾 Save Config
             </button>
-            <label className="cursor-pointer rounded-lg border border-gray-300 bg-white px-4 py-2 text-center text-sm font-medium hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <label className="cursor-pointer rounded-lg border border-gray-300 bg-white px-4 py-2 text-center text-sm font-medium hover:bg-gray-50">
               📂 Load Config
               <input
                 type="file"
@@ -562,14 +552,14 @@ export default function PlayStorePrivacyPolicyGenerator() {
       </section>
 
       {/* Output */}
-      <section className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
-        <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+      <section className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h2 className="mb-4 text-lg font-semibold text-gray-900">
           4) Generated Privacy Policy (Markdown)
         </h2>
         <textarea
           readOnly
           value={markdown}
-          className="h-[520px] w-full rounded-xl border border-gray-300 bg-white p-3 font-mono text-sm whitespace-pre-wrap text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+          className="h-[520px] w-full rounded-xl border border-gray-300 bg-white p-3 font-mono text-sm whitespace-pre-wrap text-gray-900"
         />
         <div className="mt-4 flex flex-wrap gap-2">
           <button

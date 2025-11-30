@@ -241,16 +241,16 @@ export default function AppNameGeneratorPage() {
 
   return (
     <div className="mx-auto max-w-6xl py-16">
-      <h1 className="mb-2 text-center text-4xl font-bold text-gray-900 dark:text-white">
+      <h1 className="mb-2 text-center text-4xl font-bold text-gray-900">
         App Name Generator 🔤
       </h1>
-      <p className="mb-8 text-center text-gray-600 dark:text-gray-400">
+      <p className="mb-8 text-center text-gray-600">
         Get brandable app name ideas in seconds. Choose your vibe, add required
         words, and grab domain suggestions. 100% free.
       </p>
 
       {/* Controls */}
-      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <label className="flex flex-col">
             <span className="mb-1 text-sm font-medium">
@@ -259,7 +259,7 @@ export default function AppNameGeneratorPage() {
             <input
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="rounded-xl border border-gray-300 bg-white p-2"
               placeholder="notes, tasks, reminders"
             />
           </label>
@@ -269,7 +269,7 @@ export default function AppNameGeneratorPage() {
             <select
               value={cat}
               onChange={(e) => setCat(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="rounded-xl border border-gray-300 bg-white p-2"
             >
               {categories.map((c) => (
                 <option key={c} value={c}>
@@ -284,7 +284,7 @@ export default function AppNameGeneratorPage() {
             <select
               value={vibe}
               onChange={(e) => setVibe(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="rounded-xl border border-gray-300 bg-white p-2"
             >
               {styles.map((s) => (
                 <option key={s} value={s}>
@@ -301,7 +301,7 @@ export default function AppNameGeneratorPage() {
             <input
               value={include}
               onChange={(e) => setInclude(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="rounded-xl border border-gray-300 bg-white p-2"
               placeholder="notes, fit, cash"
             />
           </label>
@@ -313,7 +313,7 @@ export default function AppNameGeneratorPage() {
             <input
               value={avoid}
               onChange={(e) => setAvoid(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="rounded-xl border border-gray-300 bg-white p-2"
               placeholder="ai, pro, plus"
             />
             <span className="mt-1 text-xs text-gray-500">
@@ -335,13 +335,13 @@ export default function AppNameGeneratorPage() {
             </button>
             <button
               onClick={copyList}
-              className="rounded-xl border border-green-600 px-4 py-2 font-semibold text-green-700 hover:bg-green-50 dark:hover:bg-gray-800"
+              className="rounded-xl border border-green-600 px-4 py-2 font-semibold text-green-700 hover:bg-green-50"
             >
               Copy list
             </button>
             <button
               onClick={exportCSV}
-              className="rounded-xl border border-gray-300 px-4 py-2 font-semibold text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
+              className="rounded-xl border border-gray-300 px-4 py-2 font-semibold text-gray-700 hover:bg-gray-50"
             >
               Download CSV
             </button>
@@ -354,23 +354,21 @@ export default function AppNameGeneratorPage() {
         {ideas.map((i, idx) => (
           <article
             key={idx}
-            className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-md dark:border-gray-700 dark:bg-gray-900"
+            className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-md"
           >
             <div className="flex items-start justify-between">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                {i.name}
-              </h3>
-              <span className="rounded-full bg-green-50 px-2 py-0.5 text-xs font-medium text-green-700 ring-1 ring-green-200 dark:bg-emerald-900/30 dark:text-emerald-200 dark:ring-emerald-800">
+              <h3 className="text-2xl font-semibold text-gray-900">{i.name}</h3>
+              <span className="rounded-full bg-green-50 px-2 py-0.5 text-xs font-medium text-green-700 ring-1 ring-green-200">
                 {i.style}
               </span>
             </div>
-            <p className="mt-1 text-gray-600 dark:text-gray-400">{i.tagline}</p>
+            <p className="mt-1 text-gray-600">{i.tagline}</p>
 
             <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
               {i.tlds.map((d) => (
                 <span
                   key={d}
-                  className="rounded-lg bg-gray-50 px-2 py-1 text-gray-700 ring-1 ring-gray-200 dark:bg-gray-800/60 dark:text-gray-300 dark:ring-gray-700"
+                  className="rounded-lg bg-gray-50 px-2 py-1 text-gray-700 ring-1 ring-gray-200"
                 >
                   {d}
                 </span>
@@ -380,7 +378,7 @@ export default function AppNameGeneratorPage() {
             <div className="mt-4 flex gap-2">
               <button
                 onClick={() => navigator.clipboard.writeText(i.name)}
-                className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
+                className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
               >
                 Copy name
               </button>
@@ -395,7 +393,7 @@ export default function AppNameGeneratorPage() {
         ))}
       </section>
 
-      <p className="mt-10 text-center text-gray-500 dark:text-gray-400">
+      <p className="mt-10 text-center text-gray-500">
         Found a winner?{" "}
         <Link
           href="/#pricing"

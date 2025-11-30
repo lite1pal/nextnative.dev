@@ -14,10 +14,10 @@ export default function AppRevenueCalculator() {
 
   return (
     <div className="mx-auto max-w-2xl py-16 text-center">
-      <h1 className="mb-3 text-4xl font-bold text-gray-900 dark:text-white">
+      <h1 className="mb-3 text-4xl font-bold text-gray-900">
         App Revenue Calculator 💰
       </h1>
-      <p className="mb-8 text-gray-600 dark:text-gray-400">
+      <p className="mb-8 text-gray-600">
         Estimate your profit after App Store and RevenueCat fees. <br />
         Simple, instant, and free.
       </p>
@@ -29,7 +29,7 @@ export default function AppRevenueCalculator() {
             type="number"
             value={price}
             onChange={(e) => setPrice(+e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
             step="0.01"
           />
         </label>
@@ -39,7 +39,7 @@ export default function AppRevenueCalculator() {
             type="number"
             value={users}
             onChange={(e) => setUsers(+e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
           />
         </label>
         <label className="flex flex-col text-left">
@@ -50,7 +50,7 @@ export default function AppRevenueCalculator() {
             type="number"
             value={appleCut}
             onChange={(e) => setAppleCut(+e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
           />
         </label>
         <label className="flex flex-col text-left">
@@ -59,14 +59,14 @@ export default function AppRevenueCalculator() {
             type="number"
             value={revenueCatCut}
             onChange={(e) => setRevenueCatCut(+e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
           />
         </label>
       </div>
 
-      <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+      <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
         <h2 className="mb-3 text-2xl font-semibold">Results</h2>
-        <div className="space-y-1 text-left text-gray-700 dark:text-gray-300">
+        <div className="space-y-1 text-left text-gray-700">
           <p>
             <strong>Gross Revenue:</strong> ${gross.toLocaleString()}
           </p>
@@ -78,14 +78,14 @@ export default function AppRevenueCalculator() {
             <strong>RevenueCat Fee ({revenueCatCut}%):</strong> –$
             {rcFee.toLocaleString()}
           </p>
-          <hr className="my-2 border-gray-300 dark:border-gray-700" />
-          <p className="text-xl font-bold text-green-600 dark:text-green-400">
+          <hr className="my-2 border-gray-300" />
+          <p className="text-xl font-bold text-green-600">
             Net Profit: ${net.toLocaleString()}
           </p>
         </div>
       </div>
 
-      <p className="mt-10 text-gray-500 dark:text-gray-400">
+      <p className="mt-10 text-gray-500">
         Built with ❤️ by{" "}
         <a
           href="https://nextnative.dev"

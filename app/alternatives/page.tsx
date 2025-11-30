@@ -104,11 +104,11 @@ export default function AlternativesPage() {
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         {/* Hero Section */}
         <div className="mb-20 text-center">
-          <h1 className="mb-8 text-5xl leading-tight font-bold text-gray-900 md:text-6xl lg:text-7xl dark:text-white">
+          <h1 className="mb-8 text-5xl leading-tight font-bold text-gray-900 md:text-6xl lg:text-7xl">
             Mobile Development{" "}
             <span className="text-primary">Alternatives</span>
           </h1>
-          <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600 md:text-2xl lg:text-3xl dark:text-gray-400">
+          <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600 md:text-2xl lg:text-3xl">
             Don't want to learn React Native, Flutter, or Dart? Build iOS and
             Android apps with JavaScript, React, and web tools you already know.
           </p>
@@ -116,17 +116,15 @@ export default function AlternativesPage() {
 
         {/* Quick Stats */}
         <div className="mb-20 grid gap-6 sm:grid-cols-2">
-          <div className="rounded-3xl border border-gray-200 bg-white p-8 text-center shadow-sm dark:border-gray-700 dark:bg-gray-900">
+          <div className="rounded-3xl border border-gray-200 bg-white p-8 text-center shadow-sm">
             <div className="text-primary mb-2 text-4xl font-bold">100%</div>
-            <div className="text-lg text-gray-600 dark:text-gray-400">
+            <div className="text-lg text-gray-600">
               Code sharing across web & mobile
             </div>
           </div>
-          <div className="rounded-3xl border border-gray-200 bg-white p-8 text-center shadow-sm dark:border-gray-700 dark:bg-gray-900">
+          <div className="rounded-3xl border border-gray-200 bg-white p-8 text-center shadow-sm">
             <div className="text-primary mb-2 text-4xl font-bold">3-5x</div>
-            <div className="text-lg text-gray-600 dark:text-gray-400">
-              Faster development time
-            </div>
+            <div className="text-lg text-gray-600">Faster development time</div>
           </div>
           {/* <div className="rounded-3xl border border-gray-200 bg-white p-8 text-center shadow-sm dark:border-gray-700 dark:bg-gray-900">
             <div className="text-primary mb-2 text-4xl font-bold">$149</div>
@@ -142,10 +140,10 @@ export default function AlternativesPage() {
             <section key={category.title}>
               {/* Category Header */}
               <div className="mb-10">
-                <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+                <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
                   {category.title}
                 </h2>
-                <p className="text-xl text-gray-600 md:text-2xl dark:text-gray-400">
+                <p className="text-xl text-gray-600 md:text-2xl">
                   {category.description}
                 </p>
               </div>
@@ -156,21 +154,21 @@ export default function AlternativesPage() {
                   <Link
                     key={alt.slug}
                     href={`/alternatives/${alt.slug}`}
-                    className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:shadow-xl dark:border-gray-700 dark:bg-gray-900"
+                    className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:shadow-xl"
                   >
                     <div className="mb-5 flex items-start justify-between">
                       <div>
-                        <div className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                        <div className="mb-2 text-sm text-gray-500">
                           Alternative to
                         </div>
-                        <h3 className="text-2xl leading-tight font-bold text-gray-900 md:text-3xl dark:text-white">
+                        <h3 className="text-2xl leading-tight font-bold text-gray-900 md:text-3xl">
                           {alt.alternativeName}
                         </h3>
                       </div>
                       <ChevronRight className="group-hover:text-primary mt-1 h-6 w-6 text-gray-400 transition-all group-hover:translate-x-1" />
                     </div>
 
-                    <p className="mb-5 line-clamp-3 text-base leading-relaxed text-gray-600 md:text-lg dark:text-gray-400">
+                    <p className="mb-5 line-clamp-3 text-base leading-relaxed text-gray-600 md:text-lg">
                       {alt.quickAnswer}
                     </p>
 
@@ -187,7 +185,7 @@ export default function AlternativesPage() {
                     </div>
 
                     {/* Read More Link */}
-                    <div className="group-hover:text-primary flex items-center gap-2 text-base font-medium text-gray-900 transition-colors dark:text-white">
+                    <div className="group-hover:text-primary flex items-center gap-2 text-base font-medium text-gray-900 transition-colors">
                       Learn More
                       <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </div>
@@ -199,8 +197,8 @@ export default function AlternativesPage() {
         </div>
 
         {/* Why Next.js + Capacitor */}
-        <div className="mt-20 rounded-3xl border border-gray-200 bg-white p-12 shadow-sm dark:border-gray-700 dark:bg-gray-900">
-          <h2 className="mb-10 text-center text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
+        <div className="mt-20 rounded-3xl border border-gray-200 bg-white p-12 shadow-sm">
+          <h2 className="mb-10 text-center text-3xl font-bold text-gray-900 md:text-4xl">
             Why Choose Next.js + Capacitor?
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
@@ -208,7 +206,7 @@ export default function AlternativesPage() {
               <h3 className="text-primary mb-3 text-xl font-semibold md:text-2xl">
                 Use skills you already have
               </h3>
-              <p className="text-base leading-relaxed text-gray-600 md:text-lg dark:text-gray-400">
+              <p className="text-base leading-relaxed text-gray-600 md:text-lg">
                 No need to learn React Native, Flutter, or Dart. Build mobile
                 apps with JavaScript, React, and HTML/CSS—the same tools you use
                 for web development.
@@ -218,7 +216,7 @@ export default function AlternativesPage() {
               <h3 className="text-primary mb-3 text-xl font-semibold md:text-2xl">
                 Share 100% of your code
               </h3>
-              <p className="text-base leading-relaxed text-gray-600 md:text-lg dark:text-gray-400">
+              <p className="text-base leading-relaxed text-gray-600 md:text-lg">
                 Build once, deploy everywhere. Your Next.js web app becomes your
                 iOS and Android app. No separate codebases, no platform-specific
                 code.
@@ -228,7 +226,7 @@ export default function AlternativesPage() {
               <h3 className="text-primary mb-3 text-xl font-semibold md:text-2xl">
                 Ship 3-5x faster
               </h3>
-              <p className="text-base leading-relaxed text-gray-600 md:text-lg dark:text-gray-400">
+              <p className="text-base leading-relaxed text-gray-600 md:text-lg">
                 Instant hot reload, browser DevTools, and familiar web
                 development workflow. Build features faster than with native
                 frameworks.
@@ -238,7 +236,7 @@ export default function AlternativesPage() {
               <h3 className="text-primary mb-3 text-xl font-semibold md:text-2xl">
                 Lower development costs
               </h3>
-              <p className="text-base leading-relaxed text-gray-600 md:text-lg dark:text-gray-400">
+              <p className="text-base leading-relaxed text-gray-600 md:text-lg">
                 Hire web developers instead of specialized mobile developers.
                 One team builds for web, iOS, and Android with shared code.
               </p>

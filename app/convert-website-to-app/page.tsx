@@ -28,10 +28,10 @@ export default function ConvertWebsiteToAppPage() {
     <div className="mx-auto max-w-6xl px-6 py-16">
       {/* HERO */}
       <section className="flex flex-col gap-6 text-center">
-        <h1 className="mb-3 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+        <h1 className="mb-3 text-4xl font-bold text-gray-900 md:text-5xl">
           Convert Your Website into a Mobile App
         </h1>
-        <p className="mx-auto mb-8 max-w-2xl text-gray-600 dark:text-gray-400">
+        <p className="mx-auto mb-8 max-w-2xl text-gray-600">
           Turn any Next.js or web app into real iOS & Android apps using
           Capacitor — no rewrites, no native headaches. Try the preview below.
         </p>
@@ -43,7 +43,7 @@ export default function ConvertWebsiteToAppPage() {
             value={urlInput}
             onChange={(e) => setUrlInput(e.target.value)}
             placeholder="https://your-website.com"
-            className="w-full rounded-xl border border-gray-300 bg-white p-3 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            className="w-full rounded-xl border border-gray-300 bg-white p-3 text-gray-900"
             aria-label="Website URL"
           />
           <button
@@ -74,13 +74,13 @@ export default function ConvertWebsiteToAppPage() {
             </p>
           </IPhoneMockup>
 
-          {/* <div className="mt-6 rounded-xl bg-gradient-to-br from-green-50 via-green-100/60 to-transparent p-5 dark:from-emerald-900/20 dark:via-emerald-800/10">
-            <h4 className="mb-2 text-lg font-semibold text-green-800 dark:text-emerald-300">
+          {/* <div className="mt-6 rounded-xl bg-gradient-to-br from-green-50 via-green-100/60 to-transparent p-5">
+            <h4 className="mb-2 text-lg font-semibold text-green-800">
               🚀 You’re 1 step away from launching a real mobile app
             </h4>
-            <p className="mb-4 text-sm text-gray-700 dark:text-gray-400">
+            <p className="mb-4 text-sm text-gray-700">
               Your site already meets 80% of App Store requirements. <br />
-              <span className="font-medium text-green-700 dark:text-emerald-400">
+              <span className="font-medium text-green-700">
                 NextNative
               </span>{" "}
               handles the remaining 20% — icons, splash screens, native APIs,
@@ -90,7 +90,7 @@ export default function ConvertWebsiteToAppPage() {
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <Link
                 href="/#pricing"
-                className="rounded-xl border border-green-600 bg-white px-4 py-3 text-center font-semibold text-green-700 shadow-sm transition hover:scale-[1.01] hover:bg-green-50 dark:bg-transparent dark:hover:bg-gray-800"
+                className="rounded-xl border border-green-600 bg-white px-4 py-3 text-center font-semibold text-green-700 shadow-sm transition hover:scale-[1.01] hover:bg-green-50"
               >
                 💚 Get NextNative Kit
               </Link>
@@ -102,7 +102,7 @@ export default function ConvertWebsiteToAppPage() {
               </Link>
             </div>
 
-            <div className="mt-5 flex items-center justify-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+            <div className="mt-5 flex items-center justify-center gap-3 text-xs text-gray-500">
               <span>Trusted by indie devs & startups</span>
               <span className="h-1 w-1 rounded-full bg-gray-400"></span>
               <span>Lifetime license • No subscriptions</span>
@@ -115,7 +115,7 @@ export default function ConvertWebsiteToAppPage() {
 
       {/* HOW IT WORKS */}
       <section className="mx-auto mt-16 max-w-5xl">
-        <h2 className="mb-4 text-3xl font-semibold text-gray-900 dark:text-white">
+        <h2 className="mb-4 text-3xl font-semibold text-gray-900">
           How it works
         </h2>
         <ol className="grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -135,14 +135,14 @@ export default function ConvertWebsiteToAppPage() {
           ].map(([t, d]) => (
             <li
               key={t}
-              className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900"
+              className="rounded-2xl border border-gray-200 bg-white p-5"
             >
               <h3 className="mb-1 font-semibold">{t}</h3>
-              <p className="text-gray-600 dark:text-gray-400">{d}</p>
+              <p className="text-gray-600">{d}</p>
             </li>
           ))}
         </ol>
-        <p className="mt-6 text-gray-600 dark:text-gray-400">
+        <p className="mt-6 text-gray-600">
           NextNative bundles all configs and store requirements so your web app
           passes review on the first try. Need native APIs? Enable push
           notifications, camera, file access, in-app purchases and more, all via
@@ -152,25 +152,23 @@ export default function ConvertWebsiteToAppPage() {
 
       {/* FAQ (visible content) */}
       <section className="mx-auto mt-16 max-w-5xl">
-        <h2 className="mb-4 text-3xl font-semibold text-gray-900 dark:text-white">
-          FAQ
-        </h2>
+        <h2 className="mb-4 text-3xl font-semibold text-gray-900">FAQ</h2>
         <div className="space-y-4">
-          <details className="rounded-xl border border-gray-200 p-4 dark:border-gray-700">
+          <details className="rounded-xl border border-gray-200 p-4">
             <summary className="cursor-pointer font-medium">
               Will my site work if it blocks iframes?
             </summary>
-            <p className="mt-2 text-gray-600 dark:text-gray-400">
+            <p className="mt-2 text-gray-600">
               Yes. App Store apps use a native WebView, not an iframe. Even if a
               domain sets <code>X-Frame-Options</code>, it will still render in
               the app shell.
             </p>
           </details>
-          <details className="rounded-xl border border-gray-200 p-4 dark:border-gray-700">
+          <details className="rounded-xl border border-gray-200 p-4">
             <summary className="cursor-pointer font-medium">
               Can I access native features like camera or push notifications?
             </summary>
-            <p className="mt-2 text-gray-600 dark:text-gray-400">
+            <p className="mt-2 text-gray-600">
               Absolutely. Capacitor plugins expose camera, files, push,
               biometrics, and more. NextNative includes prewired examples.
             </p>
@@ -236,19 +234,19 @@ function NextNativeUpsellCard() {
   return (
     <div
       style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-      className="border-primary h-fit rounded-xl border-2 bg-white p-6 dark:bg-gray-900"
+      className="border-primary h-fit rounded-xl border-2 bg-white p-6"
     >
       <div className="flex flex-col items-center gap-1.5 text-center">
         <div className="flex items-center gap-3">
           <LogoSymbol />
         </div>
 
-        <h4 className="mt-6 text-2xl font-semibold text-gray-900 dark:text-white">
+        <h4 className="mt-6 text-2xl font-semibold text-gray-900">
           Turn this preview into a real app
           <br /> with <HighlightedSpan>NextNative</HighlightedSpan>
         </h4>
 
-        <p className="mt-2 max-w-md text-base text-gray-600 dark:text-gray-400">
+        <p className="mt-2 max-w-md text-base text-gray-600">
           You’re already <strong>85%</strong> there. NextNative handles the
           final stretch: icons, splash screens, native APIs, store configs, and
           production builds.
@@ -268,7 +266,7 @@ function NextNativeUpsellCard() {
           </div>
           <div className="flex flex-col items-start">
             <RatingSvg />
-            <div className="pl-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+            <div className="pl-2 text-sm font-medium text-gray-500">
               Loved by <strong>35+</strong> teams & indie devs
             </div>
           </div>

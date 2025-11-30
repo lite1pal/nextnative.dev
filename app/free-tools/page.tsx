@@ -133,7 +133,7 @@ function Page() {
           <h1 className="mb-4 text-4xl font-semibold text-gray-900 md:text-[74px] md:leading-[91px]">
             Free tools for <HighlightedSpan>mobile development</HighlightedSpan>
           </h1>
-          <p className="mx-auto mb-10 max-w-3xl text-xl text-gray-600 dark:text-gray-400">
+          <p className="mx-auto mb-10 max-w-3xl text-xl text-gray-600">
             A growing collection of free tools to help you build, test, and
             publish mobile apps faster.
           </p>
@@ -145,15 +145,13 @@ function Page() {
             <Link
               key={tool.title}
               href={tool.link}
-              className="group rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100 transition hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
+              className="group rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100 transition hover:shadow-md"
               aria-label={`${tool.title} – ${tool.description}`}
             >
-              <h3 className="group-hover:text-primary mb-2 text-2xl font-semibold text-gray-900 dark:text-white">
+              <h3 className="group-hover:text-primary mb-2 text-2xl font-semibold text-gray-900">
                 {tool.title}
               </h3>
-              <p className="text-lg text-gray-600 dark:text-gray-400">
-                {tool.description}
-              </p>
+              <p className="text-lg text-gray-600">{tool.description}</p>
 
               <span className="text-primary mt-10 inline-flex items-center gap-1 text-xl font-[500]">
                 Use tool{" "}
@@ -167,8 +165,8 @@ function Page() {
         </div>
 
         {/* Keyword-rich supportive copy */}
-        <section className="mx-auto mt-14 max-w-3xl text-center text-base leading-7 text-gray-600 dark:text-gray-400">
-          <h2 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+        <section className="mx-auto mt-14 max-w-3xl text-center text-base leading-7 text-gray-600">
+          <h2 className="mb-2 text-xl font-semibold text-gray-900">
             Free app developer tools for iOS, Android & Web
           </h2>
           <p>

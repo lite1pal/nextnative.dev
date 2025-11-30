@@ -86,7 +86,7 @@ export function AvatarList({
               sizes="(max-width: 1279px) 50vw, 25vw"
             />
           </div>
-          <div className="absolute bottom-full left-1/2 -translate-x-1/2 translate-y-2 transform rounded bg-slate-900 p-2 whitespace-nowrap text-white opacity-0 xl:group-hover:-translate-y-2 xl:group-hover:opacity-100 dark:bg-slate-100 dark:text-slate-900">
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 translate-y-2 transform rounded bg-slate-900 p-2 whitespace-nowrap text-white opacity-0 xl:group-hover:-translate-y-2 xl:group-hover:opacity-100">
             <div className="text-sm font-semibold">{item.name}</div>
             <div className="text-sm">{item.position}</div>
           </div>

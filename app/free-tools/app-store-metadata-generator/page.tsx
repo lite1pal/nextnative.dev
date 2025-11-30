@@ -187,10 +187,10 @@ export default function AppStoreMetadataGenerator() {
 
   return (
     <div className="mx-auto max-w-5xl py-16">
-      <h1 className="mb-2 text-center text-4xl font-bold text-gray-900 dark:text-white">
+      <h1 className="mb-2 text-center text-4xl font-bold text-gray-900">
         App Store Metadata Generator 📝
       </h1>
-      <p className="mb-10 text-center text-gray-600 dark:text-gray-400">
+      <p className="mb-10 text-center text-gray-600">
         Create iOS & Google Play titles, subtitles, keywords, and descriptions
         from a few fields. Copy or download JSON.
       </p>
@@ -202,7 +202,7 @@ export default function AppStoreMetadataGenerator() {
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
           />
           <span className="mt-1 text-xs text-gray-400">
             Max 30 chars for iOS title
@@ -214,7 +214,7 @@ export default function AppStoreMetadataGenerator() {
           <input
             value={oneLiner}
             onChange={(e) => setOneLiner(e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
           />
         </label>
 
@@ -225,7 +225,7 @@ export default function AppStoreMetadataGenerator() {
           <input
             value={features}
             onChange={(e) => setFeatures(e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
           />
         </label>
 
@@ -234,7 +234,7 @@ export default function AppStoreMetadataGenerator() {
           <input
             value={audience}
             onChange={(e) => setAudience(e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
           />
         </label>
 
@@ -245,7 +245,7 @@ export default function AppStoreMetadataGenerator() {
           <input
             value={keywords}
             onChange={(e) => setKeywords(e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
           />
           <span className="mt-1 text-xs text-gray-400">
             We’ll format a 100-char iOS keywords CSV
@@ -257,7 +257,7 @@ export default function AppStoreMetadataGenerator() {
           <select
             value={tone}
             onChange={(e) => setTone(e.target.value as any)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
           >
             <option value="friendly">Friendly</option>
             <option value="professional">Professional</option>
@@ -279,14 +279,14 @@ export default function AppStoreMetadataGenerator() {
             <textarea
               readOnly
               value={out.iosKeywords}
-              className="w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
             />
           </Field>
           <Field label="Full description (≤4000)">
             <textarea
               readOnly
               value={out.iosDescription}
-              className="h-56 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="h-56 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
             />
           </Field>
         </Card>
@@ -296,28 +296,28 @@ export default function AppStoreMetadataGenerator() {
             <textarea
               readOnly
               value={out.gpShort}
-              className="w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
             />
           </Field>
           <Field label="Full description (≤4000)">
             <textarea
               readOnly
               value={out.gpLong}
-              className="h-56 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="h-56 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
             />
           </Field>
         </Card>
 
         <Card title="Suggestions">
           <Field label="Suggested categories">
-            <ul className="list-disc pl-5 text-sm text-gray-700 dark:text-gray-300">
+            <ul className="list-disc pl-5 text-sm text-gray-700">
               {out.categories.map((c) => (
                 <li key={c}>{c}</li>
               ))}
             </ul>
           </Field>
           <Field label="Screenshot checklist">
-            <ul className="list-disc pl-5 text-sm text-gray-700 dark:text-gray-300">
+            <ul className="list-disc pl-5 text-sm text-gray-700">
               {out.checklist.map((c) => (
                 <li key={c}>{c}</li>
               ))}
@@ -329,7 +329,7 @@ export default function AppStoreMetadataGenerator() {
           <textarea
             readOnly
             value={bundle}
-            className="h-48 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            className="h-48 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
           />
           <div className="mt-3 flex justify-center gap-3">
             <button
@@ -348,7 +348,7 @@ export default function AppStoreMetadataGenerator() {
         </Card>
       </div>
 
-      <p className="mt-10 text-center text-gray-500 dark:text-gray-400">
+      <p className="mt-10 text-center text-gray-500">
         Built with ❤️ by{" "}
         <a
           href="https://nextnative.dev"
@@ -371,10 +371,8 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-900">
-      <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
-        {title}
-      </h3>
+    <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+      <h3 className="mb-3 text-xl font-semibold text-gray-900">{title}</h3>
       {children}
     </section>
   );
@@ -388,9 +386,7 @@ function Field({
 }) {
   return (
     <div className="mb-4">
-      <div className="mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">
-        {label}
-      </div>
+      <div className="mb-1 text-sm font-medium text-gray-700">{label}</div>
       {children}
     </div>
   );

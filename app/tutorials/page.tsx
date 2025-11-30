@@ -56,10 +56,9 @@ const categories = [
 ];
 
 const difficultyColor = {
-  beginner: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-  intermediate:
-    "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
-  advanced: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
+  beginner: "bg-green-100 text-green-800",
+  intermediate: "bg-yellow-100 text-yellow-800",
+  advanced: "bg-red-100 text-red-800",
 };
 
 export default function TutorialsPage() {
@@ -67,10 +66,10 @@ export default function TutorialsPage() {
     <div className="mx-auto max-w-7xl py-16">
       {/* Header */}
       <div className="mb-20 text-center">
-        <h1 className="mb-8 text-5xl leading-tight font-bold text-gray-900 md:text-6xl lg:text-7xl dark:text-white">
+        <h1 className="mb-8 text-5xl leading-tight font-bold text-gray-900 md:text-6xl lg:text-7xl">
           NextNative <span className="text-primary">Tutorials</span>
         </h1>
-        <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600 md:text-2xl lg:text-3xl dark:text-gray-400">
+        <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600 md:text-2xl lg:text-3xl">
           Learn how to build, optimize, and deploy mobile apps using Next.js and
           Capacitor. Step-by-step guides for every skill level.
         </p>
@@ -91,11 +90,11 @@ export default function TutorialsPage() {
               <div className="mb-10">
                 <div className="mb-4 flex items-center gap-4">
                   <span className="text-5xl">{category.icon}</span>
-                  <h2 className="text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+                  <h2 className="text-4xl font-bold text-gray-900 md:text-5xl">
                     {category.name}
                   </h2>
                 </div>
-                <p className="text-xl text-gray-600 md:text-2xl dark:text-gray-400">
+                <p className="text-xl text-gray-600 md:text-2xl">
                   {category.description}
                 </p>
               </div>
@@ -106,7 +105,7 @@ export default function TutorialsPage() {
                   <Link
                     key={tutorial.slug}
                     href={`/tutorials/${tutorial.slug}`}
-                    className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:shadow-xl dark:border-gray-700 dark:bg-gray-900"
+                    className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:shadow-xl"
                   >
                     {/* Tutorial Meta */}
                     <div className="mb-5 flex flex-wrap items-center gap-3">
@@ -118,25 +117,25 @@ export default function TutorialsPage() {
                         {tutorial.difficulty.charAt(0).toUpperCase() +
                           tutorial.difficulty.slice(1)}
                       </span>
-                      <span className="flex items-center gap-2 text-base text-gray-600 dark:text-gray-400">
+                      <span className="flex items-center gap-2 text-base text-gray-600">
                         <Clock className="h-5 w-5" />
                         {tutorial.timeToComplete}
                       </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="group-hover:text-primary mb-4 text-xl leading-tight font-semibold text-gray-900 md:text-2xl dark:text-white">
+                    <h3 className="group-hover:text-primary mb-4 text-xl leading-tight font-semibold text-gray-900 md:text-2xl">
                       {tutorial.title}
                     </h3>
 
                     {/* Summary */}
-                    <p className="mb-5 line-clamp-3 text-base leading-relaxed text-gray-600 md:text-lg dark:text-gray-400">
+                    <p className="mb-5 line-clamp-3 text-base leading-relaxed text-gray-600 md:text-lg">
                       {tutorial.summary}
                     </p>
 
                     {/* What You'll Learn */}
                     <div className="mb-5 space-y-3">
-                      <p className="text-base font-medium text-gray-900 dark:text-gray-300">
+                      <p className="text-base font-medium text-gray-900">
                         What you'll learn:
                       </p>
                       <ul className="space-y-2">
@@ -145,7 +144,7 @@ export default function TutorialsPage() {
                           .map((item, index) => (
                             <li
                               key={index}
-                              className="flex items-start gap-2 text-sm text-gray-600 md:text-base dark:text-gray-400"
+                              className="flex items-start gap-2 text-sm text-gray-600 md:text-base"
                             >
                               <ChevronRight className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
                               <span className="line-clamp-1">{item}</span>
@@ -155,13 +154,13 @@ export default function TutorialsPage() {
                     </div>
 
                     {/* Steps Count */}
-                    <div className="flex items-center gap-2 text-base text-gray-500 dark:text-gray-500">
+                    <div className="flex items-center gap-2 text-base text-gray-500">
                       <BookOpen className="h-5 w-5" />
                       {tutorial.steps.length} steps
                     </div>
 
                     {/* Read More Link */}
-                    <div className="group-hover:text-primary mt-5 flex items-center gap-2 text-base font-medium text-gray-900 transition-colors dark:text-white">
+                    <div className="group-hover:text-primary mt-5 flex items-center gap-2 text-base font-medium text-gray-900 transition-colors">
                       Start Tutorial
                       <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </div>

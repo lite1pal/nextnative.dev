@@ -38,8 +38,8 @@ function ErrorMessage({ message }: ErrorMessageProps) {
       aria-live="polite"
       className={`mt-4 rounded-lg border px-5 py-4 text-left text-base ${
         isWarning
-          ? "border-yellow-200 bg-yellow-50 text-yellow-900 dark:border-yellow-900/60 dark:bg-yellow-950/40 dark:text-yellow-100"
-          : "border-red-200 bg-red-50 text-red-900 dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-100"
+          ? "border-yellow-200 bg-yellow-50 text-yellow-900"
+          : "border-red-200 bg-red-50 text-red-900"
       }`}
     >
       {message}
@@ -88,9 +88,9 @@ function SuccessShareCard({ visible }: SuccessShareCardProps) {
       <div
         role="status"
         aria-live="polite"
-        className="rounded-xl border border-emerald-200 bg-emerald-50 p-6 text-left shadow-sm dark:border-emerald-900/60 dark:bg-emerald-950/40"
+        className="rounded-xl border border-emerald-200 bg-emerald-50 p-6 text-left shadow-sm"
       >
-        <p className="mb-4 text-lg font-semibold text-emerald-900 dark:text-emerald-100">
+        <p className="mb-4 text-lg font-semibold text-emerald-900">
           Assets generated 🎉
         </p>
         <div className="flex flex-wrap gap-3">
@@ -128,7 +128,7 @@ function DemoImageButton({ onUseDemoImage }: DemoImageButtonProps) {
       type="button"
       onClick={onUseDemoImage}
       aria-label="Try the demo image to see how the generator works"
-      className="ml-4 inline-flex cursor-pointer items-center text-base font-medium text-gray-600 underline-offset-4 hover:text-gray-900 hover:underline focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:text-gray-300 dark:hover:text-white"
+      className="ml-4 inline-flex cursor-pointer items-center text-base font-medium text-gray-600 underline-offset-4 hover:text-gray-900 hover:underline focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
     >
       Try demo image
     </button>
@@ -156,7 +156,7 @@ function ImageUpload({
     <div className="mb-8">
       <label
         htmlFor="image-upload"
-        className="mb-3 block text-base font-semibold text-gray-900 dark:text-gray-100"
+        className="mb-3 block text-base font-semibold text-gray-900"
       >
         Upload Your App Image
       </label>
@@ -166,8 +166,8 @@ function ImageUpload({
         aria-label="Upload image area. Click to browse or drag and drop an image file"
         className={`cursor-pointer rounded-lg border-2 border-dashed p-10 text-center transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none ${
           isDragActive
-            ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
-            : "border-gray-300 hover:border-gray-400 dark:border-gray-600 dark:hover:border-gray-500"
+            ? "border-blue-500 bg-blue-50"
+            : "border-gray-300 hover:border-gray-400"
         }`}
         onDragOver={onDragOver}
         onDragLeave={onDragLeave}
@@ -184,13 +184,13 @@ function ImageUpload({
           className="mx-auto mb-5 h-14 w-14 text-gray-400"
           aria-hidden="true"
         />
-        <p className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-100">
+        <p className="mb-3 text-xl font-semibold text-gray-900">
           Drop your image here or click to browse
         </p>
-        <p className="text-base text-gray-600 dark:text-gray-400">
+        <p className="text-base text-gray-600">
           Supports PNG, JPG, JPEG files up to 10MB
         </p>
-        <p className="mt-3 text-sm text-gray-500 dark:text-gray-500">
+        <p className="mt-3 text-sm text-gray-500">
           💡 Tip: Use at least 1024×1024px for best results
         </p>
         <input
@@ -238,7 +238,7 @@ function OptionsForm({
 
   return (
     <div className="mb-8 space-y-6">
-      <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-900 dark:text-gray-100">
+      <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-900">
         <Settings className="h-6 w-6" aria-hidden="true" />
         Generation Options
       </h3>
@@ -247,7 +247,7 @@ function OptionsForm({
         <div>
           <label
             htmlFor="app-name"
-            className="mb-2 block text-base font-semibold text-gray-900 dark:text-gray-100"
+            className="mb-2 block text-base font-semibold text-gray-900"
           >
             App Name
           </label>
@@ -260,10 +260,7 @@ function OptionsForm({
             className="w-full text-base"
             aria-describedby="app-name-hint"
           />
-          <p
-            id="app-name-hint"
-            className="mt-2 text-sm text-gray-600 dark:text-gray-400"
-          >
+          <p id="app-name-hint" className="mt-2 text-sm text-gray-600">
             Will appear on splash screens
           </p>
         </div>
@@ -271,7 +268,7 @@ function OptionsForm({
         <div>
           <label
             htmlFor="background-color"
-            className="mb-2 block text-base font-semibold text-gray-900 dark:text-gray-100"
+            className="mb-2 block text-base font-semibold text-gray-900"
           >
             Background Color
           </label>
@@ -281,7 +278,7 @@ function OptionsForm({
               type="color"
               value={backgroundColor}
               onChange={(e) => onBackgroundColorChange(e.target.value)}
-              className="h-12 w-14 cursor-pointer rounded-md border-2 border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-600"
+              className="h-12 w-14 cursor-pointer rounded-md border-2 border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
               aria-label="Select background color using color picker"
             />
             <Input
@@ -311,22 +308,19 @@ function OptionsForm({
                 <div
                   className={`h-8 w-8 rounded-md border-2 transition-all ${
                     backgroundColor.toLowerCase() === preset.value.toLowerCase()
-                      ? "border-blue-500 ring-2 ring-blue-200 dark:ring-blue-800"
-                      : "border-gray-300 hover:border-gray-400 dark:border-gray-600"
+                      ? "border-blue-500 ring-2 ring-blue-200"
+                      : "border-gray-300 hover:border-gray-400"
                   }`}
                   style={{ backgroundColor: preset.value }}
                   aria-hidden="true"
                 />
-                <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 rounded bg-gray-900 px-2 py-1 text-xs whitespace-nowrap text-white opacity-0 transition-opacity group-hover:opacity-100 dark:bg-gray-100 dark:text-gray-900">
+                <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 rounded bg-gray-900 px-2 py-1 text-xs whitespace-nowrap text-white opacity-0 transition-opacity group-hover:opacity-100">
                   {preset.name}
                 </span>
               </button>
             ))}
           </div>
-          <p
-            id="color-hint"
-            className="mt-4 text-sm text-gray-600 dark:text-gray-400"
-          >
+          <p id="color-hint" className="mt-4 text-sm text-gray-600">
             Background color for splash screens
           </p>
         </div>
@@ -342,14 +336,14 @@ function OptionsForm({
             className="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             aria-describedby="rounded-corners-hint"
           />
-          <span className="flex items-center gap-2 text-base font-medium text-gray-900 dark:text-gray-100">
+          <span className="flex items-center gap-2 text-base font-medium text-gray-900">
             <CornerDownRight className="h-5 w-5" aria-hidden="true" />
             Rounded corners for icons
           </span>
         </label>
         <p
           id="rounded-corners-hint"
-          className="mt-2 ml-8 text-sm text-gray-600 dark:text-gray-400"
+          className="mt-2 ml-8 text-sm text-gray-600"
         >
           Applies modern rounded corners to app icons
         </p>
@@ -372,18 +366,13 @@ function PreviewSection({
   if (!sourceImageUrl) {
     return (
       <div className="mb-8" id="preview-section-placeholder">
-        <h3 className="mb-5 text-xl font-semibold text-gray-900 dark:text-gray-100">
-          Preview
-        </h3>
-        <div
-          className="rounded-lg bg-gray-50 p-10 text-center dark:bg-gray-800"
-          role="status"
-        >
+        <h3 className="mb-5 text-xl font-semibold text-gray-900">Preview</h3>
+        <div className="rounded-lg bg-gray-50 p-10 text-center" role="status">
           <Smartphone
             className="mx-auto mb-5 h-16 w-16 text-gray-400"
             aria-hidden="true"
           />
-          <p className="text-lg text-gray-600 dark:text-gray-400">
+          <p className="text-lg text-gray-600">
             Upload an image to see previews
           </p>
         </div>
@@ -393,18 +382,16 @@ function PreviewSection({
 
   return (
     <div className="mb-8" id="preview-section">
-      <h3 className="mb-5 text-xl font-semibold text-gray-900 dark:text-gray-100">
-        Preview
-      </h3>
+      <h3 className="mb-5 text-xl font-semibold text-gray-900">Preview</h3>
 
       <div className="grid grid-cols-1 gap-8">
         {/* Icon Previews */}
         <div>
-          <h4 className="mb-5 flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <h4 className="mb-5 flex items-center gap-2 text-lg font-semibold text-gray-900">
             <Smartphone className="h-5 w-5" aria-hidden="true" />
             App Icons
           </h4>
-          <div className="rounded-lg border border-gray-100 bg-gray-50 p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-lg border border-gray-100 bg-gray-50 p-6 shadow-sm">
             <div className="grid grid-cols-4 gap-4">
               {[
                 "ios-icon-1024",
@@ -416,7 +403,7 @@ function PreviewSection({
                 const size = sizeName.split("-")[2];
                 return (
                   <div key={sizeName} className="text-center">
-                    <div className="mb-2 rounded-lg bg-white p-3 shadow-md dark:bg-gray-700">
+                    <div className="mb-2 rounded-lg bg-white p-3 shadow-md">
                       {url ? (
                         <img
                           src={url}
@@ -424,7 +411,7 @@ function PreviewSection({
                           className="h-auto w-full rounded"
                         />
                       ) : (
-                        <div className="flex aspect-square items-center justify-center rounded bg-gray-200 dark:bg-gray-600">
+                        <div className="flex aspect-square items-center justify-center rounded bg-gray-200">
                           <Smartphone
                             className="h-6 w-6 text-gray-400"
                             aria-hidden="true"
@@ -432,7 +419,7 @@ function PreviewSection({
                         </div>
                       )}
                     </div>
-                    <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                    <p className="text-sm font-medium text-gray-600">
                       {size}×{size}
                     </p>
                   </div>
@@ -444,11 +431,11 @@ function PreviewSection({
 
         {/* Splash Screen Previews */}
         <div>
-          <h4 className="mb-5 flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <h4 className="mb-5 flex items-center gap-2 text-lg font-semibold text-gray-900">
             <Monitor className="h-5 w-5" aria-hidden="true" />
             Splash Screens
           </h4>
-          <div className="rounded-lg border border-gray-100 bg-gray-50 p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-lg border border-gray-100 bg-gray-50 p-6 shadow-sm">
             <div className="grid gap-4">
               {[
                 { name: "ios-splash-2732x2732", label: "Square" },
@@ -457,7 +444,7 @@ function PreviewSection({
                 const url = previewUrls[name];
                 return (
                   <div key={name} className="text-center">
-                    <div className="mb-2 rounded-lg bg-white p-3 shadow-md dark:bg-gray-700">
+                    <div className="mb-2 rounded-lg bg-white p-3 shadow-md">
                       {url ? (
                         <img
                           src={url}
@@ -465,7 +452,7 @@ function PreviewSection({
                           className="h-auto max-h-48 w-full rounded object-contain"
                         />
                       ) : (
-                        <div className="flex h-32 items-center justify-center rounded bg-gray-200 dark:bg-gray-600">
+                        <div className="flex h-32 items-center justify-center rounded bg-gray-200">
                           <Monitor
                             className="h-8 w-8 text-gray-400"
                             aria-hidden="true"
@@ -473,9 +460,7 @@ function PreviewSection({
                         </div>
                       )}
                     </div>
-                    <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      {label}
-                    </p>
+                    <p className="text-sm font-medium text-gray-600">{label}</p>
                   </div>
                 );
               })}
@@ -502,10 +487,10 @@ function GenerationButton({
 }: GenerationButtonProps) {
   return (
     <div className="text-center">
-      <p className="mb-4 text-base text-gray-600 dark:text-gray-400">
+      <p className="mb-4 text-base text-gray-600">
         You'll get 40+ icons and 2 splash screens in a single ZIP.
         {!disabled && (
-          <span className="ml-2 inline-flex items-center rounded bg-gray-100 px-2.5 py-1 text-sm font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+          <span className="ml-2 inline-flex items-center rounded bg-gray-100 px-2.5 py-1 text-sm font-medium text-gray-700">
             ⌘ + Enter
           </span>
         )}
@@ -540,14 +525,14 @@ function GenerationButton({
 
       {isGenerating && (
         <div className="mt-5" role="status" aria-live="polite">
-          <div className="h-3 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+          <div className="h-3 w-full rounded-full bg-gray-200">
             <div
               className="h-3 rounded-full bg-blue-600 transition-all duration-300"
               style={{ width: `${progress.percentage}%` }}
               aria-hidden="true"
             />
           </div>
-          <p className="mt-3 text-base text-gray-600 dark:text-gray-400">
+          <p className="mt-3 text-base text-gray-600">
             Processing {progress.current} of {progress.total} assets...
           </p>
         </div>
@@ -741,23 +726,20 @@ export default function AppIconSplashGenerator() {
             Free App Icon & Splash Screen{" "}
             <HighlightedSpan>Generator</HighlightedSpan>
           </h1>
-          <p className="mx-auto mb-10 max-w-3xl text-xl text-gray-600 dark:text-gray-400">
+          <p className="mx-auto mb-10 max-w-3xl text-xl text-gray-600">
             Upload one image and instantly get all required icon and splash
             screen sizes for iOS and Android apps. 100% free, no signup
             required.
           </p>
 
           {/* Social proof / usage stats */}
-          <div className="mx-auto flex flex-wrap items-center justify-center gap-6 text-base text-gray-700 dark:text-gray-300">
+          <div className="mx-auto flex flex-wrap items-center justify-center gap-6 text-base text-gray-700">
             <div className="flex items-center gap-2">
               <span className="text-3xl" aria-hidden="true">
                 ⚡
               </span>
               <span>
-                <strong className="text-gray-900 dark:text-gray-100">
-                  Instant
-                </strong>{" "}
-                generation
+                <strong className="text-gray-900">Instant</strong> generation
               </span>
             </div>
             <div className="flex items-center gap-2">
@@ -765,10 +747,7 @@ export default function AppIconSplashGenerator() {
                 🎨
               </span>
               <span>
-                <strong className="text-gray-900 dark:text-gray-100">
-                  40+
-                </strong>{" "}
-                sizes included
+                <strong className="text-gray-900">40+</strong> sizes included
               </span>
             </div>
             <div className="hidden items-center gap-2 sm:flex">
@@ -776,9 +755,7 @@ export default function AppIconSplashGenerator() {
                 ✨
               </span>
               <span>
-                <strong className="text-gray-900 dark:text-gray-100">
-                  No watermark
-                </strong>
+                <strong className="text-gray-900">No watermark</strong>
               </span>
             </div>
           </div>
@@ -803,7 +780,7 @@ export default function AppIconSplashGenerator() {
         {/* Main Content */}
         <div
           id="upload-form"
-          className="mb-12 rounded-2xl bg-white p-8 shadow-xl dark:bg-gray-900"
+          className="mb-12 rounded-2xl bg-white p-8 shadow-xl"
         >
           <ImageUpload
             onImageUpload={handleImageUpload}
@@ -872,46 +849,46 @@ export default function AppIconSplashGenerator() {
             <h2 className="mb-4 text-3xl font-[500] md:text-4xl">
               Everything you need to launch
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
+            <p className="text-lg text-gray-600">
               Generate professional mobile app assets in seconds
             </p>
           </div>
 
           <div className="mb-16 grid gap-8 md:grid-cols-3">
-            <div className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100 dark:bg-gray-900/60 dark:ring-gray-700">
+            <div className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
               <span className="mb-5 block text-4xl" aria-hidden="true">
                 📱
               </span>
-              <h3 className="mb-3 text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              <h3 className="mb-3 text-2xl font-semibold text-gray-900">
                 All Sizes Included
               </h3>
-              <p className="text-base leading-relaxed text-gray-700 dark:text-gray-300">
+              <p className="text-base leading-relaxed text-gray-700">
                 Generate all required iOS and Android icon sizes (40+ variants)
                 plus key splash screens in one click.
               </p>
             </div>
 
-            <div className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100 dark:bg-gray-900/60 dark:ring-gray-700">
+            <div className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
               <span className="mb-5 block text-4xl" aria-hidden="true">
                 🎨
               </span>
-              <h3 className="mb-3 text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              <h3 className="mb-3 text-2xl font-semibold text-gray-900">
                 Customizable
               </h3>
-              <p className="text-base leading-relaxed text-gray-700 dark:text-gray-300">
+              <p className="text-base leading-relaxed text-gray-700">
                 Choose background colors, rounded corners, and add your app name
                 to splash screens for a polished, on-brand launch.
               </p>
             </div>
 
-            <div className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100 dark:bg-gray-900/60 dark:ring-gray-700">
+            <div className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
               <span className="mb-5 block text-4xl" aria-hidden="true">
                 ⚡
               </span>
-              <h3 className="mb-3 text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              <h3 className="mb-3 text-2xl font-semibold text-gray-900">
                 Ready to Use
               </h3>
-              <p className="text-base leading-relaxed text-gray-700 dark:text-gray-300">
+              <p className="text-base leading-relaxed text-gray-700">
                 Download an organized ZIP with folders for iOS/Android plus a
                 README explaining exactly where to drop each asset.
               </p>
@@ -920,15 +897,15 @@ export default function AppIconSplashGenerator() {
 
           {/* FAQ Section */}
           <div className="mb-12 max-w-3xl space-y-8 text-left">
-            <h3 className="text-3xl font-semibold text-gray-900 dark:text-gray-50">
+            <h3 className="text-3xl font-semibold text-gray-900">
               Frequently asked questions
             </h3>
 
             <div>
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <h4 className="text-lg font-semibold text-gray-900">
                 Is this generator really free?
               </h4>
-              <p className="mt-2 text-base leading-relaxed text-gray-700 dark:text-gray-300">
+              <p className="mt-2 text-base leading-relaxed text-gray-700">
                 Yes. This app icon and splash screen generator is completely
                 free to use, with no signup and no watermarks. It&apos;s part of
                 the NextNative toolset to help you ship production-ready mobile
@@ -937,16 +914,16 @@ export default function AppIconSplashGenerator() {
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <h4 className="text-lg font-semibold text-gray-900">
                 How do I use these icons in Xcode / Android Studio?
               </h4>
-              <p className="mt-2 text-base leading-relaxed text-gray-700 dark:text-gray-300">
+              <p className="mt-2 text-base leading-relaxed text-gray-700">
                 The ZIP includes a README that explains exactly where to drop
                 your icons and splash screens in Xcode and Android Studio. You
                 can also see platform-specific guides in the{" "}
                 <a
                   href="https://nextnative.dev/docs"
-                  className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:text-blue-400 dark:hover:text-blue-300"
+                  className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
                 >
                   NextNative docs
                 </a>
@@ -955,10 +932,10 @@ export default function AppIconSplashGenerator() {
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <h4 className="text-lg font-semibold text-gray-900">
                 Can I use these assets for commercial apps?
               </h4>
-              <p className="mt-2 text-base leading-relaxed text-gray-700 dark:text-gray-300">
+              <p className="mt-2 text-base leading-relaxed text-gray-700">
                 Yes. You retain full rights to icons and splash screens you
                 generate from your own artwork. You can use them in commercial
                 apps, client projects, and apps built with NextNative.
@@ -966,15 +943,15 @@ export default function AppIconSplashGenerator() {
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <h4 className="text-lg font-semibold text-gray-900">
                 Does this work with Capacitor, React Native, or Flutter?
               </h4>
-              <p className="mt-2 text-base leading-relaxed text-gray-700 dark:text-gray-300">
+              <p className="mt-2 text-base leading-relaxed text-gray-700">
                 The exported assets are just PNG files, so they work with any
                 modern mobile stack. For Capacitor and NextNative, follow the{" "}
                 <a
                   href="https://nextnative.dev/docs"
-                  className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:text-blue-400 dark:hover:text-blue-300"
+                  className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
                 >
                   Capacitor icon &amp; splash docs
                 </a>
@@ -985,11 +962,11 @@ export default function AppIconSplashGenerator() {
           </div>
 
           {/* For blog authors */}
-          <div className="max-w-3xl rounded-2xl border border-dashed border-gray-300 bg-white/70 p-8 text-left shadow-sm dark:border-gray-700 dark:bg-gray-900/60">
-            <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-50">
+          <div className="max-w-3xl rounded-2xl border border-dashed border-gray-300 bg-white/70 p-8 text-left shadow-sm">
+            <h3 className="mb-3 text-xl font-semibold text-gray-900">
               For blog authors &amp; educators
             </h3>
-            <p className="text-base leading-relaxed text-gray-700 dark:text-gray-300">
+            <p className="text-base leading-relaxed text-gray-700">
               If you&apos;re writing about mobile design, app store
               optimization, or app development tutorials, feel free to link this
               generator as a resource. It&apos;s free, no signup,

@@ -25,10 +25,10 @@ export default function BundleIdGenerator() {
 
   return (
     <div className="mx-auto max-w-2xl py-16 text-center">
-      <h1 className="mb-3 text-4xl font-bold text-gray-900 dark:text-white">
+      <h1 className="mb-3 text-4xl font-bold text-gray-900">
         iOS Bundle ID Generator 🍎
       </h1>
-      <p className="mb-10 text-gray-600 dark:text-gray-400">
+      <p className="mb-10 text-gray-600">
         Instantly generate a valid iOS <code>Bundle ID</code> in reverse domain
         format. Perfect for App Store, Xcode, and Capacitor apps.
       </p>
@@ -39,7 +39,7 @@ export default function BundleIdGenerator() {
           <input
             value={company}
             onChange={(e) => setCompany(e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
           />
         </label>
         <label className="flex flex-col text-left">
@@ -47,7 +47,7 @@ export default function BundleIdGenerator() {
           <input
             value={appName}
             onChange={(e) => setAppName(e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
           />
         </label>
       </div>
@@ -59,22 +59,20 @@ export default function BundleIdGenerator() {
         Generate
       </button>
 
-      <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
-        <h2 className="mb-2 text-2xl font-semibold text-gray-900 dark:text-white">
+      <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h2 className="mb-2 text-2xl font-semibold text-gray-900">
           Generated Bundle ID
         </h2>
-        <p className="mb-4 font-mono text-lg text-green-600 dark:text-green-400">
-          {bundleId}
-        </p>
+        <p className="mb-4 font-mono text-lg text-green-600">{bundleId}</p>
         <button
           onClick={() => navigator.clipboard.writeText(bundleId)}
-          className="rounded-xl border border-green-600 px-4 py-2 font-semibold text-green-600 hover:bg-green-50 dark:hover:bg-gray-800"
+          className="rounded-xl border border-green-600 px-4 py-2 font-semibold text-green-600 hover:bg-green-50"
         >
           Copy to Clipboard
         </button>
       </div>
 
-      <p className="mt-10 text-gray-500 dark:text-gray-400">
+      <p className="mt-10 text-gray-500">
         Built with ❤️ by{" "}
         <a
           href="https://nextnative.dev"

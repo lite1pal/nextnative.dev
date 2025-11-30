@@ -199,10 +199,10 @@ export default function AppIdeaGenerator() {
 
   return (
     <div className="mx-auto max-w-3xl py-16">
-      <h1 className="mb-2 text-center text-4xl font-bold text-gray-900 dark:text-white">
+      <h1 className="mb-2 text-center text-4xl font-bold text-gray-900">
         App Idea Generator 💡
       </h1>
-      <p className="mb-8 text-center text-gray-600 dark:text-gray-400">
+      <p className="mb-8 text-center text-gray-600">
         Press generate to get a fresh, buildable app idea with features and
         monetization.
       </p>
@@ -218,50 +218,40 @@ export default function AppIdeaGenerator() {
           onClick={() =>
             navigator.clipboard.writeText(`${idea.title} — ${idea.tagline}`)
           }
-          className="rounded-xl border border-green-600 px-5 py-2.5 font-semibold text-green-600 hover:bg-green-50 dark:hover:bg-gray-800"
+          className="rounded-xl border border-green-600 px-5 py-2.5 font-semibold text-green-600 hover:bg-green-50"
         >
           Copy title
         </button>
         <button
           onClick={exportIdea}
-          className="rounded-xl border border-gray-300 px-5 py-2.5 font-semibold text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
+          className="rounded-xl border border-gray-300 px-5 py-2.5 font-semibold text-gray-700 hover:bg-gray-50"
         >
           Download JSON
         </button>
       </div>
 
-      <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
-          {idea.title}
-        </h2>
-        <p className="mt-1 text-gray-600 dark:text-gray-400">{idea.tagline}</p>
+      <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h2 className="text-2xl font-semibold text-gray-900">{idea.title}</h2>
+        <p className="mt-1 text-gray-600">{idea.tagline}</p>
 
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-xl bg-gray-50 p-4 dark:bg-gray-800/60">
-            <div className="text-sm text-gray-500 dark:text-gray-400">
-              Category
-            </div>
+          <div className="rounded-xl bg-gray-50 p-4">
+            <div className="text-sm text-gray-500">Category</div>
             <div className="text-base font-medium">{idea.category}</div>
           </div>
-          <div className="rounded-xl bg-gray-50 p-4 dark:bg-gray-800/60">
-            <div className="text-sm text-gray-500 dark:text-gray-400">
-              Target audience
-            </div>
+          <div className="rounded-xl bg-gray-50 p-4">
+            <div className="text-sm text-gray-500">Target audience</div>
             <div className="text-base font-medium">{idea.target}</div>
           </div>
-          <div className="rounded-xl bg-gray-50 p-4 sm:col-span-2 dark:bg-gray-800/60">
-            <div className="text-sm text-gray-500 dark:text-gray-400">
-              Monetization
-            </div>
+          <div className="rounded-xl bg-gray-50 p-4 sm:col-span-2">
+            <div className="text-sm text-gray-500">Monetization</div>
             <div className="text-base font-medium">{idea.monetization}</div>
           </div>
         </div>
 
         <div className="mt-6">
-          <div className="text-sm text-gray-500 dark:text-gray-400">
-            Core features
-          </div>
-          <ul className="mt-2 list-disc space-y-1 pl-6 text-gray-800 dark:text-gray-200">
+          <div className="text-sm text-gray-500">Core features</div>
+          <ul className="mt-2 list-disc space-y-1 pl-6 text-gray-800">
             {idea.coreFeatures.map((f) => (
               <li key={f}>{f}</li>
             ))}
@@ -269,16 +259,12 @@ export default function AppIdeaGenerator() {
         </div>
 
         <div className="mt-6">
-          <div className="text-sm text-gray-500 dark:text-gray-400">
-            Why it matters
-          </div>
-          <p className="mt-2 text-gray-800 dark:text-gray-200">
-            {idea.description}
-          </p>
+          <div className="text-sm text-gray-500">Why it matters</div>
+          <p className="mt-2 text-gray-800">{idea.description}</p>
         </div>
       </div>
 
-      <p className="mt-10 text-center text-lg text-gray-500 dark:text-gray-400">
+      <p className="mt-10 text-center text-lg text-gray-500">
         Like this idea?{" "}
         <a
           href="https://nextnative.dev"

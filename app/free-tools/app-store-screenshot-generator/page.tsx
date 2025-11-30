@@ -680,7 +680,7 @@ export default function AppStoreScreenshotGenerator() {
         <h1 className="mb-3 bg-gradient-to-r bg-clip-text text-5xl font-bold">
           App Store Screenshot Generator 📱
         </h1>
-        <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
+        <p className="mx-auto max-w-2xl text-lg text-gray-600">
           Create stunning, professional screenshots for App Store and Google
           Play in seconds. Customize text, backgrounds, and export in all
           required sizes.
@@ -698,12 +698,12 @@ export default function AppStoreScreenshotGenerator() {
         {/* Left: upload + list */}
         <section
           ref={dropRef}
-          className="rounded-2xl border-2 border-dashed border-gray-300 bg-white p-5 shadow-sm transition-colors hover:border-green-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-green-600"
+          className="rounded-2xl border-2 border-dashed border-gray-300 bg-white p-5 shadow-sm transition-colors hover:border-green-500"
         >
-          <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+          <h3 className="mb-3 text-lg font-semibold text-gray-900">
             1) 📤 Upload Screenshots
           </h3>
-          <div className="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4 text-center dark:border-gray-700 dark:bg-gray-800/50">
+          <div className="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4 text-center">
             <label className="cursor-pointer">
               <input
                 type="file"
@@ -713,7 +713,7 @@ export default function AppStoreScreenshotGenerator() {
                 className="hidden"
               />
               <div className="mb-2 text-4xl">📸</div>
-              <div className="font-medium text-gray-700 dark:text-gray-300">
+              <div className="font-medium text-gray-700">
                 Click to upload or drag & drop
               </div>
               <div className="mt-1 text-xs text-gray-500">
@@ -725,7 +725,7 @@ export default function AppStoreScreenshotGenerator() {
             {uploads.map((u, i) => (
               <li
                 key={u.id}
-                className={`flex cursor-pointer items-center justify-between rounded-lg px-3 py-2 transition-colors ${i === previewIndex ? "bg-green-100 ring-2 ring-green-500 dark:bg-green-900/50" : "bg-gray-50 hover:bg-gray-100 dark:bg-gray-800/60 dark:hover:bg-gray-800"}`}
+                className={`flex cursor-pointer items-center justify-between rounded-lg px-3 py-2 transition-colors ${i === previewIndex ? "bg-green-100 ring-2 ring-green-500" : "bg-gray-50 hover:bg-gray-100"}`}
                 onClick={() => setPreviewIndex(i)}
               >
                 <span className="truncate font-medium">{u.name}</span>
@@ -750,8 +750,8 @@ export default function AppStoreScreenshotGenerator() {
           </ul>
 
           {uploads.length > 0 && (
-            <div className="mt-4 rounded-lg bg-blue-50 p-3 dark:bg-blue-900/20">
-              <p className="text-xs text-blue-800 dark:text-blue-200">
+            <div className="mt-4 rounded-lg bg-blue-50 p-3">
+              <p className="text-xs text-blue-800">
                 <strong>⌨️ Shortcuts:</strong> Use ← → arrows to navigate images
               </p>
             </div>
@@ -759,8 +759,8 @@ export default function AppStoreScreenshotGenerator() {
         </section>
 
         {/* Middle: settings */}
-        <section className="max-h-[800px] overflow-y-auto rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-900">
-          <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+        <section className="max-h-[800px] overflow-y-auto rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <h3 className="mb-3 text-lg font-semibold text-gray-900">
             2) Settings
           </h3>
 
@@ -774,7 +774,7 @@ export default function AppStoreScreenshotGenerator() {
                 <button
                   key={theme.id}
                   onClick={() => applyTheme(theme)}
-                  className="rounded-lg border border-gray-300 bg-white p-2 text-xs font-medium transition-colors hover:border-green-500 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                  className="rounded-lg border border-gray-300 bg-white p-2 text-xs font-medium transition-colors hover:border-green-500"
                   style={{
                     background:
                       theme.bgMode === "gradient"
@@ -801,7 +801,7 @@ export default function AppStoreScreenshotGenerator() {
                 setSelectedPreset(p);
                 setOrientation(p.orientation);
               }}
-              className="w-full rounded-lg border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border border-gray-300 bg-white p-2 text-gray-900"
             >
               {PRESETS.map((p) => (
                 <option key={p.id} value={p.id}>
@@ -817,7 +817,7 @@ export default function AppStoreScreenshotGenerator() {
                   min={300}
                   value={customW}
                   onChange={(e) => setCustomW(+e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                  className="w-full rounded-lg border border-gray-300 bg-white p-2"
                   placeholder="Width"
                 />
                 <input
@@ -825,7 +825,7 @@ export default function AppStoreScreenshotGenerator() {
                   min={600}
                   value={customH}
                   onChange={(e) => setCustomH(+e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                  className="w-full rounded-lg border border-gray-300 bg-white p-2"
                   placeholder="Height"
                 />
               </div>
@@ -842,7 +842,7 @@ export default function AppStoreScreenshotGenerator() {
               onChange={(e) =>
                 setOrientation(e.target.value as "portrait" | "landscape")
               }
-              className="w-full rounded-lg border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border border-gray-300 bg-white p-2 text-gray-900"
             >
               <option value="portrait">Portrait</option>
               <option value="landscape">Landscape</option>
@@ -855,7 +855,7 @@ export default function AppStoreScreenshotGenerator() {
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border border-gray-300 bg-white p-2"
             />
           </div>
           <div className="mb-4">
@@ -865,7 +865,7 @@ export default function AppStoreScreenshotGenerator() {
             <input
               value={subtitle}
               onChange={(e) => setSubtitle(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-lg border border-gray-300 bg-white p-2"
             />
           </div>
 
@@ -878,7 +878,7 @@ export default function AppStoreScreenshotGenerator() {
               <select
                 value={textAlign}
                 onChange={(e) => setTextAlign(e.target.value as any)}
-                className="w-full rounded-lg border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                className="w-full rounded-lg border border-gray-300 bg-white p-2"
               >
                 <option value="left">Left</option>
                 <option value="center">Center</option>
@@ -892,7 +892,7 @@ export default function AppStoreScreenshotGenerator() {
               <select
                 value={textVAlign}
                 onChange={(e) => setTextVAlign(e.target.value as any)}
-                className="w-full rounded-lg border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                className="w-full rounded-lg border border-gray-300 bg-white p-2"
               >
                 <option value="top">Top</option>
                 <option value="middle">Middle</option>
@@ -910,7 +910,7 @@ export default function AppStoreScreenshotGenerator() {
               <select
                 value={titleWeight}
                 onChange={(e) => setTitleWeight(e.target.value as any)}
-                className="w-full rounded-lg border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                className="w-full rounded-lg border border-gray-300 bg-white p-2"
               >
                 <option value="700">Bold</option>
                 <option value="800">Extra Bold</option>
@@ -924,7 +924,7 @@ export default function AppStoreScreenshotGenerator() {
               <select
                 value={subtitleWeight}
                 onChange={(e) => setSubtitleWeight(e.target.value as any)}
-                className="w-full rounded-lg border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                className="w-full rounded-lg border border-gray-300 bg-white p-2"
               >
                 <option value="400">Regular</option>
                 <option value="500">Medium</option>
@@ -979,19 +979,19 @@ export default function AppStoreScreenshotGenerator() {
             <div className="grid grid-cols-3 gap-2">
               <button
                 onClick={() => setBgMode("solid")}
-                className={`rounded-lg border p-2 text-xs font-medium ${bgMode === "solid" ? "border-green-500 bg-green-50 dark:bg-green-900/30" : "border-gray-300 dark:border-gray-700"}`}
+                className={`rounded-lg border p-2 text-xs font-medium ${bgMode === "solid" ? "border-green-500 bg-green-50" : "border-gray-300"}`}
               >
                 Solid
               </button>
               <button
                 onClick={() => setBgMode("gradient")}
-                className={`rounded-lg border p-2 text-xs font-medium ${bgMode === "gradient" ? "border-green-500 bg-green-50 dark:bg-green-900/30" : "border-gray-300 dark:border-gray-700"}`}
+                className={`rounded-lg border p-2 text-xs font-medium ${bgMode === "gradient" ? "border-green-500 bg-green-50" : "border-gray-300"}`}
               >
                 Gradient
               </button>
               <button
                 onClick={() => setBgMode("image")}
-                className={`rounded-lg border p-2 text-xs font-medium ${bgMode === "image" ? "border-green-500 bg-green-50 dark:bg-green-900/30" : "border-gray-300 dark:border-gray-700"}`}
+                className={`rounded-lg border p-2 text-xs font-medium ${bgMode === "image" ? "border-green-500 bg-green-50" : "border-gray-300"}`}
               >
                 Image
               </button>
@@ -1007,7 +1007,7 @@ export default function AppStoreScreenshotGenerator() {
                 type="color"
                 value={textColor}
                 onChange={(e) => setTextColor(e.target.value)}
-                className="h-10 w-full cursor-pointer rounded-lg border border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-800"
+                className="h-10 w-full cursor-pointer rounded-lg border border-gray-300 bg-white"
               />
             </div>
             <div>
@@ -1017,7 +1017,7 @@ export default function AppStoreScreenshotGenerator() {
                 value={bg1}
                 onChange={(e) => setBg1(e.target.value)}
                 disabled={bgMode === "image"}
-                className="h-10 w-full cursor-pointer rounded-lg border border-gray-300 bg-white disabled:opacity-40 dark:border-gray-700 dark:bg-gray-800"
+                className="h-10 w-full cursor-pointer rounded-lg border border-gray-300 bg-white disabled:opacity-40"
               />
             </div>
             <div className="col-span-2">
@@ -1029,7 +1029,7 @@ export default function AppStoreScreenshotGenerator() {
                 value={bg2}
                 onChange={(e) => setBg2(e.target.value)}
                 disabled={bgMode !== "gradient"}
-                className="h-10 w-full cursor-pointer rounded-lg border border-gray-300 bg-white disabled:opacity-40 dark:border-gray-700 dark:bg-gray-800"
+                className="h-10 w-full cursor-pointer rounded-lg border border-gray-300 bg-white disabled:opacity-40"
               />
             </div>
           </div>
@@ -1042,7 +1042,7 @@ export default function AppStoreScreenshotGenerator() {
               <select
                 value={gradientDirection}
                 onChange={(e) => setGradientDirection(e.target.value as any)}
-                className="w-full rounded-lg border border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                className="w-full rounded-lg border border-gray-300 bg-white p-2"
               >
                 <option value="diagonal">Diagonal</option>
                 <option value="vertical">Vertical</option>
@@ -1120,18 +1120,18 @@ export default function AppStoreScreenshotGenerator() {
           </div>
 
           {/* Save/Load Config */}
-          <div className="mt-4 border-t border-gray-200 pt-4 dark:border-gray-700">
+          <div className="mt-4 border-t border-gray-200 pt-4">
             <label className="mb-2 block text-sm font-medium">
               💾 Configuration
             </label>
             <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={saveConfig}
-                className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-medium hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-medium hover:bg-gray-50"
               >
                 💾 Save
               </button>
-              <label className="cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 text-center text-xs font-medium hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+              <label className="cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 text-center text-xs font-medium hover:bg-gray-50">
                 📂 Load
                 <input
                   type="file"
@@ -1143,7 +1143,7 @@ export default function AppStoreScreenshotGenerator() {
             </div>
             <button
               onClick={resetToDefaults}
-              className="mt-2 w-full rounded-lg border border-red-300 bg-white px-3 py-2 text-xs font-medium text-red-600 hover:bg-red-50 dark:border-red-700 dark:bg-gray-800 dark:hover:bg-red-900/20"
+              className="mt-2 w-full rounded-lg border border-red-300 bg-white px-3 py-2 text-xs font-medium text-red-600 hover:bg-red-50"
             >
               🔄 Reset to Defaults
             </button>
@@ -1151,13 +1151,13 @@ export default function AppStoreScreenshotGenerator() {
         </section>
 
         {/* Right: preview & export */}
-        <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+        <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
           <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-lg font-semibold text-gray-900">
               3) 🎨 Preview & Export
             </h3>
             {uploads.length > 0 && (
-              <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-300">
+              <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
                 {previewIndex + 1} / {uploads.length}
               </span>
             )}
@@ -1169,7 +1169,7 @@ export default function AppStoreScreenshotGenerator() {
               <button
                 onClick={() => setPreviewIndex(Math.max(0, previewIndex - 1))}
                 disabled={previewIndex === 0}
-                className="rounded-lg border border-gray-300 px-3 py-1 text-sm font-medium hover:bg-gray-50 disabled:opacity-30 dark:border-gray-700 dark:hover:bg-gray-800"
+                className="rounded-lg border border-gray-300 px-3 py-1 text-sm font-medium hover:bg-gray-50 disabled:opacity-30"
               >
                 ← Prev
               </button>
@@ -1180,7 +1180,7 @@ export default function AppStoreScreenshotGenerator() {
                   )
                 }
                 disabled={previewIndex === uploads.length - 1}
-                className="rounded-lg border border-gray-300 px-3 py-1 text-sm font-medium hover:bg-gray-50 disabled:opacity-30 dark:border-gray-700 dark:hover:bg-gray-800"
+                className="rounded-lg border border-gray-300 px-3 py-1 text-sm font-medium hover:bg-gray-50 disabled:opacity-30"
               >
                 Next →
               </button>
@@ -1189,13 +1189,13 @@ export default function AppStoreScreenshotGenerator() {
 
           <canvas
             ref={canvasRef}
-            className="mx-auto block w-full max-w-sm rounded-xl border border-gray-200 bg-white shadow-lg transition-all dark:border-gray-700 dark:bg-gray-800"
+            className="mx-auto block w-full max-w-sm rounded-xl border border-gray-200 bg-white shadow-lg transition-all"
           />
 
           {!uploads.length && (
-            <div className="mt-4 rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-8 text-center dark:border-gray-700 dark:bg-gray-800/50">
+            <div className="mt-4 rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-8 text-center">
               <div className="mb-3 text-5xl">🎬</div>
-              <p className="font-medium text-gray-700 dark:text-gray-300">
+              <p className="font-medium text-gray-700">
                 Upload images to get started
               </p>
               <p className="mt-1 text-sm text-gray-500">
@@ -1225,43 +1225,43 @@ export default function AppStoreScreenshotGenerator() {
 
           {/* Individual Preset Exports */}
           <div className="mt-4">
-            <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <p className="mb-2 text-sm font-medium text-gray-700">
               Quick Export by Preset:
             </p>
             <div className="grid grid-cols-2 gap-2">
               <button
                 disabled={!uploads.length}
                 onClick={() => downloadAllForPreset(PRESETS[0])}
-                className="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium transition-colors hover:bg-gray-50 disabled:opacity-50 dark:border-gray-700 dark:hover:bg-gray-800"
+                className="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium transition-colors hover:bg-gray-50 disabled:opacity-50"
               >
                 iOS 6.9″
               </button>
               <button
                 disabled={!uploads.length}
                 onClick={() => downloadAllForPreset(PRESETS[1])}
-                className="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium transition-colors hover:bg-gray-50 disabled:opacity-50 dark:border-gray-700 dark:hover:bg-gray-800"
+                className="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium transition-colors hover:bg-gray-50 disabled:opacity-50"
               >
                 iOS 6.5″
               </button>
               <button
                 disabled={!uploads.length}
                 onClick={() => downloadAllForPreset(PRESETS[3])}
-                className="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium transition-colors hover:bg-gray-50 disabled:opacity-50 dark:border-gray-700 dark:hover:bg-gray-800"
+                className="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium transition-colors hover:bg-gray-50 disabled:opacity-50"
               >
                 iPad 13″
               </button>
               <button
                 disabled={!uploads.length}
                 onClick={() => downloadAllForPreset(PRESETS[4])}
-                className="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium transition-colors hover:bg-gray-50 disabled:opacity-50 dark:border-gray-700 dark:hover:bg-gray-800"
+                className="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium transition-colors hover:bg-gray-50 disabled:opacity-50"
               >
                 Play Phone
               </button>
             </div>
           </div>
 
-          <div className="mt-4 rounded-lg bg-blue-50 p-3 dark:bg-blue-900/20">
-            <p className="text-xs text-blue-800 dark:text-blue-200">
+          <div className="mt-4 rounded-lg bg-blue-50 p-3">
+            <p className="text-xs text-blue-800">
               <strong>💡 Pro Tip:</strong> "Export All Presets" generates
               screenshots for all devices at once. Downloads are staggered to
               avoid browser limits. Perfect for App Store & Google Play
@@ -1272,34 +1272,28 @@ export default function AppStoreScreenshotGenerator() {
       </div>
 
       {/* Keyboard Shortcuts Help */}
-      <div className="mt-8 rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-white p-6 dark:border-gray-700 dark:from-gray-900 dark:to-gray-800">
-        <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+      <div className="mt-8 rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-white p-6">
+        <h3 className="mb-4 text-lg font-semibold text-gray-900">
           ⌨️ Keyboard Shortcuts
         </h3>
         <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
           <div className="flex items-center gap-3">
-            <kbd className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 font-mono text-sm shadow-sm dark:border-gray-600 dark:bg-gray-700">
+            <kbd className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 font-mono text-sm shadow-sm">
               ⌘/Ctrl + S
             </kbd>
-            <span className="text-sm text-gray-600 dark:text-gray-400">
-              Save configuration
-            </span>
+            <span className="text-sm text-gray-600">Save configuration</span>
           </div>
           <div className="flex items-center gap-3">
-            <kbd className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 font-mono text-sm shadow-sm dark:border-gray-600 dark:bg-gray-700">
+            <kbd className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 font-mono text-sm shadow-sm">
               ⌘/Ctrl + D
             </kbd>
-            <span className="text-sm text-gray-600 dark:text-gray-400">
-              Download all
-            </span>
+            <span className="text-sm text-gray-600">Download all</span>
           </div>
           <div className="flex items-center gap-3">
-            <kbd className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 font-mono text-sm shadow-sm dark:border-gray-600 dark:bg-gray-700">
+            <kbd className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 font-mono text-sm shadow-sm">
               ← →
             </kbd>
-            <span className="text-sm text-gray-600 dark:text-gray-400">
-              Navigate images
-            </span>
+            <span className="text-sm text-gray-600">Navigate images</span>
           </div>
         </div>
       </div>

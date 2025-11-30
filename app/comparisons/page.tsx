@@ -11,10 +11,10 @@ export default function ComparisonsPage() {
     <div className="mx-auto max-w-6xl px-6 py-16">
       {/* Header */}
       <header className="mb-16 text-center">
-        <h1 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+        <h1 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
           Framework <HighlightedSpan>Comparisons</HighlightedSpan>
         </h1>
-        <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
+        <p className="mx-auto max-w-2xl text-lg text-gray-600">
           Compare Next.js, Capacitor, React Native, Flutter, and more. Find the
           best framework for your mobile app development needs.
         </p>
@@ -26,10 +26,10 @@ export default function ComparisonsPage() {
           <Link
             key={comparison.slug}
             href={`/comparisons/${comparison.slug}`}
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-xl dark:border-gray-700"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-xl"
           >
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="group-hover:text-primary text-2xl font-bold text-gray-900 dark:text-white">
+              <h2 className="group-hover:text-primary text-2xl font-bold text-gray-900">
                 {comparison.title}
               </h2>
               <ChevronRight className="group-hover:text-primary h-6 w-6 text-gray-400 transition-transform group-hover:translate-x-1" />
@@ -40,21 +40,19 @@ export default function ComparisonsPage() {
                   {comparison.option1.name}
                 </span>
                 <span className="text-gray-400">vs</span>
-                <span className="rounded-full bg-gray-100 px-3 py-1 font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                <span className="rounded-full bg-gray-100 px-3 py-1 font-medium text-gray-700">
                   {comparison.option2.name}
                 </span>
               </div>
             </div>
-            <p className="line-clamp-3 text-gray-600 dark:text-gray-400">
-              {comparison.summary}
-            </p>
+            <p className="line-clamp-3 text-gray-600">{comparison.summary}</p>
           </Link>
         ))}
       </div>
 
       {/* Bottom CTA */}
       <div className="mt-16 rounded-2xl bg-white p-16 text-center">
-        <h2 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white">
+        <h2 className="mb-4 text-4xl font-bold text-gray-900">
           Ready to build your mobile app?
         </h2>
         <p className="mb-6 text-lg text-gray-700">

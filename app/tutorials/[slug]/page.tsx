@@ -89,11 +89,9 @@ export default async function TutorialPage({
   };
 
   const difficultyColor = {
-    beginner:
-      "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-    intermediate:
-      "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
-    advanced: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
+    beginner: "bg-green-100 text-green-800",
+    intermediate: "bg-yellow-100 text-yellow-800",
+    advanced: "bg-red-100 text-red-800",
   };
 
   return (
@@ -115,7 +113,7 @@ export default async function TutorialPage({
           Tutorials
         </Link>
         <ChevronRight className="h-4 w-4" />
-        <span className="text-gray-900 dark:text-white">{tutorial.title}</span>
+        <span className="text-gray-900">{tutorial.title}</span>
       </nav>
 
       {/* Header */}
@@ -127,21 +125,21 @@ export default async function TutorialPage({
             {tutorial.difficulty.charAt(0).toUpperCase() +
               tutorial.difficulty.slice(1)}
           </span>
-          <span className="flex items-center gap-2 text-lg text-gray-600 dark:text-gray-400">
+          <span className="flex items-center gap-2 text-lg text-gray-600">
             <Clock className="h-5 w-5" />
             {tutorial.timeToComplete}
           </span>
-          <span className="flex items-center gap-2 text-lg text-gray-600 dark:text-gray-400">
+          <span className="flex items-center gap-2 text-lg text-gray-600">
             <Calendar className="h-5 w-5" />
             Updated {tutorial.lastUpdated}
           </span>
         </div>
 
-        <h1 className="mb-8 text-5xl leading-tight font-bold text-gray-900 md:text-6xl lg:text-7xl dark:text-white">
+        <h1 className="mb-8 text-5xl leading-tight font-bold text-gray-900 md:text-6xl lg:text-7xl">
           {tutorial.title}
         </h1>
 
-        <p className="text-xl leading-relaxed text-gray-600 md:text-2xl lg:text-3xl dark:text-gray-400">
+        <p className="text-xl leading-relaxed text-gray-600 md:text-2xl lg:text-3xl">
           {tutorial.summary}
         </p>
       </header>
@@ -149,10 +147,10 @@ export default async function TutorialPage({
       {/* High-intent shortcut CTA – only for the convert-nextjs-to-mobile-app tutorial */}
       {slug === "convert-nextjs-to-mobile-app" && (
         <section className="border-primary/20 bg-primary/5 mb-16 rounded-3xl border p-8 md:p-10">
-          <h2 className="mb-3 text-2xl font-semibold text-gray-900 md:text-3xl dark:text-white">
+          <h2 className="mb-3 text-2xl font-semibold text-gray-900 md:text-3xl">
             Don&apos;t want to wire all this by hand?
           </h2>
-          <p className="mb-6 text-lg text-gray-700 md:text-xl dark:text-gray-300">
+          <p className="mb-6 text-lg text-gray-700 md:text-xl">
             This tutorial shows every step to convert your Next.js app with
             Capacitor. If you&apos;d rather skip the boilerplate and start from
             a ready-made Next.js + Capacitor starter with auth, payments, push
@@ -166,7 +164,7 @@ export default async function TutorialPage({
             >
               See the full starter kit →
             </Link>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-600">
               One-time license, unlimited apps. 14-day money-back guarantee.
             </p>
           </div>
@@ -175,15 +173,15 @@ export default async function TutorialPage({
 
       {/* Prerequisites */}
       {tutorial.prerequisites.length > 0 && (
-        <section className="mb-16 rounded-3xl bg-blue-50 p-10 dark:bg-blue-900/20">
-          <h2 className="mb-6 flex items-center gap-3 text-3xl font-semibold text-gray-900 md:text-4xl dark:text-white">
+        <section className="mb-16 rounded-3xl bg-blue-50 p-10">
+          <h2 className="mb-6 flex items-center gap-3 text-3xl font-semibold text-gray-900 md:text-4xl">
             📋 Prerequisites
           </h2>
           <ul className="space-y-4">
             {tutorial.prerequisites.map((prereq, index) => (
               <li key={index} className="flex items-start gap-4">
                 <CheckCircle2 className="mt-1 h-6 w-6 flex-shrink-0 text-blue-600" />
-                <span className="text-lg leading-relaxed text-gray-700 md:text-xl dark:text-gray-300">
+                <span className="text-lg leading-relaxed text-gray-700 md:text-xl">
                   {prereq}
                 </span>
               </li>
@@ -194,14 +192,14 @@ export default async function TutorialPage({
 
       {/* What You'll Learn */}
       <section className="bg-primary/5 mb-16 rounded-3xl p-10">
-        <h2 className="mb-6 flex items-center gap-3 text-3xl font-semibold text-gray-900 md:text-4xl dark:text-white">
+        <h2 className="mb-6 flex items-center gap-3 text-3xl font-semibold text-gray-900 md:text-4xl">
           🎯 What You&apos;ll Learn
         </h2>
         <ul className="space-y-4">
           {tutorial.whatYoullLearn.map((item, index) => (
             <li key={index} className="flex items-start gap-4">
               <CheckCircle2 className="text-primary mt-1 h-6 w-6 flex-shrink-0" />
-              <span className="text-lg leading-relaxed text-gray-700 md:text-xl dark:text-gray-300">
+              <span className="text-lg leading-relaxed text-gray-700 md:text-xl">
                 {item}
               </span>
             </li>
@@ -211,7 +209,7 @@ export default async function TutorialPage({
 
       {/* Steps */}
       <section className="mb-16">
-        <h2 className="mb-10 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+        <h2 className="mb-10 text-4xl font-bold text-gray-900 md:text-5xl">
           Step-by-Step Guide
         </h2>
 
@@ -225,14 +223,14 @@ export default async function TutorialPage({
                 <div className="bg-primary flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full text-xl font-bold text-white">
                   {index + 1}
                 </div>
-                <h3 className="pt-1 text-2xl font-semibold text-gray-900 md:text-3xl dark:text-white">
+                <h3 className="pt-1 text-2xl font-semibold text-gray-900 md:text-3xl">
                   {step.title}
                 </h3>
               </div>
 
               <p
                 dangerouslySetInnerHTML={{ __html: step.content }}
-                className="mb-6 text-lg leading-relaxed text-gray-700 md:text-xl dark:text-gray-300"
+                className="mb-6 text-lg leading-relaxed text-gray-700 md:text-xl"
               ></p>
 
               {step.code && (
@@ -297,7 +295,7 @@ export default async function TutorialPage({
       {/* Related Tutorials */}
       {tutorial.relatedTutorials.length > 0 && (
         <section className="mb-16">
-          <h2 className="mb-8 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+          <h2 className="mb-8 text-4xl font-bold text-gray-900 md:text-5xl">
             Related Tutorials
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
@@ -308,7 +306,7 @@ export default async function TutorialPage({
                 <Link
                   key={related!.slug}
                   href={`/tutorials/${related!.slug}`}
-                  className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:shadow-xl dark:border-gray-700 dark:bg-gray-900"
+                  className="group hover:border-primary rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:shadow-xl"
                 >
                   <div className="mb-4 flex items-center gap-3">
                     <span
@@ -316,15 +314,15 @@ export default async function TutorialPage({
                     >
                       {related!.difficulty}
                     </span>
-                    <span className="flex items-center gap-2 text-base text-gray-600 dark:text-gray-400">
+                    <span className="flex items-center gap-2 text-base text-gray-600">
                       <Clock className="h-4 w-4" />
                       {related!.timeToComplete}
                     </span>
                   </div>
-                  <h3 className="group-hover:text-primary mb-3 text-xl font-semibold text-gray-900 md:text-2xl dark:text-white">
+                  <h3 className="group-hover:text-primary mb-3 text-xl font-semibold text-gray-900 md:text-2xl">
                     {related!.title}
                   </h3>
-                  <p className="line-clamp-2 text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                  <p className="line-clamp-2 text-lg leading-relaxed text-gray-600">
                     {related!.summary}
                   </p>
                 </Link>
@@ -335,10 +333,10 @@ export default async function TutorialPage({
 
       {/* Related Comparisons */}
       <section className="mb-16">
-        <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+        <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
           Compare Mobile Frameworks
         </h2>
-        <p className="mb-8 text-lg text-gray-600 dark:text-gray-400">
+        <p className="mb-8 text-lg text-gray-600">
           Still deciding on your tech stack? Check out these comparisons
         </p>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -358,58 +356,58 @@ export default async function TutorialPage({
 
       {/* Documentation Links */}
       <section className="mt-20 rounded-3xl bg-white p-10">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
+        <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
           📚 Ship mobile apps faster
         </h2>
-        <p className="mb-8 text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-400">
+        <p className="mb-8 text-lg leading-relaxed text-gray-600 md:text-xl">
           Explore detailed documentation to see features and shortcuts
           NextNative gives you to ship mobile apps faster.
         </p>
         <div className="grid gap-6 md:grid-cols-2">
           <Link
             href="https://nextnative.dev/docs"
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg dark:border-gray-700 dark:bg-gray-900"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
           >
-            <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+            <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900">
               📖 Full Documentation
             </h3>
-            <p className="text-base leading-relaxed text-gray-600 dark:text-gray-400">
+            <p className="text-base leading-relaxed text-gray-600">
               Complete guides, API references, and best practices for building
               mobile apps with NextNative.
             </p>
           </Link>
           <Link
             href="https://nextnative.dev/docs/tutorials/ship-in-5-minutes"
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg dark:border-gray-700 dark:bg-gray-900"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
           >
-            <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+            <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900">
               🚀 Quick Start Guide
             </h3>
-            <p className="text-base leading-relaxed text-gray-600 dark:text-gray-400">
+            <p className="text-base leading-relaxed text-gray-600">
               Get your app up and running in just 5 minutes with our quick start
               tutorial.
             </p>
           </Link>
           <Link
             href="https://nextnative.dev/docs/features/push-notifications"
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg dark:border-gray-700 dark:bg-gray-900"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
           >
-            <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+            <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900">
               🔔 Push Notifications
             </h3>
-            <p className="text-base leading-relaxed text-gray-600 dark:text-gray-400">
+            <p className="text-base leading-relaxed text-gray-600">
               Learn how to set up and customize push notifications for your
               mobile app.
             </p>
           </Link>
           <Link
             href="https://nextnative.dev/docs/features/in-app-purchases"
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg dark:border-gray-700 dark:bg-gray-900"
+            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-lg"
           >
-            <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+            <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900">
               💰 In-App Purchases
             </h3>
-            <p className="text-base leading-relaxed text-gray-600 dark:text-gray-400">
+            <p className="text-base leading-relaxed text-gray-600">
               Implement monetization with in-app purchases using RevenueCat
               integration.
             </p>
