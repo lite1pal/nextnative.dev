@@ -68,7 +68,7 @@ export default function CountdownTimer({
       className={`rounded-full bg-white p-2 px-8 text-xl text-black ${className}`}
     >
       <span className="font-medium">
-        Ends in {days} day and {two(hours)}:{two(minutes)}:{two(seconds)}
+        Ends in {two(hours)}:{two(minutes)}:{two(seconds)}
       </span>
     </div>
   );
