@@ -126,16 +126,7 @@ function PricingSection() {
       />
 
       {/* Black Friday Discount + Countdown */}
-      <div className="flex flex-col items-center gap-3 max-sm:self-start lg:flex-row">
-        <div className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-white shadow-lg">
-          <span className="text-2xl">🔥</span>
-          <span className="text-base sm:text-lg">
-            Use code <span className="font-bold">BLACKFRIDAY20</span> for{" "}
-            <span className="font-bold">20%</span> off
-          </span>
-        </div>
-        <CountdownTimer targetISO="2025-12-01T00:00:00Z" className="text-sm" />
-      </div>
+      <CountdownTimer targetISO="2025-12-01T00:00:00Z" className="text-sm" />
 
       <div className="mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:px-4">
         {/* Starter Plan Card */}

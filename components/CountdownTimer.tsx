@@ -51,25 +51,28 @@ export default function CountdownTimer({
   const { days, hours, minutes, seconds, total } = timeLeft;
 
   if (total <= 0) {
-    return (
-      <div
-        className={`rounded-full bg-gray-900 px-3 py-1 text-white shadow-sm ${className}`}
-      >
-        Offer ended
-      </div>
-    );
+    return null;
   }
 
   const two = (n: number) => String(n).padStart(2, "0");
 
   return (
-    <div
-      aria-live="polite"
-      className={`rounded-full bg-white p-2 px-8 text-xl text-black ${className}`}
-    >
-      <span className="font-medium">
-        Ends in {two(hours)}:{two(minutes)}:{two(seconds)}
-      </span>
+    <div className="flex flex-col items-center gap-3 max-sm:self-start lg:flex-row">
+      <div className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-white shadow-lg">
+        <span className="text-2xl">🔥</span>
+        <span className="text-base sm:text-lg">
+          Use code <span className="font-bold">BLACKFRIDAY20</span> for{" "}
+          <span className="font-bold">20%</span> off
+        </span>
+      </div>
+      <div
+        aria-live="polite"
+        className={`rounded-full bg-white p-2 px-8 text-xl text-black ${className}`}
+      >
+        <span className="font-medium">
+          Ends in {two(hours)}:{two(minutes)}:{two(seconds)}
+        </span>
+      </div>
     </div>
   );
 }
