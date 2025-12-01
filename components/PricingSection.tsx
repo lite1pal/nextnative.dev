@@ -126,7 +126,7 @@ function PricingSection() {
       />
 
       {/* Black Friday Discount + Countdown */}
-      <CountdownTimer targetISO="2025-12-01T00:00:00Z" className="text-sm" />
+      {/* <CountdownTimer targetISO="2025-12-01T00:00:00Z" className="text-sm" /> */}
 
       <div className="mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:px-4">
         {/* Starter Plan Card */}
