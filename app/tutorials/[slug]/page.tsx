@@ -95,7 +95,7 @@ export default async function TutorialPage({
   };
 
   return (
-    <div className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
+    <div className="mx-auto max-w-5xl py-16">
       <Script id="howto-schema" type="application/ld+json">
         {JSON.stringify(howToSchema)}
       </Script>
