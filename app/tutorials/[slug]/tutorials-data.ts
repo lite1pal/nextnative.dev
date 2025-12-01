@@ -43,7 +43,7 @@ export const tutorials: Tutorial[] = [
     timeToComplete: "30 minutes",
     lastUpdated: "December 2025",
     summary:
-      "Learn how to transform your Next.js web application into fully functional iOS and Android mobile apps using Capacitor. This guide covers installation, configuration, and deployment to app stores.",
+      "Learn how to convert your Next.js web application into fully functional iOS and Android mobile apps using Capacitor.",
     prerequisites: [
       "Existing Next.js 15+ application",
       "Node.js 18+ installed",
