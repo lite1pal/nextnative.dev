@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { X } from "lucide-react";
 import usePurchaseStats from "@/hooks/use-purchase-stats";
 import { trackEvent } from "@/services/custom-analytics";
+import Button from "./Button";
 
 export default function TutorialUrgencyBanner() {
   const [isVisible, setIsVisible] = useState(false);
@@ -19,7 +19,7 @@ export default function TutorialUrgencyBanner() {
           (document.documentElement.scrollHeight - window.innerHeight)) *
         100;
 
-      if (scrollPercentage > 50 && !isDismissed) {
+      if (scrollPercentage > 60 && !isDismissed) {
         setIsVisible(true);
       }
     };
@@ -56,16 +56,18 @@ export default function TutorialUrgencyBanner() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link
-              href="/#pricing"
-              onClick={handleClick}
-              className="hover:bg-primary-dark text-primary rounded-full bg-white px-6 py-2.5 text-sm font-bold whitespace-nowrap transition md:px-8 md:text-base"
+            <button
+              onClick={() => {
+                handleClick();
+                window.location.href = "/#pricing";
+              }}
+              className="text-primary hover:bg-primary cursor-pointer rounded-[12px] border-2 border-white bg-white px-6 py-2 text-sm font-[500] whitespace-nowrap transition hover:text-white md:px-8 md:text-base"
             >
-              Get It Now →
-            </Link>
+              Start developing today →
+            </button>
             <button
               onClick={handleDismiss}
-              className="text-white transition hover:text-gray-200"
+              className="cursor-pointer text-white transition hover:text-gray-200"
               aria-label="Close banner"
             >
               <X className="h-5 w-5" />

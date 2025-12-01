@@ -1,9 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { Clock, CheckCircle2, Zap } from "lucide-react";
 import usePurchaseStats from "@/hooks/use-purchase-stats";
-import { trackEvent } from "@/services/custom-analytics";
+import Button from "./Button";
 
 export default function TutorialPricingCTA() {
   const { customersCount, discountLimit } = usePurchaseStats();
@@ -118,19 +117,18 @@ export default function TutorialPricingCTA() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-          <Link
-            href="/#pricing"
-            // onClick={handleViewPricing}
-            className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center rounded-full px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:shadow-xl"
+          <Button
+            onClick={() => (window.location.href = "/#pricing")}
+            variant="primary"
           >
             Get NextNative - $149 →
-          </Link>
-          <Link
-            href="/"
-            className="hover:border-primary hover:text-primary inline-flex items-center justify-center rounded-full border-2 border-gray-300 bg-white px-8 py-4 text-lg font-semibold text-gray-700 transition-all"
+          </Button>
+          <Button
+            onClick={() => (window.location.href = "/")}
+            variant="secondary"
           >
             Learn More
-          </Link>
+          </Button>
         </div>
 
         {/* Trust signals */}

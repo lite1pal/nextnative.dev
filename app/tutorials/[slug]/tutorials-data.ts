@@ -41,154 +41,161 @@ export const tutorials: Tutorial[] = [
     category: "getting-started",
     difficulty: "beginner",
     timeToComplete: "30 minutes",
-    lastUpdated: "October 2025",
+    lastUpdated: "December 2025",
     summary:
       "Learn how to transform your Next.js web application into fully functional iOS and Android mobile apps using Capacitor. This guide covers installation, configuration, and deployment to app stores.",
     prerequisites: [
-      "Existing Next.js application",
+      "Existing Next.js 15+ application",
       "Node.js 18+ installed",
       "Basic knowledge of React",
       "Xcode (for iOS) or Android Studio (for Android)",
     ],
     whatYoullLearn: [
-      "Install and configure Capacitor in a Next.js project",
-      "Build your Next.js app for mobile",
-      "Add native mobile capabilities",
+      "Install and configure Capacitor 7+ in a Next.js project",
+      "Configure Next.js for mobile builds with conditional exports",
+      "Set up build scripts for seamless mobile development",
       "Test your app on iOS and Android simulators",
-      "Deploy to the App Store and Google Play",
+      "Handle both web and native builds in one codebase",
     ],
     steps: [
       {
-        title: "Install Capacitor",
+        title: "Install Capacitor Dependencies",
         content:
-          "First, install Capacitor core and CLI packages in your Next.js project. Make sure your Next.js app is working locally before proceeding.",
+          "Install Capacitor core, CLI, and essential platform packages. We'll use Capacitor 7 for the latest features and best performance.",
         code: {
           language: "bash",
-          code: `npm install @capacitor/core @capacitor/cli
-npx cap init`,
-        },
-        note: "When prompted, enter your app name and bundle ID (e.g., com.yourcompany.appname).",
-      },
-      {
-        title: "Configure Next.js for Static Export",
-        content:
-          "Capacitor works best with static exports. Update your Next.js configuration to enable static site generation.",
-        code: {
-          language: "typescript",
-          filename: "next.config.ts",
-          code: `const nextConfig = {
-  output: 'export',
-  images: {
-    unoptimized: true,
-  },
-  // Disable trailing slashes for Capacitor
-  trailingSlash: true,
-};
+          code: `npm install @capacitor/core @capacitor/cli @capacitor/app @capacitor/keyboard @capacitor/splash-screen @capacitor/preferences
 
-export default nextConfig;`,
+# Install iOS and Android platforms
+npm install @capacitor/ios @capacitor/android`,
         },
-        note: "The 'output: export' setting generates static HTML/CSS/JS files that Capacitor can wrap.",
+        note: "These packages provide core functionality like app lifecycle, keyboard handling, and splash screens.",
       },
       {
-        title: "Update Package.json Scripts",
+        title: "Initialize Capacitor Configuration",
         content:
-          "Add convenient scripts to build and sync your app with mobile platforms.",
-        code: {
-          language: "json",
-          filename: "package.json",
-          code: `{
-  "scripts": {
-    "build": "next build",
-    "cap:build": "npm run build && npx cap sync",
-    "cap:ios": "npm run cap:build && npx cap open ios",
-    "cap:android": "npm run cap:build && npx cap open android"
-  }
-}`,
-        },
-      },
-      {
-        title: "Configure Capacitor",
-        content:
-          "Update the Capacitor configuration to point to your build output directory.",
+          "Create a Capacitor config file that defines your app ID, name, and build output directory.",
         code: {
           language: "typescript",
           filename: "capacitor.config.ts",
-          code: `import { CapacitorConfig } from '@capacitor/cli';
+          code: `import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.yourcompany.appname',
   appName: 'Your App Name',
   webDir: 'out',
+  
+  plugins: {
+    SplashScreen: {
+      launchAutoHide: false,
+    },
+  },
 };
 
 export default config;`,
         },
-        note: "The 'webDir' should point to 'out' since that's where Next.js exports static files.",
+        note: "Replace 'com.yourcompany.appname' with your actual bundle ID (reverse domain notation).",
+      },
+      {
+        title: "Configure Next.js for Static Export",
+        content:
+          "Configure Next.js to output static files that Capacitor can use. You can optionally use environment variables to handle different build targets.",
+        code: {
+          language: "javascript",
+          filename: "next.config.js",
+          code: `module.exports = {
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+};`,
+        },
+        note: "For advanced setups, you can use environment variables to conditionally enable static export only for mobile builds.",
+      },
+      {
+        title: "Add Build Scripts to Package.json",
+        content:
+          "Set up npm scripts for building and syncing your app with mobile platforms.",
+        code: {
+          language: "json",
+          filename: "package.json",
+          code: `{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "mobile": "npm run build && npx cap sync",
+    "mobile:ios": "npm run mobile && npx cap open ios",
+    "mobile:android": "npm run mobile && npx cap open android"
+  }
+}`,
+        },
+        note: "The mobile script builds your app and syncs it with both iOS and Android platforms.",
       },
       {
         title: "Add iOS and Android Platforms",
         content:
-          "Now add the iOS and Android platforms to your project. This creates native project folders.",
+          "Initialize the native iOS and Android projects. This creates platform-specific folders with all necessary configuration.",
         code: {
           language: "bash",
           code: `npx cap add ios
 npx cap add android`,
         },
-        note: "This will create 'ios' and 'android' folders in your project root.",
+        note: "This creates 'ios' and 'android' folders in your project root with native project files.",
       },
       {
-        title: "Build and Sync Your App",
+        title: "Build and Sync for Mobile",
         content:
-          "Build your Next.js app and sync it with the native platforms.",
+          "Build your Next.js app as a static export and sync it with the native platforms. This copies your web code into the native projects.",
         code: {
           language: "bash",
-          code: `npm run build
-npx cap sync`,
+          code: `npm run mobile`,
         },
-        note: "Run 'npx cap sync' whenever you make changes to your web code or add new Capacitor plugins.",
+        note: "This command builds your Next.js app and syncs it with iOS and Android. Run this whenever you make changes.",
       },
       {
-        title: "Open in Xcode or Android Studio",
+        title: "Open Native IDEs and Test",
         content:
-          "Open your project in the respective IDE to test and build for mobile.",
+          "Open your project in Xcode or Android Studio to build and test on simulators or real devices.",
         code: {
           language: "bash",
-          code: `# For iOS
+          code: `# For iOS (macOS only)
 npx cap open ios
 
 # For Android
 npx cap open android`,
         },
-        note: "You'll need Xcode for iOS development (Mac only) and Android Studio for Android development.",
+        note: "In the IDE, select a simulator/emulator and press Run. Your Next.js app will launch as a native mobile app!",
       },
       {
-        title: "Test on Simulators/Emulators",
+        title: "Add Essential Capacitor Plugins",
         content:
-          "In Xcode or Android Studio, select a simulator/emulator and click the Run button. Your Next.js app will launch as a native mobile app!",
-        note: "Common issues: Make sure your build completed successfully and the 'out' directory exists.",
-      },
-      {
-        title: "Add Mobile-Specific Features (Optional)",
-        content:
-          "Enhance your app with native capabilities like camera, push notifications, or file access.",
+          "Enhance your app with native capabilities. Here are some commonly used plugins to get started.",
         code: {
           language: "bash",
-          code: `# Install plugins
+          code: `# Camera access
 npm install @capacitor/camera
-npm install @capacitor/push-notifications
 
-# Sync with native projects
-npx cap sync`,
+# Share functionality
+npm install @capacitor/share
+
+# Device information
+npm install @capacitor/device
+
+# Browser for OAuth flows
+npm install @capacitor/browser
+
+# After installing plugins, sync again
+npm run mobile`,
         },
-        note: "Each Capacitor plugin provides native functionality through a JavaScript API.",
+        note: "Each plugin provides a JavaScript API to access native device features. Check Capacitor docs for usage examples.",
       },
     ],
     nextSteps: [
-      "Add app icons and splash screens",
-      "Configure push notifications",
-      "Set up in-app purchases with RevenueCat",
-      "Implement deep linking",
-      "Prepare for App Store submission",
+      "Generate app icons and splash screens with @capacitor/assets",
+      "Set up environment variables for different build targets",
+      "Add conditional UI components for mobile vs web",
+      "Configure deep linking for your app",
+      "Prepare for App Store and Google Play submission",
     ],
     relatedTutorials: [
       "add-push-notifications-nextjs",

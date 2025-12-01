@@ -19,6 +19,7 @@ import CTA from "@/components/CTA";
 import TutorialPricingCTA from "@/components/TutorialPricingCTA";
 import MidTutorialCTA from "@/components/MidTutorialCTA";
 import TutorialUrgencyBanner from "@/components/TutorialUrgencyBanner";
+import Button from "@/components/Button";
 
 // Generate static params for all tutorials
 export async function generateStaticParams() {
@@ -187,17 +188,11 @@ export default async function TutorialPage({
             </div>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Link
-              href="/#pricing"
-              className="bg-primary hover:bg-primary/90 inline-flex justify-center rounded-full px-8 py-4 text-lg font-semibold text-white shadow-md transition"
-            >
-              Get NextNative - $149 →
+            <Link href="/#pricing">
+              <Button variant="primary">Get NextNative - $149 →</Button>
             </Link>
-            <Link
-              href="/"
-              className="hover:border-primary hover:text-primary inline-flex justify-center rounded-full border-2 border-gray-300 px-8 py-4 text-lg font-semibold text-gray-700 transition"
-            >
-              See All Features
+            <Link href="/">
+              <Button variant="secondary">See All Features</Button>
             </Link>
           </div>
           <p className="mt-4 text-center text-sm text-gray-600 sm:text-left">
@@ -224,9 +219,6 @@ export default async function TutorialPage({
           </ul>
         </section>
       )}
-
-      {/* Tutorial Pricing CTA - Show after prerequisites */}
-      {slug === "convert-nextjs-to-mobile-app" && <TutorialPricingCTA />}
 
       {/* What You'll Learn */}
       <section className="bg-primary/5 mb-16 rounded-3xl p-10">
@@ -306,6 +298,11 @@ export default async function TutorialPage({
                 )}
               </div>
 
+              {/* Tutorial Pricing CTA - Show after prerequisites */}
+              {slug === "convert-nextjs-to-mobile-app" && index === 4 && (
+                <TutorialPricingCTA />
+              )}
+
               {/* Add strategic CTAs after key steps for convert-nextjs-to-mobile-app tutorial */}
               {slug === "convert-nextjs-to-mobile-app" && index === 3 && (
                 <MidTutorialCTA
@@ -345,12 +342,9 @@ export default async function TutorialPage({
             launch.
           </p>
 
-          <div className="mb-10 flex flex-col gap-4">
-            <Link
-              href="/#pricing"
-              className="bg-primary hover:bg-primary/90 mx-auto inline-flex items-center justify-center rounded-full px-10 py-5 text-xl font-bold text-white shadow-lg transition-all hover:shadow-xl"
-            >
-              Get NextNative - 50% Off →
+          <div className="mb-10 flex flex-col items-center gap-4">
+            <Link href="/#pricing">
+              <Button variant="primary">Get NextNative - 50% Off →</Button>
             </Link>
             <p className="text-base text-gray-600">
               $149 (normally $299) · Unlimited apps · 14-day guarantee
