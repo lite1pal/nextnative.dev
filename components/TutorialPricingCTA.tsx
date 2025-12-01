@@ -7,10 +7,13 @@ import Button from "./Button";
 export default function TutorialPricingCTA() {
   const { customersCount, discountLimit } = usePurchaseStats();
 
-  //   const handleViewPricing = () => {
-  //     trackEvent("Tutorial_ViewPricing_clicked");
-  //     window?.datafast?.("tutorial_view_pricing_clicked");
-  //   };
+  const handleGetNextNative = () => {
+    window?.datafast?.("tutorial_pricing_cta_get_nextnative_clicked");
+  };
+
+  const handleLearnMore = () => {
+    window?.datafast?.("tutorial_pricing_cta_learn_more_clicked");
+  };
 
   return (
     <section className="border-primary/20 from-primary/5 my-16 rounded-3xl border-2 p-8 shadow-lg md:p-12">
@@ -118,13 +121,19 @@ export default function TutorialPricingCTA() {
         {/* CTA Buttons */}
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
           <Button
-            onClick={() => (window.location.href = "/#pricing")}
+            onClick={() => {
+              handleGetNextNative();
+              window.location.href = "/#pricing";
+            }}
             variant="primary"
           >
             Get NextNative - $149 →
           </Button>
           <Button
-            onClick={() => (window.location.href = "/")}
+            onClick={() => {
+              handleLearnMore();
+              window.location.href = "/";
+            }}
             variant="secondary"
           >
             Learn More
