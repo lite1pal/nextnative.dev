@@ -4,18 +4,21 @@ import { useEffect, useState, useCallback, type ReactNode } from "react";
 import { X } from "lucide-react";
 
 type MobileCTAClientProps = {
-  children: ReactNode; // <- pass your Server Component here
+  children: ReactNode;
   showAfterPx?: number; // when to show on scroll (default 350)
-  storageKey?: string; // session storage key (default 'nn-mobile-cta-dismissed')
+  storageKey?: string; // localStorage key
+  cooldownDays?: number; // how many days to hide after close
 };
 
 export default function MobileCTAClient({
   children,
-  showAfterPx = 350,
-  storageKey = "nn-mobile-cta-dismissed",
+  showAfterPx = 1000,
+  storageKey = "nn-mobile-cta-dismissed-at",
+  cooldownDays = 3,
 }: MobileCTAClientProps) {
   const [visible, setVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [allowedToShow, setAllowedToShow] = useState(false);
 
   // detect mobile
   useEffect(() => {
@@ -26,25 +29,60 @@ export default function MobileCTAClient({
     return () => mq.removeEventListener?.("change", update);
   }, []);
 
-  // show after scroll & respect dismissal
+  // check cooldown in localStorage
   useEffect(() => {
-    if (!isMobile) return;
-    if (sessionStorage.getItem(storageKey) === "1") return;
+    if (typeof window === "undefined") return;
+
+    const raw = localStorage.getItem(storageKey);
+    if (!raw) {
+      setAllowedToShow(true);
+      return;
+    }
+
+    const lastDismissed = Number(raw);
+    if (Number.isNaN(lastDismissed)) {
+      // corrupt value, reset
+      localStorage.removeItem(storageKey);
+      setAllowedToShow(true);
+      return;
+    }
+
+    const now = Date.now();
+    const cooldownMs = cooldownDays * 24 * 60 * 60 * 1000;
+
+    if (now - lastDismissed >= cooldownMs) {
+      // cooldown passed, can show again
+      setAllowedToShow(true);
+    } else {
+      // still in cooldown
+      setAllowedToShow(false);
+      setVisible(false);
+    }
+  }, [storageKey, cooldownDays]);
+
+  // show after scroll (only if allowed & mobile)
+  useEffect(() => {
+    if (!isMobile || !allowedToShow) return;
 
     const onScroll = () => {
-      if (window.scrollY >= showAfterPx) setVisible(true);
+      if (window.scrollY >= showAfterPx) {
+        setVisible(true);
+      }
     };
+
     onScroll(); // handle reload mid-page
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [isMobile, showAfterPx, storageKey]);
+  }, [isMobile, allowedToShow, showAfterPx]);
 
   const close = useCallback(() => {
-    sessionStorage.setItem(storageKey, "1");
+    const now = Date.now();
+    localStorage.setItem(storageKey, String(now));
     setVisible(false);
+    setAllowedToShow(false); // hide for the rest of this session too
   }, [storageKey]);
 
-  if (!isMobile || !visible) return null;
+  if (!isMobile || !visible || !allowedToShow) return null;
 
   return (
     <div
@@ -61,7 +99,6 @@ export default function MobileCTAClient({
           <X size={18} className="font-[500]" />
         </button>
 
-        {/* Server component content goes here */}
         {children}
       </div>
 
