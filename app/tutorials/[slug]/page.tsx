@@ -16,6 +16,9 @@ import Script from "next/script";
 import CTASkeleton from "@/components/CTASkeleton";
 import { Suspense } from "react";
 import CTA from "@/components/CTA";
+import TutorialPricingCTA from "@/components/TutorialPricingCTA";
+import MidTutorialCTA from "@/components/MidTutorialCTA";
+import TutorialUrgencyBanner from "@/components/TutorialUrgencyBanner";
 
 // Generate static params for all tutorials
 export async function generateStaticParams() {
@@ -100,6 +103,9 @@ export default async function TutorialPage({
         {JSON.stringify(howToSchema)}
       </Script>
 
+      {/* Urgency Banner - only for convert-nextjs-to-mobile-app */}
+      {slug === "convert-nextjs-to-mobile-app" && <TutorialUrgencyBanner />}
+
       {/* Breadcrumbs */}
       <nav className="mb-10 flex items-center gap-2 text-base text-gray-600 md:text-lg">
         <Link href="/" className="hover:text-primary">
@@ -143,28 +149,60 @@ export default async function TutorialPage({
 
       {/* High-intent shortcut CTA – only for the convert-nextjs-to-mobile-app tutorial */}
       {slug === "convert-nextjs-to-mobile-app" && (
-        <section className="border-primary/20 bg-primary/5 mb-16 rounded-3xl border p-8 md:p-10">
-          <h2 className="mb-3 text-2xl font-semibold text-gray-900 md:text-3xl">
-            Don&apos;t want to wire all this by hand?
-          </h2>
+        <section className="mb-16 rounded-3xl bg-white p-8 shadow-lg md:p-10">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="text-3xl">⚡</span>
+            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+              Skip manual setup. Get everything pre-built
+            </h2>
+          </div>
           <p className="mb-6 text-lg text-gray-700 md:text-xl">
-            This tutorial shows every step to convert your Next.js app with
-            Capacitor. If you&apos;d rather skip the boilerplate and start from
-            a ready-made Next.js + Capacitor starter with auth, payments, push
-            notifications and 7 example apps already wired up, check out
-            NextNative.
+            NextNative includes Next.js + Capacitor, auth, payments, push
+            notifications, database, and 7 template apps. Start shipping in 5
+            minutes.
           </p>
+          <div className="mb-6 grid gap-4 py-6 md:grid-cols-3">
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="text-primary h-6 w-6 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-gray-900">Auth & onboarding</p>
+                <p className="text-sm text-gray-600">Ready to customize</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="text-primary h-6 w-6 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-gray-900">
+                  Payments & subscriptions
+                </p>
+                <p className="text-sm text-gray-600">RevenueCat integrated</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="text-primary h-6 w-6 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-gray-900">7 template apps</p>
+                <p className="text-sm text-gray-600">Launch guides included</p>
+              </div>
+            </div>
+          </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link
-              href="/"
-              className="bg-primary hover:bg-primary/90 inline-flex justify-center rounded-full px-6 py-3 text-base font-semibold text-white shadow-md transition"
+              href="/#pricing"
+              className="bg-primary hover:bg-primary/90 inline-flex justify-center rounded-full px-8 py-4 text-lg font-semibold text-white shadow-md transition"
             >
-              See the full starter kit →
+              Get NextNative - $149 →
             </Link>
-            <p className="text-sm text-gray-600">
-              One-time license, unlimited apps. 14-day money-back guarantee.
-            </p>
+            <Link
+              href="/"
+              className="hover:border-primary hover:text-primary inline-flex justify-center rounded-full border-2 border-gray-300 px-8 py-4 text-lg font-semibold text-gray-700 transition"
+            >
+              See All Features
+            </Link>
           </div>
+          <p className="mt-4 text-center text-sm text-gray-600 sm:text-left">
+            50% off · One-time payment · Unlimited apps · 14-day guarantee
+          </p>
         </section>
       )}
 
@@ -186,6 +224,9 @@ export default async function TutorialPage({
           </ul>
         </section>
       )}
+
+      {/* Tutorial Pricing CTA - Show after prerequisites */}
+      {slug === "convert-nextjs-to-mobile-app" && <TutorialPricingCTA />}
 
       {/* What You'll Learn */}
       <section className="bg-primary/5 mb-16 rounded-3xl p-10">
@@ -212,58 +253,77 @@ export default async function TutorialPage({
 
         <div className="space-y-12">
           {tutorial.steps.map((step, index) => (
-            <div
-              key={index}
-              className="rounded-3xl bg-white p-8 shadow-sm md:p-10"
-            >
-              <div className="mb-6 flex items-start gap-5">
-                <div className="bg-primary flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full text-xl font-bold text-white">
-                  {index + 1}
+            <div key={index}>
+              <div className="rounded-3xl bg-white p-8 shadow-sm md:p-10">
+                <div className="mb-6 flex items-start gap-5">
+                  <div className="bg-primary flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full text-xl font-bold text-white">
+                    {index + 1}
+                  </div>
+                  <h3 className="pt-1 text-2xl font-semibold text-gray-900 md:text-3xl">
+                    {step.title}
+                  </h3>
                 </div>
-                <h3 className="pt-1 text-2xl font-semibold text-gray-900 md:text-3xl">
-                  {step.title}
-                </h3>
+
+                <p
+                  dangerouslySetInnerHTML={{ __html: step.content }}
+                  className="mb-6 text-lg leading-relaxed text-gray-700 md:text-xl"
+                ></p>
+
+                {step.code && (
+                  <div className="mb-6">
+                    <div className="rounded-t-[0.7rem] bg-gray-700 px-5 py-3 font-mono text-base font-[500] text-white">
+                      {step.code.filename}
+
+                      {!step.code.filename && (
+                        <div className="flex items-center gap-1.5">
+                          <div className="h-2.5 w-2.5 rounded-full bg-gray-600"></div>
+                          <div className="h-2.5 w-2.5 rounded-full bg-gray-600"></div>
+                          <div className="h-2.5 w-2.5 rounded-full bg-gray-600"></div>
+                        </div>
+                      )}
+                    </div>
+                    <SyntaxHighlighter
+                      language={step.code.language}
+                      style={nightOwl}
+                      customStyle={{
+                        marginTop: "0",
+                        borderRadius: "0rem 0rem 0.7rem 0.7rem",
+                      }}
+                    >
+                      {step.code.code}
+                    </SyntaxHighlighter>
+                  </div>
+                )}
+
+                {step.note && (
+                  <div className="flex items-center gap-3 rounded-xl bg-green-100 p-5">
+                    <span className="text-xl">💡</span>
+                    <p
+                      dangerouslySetInnerHTML={{ __html: step.note }}
+                      className="text-base text-green-900 md:text-xl"
+                    ></p>
+                  </div>
+                )}
               </div>
 
-              <p
-                dangerouslySetInnerHTML={{ __html: step.content }}
-                className="mb-6 text-lg leading-relaxed text-gray-700 md:text-xl"
-              ></p>
-
-              {step.code && (
-                <div className="mb-6">
-                  <div className="rounded-t-[0.7rem] bg-gray-700 px-5 py-3 font-mono text-base font-[500] text-white">
-                    {step.code.filename}
-
-                    {!step.code.filename && (
-                      <div className="flex items-center gap-1.5">
-                        <div className="h-2.5 w-2.5 rounded-full bg-gray-600"></div>
-                        <div className="h-2.5 w-2.5 rounded-full bg-gray-600"></div>
-                        <div className="h-2.5 w-2.5 rounded-full bg-gray-600"></div>
-                      </div>
-                    )}
-                  </div>
-                  <SyntaxHighlighter
-                    language={step.code.language}
-                    style={nightOwl}
-                    customStyle={{
-                      marginTop: "0",
-                      borderRadius: "0rem 0rem 0.7rem 0.7rem",
-                    }}
-                  >
-                    {step.code.code}
-                  </SyntaxHighlighter>
-                </div>
+              {/* Add strategic CTAs after key steps for convert-nextjs-to-mobile-app tutorial */}
+              {slug === "convert-nextjs-to-mobile-app" && index === 3 && (
+                <MidTutorialCTA
+                  stepNumber={4}
+                  message="NextNative has Capacitor pre-configured for production."
+                />
               )}
-
-              {step.note && (
-                <div className="flex items-center gap-3 rounded-xl bg-green-100 p-5">
-                  <span className="text-xl">💡</span>
-                  <p
-                    dangerouslySetInnerHTML={{ __html: step.note }}
-                    className="text-base text-green-900 md:text-xl"
-                  ></p>
-                </div>
+              {slug === "convert-nextjs-to-mobile-app" && index === 5 && (
+                <MidTutorialCTA
+                  stepNumber={6}
+                  message="Build scripts already set up in NextNative."
+                />
+              )}
+              {slug === "convert-nextjs-to-mobile-app" && index === 8 && (
+                <MidTutorialCTA
+                  stepNumber={9}
+                  message="Auth, push notifications, and in-app purchases included."
+                />
               )}
             </div>
           ))}
@@ -271,20 +331,47 @@ export default async function TutorialPage({
       </section>
 
       {/* Main CTA */}
-      <div className="mt-24 mb-20 rounded-3xl bg-white p-16 text-center">
-        <h2 className="mb-6 text-4xl font-bold md:text-5xl">
-          Turn this tutorial into a shipped app
-        </h2>
-        <p className="mb-10 text-xl md:text-2xl">
-          You can follow every step manually, or start from a production-ready
-          Next.js + Capacitor starter with auth, payments, push notifications
-          and 7 mobile apps included. One-time license, unlimited projects,
-          14-day refund if it&apos;s not a fit.
-        </p>
+      <div className="mt-24 mb-20 rounded-3xl bg-white p-12 text-center shadow-xl md:p-16">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-6 flex items-center justify-center gap-3">
+            <span className="text-4xl">🚀</span>
+            <h2 className="text-4xl font-bold md:text-5xl">
+              Ready to Ship Faster?
+            </h2>
+          </div>
+          <p className="mb-10 text-xl text-gray-700 md:text-2xl">
+            Get Next.js + Capacitor with auth, in-app purchases, push
+            notifications, database, and 7 template apps. Everything you need to
+            launch.
+          </p>
 
-        <Link href="/">
-          <CTA />
-        </Link>
+          <div className="mb-10 flex flex-col gap-4">
+            <Link
+              href="/#pricing"
+              className="bg-primary hover:bg-primary/90 mx-auto inline-flex items-center justify-center rounded-full px-10 py-5 text-xl font-bold text-white shadow-lg transition-all hover:shadow-xl"
+            >
+              Get NextNative - 50% Off →
+            </Link>
+            <p className="text-base text-gray-600">
+              $149 (normally $299) · Unlimited apps · 14-day guarantee
+            </p>
+          </div>
+
+          {/* Trust badges */}
+          <div className="border-primary/10 mx-auto mt-8 flex max-w-2xl flex-wrap justify-center gap-6 border-t pt-8 text-sm text-gray-600">
+            <span className="flex items-center gap-2">
+              <CheckCircle2 className="text-primary h-5 w-5" />
+              Lifetime updates
+            </span>
+            <span className="flex items-center gap-2">
+              <CheckCircle2 className="text-primary h-5 w-5" />3 months support
+            </span>
+            <span className="flex items-center gap-2">
+              <CheckCircle2 className="text-primary h-5 w-5" />
+              Team license
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Related Tutorials */}

@@ -13,6 +13,7 @@
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-slide-up: slide-up 0.3s ease-out;
 
   @keyframes accordion-down {
     from {
@@ -38,6 +39,17 @@
     }
     to {
       height: 0;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 }
