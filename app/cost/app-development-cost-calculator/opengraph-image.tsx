@@ -1,11 +1,14 @@
+// app/opengraph-image.tsx (or app/[slug]/opengraph-image.tsx)
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const alt = "App Development Cost Calculator";
+// ── Meta ──────────────────────────────────────────────────────────────────────
+export const alt = "NextNative";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+// ── OG generator ──────────────────────────────────────────────────────────────
 export default async function Image() {
   const outfitRegular = await readFile(
     join(process.cwd(), "public/fonts/Outfit-Regular.ttf"),
@@ -14,99 +17,130 @@ export default async function Image() {
     join(process.cwd(), "public/fonts/Outfit-Medium.ttf"),
   );
 
+  const title = "App Development Cost Calculator 2025"!.slice(0, 120);
+
+  const desc = "Calculate your mobile app development cost instantly."!.slice(
+    0,
+    160,
+  );
+
   return new ImageResponse(
     (
       <div
         style={{
-          height: "100%",
           width: "100%",
+          height: "100%",
           display: "flex",
+          position: "relative",
+          justifyContent: "space-between",
+          background: "white",
+          backgroundSize: "24px 24px, cover",
+          backgroundPosition: "0 0, center",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#fff",
-          padding: "40px 80px",
+          gap: 22,
+          fontFamily: "Outfit",
         }}
       >
+        {/* Logo */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            paddingTop: 64,
+            paddingLeft: 64,
+            gap: 16,
+          }}
+        >
+          <svg
+            width="52"
+            height="52"
+            viewBox="0 0 26 26"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ transform: "translateY(2px)" }}
+          >
+            <path
+              d="M11.3711 23.8639L23.6958 11.1566"
+              stroke="#06B300"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <path
+              d="M6.69141 19.3918L19.0161 6.68448"
+              stroke="#06B300"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <path
+              d="M2 14.8401L14.3247 2.1328"
+              stroke="#06B300"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+          </svg>
+          <p
+            style={{
+              fontSize: 38,
+              fontFamily: "OutfitMedium",
+              fontWeight: 500,
+            }}
+          >
+            nextnative
+          </p>
+        </div>
+
+        {/* Title / Paragraph (mimic hero typography) */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
+            gap: 48,
+            paddingLeft: 64,
+            paddingBottom: 64,
           }}
         >
           <div
             style={{
               fontSize: 72,
-              fontWeight: 600,
-              color: "#111",
-              marginBottom: 20,
-              fontFamily: "Outfit Medium",
               lineHeight: 1.2,
+              letterSpacing: -1.2,
+              fontWeight: 500,
+              color: "#111827",
+              fontFamily: "OutfitMedium",
             }}
           >
-            App Development
-            <br />
-            Cost Calculator 📊
+            {title}
           </div>
           <div
             style={{
-              fontSize: 32,
-              color: "#666",
-              marginBottom: 40,
-              fontFamily: "Outfit",
+              fontSize: 28,
+              lineHeight: 1.35,
+              color: "#374151",
+              maxWidth: 820,
+              fontFamily: "OutfitRegular",
             }}
           >
-            Get Instant Estimates • Select Features • View Timeline
+            {desc}
           </div>
-          <div
-            style={{
-              display: "flex",
-              gap: 30,
-              fontSize: 24,
-              color: "#111",
-              fontFamily: "Outfit",
-              backgroundColor: "#f0fdf4",
-              padding: "30px 50px",
-              borderRadius: 20,
-            }}
-          >
-            <div>✓ Feature Selection</div>
-            <div>✓ Platform Choice</div>
-            <div>✓ Timeline Estimate</div>
-          </div>
-        </div>
-
-        <div
-          style={{
-            position: "absolute",
-            bottom: 40,
-            right: 80,
-            fontSize: 24,
-            color: "#06B300",
-            fontFamily: "Outfit Medium",
-          }}
-        >
-          nextnative.dev
         </div>
       </div>
     ),
     {
       ...size,
+      width: size.width,
+      height: size.height,
       fonts: [
         {
-          name: "Outfit",
+          name: "OutfitRegular",
           data: outfitRegular,
           style: "normal",
           weight: 400,
         },
         {
-          name: "Outfit Medium",
+          name: "OutfitMedium",
           data: outfitMedium,
           style: "normal",
-          weight: 500,
+          weight: 600,
         },
       ],
     },
