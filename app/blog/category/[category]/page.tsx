@@ -37,51 +37,57 @@ export async function generateMetadata(
   };
 }
 
-export const revalidate = 600;
+// export const revalidate = 600;
 
-export async function generateStaticParams() {
-  // Get all unique tags from blog posts
-  const posts = await prisma.blogPost.findMany({
-    select: {
-      tags: true,
-    },
-  });
+// export async function generateStaticParams() {
+//   // Get all unique tags from blog posts
+//   const posts = await prisma.blogPost.findMany({
+//     select: {
+//       tags: true,
+//     },
+//   });
 
-  // Collect unique tags across all posts
-  const allTags = Array.from(
-    new Set(
-      posts.flatMap((p) => Array.isArray(p.tags) ? p.tags : [])
-    )
-  ).sort();
+//   // Collect unique tags across all posts
+//   const allTags = Array.from(
+//     new Set(
+//       posts.flatMap((p) => Array.isArray(p.tags) ? p.tags : [])
+//     )
+//   ).sort();
 
-  return allTags.map((tag) => ({
-    category: encodeURIComponent(tag.replaceAll(" ", "-")), // Encode spaces as dashes
-  }));
-}
+//   return allTags.map((tag) => ({
+//     category: encodeURIComponent(tag.replaceAll(" ", "-")), // Encode spaces as dashes
+//   }));
+// }
 
 export default function BlogCategoryPage(props: BlogTagPageProps) {
-  return <Suspense fallback={<div className="flex justify-center items-center py-20">
-      <svg
-        className="animate-spin h-8 w-8 text-primary"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <circle
-          className="opacity-25"
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="4"
-        ></circle>
-        <path
-          className="opacity-75"
-          fill="currentColor"
-          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-        ></path>
-      </svg>
-    </div>}>
-    <BlogCategoryView params={props.params}  />
-  </Suspense>
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center py-20">
+          <svg
+            className="text-primary h-8 w-8 animate-spin"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+            ></circle>
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+            ></path>
+          </svg>
+        </div>
+      }
+    >
+      <BlogCategoryView params={props.params} />
+    </Suspense>
+  );
 }
