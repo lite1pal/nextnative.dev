@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const apps = [
   {
-    logo: "/showcase/bill-organizer/logo.png",
+    logo: "/showcase/bill-organizer/logo.webp",
     name: "Bill Organizer - Matcharge",
     description:
       "Track subscriptions in a calm, visual way to avoid surprise charges and understand your spending habits.",
@@ -19,7 +19,7 @@ const apps = [
     },
   },
   {
-    logo: "/showcase/sproutly-logo.png",
+    logo: "/showcase/sproutly-logo-2.webp",
     name: "Sproutly: AI Plant Identifier",
     description:
       "An AI-powered plant identification app. Snap a photo and get instant plant care tips.",
