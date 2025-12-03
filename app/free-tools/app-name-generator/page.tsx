@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import HighlightedSpan from "@/components/HighlightedSpan";
 
 type Idea = {
   name: string;
@@ -240,169 +241,204 @@ export default function AppNameGeneratorPage() {
   };
 
   return (
-    <div className="mx-auto max-w-6xl py-16">
-      <h1 className="mb-2 text-center text-4xl font-bold text-gray-900">
-        App Name Generator 🔤
-      </h1>
-      <p className="mb-8 text-center text-gray-600">
-        Get brandable app name ideas in seconds. Choose your vibe, add required
-        words, and grab domain suggestions. 100% free.
-      </p>
+    <div className="mx-auto w-full max-w-[962px] py-12 xl:max-w-[1260px]">
+      <div className="mx-auto max-w-6xl">
+        {/* Header */}
+        <div className="mb-12 py-10 text-center">
+          <h1 className="mb-4 text-4xl font-semibold text-gray-900 md:text-[74px] md:leading-[91px]">
+            App Name <HighlightedSpan>Generator</HighlightedSpan> 🔤
+          </h1>
+          <p className="mx-auto mb-10 max-w-3xl text-xl text-gray-600">
+            Get brandable app name ideas in seconds. Choose your vibe, add
+            required words, and grab domain suggestions. 100% free.
+          </p>
 
-      {/* Controls */}
-      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <label className="flex flex-col">
-            <span className="mb-1 text-sm font-medium">
-              What does your app do?
-            </span>
-            <input
-              value={topic}
-              onChange={(e) => setTopic(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2"
-              placeholder="notes, tasks, reminders"
-            />
-          </label>
-
-          <label className="flex flex-col">
-            <span className="mb-1 text-sm font-medium">Category</span>
-            <select
-              value={cat}
-              onChange={(e) => setCat(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2"
-            >
-              {categories.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <label className="flex flex-col">
-            <span className="mb-1 text-sm font-medium">Name style</span>
-            <select
-              value={vibe}
-              onChange={(e) => setVibe(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2"
-            >
-              {styles.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <label className="flex flex-col">
-            <span className="mb-1 text-sm font-medium">
-              Must include (comma-separated)
-            </span>
-            <input
-              value={include}
-              onChange={(e) => setInclude(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2"
-              placeholder="notes, fit, cash"
-            />
-          </label>
-
-          <label className="flex flex-col">
-            <span className="mb-1 text-sm font-medium">
-              Avoid words (comma-separated)
-            </span>
-            <input
-              value={avoid}
-              onChange={(e) => setAvoid(e.target.value)}
-              className="rounded-xl border border-gray-300 bg-white p-2"
-              placeholder="ai, pro, plus"
-            />
-            <span className="mt-1 text-xs text-gray-500">
-              Tip: remove overused suffixes to look original.
-            </span>
-          </label>
-        </div>
-
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-          <div className="text-sm text-gray-500">
-            Generating <strong>16</strong> names per click.
-          </div>
-          <div className="flex gap-2">
-            <button
-              onClick={() => setSeed(Date.now())}
-              className="rounded-xl bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-700"
-            >
-              Generate names
-            </button>
-            <button
-              onClick={copyList}
-              className="rounded-xl border border-green-600 px-4 py-2 font-semibold text-green-700 hover:bg-green-50"
-            >
-              Copy list
-            </button>
-            <button
-              onClick={exportCSV}
-              className="rounded-xl border border-gray-300 px-4 py-2 font-semibold text-gray-700 hover:bg-gray-50"
-            >
-              Download CSV
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Results */}
-      <section className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-        {ideas.map((i, idx) => (
-          <article
-            key={idx}
-            className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-md"
-          >
-            <div className="flex items-start justify-between">
-              <h3 className="text-2xl font-semibold text-gray-900">{i.name}</h3>
-              <span className="rounded-full bg-green-50 px-2 py-0.5 text-xs font-medium text-green-700 ring-1 ring-green-200">
-                {i.style}
+          {/* Social proof / usage stats */}
+          <div className="mx-auto flex flex-wrap items-center justify-center gap-6 text-base text-gray-700">
+            <div className="flex items-center gap-2">
+              <span className="text-3xl" aria-hidden="true">
+                🔤
+              </span>
+              <span>
+                <strong className="text-gray-900">Brandable</strong> names
               </span>
             </div>
-            <p className="mt-1 text-gray-600">{i.tagline}</p>
-
-            <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
-              {i.tlds.map((d) => (
-                <span
-                  key={d}
-                  className="rounded-lg bg-gray-50 px-2 py-1 text-gray-700 ring-1 ring-gray-200"
-                >
-                  {d}
-                </span>
-              ))}
+            <div className="flex items-center gap-2">
+              <span className="text-3xl" aria-hidden="true">
+                ⚡
+              </span>
+              <span>
+                <strong className="text-gray-900">Domain</strong> suggestions
+              </span>
             </div>
+            <div className="hidden items-center gap-2 sm:flex">
+              <span className="text-3xl" aria-hidden="true">
+                ✨
+              </span>
+              <span>
+                <strong className="text-gray-900">Custom</strong> vibes
+              </span>
+            </div>
+          </div>
+        </div>
 
-            <div className="mt-4 flex gap-2">
+        {/* Controls */}
+        <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <label className="flex flex-col">
+              <span className="mb-1 text-sm font-medium">
+                What does your app do?
+              </span>
+              <input
+                value={topic}
+                onChange={(e) => setTopic(e.target.value)}
+                className="rounded-xl border border-gray-300 bg-white p-2"
+                placeholder="notes, tasks, reminders"
+              />
+            </label>
+
+            <label className="flex flex-col">
+              <span className="mb-1 text-sm font-medium">Category</span>
+              <select
+                value={cat}
+                onChange={(e) => setCat(e.target.value)}
+                className="rounded-xl border border-gray-300 bg-white p-2"
+              >
+                {categories.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label className="flex flex-col">
+              <span className="mb-1 text-sm font-medium">Name style</span>
+              <select
+                value={vibe}
+                onChange={(e) => setVibe(e.target.value)}
+                className="rounded-xl border border-gray-300 bg-white p-2"
+              >
+                {styles.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label className="flex flex-col">
+              <span className="mb-1 text-sm font-medium">
+                Must include (comma-separated)
+              </span>
+              <input
+                value={include}
+                onChange={(e) => setInclude(e.target.value)}
+                className="rounded-xl border border-gray-300 bg-white p-2"
+                placeholder="notes, fit, cash"
+              />
+            </label>
+
+            <label className="flex flex-col">
+              <span className="mb-1 text-sm font-medium">
+                Avoid words (comma-separated)
+              </span>
+              <input
+                value={avoid}
+                onChange={(e) => setAvoid(e.target.value)}
+                className="rounded-xl border border-gray-300 bg-white p-2"
+                placeholder="ai, pro, plus"
+              />
+              <span className="mt-1 text-xs text-gray-500">
+                Tip: remove overused suffixes to look original.
+              </span>
+            </label>
+          </div>
+
+          <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+            <div className="text-sm text-gray-500">
+              Generating <strong>16</strong> names per click.
+            </div>
+            <div className="flex gap-2">
               <button
-                onClick={() => navigator.clipboard.writeText(i.name)}
-                className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                onClick={() => setSeed(Date.now())}
+                className="rounded-xl bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-700"
               >
-                Copy name
+                Generate names
               </button>
-              <a
-                href={`/free-tools/app-store-metadata-generator?title=${encodeURIComponent(i.name)}&subtitle=${encodeURIComponent(i.tagline)}`}
-                className="rounded-lg bg-green-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-green-700"
+              <button
+                onClick={copyList}
+                className="rounded-xl border border-green-600 px-4 py-2 font-semibold text-green-700 hover:bg-green-50"
               >
-                Generate metadata →
-              </a>
+                Copy list
+              </button>
+              <button
+                onClick={exportCSV}
+                className="rounded-xl border border-gray-300 px-4 py-2 font-semibold text-gray-700 hover:bg-gray-50"
+              >
+                Download CSV
+              </button>
             </div>
-          </article>
-        ))}
-      </section>
+          </div>
+        </section>
 
-      <p className="mt-10 text-center text-gray-500">
-        Found a winner?{" "}
-        <Link
-          href="/#pricing"
-          className="font-semibold text-green-600 underline"
-        >
-          Get the NextNative Starter
-        </Link>
-        .
-      </p>
+        {/* Results */}
+        <section className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+          {ideas.map((i, idx) => (
+            <article
+              key={idx}
+              className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-md"
+            >
+              <div className="flex items-start justify-between">
+                <h3 className="text-2xl font-semibold text-gray-900">
+                  {i.name}
+                </h3>
+                <span className="rounded-full bg-green-50 px-2 py-0.5 text-xs font-medium text-green-700 ring-1 ring-green-200">
+                  {i.style}
+                </span>
+              </div>
+              <p className="mt-1 text-gray-600">{i.tagline}</p>
+
+              <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+                {i.tlds.map((d) => (
+                  <span
+                    key={d}
+                    className="rounded-lg bg-gray-50 px-2 py-1 text-gray-700 ring-1 ring-gray-200"
+                  >
+                    {d}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-4 flex gap-2">
+                <button
+                  onClick={() => navigator.clipboard.writeText(i.name)}
+                  className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                >
+                  Copy name
+                </button>
+                <a
+                  href={`/free-tools/app-store-metadata-generator?title=${encodeURIComponent(i.name)}&subtitle=${encodeURIComponent(i.tagline)}`}
+                  className="rounded-lg bg-green-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-green-700"
+                >
+                  Generate metadata →
+                </a>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <p className="mt-10 text-center text-gray-500">
+          Found a winner?{" "}
+          <Link
+            href="/#pricing"
+            className="font-semibold text-green-600 underline"
+          >
+            Get the NextNative Starter
+          </Link>
+          .
+        </p>
+      </div>
     </div>
   );
 }

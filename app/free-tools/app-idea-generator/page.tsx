@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import HighlightedSpan from "@/components/HighlightedSpan";
 
 type Idea = {
   title: string;
@@ -198,81 +199,118 @@ export default function AppIdeaGenerator() {
   };
 
   return (
-    <div className="mx-auto max-w-3xl py-16">
-      <h1 className="mb-2 text-center text-4xl font-bold text-gray-900">
-        App Idea Generator 💡
-      </h1>
-      <p className="mb-8 text-center text-gray-600">
-        Press generate to get a fresh, buildable app idea with features and
-        monetization.
-      </p>
+    <div className="mx-auto w-full max-w-[962px] py-12 xl:max-w-[1260px]">
+      <div className="mx-auto max-w-6xl">
+        {/* Header */}
+        <div className="mb-12 py-10 text-center">
+          <h1 className="mb-4 text-4xl font-semibold text-gray-900 md:text-[74px] md:leading-[91px]">
+            App Idea <HighlightedSpan>Generator</HighlightedSpan> 💡
+          </h1>
+          <p className="mx-auto mb-10 max-w-3xl text-xl text-gray-600">
+            Press generate to get a fresh, buildable app idea with features and
+            monetization strategy.
+          </p>
 
-      <div className="mb-6 flex justify-center gap-3">
-        <button
-          onClick={() => setSeed(Date.now())}
-          className="rounded-xl bg-green-600 px-5 py-2.5 font-semibold text-white hover:bg-green-700"
-        >
-          Generate idea
-        </button>
-        <button
-          onClick={() =>
-            navigator.clipboard.writeText(`${idea.title} — ${idea.tagline}`)
-          }
-          className="rounded-xl border border-green-600 px-5 py-2.5 font-semibold text-green-600 hover:bg-green-50"
-        >
-          Copy title
-        </button>
-        <button
-          onClick={exportIdea}
-          className="rounded-xl border border-gray-300 px-5 py-2.5 font-semibold text-gray-700 hover:bg-gray-50"
-        >
-          Download JSON
-        </button>
+          {/* Social proof / usage stats */}
+          <div className="mx-auto flex flex-wrap items-center justify-center gap-6 text-base text-gray-700">
+            <div className="flex items-center gap-2">
+              <span className="text-3xl" aria-hidden="true">
+                💡
+              </span>
+              <span>
+                <strong className="text-gray-900">Buildable</strong> ideas
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-3xl" aria-hidden="true">
+                🎯
+              </span>
+              <span>
+                <strong className="text-gray-900">Target</strong> audience
+              </span>
+            </div>
+            <div className="hidden items-center gap-2 sm:flex">
+              <span className="text-3xl" aria-hidden="true">
+                💰
+              </span>
+              <span>
+                <strong className="text-gray-900">Monetization</strong> included
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-6 flex justify-center gap-3">
+            <button
+              onClick={() => setSeed(Date.now())}
+              className="rounded-xl bg-green-600 px-5 py-2.5 font-semibold text-white hover:bg-green-700"
+            >
+              Generate idea
+            </button>
+            <button
+              onClick={() =>
+                navigator.clipboard.writeText(`${idea.title} — ${idea.tagline}`)
+              }
+              className="rounded-xl border border-green-600 px-5 py-2.5 font-semibold text-green-600 hover:bg-green-50"
+            >
+              Copy title
+            </button>
+            <button
+              onClick={exportIdea}
+              className="rounded-xl border border-gray-300 px-5 py-2.5 font-semibold text-gray-700 hover:bg-gray-50"
+            >
+              Download JSON
+            </button>
+          </div>
+
+          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <h2 className="text-2xl font-semibold text-gray-900">
+              {idea.title}
+            </h2>
+            <p className="mt-1 text-gray-600">{idea.tagline}</p>
+
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="rounded-xl bg-gray-50 p-4">
+                <div className="text-sm text-gray-500">Category</div>
+                <div className="text-base font-medium">{idea.category}</div>
+              </div>
+              <div className="rounded-xl bg-gray-50 p-4">
+                <div className="text-sm text-gray-500">Target audience</div>
+                <div className="text-base font-medium">{idea.target}</div>
+              </div>
+              <div className="rounded-xl bg-gray-50 p-4 sm:col-span-2">
+                <div className="text-sm text-gray-500">Monetization</div>
+                <div className="text-base font-medium">{idea.monetization}</div>
+              </div>
+            </div>
+
+            <div className="mt-6">
+              <div className="text-sm text-gray-500">Core features</div>
+              <ul className="mt-2 list-disc space-y-1 pl-6 text-gray-800">
+                {idea.coreFeatures.map((f) => (
+                  <li key={f}>{f}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-6">
+              <div className="text-sm text-gray-500">Why it matters</div>
+              <p className="mt-2 text-gray-800">{idea.description}</p>
+            </div>
+          </div>
+
+          <p className="mt-10 text-center text-lg text-gray-500">
+            Like this idea?{" "}
+            <a
+              href="https://nextnative.dev"
+              className="font-semibold text-green-600 underline hover:text-green-700"
+            >
+              Turn it into a real iOS & Android app with NextNative
+            </a>
+          </p>
+        </div>
       </div>
-
-      <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <h2 className="text-2xl font-semibold text-gray-900">{idea.title}</h2>
-        <p className="mt-1 text-gray-600">{idea.tagline}</p>
-
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-xl bg-gray-50 p-4">
-            <div className="text-sm text-gray-500">Category</div>
-            <div className="text-base font-medium">{idea.category}</div>
-          </div>
-          <div className="rounded-xl bg-gray-50 p-4">
-            <div className="text-sm text-gray-500">Target audience</div>
-            <div className="text-base font-medium">{idea.target}</div>
-          </div>
-          <div className="rounded-xl bg-gray-50 p-4 sm:col-span-2">
-            <div className="text-sm text-gray-500">Monetization</div>
-            <div className="text-base font-medium">{idea.monetization}</div>
-          </div>
-        </div>
-
-        <div className="mt-6">
-          <div className="text-sm text-gray-500">Core features</div>
-          <ul className="mt-2 list-disc space-y-1 pl-6 text-gray-800">
-            {idea.coreFeatures.map((f) => (
-              <li key={f}>{f}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-6">
-          <div className="text-sm text-gray-500">Why it matters</div>
-          <p className="mt-2 text-gray-800">{idea.description}</p>
-        </div>
-      </div>
-
-      <p className="mt-10 text-center text-lg text-gray-500">
-        Like this idea?{" "}
-        <a
-          href="https://nextnative.dev"
-          className="font-semibold text-green-600 underline hover:text-green-700"
-        >
-          Turn it into a real iOS & Android app with NextNative
-        </a>
-      </p>
     </div>
   );
 }

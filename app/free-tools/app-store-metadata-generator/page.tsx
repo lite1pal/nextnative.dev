@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import HighlightedSpan from "@/components/HighlightedSpan";
 
 type Out = {
   iosTitle: string;
@@ -186,216 +187,251 @@ export default function AppStoreMetadataGenerator() {
   };
 
   return (
-    <div className="mx-auto max-w-5xl py-16">
-      <h1 className="mb-2 text-center text-4xl font-bold text-gray-900">
-        App Store Metadata Generator 📝
-      </h1>
-      <p className="mb-10 text-center text-gray-600">
-        Create iOS & Google Play titles, subtitles, keywords, and descriptions
-        from a few fields. Copy or download JSON.
-      </p>
+    <div className="mx-auto w-full max-w-[962px] py-12 xl:max-w-[1260px]">
+      <div className="mx-auto max-w-6xl">
+        {/* Header */}
+        <div className="mb-12 py-10 text-center">
+          <h1 className="mb-4 text-4xl font-semibold text-gray-900 md:text-[74px] md:leading-[91px]">
+            App Store Metadata <HighlightedSpan>Generator</HighlightedSpan> 📝
+          </h1>
+          <p className="mx-auto mb-10 max-w-3xl text-xl text-gray-600">
+            Create iOS & Google Play titles, subtitles, keywords, and
+            descriptions from a few fields. Copy or download JSON.
+          </p>
 
-      {/* Inputs */}
-      <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <label className="flex flex-col">
-          <span className="mb-1 font-medium">App name</span>
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
-          />
-          <span className="mt-1 text-xs text-gray-400">
-            Max 30 chars for iOS title
-          </span>
-        </label>
-
-        <label className="flex flex-col">
-          <span className="mb-1 font-medium">One-line value (tagline)</span>
-          <input
-            value={oneLiner}
-            onChange={(e) => setOneLiner(e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
-          />
-        </label>
-
-        <label className="flex flex-col sm:col-span-2">
-          <span className="mb-1 font-medium">
-            Core features (separate with commas or semicolons)
-          </span>
-          <input
-            value={features}
-            onChange={(e) => setFeatures(e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
-          />
-        </label>
-
-        <label className="flex flex-col">
-          <span className="mb-1 font-medium">Primary audience</span>
-          <input
-            value={audience}
-            onChange={(e) => setAudience(e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
-          />
-        </label>
-
-        <label className="flex flex-col">
-          <span className="mb-1 font-medium">
-            Seed keywords (comma-separated)
-          </span>
-          <input
-            value={keywords}
-            onChange={(e) => setKeywords(e.target.value)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
-          />
-          <span className="mt-1 text-xs text-gray-400">
-            We’ll format a 100-char iOS keywords CSV
-          </span>
-        </label>
-
-        <label className="flex flex-col">
-          <span className="mb-1 font-medium">Tone</span>
-          <select
-            value={tone}
-            onChange={(e) => setTone(e.target.value as any)}
-            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
-          >
-            <option value="friendly">Friendly</option>
-            <option value="professional">Professional</option>
-            <option value="playful">Playful</option>
-          </select>
-        </label>
-      </div>
-
-      {/* Outputs */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <Card title="iOS App Store">
-          <Field label="Title (≤30)">
-            <code className="break-words">{out.iosTitle}</code>
-          </Field>
-          <Field label="Subtitle (≤30)">
-            <code className="break-words">{out.iosSubtitle}</code>
-          </Field>
-          <Field label="Keywords CSV (≤100)">
-            <textarea
-              readOnly
-              value={out.iosKeywords}
-              className="w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
-            />
-          </Field>
-          <Field label="Full description (≤4000)">
-            <textarea
-              readOnly
-              value={out.iosDescription}
-              className="h-56 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
-            />
-          </Field>
-        </Card>
-
-        <Card title="Google Play">
-          <Field label="Short description (≤80)">
-            <textarea
-              readOnly
-              value={out.gpShort}
-              className="w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
-            />
-          </Field>
-          <Field label="Full description (≤4000)">
-            <textarea
-              readOnly
-              value={out.gpLong}
-              className="h-56 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
-            />
-          </Field>
-        </Card>
-
-        <Card title="Suggestions">
-          <Field label="Suggested categories">
-            <ul className="list-disc pl-5 text-sm text-gray-700">
-              {out.categories.map((c) => (
-                <li key={c}>{c}</li>
-              ))}
-            </ul>
-          </Field>
-          <Field label="Screenshot checklist">
-            <ul className="list-disc pl-5 text-sm text-gray-700">
-              {out.checklist.map((c) => (
-                <li key={c}>{c}</li>
-              ))}
-            </ul>
-          </Field>
-        </Card>
-
-        <Card title="Download JSON">
-          <textarea
-            readOnly
-            value={bundle}
-            className="h-48 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
-          />
-          <div className="mt-3 flex justify-center gap-3">
-            <button
-              onClick={() => navigator.clipboard.writeText(bundle)}
-              className="inline-flex items-center justify-center rounded-lg bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none"
-            >
-              Copy
-            </button>
-            <button
-              onClick={download}
-              className="inline-flex items-center justify-center rounded-lg border border-green-600 px-4 py-2 text-sm font-medium text-green-700 hover:bg-green-50 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none"
-            >
-              Download
-            </button>
+          {/* Social proof / usage stats */}
+          <div className="mx-auto flex flex-wrap items-center justify-center gap-6 text-base text-gray-700">
+            <div className="flex items-center gap-2">
+              <span className="text-3xl" aria-hidden="true">
+                📝
+              </span>
+              <span>
+                <strong className="text-gray-900">iOS & Android</strong> ready
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-3xl" aria-hidden="true">
+                ⚡
+              </span>
+              <span>
+                <strong className="text-gray-900">Instant</strong> generation
+              </span>
+            </div>
+            <div className="hidden items-center gap-2 sm:flex">
+              <span className="text-3xl" aria-hidden="true">
+                🎯
+              </span>
+              <span>
+                <strong className="text-gray-900">ASO</strong> optimized
+              </span>
+            </div>
           </div>
-        </Card>
-      </div>
+        </div>
 
-      {/* Related Tools */}
-      <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <h3 className="mb-3 font-semibold text-gray-900">
-          🛠️ Related Free Tools
-        </h3>
-        <ul className="space-y-2 text-sm text-gray-700">
-          <li>
-            • Use our{" "}
-            <a
-              href="/free-tools/app-store-keyword-research"
-              className="font-semibold text-green-600 underline"
-            >
-              Keyword Research Tool
-            </a>{" "}
-            to find high-impact keywords
-          </li>
-          <li>
-            • Check{" "}
-            <a
-              href="/free-tools/app-store-screenshot-sizes"
-              className="font-semibold text-green-600 underline"
-            >
-              Screenshot Requirements
-            </a>{" "}
-            before uploading
-          </li>
-          <li>
-            • Calculate revenue after fees with our{" "}
-            <a
-              href="/free-tools/app-store-fees"
-              className="font-semibold text-green-600 underline"
-            >
-              App Store Fees Calculator
-            </a>
-          </li>
-        </ul>
-      </div>
+        <div className="mx-auto max-w-5xl">
+          {/* Inputs */}
+          <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <label className="flex flex-col">
+              <span className="mb-1 font-medium">App name</span>
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
+              />
+              <span className="mt-1 text-xs text-gray-400">
+                Max 30 chars for iOS title
+              </span>
+            </label>
 
-      <p className="mt-10 text-center text-gray-500">
-        Built with ❤️ by{" "}
-        <a
-          href="https://nextnative.dev"
-          className="font-semibold text-green-600 underline hover:text-green-700"
-        >
-          NextNative.dev
-        </a>{" "}
-        team.
-      </p>
+            <label className="flex flex-col">
+              <span className="mb-1 font-medium">One-line value (tagline)</span>
+              <input
+                value={oneLiner}
+                onChange={(e) => setOneLiner(e.target.value)}
+                className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
+              />
+            </label>
+
+            <label className="flex flex-col sm:col-span-2">
+              <span className="mb-1 font-medium">
+                Core features (separate with commas or semicolons)
+              </span>
+              <input
+                value={features}
+                onChange={(e) => setFeatures(e.target.value)}
+                className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
+              />
+            </label>
+
+            <label className="flex flex-col">
+              <span className="mb-1 font-medium">Primary audience</span>
+              <input
+                value={audience}
+                onChange={(e) => setAudience(e.target.value)}
+                className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
+              />
+            </label>
+
+            <label className="flex flex-col">
+              <span className="mb-1 font-medium">
+                Seed keywords (comma-separated)
+              </span>
+              <input
+                value={keywords}
+                onChange={(e) => setKeywords(e.target.value)}
+                className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
+              />
+              <span className="mt-1 text-xs text-gray-400">
+                We’ll format a 100-char iOS keywords CSV
+              </span>
+            </label>
+
+            <label className="flex flex-col">
+              <span className="mb-1 font-medium">Tone</span>
+              <select
+                value={tone}
+                onChange={(e) => setTone(e.target.value as any)}
+                className="rounded-xl border border-gray-300 bg-white p-2 text-gray-900"
+              >
+                <option value="friendly">Friendly</option>
+                <option value="professional">Professional</option>
+                <option value="playful">Playful</option>
+              </select>
+            </label>
+          </div>
+
+          {/* Outputs */}
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <Card title="iOS App Store">
+              <Field label="Title (≤30)">
+                <code className="break-words">{out.iosTitle}</code>
+              </Field>
+              <Field label="Subtitle (≤30)">
+                <code className="break-words">{out.iosSubtitle}</code>
+              </Field>
+              <Field label="Keywords CSV (≤100)">
+                <textarea
+                  readOnly
+                  value={out.iosKeywords}
+                  className="w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+                />
+              </Field>
+              <Field label="Full description (≤4000)">
+                <textarea
+                  readOnly
+                  value={out.iosDescription}
+                  className="h-56 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+                />
+              </Field>
+            </Card>
+
+            <Card title="Google Play">
+              <Field label="Short description (≤80)">
+                <textarea
+                  readOnly
+                  value={out.gpShort}
+                  className="w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+                />
+              </Field>
+              <Field label="Full description (≤4000)">
+                <textarea
+                  readOnly
+                  value={out.gpLong}
+                  className="h-56 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+                />
+              </Field>
+            </Card>
+
+            <Card title="Suggestions">
+              <Field label="Suggested categories">
+                <ul className="list-disc pl-5 text-sm text-gray-700">
+                  {out.categories.map((c) => (
+                    <li key={c}>{c}</li>
+                  ))}
+                </ul>
+              </Field>
+              <Field label="Screenshot checklist">
+                <ul className="list-disc pl-5 text-sm text-gray-700">
+                  {out.checklist.map((c) => (
+                    <li key={c}>{c}</li>
+                  ))}
+                </ul>
+              </Field>
+            </Card>
+
+            <Card title="Download JSON">
+              <textarea
+                readOnly
+                value={bundle}
+                className="h-48 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+              />
+              <div className="mt-3 flex justify-center gap-3">
+                <button
+                  onClick={() => navigator.clipboard.writeText(bundle)}
+                  className="inline-flex items-center justify-center rounded-lg bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none"
+                >
+                  Copy
+                </button>
+                <button
+                  onClick={download}
+                  className="inline-flex items-center justify-center rounded-lg border border-green-600 px-4 py-2 text-sm font-medium text-green-700 hover:bg-green-50 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none"
+                >
+                  Download
+                </button>
+              </div>
+            </Card>
+          </div>
+
+          {/* Related Tools */}
+          <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <h3 className="mb-3 font-semibold text-gray-900">
+              🛠️ Related Free Tools
+            </h3>
+            <ul className="space-y-2 text-sm text-gray-700">
+              <li>
+                • Use our{" "}
+                <a
+                  href="/free-tools/app-store-keyword-research"
+                  className="font-semibold text-green-600 underline"
+                >
+                  Keyword Research Tool
+                </a>{" "}
+                to find high-impact keywords
+              </li>
+              <li>
+                • Check{" "}
+                <a
+                  href="/free-tools/app-store-screenshot-sizes"
+                  className="font-semibold text-green-600 underline"
+                >
+                  Screenshot Requirements
+                </a>{" "}
+                before uploading
+              </li>
+              <li>
+                • Calculate revenue after fees with our{" "}
+                <a
+                  href="/free-tools/app-store-fees"
+                  className="font-semibold text-green-600 underline"
+                >
+                  App Store Fees Calculator
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <p className="mt-10 text-center text-gray-500">
+            Built with ❤️ by{" "}
+            <a
+              href="https://nextnative.dev"
+              className="font-semibold text-green-600 underline hover:text-green-700"
+            >
+              NextNative.dev
+            </a>{" "}
+            team.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
