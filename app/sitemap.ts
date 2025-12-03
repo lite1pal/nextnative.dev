@@ -56,6 +56,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "https://nextnative.dev/free-tools/app-store-fees",
   ];
 
+  const costPages = [
+    "https://nextnative.dev/cost/how-much-does-it-cost-to-build-an-app",
+    "https://nextnative.dev/cost/app-development-cost-calculator",
+    "https://nextnative.dev/cost/react-native-developer-salary",
+    "https://nextnative.dev/cost/cost-to-publish-app-on-app-store",
+  ];
+
   const comparisonUrls = comparisons.map(
     (comparison) => `https://nextnative.dev/comparisons/${comparison.slug}`,
   );
@@ -155,6 +162,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: currentDate,
       changeFrequency: "weekly" as const,
       priority: 0.8,
+    })),
+
+    // Cost Pages
+    ...costPages.map((costPage) => ({
+      url: costPage,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
     })),
 
     // Documentation

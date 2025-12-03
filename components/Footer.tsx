@@ -127,6 +127,25 @@ const examplesLinks: FooterLink[] = [
   },
 ];
 
+const costGuideLinks: FooterLink[] = [
+  {
+    label: "How Much Does It Cost to Build an App?",
+    href: "/cost/how-much-does-it-cost-to-build-an-app",
+  },
+  {
+    label: "App Development Cost Calculator",
+    href: "/cost/app-development-cost-calculator",
+  },
+  {
+    label: "React Native Developer Salary",
+    href: "/cost/react-native-developer-salary",
+  },
+  {
+    label: "Cost to Publish App on App Store",
+    href: "/cost/cost-to-publish-app-on-app-store",
+  },
+];
+
 const tutorialsLinks: FooterLink[] = [
   {
     label: "API Routes & Fetching from a Next.js Mobile App",
@@ -274,8 +293,10 @@ function Footer() {
                 </svg>
               </a>
             </div>
-            <div className="mt-5 hidden md:block">
+            <div className="mt-5 hidden flex-col gap-y-16 md:flex">
               <FooterLinkGroup title="Legal" links={legalLinks} />
+
+              <FooterLinkGroup title="Cost Guides" links={costGuideLinks} />
             </div>
           </div>
 
