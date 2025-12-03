@@ -8,7 +8,7 @@ function CTAWithSocialProof({ className }: { className?: string }) {
   return (
     <div className={cn("flex flex-col gap-10 sm:items-center", className)}>
       <CTA />
-      <div className="flex items-center gap-5 sm:gap-2">
+      <div className="flex items-center gap-3 max-sm:-ml-2.5 sm:gap-2">
         <AvatarList />
         <div className="flex flex-col">
           <RatingSvg />

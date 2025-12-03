@@ -47,7 +47,7 @@ function HeroSection({
         {ctaButton}
 
         {includeRatingStars && (
-          <div className="-mt-2.5 flex items-center gap-5 sm:gap-2">
+          <div className="-mt-2.5 flex items-center gap-3 max-sm:-ml-2.5 sm:gap-2">
             <AvatarList priority />
             <div className="flex flex-col">
               <RatingSvg priority />

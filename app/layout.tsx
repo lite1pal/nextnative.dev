@@ -27,12 +27,12 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Affonso */}
-        <Script
+        {/* <Script
           src="https://affonso.io/js/pixel.min.js"
           strategy="afterInteractive"
           data-affonso="cmcqau5fq001b6df1lxjk00up"
           data-cookie_duration="30"
-        />
+        /> */}
         {/* DataFast */}
         <Script
           data-website-id="68665e138b39cc32bf5cf8ad"
