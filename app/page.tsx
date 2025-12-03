@@ -203,10 +203,8 @@ export default function Home() {
 
       <div className="mt-10 flex flex-col gap-10 sm:items-center">
         <CTA />
-        <div className="flex gap-5 sm:gap-2">
-          <div className="relative -top-1.5">
-            <AvatarList />
-          </div>
+        <div className="flex items-center gap-5 sm:gap-2">
+          <AvatarList />
           <div className="flex flex-col">
             <RatingSvg />
             <LovedByMakers />
@@ -232,10 +230,8 @@ export default function Home() {
 
       <div className="flex flex-col gap-10 sm:mt-10 sm:items-center">
         <CTA />
-        <div className="flex gap-5 sm:gap-2">
-          <div className="relative -top-1.5">
-            <AvatarList />
-          </div>
+        <div className="flex items-center gap-5 sm:gap-2">
+          <AvatarList />
           <div className="flex flex-col">
             <RatingSvg />
             <LovedByMakers />
@@ -283,10 +279,8 @@ export default function Home() {
 
       <div className="mb-10 flex flex-col gap-10 sm:mt-10 sm:items-center">
         <CTA />
-        <div className="flex gap-5 sm:gap-2">
-          <div className="relative -top-1.5">
-            <AvatarList />
-          </div>
+        <div className="flex items-center gap-5 sm:gap-2">
+          <AvatarList />
           <div className="flex flex-col">
             <RatingSvg />
             <LovedByMakers />
