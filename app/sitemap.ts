@@ -49,6 +49,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "https://nextnative.dev/free-tools/app-store-metadata-generator",
     "https://nextnative.dev/free-tools/app-store-screenshot-generator",
     "https://nextnative.dev/free-tools/play-store-privacy-policy",
+    "https://nextnative.dev/free-tools/app-store-keyword-research",
+    "https://nextnative.dev/free-tools/app-store-screenshot-sizes",
+    "https://nextnative.dev/free-tools/app-store-connect-api",
+    "https://nextnative.dev/free-tools/create-android-keystore",
+    "https://nextnative.dev/free-tools/app-store-fees",
   ];
 
   const comparisonUrls = comparisons.map(
