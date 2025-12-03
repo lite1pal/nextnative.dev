@@ -78,6 +78,36 @@ function Page() {
         "Generate a reverse-domain bundle identifier like com.company.app for Xcode and Capacitor.",
       link: "/free-tools/ios-bundle-id-generator",
     },
+    {
+      title: "App Store Screenshot Sizes",
+      description:
+        "Complete reference for iOS App Store and Google Play screenshot dimensions. Updated for 2025 with latest devices.",
+      link: "/free-tools/app-store-screenshot-sizes",
+    },
+    {
+      title: "App Store Fees Calculator",
+      description:
+        "Calculate how much Apple App Store or Google Play Store takes from your revenue. Updated for 2025.",
+      link: "/free-tools/app-store-fees",
+    },
+    {
+      title: "Create Android Keystore",
+      description:
+        "Generate keytool commands to create Android keystores for signing APKs and AABs. Includes Capacitor setup.",
+      link: "/free-tools/create-android-keystore",
+    },
+    {
+      title: "App Store Connect API Setup",
+      description:
+        "Complete guide to App Store Connect API keys for Fastlane, CI/CD, and automated publishing.",
+      link: "/free-tools/app-store-connect-api",
+    },
+    {
+      title: "App Store Keyword Research",
+      description:
+        "Discover the best keywords for your app with difficulty ratings and search volume estimates. Free ASO tool.",
+      link: "/free-tools/app-store-keyword-research",
+    },
   ];
 
   // JSON-LD: Breadcrumb + ItemList of tools

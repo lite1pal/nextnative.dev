@@ -43,6 +43,18 @@ const freeToolsLinks: FooterLink[] = [
     href: "/free-tools/app-revenue-calculator",
   },
   {
+    label: "App Store Connect API Setup",
+    href: "/free-tools/app-store-connect-api",
+  },
+  {
+    label: "App Store Fees Calculator",
+    href: "/free-tools/app-store-fees",
+  },
+  {
+    label: "App Store Keyword Research",
+    href: "/free-tools/app-store-keyword-research",
+  },
+  {
     label: "App Store Metadata Generator",
     href: "/free-tools/app-store-metadata-generator",
   },
@@ -51,8 +63,16 @@ const freeToolsLinks: FooterLink[] = [
     href: "/free-tools/app-store-screenshot-generator",
   },
   {
+    label: "App Store Screenshot Sizes",
+    href: "/free-tools/app-store-screenshot-sizes",
+  },
+  {
     label: "Capacitor Config Generator",
     href: "/free-tools/capacitor-config-generator",
+  },
+  {
+    label: "Create Android Keystore",
+    href: "/free-tools/create-android-keystore",
   },
   {
     label: "iOS Bundle ID Generator",
