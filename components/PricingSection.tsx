@@ -5,7 +5,6 @@ import Button from "./Button";
 import HighlightedSpan from "./HighlightedSpan";
 import StarburstSign from "./StarburstSign";
 import Subheading from "./Subheading";
-import CountdownTimer from "./CountdownTimer";
 import { trackEvent } from "@/services/custom-analytics";
 import Link from "next/link";
 

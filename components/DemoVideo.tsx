@@ -1,7 +1,7 @@
 "use client";
 
 import { Play } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import StarburstSign from "./StarburstSign";
 import Image from "next/image";
 import { trackEvent } from "@/services/custom-analytics";

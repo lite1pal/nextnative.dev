@@ -1,5 +1,3 @@
-"use client";
-
 function Spend5Minutes() {
   return (
     <div
@@ -14,14 +12,6 @@ function Spend5Minutes() {
           building your app's unique features.
         </span>
       </div>
-
-      {/* <div>
-        <span className="text-foreground">
-          Skip the boring configuration of{" "}
-        </span>
-        authentication, database setup, API integration, and native mobile
-        capabilities.
-      </div> */}
 
       <div>
         Skip <span className="text-foreground">the boring parts:</span>

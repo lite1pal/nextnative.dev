@@ -26,9 +26,7 @@ import HighlightedSpan from "@/components/HighlightedSpan";
 import HeroSection from "@/components/HeroSection";
 import ToolCard from "@/components/ToolCard";
 import CTA from "@/components/CTA";
-import { AvatarList } from "@/components/AvatarList";
-import RatingSvg from "@/components/RatingSvg";
-import LovedByMakers from "@/components/LovedByMakers";
+import CTAWithSocialProof from "@/components/CTAWithSocialProof";
 
 export const metadata: Metadata = {
   alternates: {
@@ -141,16 +139,7 @@ export default function Home() {
 
       <ShowcaseSection />
 
-      <div className="flex flex-col gap-10 max-sm:mt-16 sm:items-center">
-        <CTA />
-        <div className="flex items-center gap-5 sm:gap-2">
-          <AvatarList />
-          <div className="flex flex-col">
-            <RatingSvg />
-            <LovedByMakers />
-          </div>
-        </div>
-      </div>
+      <CTAWithSocialProof className="max-sm:mt-16" />
 
       <SocialProof />
 
@@ -201,16 +190,7 @@ export default function Home() {
 
       <AppsBuiltWithNextNative />
 
-      <div className="mt-10 flex flex-col gap-10 sm:items-center">
-        <CTA />
-        <div className="flex items-center gap-5 sm:gap-2">
-          <AvatarList />
-          <div className="flex flex-col">
-            <RatingSvg />
-            <LovedByMakers />
-          </div>
-        </div>
-      </div>
+      <CTAWithSocialProof className="mt-10" />
 
       <DemoVideo />
 
@@ -228,16 +208,7 @@ export default function Home() {
         ))}
       </div>
 
-      <div className="flex flex-col gap-10 sm:mt-10 sm:items-center">
-        <CTA />
-        <div className="flex items-center gap-5 sm:gap-2">
-          <AvatarList />
-          <div className="flex flex-col">
-            <RatingSvg />
-            <LovedByMakers />
-          </div>
-        </div>
-      </div>
+      <CTAWithSocialProof className="sm:mt-10" />
 
       <div className="mx-auto my-16 flex w-fit flex-col items-center gap-3">
         <ChevronUp className="text-gray" />
@@ -277,16 +248,7 @@ export default function Home() {
 
       <TestimonialsSection />
 
-      <div className="mb-10 flex flex-col gap-10 sm:mt-10 sm:items-center">
-        <CTA />
-        <div className="flex items-center gap-5 sm:gap-2">
-          <AvatarList />
-          <div className="flex flex-col">
-            <RatingSvg />
-            <LovedByMakers />
-          </div>
-        </div>
-      </div>
+      <CTAWithSocialProof className="mb-10 sm:mt-10" />
 
       <FAQ />
       <CallToAction

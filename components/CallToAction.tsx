@@ -1,11 +1,9 @@
-import { Suspense } from "react";
 import CTA from "./CTA";
 import Subheading from "./Subheading";
-import CTASkeleton from "./CTASkeleton";
 import { AvatarList } from "./AvatarList";
 import RatingSvg from "./RatingSvg";
 import LovedByMakers from "./LovedByMakers";
-import LovedByMakersSkeleton from "./LovedByMakersSkeleton";
+import CTAWithSocialProof from "./CTAWithSocialProof";
 
 interface CallToActionProps {
   title: string;
@@ -29,16 +27,7 @@ function CallToAction({
         heading2={subtitle}
         className="md:items-center"
       />
-      <div className="relative flex flex-col gap-10 sm:items-center">
-        <CTA className="md:items-center" />
-        <div className="flex items-center gap-5 sm:gap-2">
-          <AvatarList />
-          <div className="flex flex-col">
-            <RatingSvg />
-            <LovedByMakers />
-          </div>
-        </div>
-      </div>
+      <CTAWithSocialProof />
     </div>
   );
 }

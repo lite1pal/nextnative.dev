@@ -1,0 +1,22 @@
+import { cn } from "@/lib/utils";
+import CTA from "./CTA";
+import { AvatarList } from "./AvatarList";
+import RatingSvg from "./RatingSvg";
+import LovedByMakers from "./LovedByMakers";
+
+function CTAWithSocialProof({ className }: { className?: string }) {
+  return (
+    <div className={cn("flex flex-col gap-10 sm:items-center", className)}>
+      <CTA />
+      <div className="flex items-center gap-5 sm:gap-2">
+        <AvatarList />
+        <div className="flex flex-col">
+          <RatingSvg />
+          <LovedByMakers />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default CTAWithSocialProof;
