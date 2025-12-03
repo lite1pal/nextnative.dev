@@ -5,7 +5,7 @@ import Testimonial from "./Testimonial";
 export const testimonials = [
   {
     type: "text",
-    imgSrc: "/testimonials/preetam.jpg",
+    imgSrc: "/testimonials/preetam.webp",
     name: "Preetam Nath",
     description: "Developer",
     url: "https://microlaunch.net/p/nextnative",
@@ -25,14 +25,6 @@ export const testimonials = [
     ),
     showStars: true,
   },
-  // {
-  //   type: "text",
-  //   imgSrc: "/testimonials/dagobert.jpg",
-  //   name: "Dagobert",
-  //   description: "Entrepreneur",
-  //   testimonial: <div>Love the ambition behind this</div>,
-  //   showStars: false,
-  // },
 
   {
     type: "text",
@@ -53,7 +45,7 @@ export const testimonials = [
   },
   {
     type: "text",
-    imgSrc: "/testimonials/terry.jpg",
+    imgSrc: "/testimonials/terry.webp",
     name: "Terry Carson",
     description: "Developer",
     url: "https://microlaunch.net/p/nextnative",
@@ -113,7 +105,7 @@ export const testimonials = [
   },
   {
     type: "text",
-    imgSrc: "/testimonials/sergey.jpg",
+    imgSrc: "/testimonials/sergey.webp",
     name: "Sergey Nazarov",
     description: "Developer",
     url: "https://microlaunch.net/p/nextnative",
@@ -129,7 +121,7 @@ export const testimonials = [
   },
   {
     type: "text",
-    imgSrc: "/testimonials/vitaliy.jpeg",
+    imgSrc: "/testimonials/vitaliy.webp",
     name: "Vitalii Zabrodskyi",
     description: "Senior .NET Developer",
     url: "https://microlaunch.net/p/nextnative",
@@ -164,7 +156,7 @@ export const testimonials = [
 
   {
     type: "text",
-    imgSrc: "/testimonials/unnamed-2.jpg",
+    imgSrc: "/testimonials/unnamed-2.webp",
     name: "",
     // description: "Developer",
     url: "https://microlaunch.net/p/nextnative",

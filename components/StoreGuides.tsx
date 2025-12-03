@@ -26,7 +26,7 @@ function StoreGuides() {
             <div className="mb-10 flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center">
                 <Image
-                  src="/store-guides/app-store-icon.png"
+                  src="/store-guides/app-store-icon.webp"
                   alt="App Store icon"
                   className="object-cover"
                   width={48}
@@ -40,7 +40,7 @@ function StoreGuides() {
 
             <div className="mb-10">
               <Image
-                src="/store-guides/app-store-guide.png"
+                src="/store-guides/app-store-guide.webp"
                 alt="App Store submission guide"
                 width={400}
                 height={400}
@@ -86,7 +86,7 @@ function StoreGuides() {
 
             <div className="mb-10">
               <Image
-                src="/store-guides/google-play-guide.png"
+                src="/store-guides/google-play-guide.webp"
                 alt="Google Play submission guide"
                 width={400}
                 height={400}

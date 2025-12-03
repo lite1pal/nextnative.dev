@@ -93,7 +93,7 @@ export default function Home() {
       />
 
       <Testimonial
-        imgSrc={"/testimonials/vitaliy.jpeg"}
+        imgSrc={"/testimonials/vitaliy.webp"}
         name="Vitalii Zabrodskyi"
         description="Senior .NET Developer"
         showStars
@@ -176,7 +176,7 @@ export default function Home() {
       <SetupByDefault />
 
       <Testimonial
-        imgSrc={"/testimonials/terry.jpg"}
+        imgSrc={"/testimonials/terry.webp"}
         name="Terry Carson"
         description="Developer"
         showStars
@@ -247,7 +247,7 @@ export default function Home() {
         <ChevronUp className="text-gray" />
         <div className="flex items-center gap-6 rounded-full bg-white px-6 py-4 pr-10">
           <Image
-            src={"/testimonials/dagobert.jpg"}
+            src={"/testimonials/dagobert.webp"}
             alt="Dagobert X profile picture"
             width={100}
             height={100}

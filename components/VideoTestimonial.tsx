@@ -13,7 +13,7 @@ function VideoTestimonial({
   className = "",
   showStars = false,
   url,
-  poster = "/testimonials/jack-poster.png",
+  poster = "/testimonials/jack-poster.webp",
 }: {
   name: string;
   testimonial: ReactNode | string;
