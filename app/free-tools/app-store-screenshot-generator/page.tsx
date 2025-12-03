@@ -1297,6 +1297,54 @@ export default function AppStoreScreenshotGenerator() {
           </div>
         </div>
       </div>
+
+      {/* Related Tools */}
+      <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h3 className="mb-3 font-semibold text-gray-900">
+          🛠️ Related Free Tools
+        </h3>
+        <ul className="space-y-2 text-sm text-gray-700">
+          <li>
+            • Check{" "}
+            <a
+              href="/free-tools/app-store-screenshot-sizes"
+              className="font-semibold text-green-600 underline"
+            >
+              Required Screenshot Sizes
+            </a>{" "}
+            for all devices
+          </li>
+          <li>
+            • Generate metadata with our{" "}
+            <a
+              href="/free-tools/app-store-metadata-generator"
+              className="font-semibold text-green-600 underline"
+            >
+              App Store Metadata Generator
+            </a>
+          </li>
+          <li>
+            • Research keywords with{" "}
+            <a
+              href="/free-tools/app-store-keyword-research"
+              className="font-semibold text-green-600 underline"
+            >
+              ASO Keyword Tool
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <p className="mt-10 text-center text-gray-500">
+        Built with ❤️ by{" "}
+        <a
+          href="https://nextnative.dev"
+          className="font-semibold text-green-600 underline hover:text-green-700"
+        >
+          NextNative.dev
+        </a>{" "}
+        team.
+      </p>
     </div>
   );
 }

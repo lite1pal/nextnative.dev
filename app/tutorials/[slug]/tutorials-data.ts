@@ -857,7 +857,7 @@ npx cap sync ios`,
       {
         title: "Prepare App Metadata",
         content:
-          "Gather all required information for your App Store listing before you begin.",
+          "Gather all required information for your App Store listing before you begin. <br/><br/>💡 Use our free <a href='/free-tools/app-store-metadata-generator' class='text-primary underline font-semibold'>App Store Metadata Generator</a> and <a href='/free-tools/app-store-keyword-research' class='text-primary underline font-semibold'>Keyword Research Tool</a> to optimize your app listing.",
         code: {
           language: "text",
           code: `Required information:
@@ -926,7 +926,7 @@ npx cap sync ios`,
 6. Choose app category and subcategory
 7. Set content rights and age rating`,
         },
-        note: "Use Apple's App Store Connect Help for screenshot dimensions.",
+        note: "Check <a href='/free-tools/app-store-screenshot-sizes' class='text-primary underline font-semibold'>screenshot dimensions here</a> and learn about <a href='/free-tools/app-store-fees' class='text-primary underline font-semibold'>App Store fees</a>.",
       },
       {
         title: "Create Archive in Xcode",
@@ -942,7 +942,8 @@ npx cap sync ios`,
       },
       {
         title: "Upload to App Store Connect",
-        content: "Distribute your archive to App Store Connect.",
+        content:
+          "Distribute your archive to App Store Connect. <br/><br/>🚀 Want to automate this? Check out our <a href='/free-tools/app-store-connect-api' class='text-primary underline font-semibold'>App Store Connect API setup guide</a> for CI/CD integration.",
         code: {
           language: "text",
           code: `1. In Organizer, select your archive

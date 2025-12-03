@@ -143,6 +143,45 @@ export default config;`;
         </div>
       </div>
 
+      {/* Related Tools */}
+      <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <h3 className="mb-3 font-semibold text-gray-900">
+          🛠️ Related Free Tools
+        </h3>
+        <ul className="space-y-2 text-sm text-gray-700">
+          <li>
+            • Create an{" "}
+            <a
+              href="/free-tools/ios-bundle-id-generator"
+              className="font-semibold text-green-600 underline"
+            >
+              iOS Bundle ID
+            </a>{" "}
+            for your app
+          </li>
+          <li>
+            • Generate{" "}
+            <a
+              href="/free-tools/create-android-keystore"
+              className="font-semibold text-green-600 underline"
+            >
+              Android Keystore
+            </a>{" "}
+            for signing
+          </li>
+          <li>
+            • Set up{" "}
+            <a
+              href="/free-tools/app-store-connect-api"
+              className="font-semibold text-green-600 underline"
+            >
+              App Store Connect API
+            </a>{" "}
+            for automation
+          </li>
+        </ul>
+      </div>
+
       <p className="mt-10 text-center text-gray-500">
         Built with ❤️ by{" "}
         <a
