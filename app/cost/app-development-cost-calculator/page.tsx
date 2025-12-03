@@ -326,13 +326,6 @@ export default function AppDevelopmentCostCalculatorPage() {
                   </div>
                 </div>
 
-                <Link
-                  href="/#pricing"
-                  className="block w-full rounded-xl bg-green-600 px-4 py-3 text-center font-semibold text-white hover:bg-green-700"
-                >
-                  Get Started
-                </Link>
-
                 <p className="mt-4 text-center text-xs text-gray-500">
                   This is an estimate. Actual costs may vary based on specific
                   requirements.

@@ -158,7 +158,8 @@ export default function TutorialPageView({
             </Link>
           </div>
           <p className="mt-4 text-center text-sm text-gray-600 sm:text-left">
-            50% off · One-time payment · Unlimited apps · 14-day guarantee
+            50% off · One-time payment · Unlimited apps · 14-day money-back
+            guarantee
           </p>
         </section>
       )}
@@ -318,7 +319,8 @@ export default function TutorialPageView({
               </Button>
             </Link>
             <p className="text-base text-gray-600">
-              $149 (normally $299) · Unlimited apps · 14-day guarantee
+              $149 (normally $299) · Unlimited apps · 14-day money-back
+              guarantee
             </p>
           </div>
 

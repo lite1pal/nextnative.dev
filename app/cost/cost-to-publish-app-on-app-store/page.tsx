@@ -119,12 +119,6 @@ export default function CostToPublishAppPage() {
             >
               Get NextNative - 50% Off →
             </Link>
-            <Link
-              href="/free-tools/app-store-metadata-generator"
-              className="rounded-xl border border-green-600 bg-white px-6 py-3 font-semibold text-green-600 hover:bg-green-50"
-            >
-              Try Free Tools
-            </Link>
           </div>
           <p className="mt-4 text-center text-sm text-gray-600 sm:text-left">
             $149 (was $299) · Launch guides included · 14-day money-back

@@ -152,7 +152,7 @@ export default function AppDevelopmentCostPage() {
             </Link>
           </div>
           <p className="mt-4 text-center text-sm text-gray-600 sm:text-left">
-            One-time payment · Unlimited apps · 14-day guarantee
+            One-time payment · Unlimited apps · 14-day money-back guarantee
           </p>
         </div>
 
