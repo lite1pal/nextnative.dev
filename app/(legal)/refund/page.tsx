@@ -1,6 +1,6 @@
 export default function Refund() {
   return (
-    <div className="prose dark:prose-invert max-w-xl mx-auto">
+    <div className="prose dark:prose-invert mx-auto max-w-xl">
       <h1>
         <strong>Return &amp; Refund Policy</strong>
       </h1>
@@ -77,8 +77,8 @@ export default function Refund() {
       <ol>
         <li>
           Contact our support team at{" "}
-          <a href="mailto:deniskatarasenko6@gmail.com">
-            deniskatarasenko6@gmail.com
+          <a href="mailto:denistarasenko@nextnative.dev">
+            denistarasenko@nextnative.dev
           </a>
           .
         </li>
@@ -111,8 +111,8 @@ export default function Refund() {
 
       <p>
         Email:{" "}
-        <a href="mailto:deniskatarasenko6@gmail.com">
-          deniskatarasenko6@gmail.com
+        <a href="mailto:denistarasenko@nextnative.dev">
+          denistarasenko@nextnative.dev
         </a>
       </p>
     </div>

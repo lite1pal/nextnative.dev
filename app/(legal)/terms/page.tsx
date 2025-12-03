@@ -1,6 +1,6 @@
 export default function Terms() {
   return (
-    <div className="prose dark:prose-invert max-w-xl mx-auto">
+    <div className="prose dark:prose-invert mx-auto max-w-xl">
       <h1>Terms and Conditions</h1>
       <div>Our Terms and Conditions were last updated on 04/07/2025</div>
       <p>
@@ -78,8 +78,8 @@ export default function Terms() {
         You may submit a notification pursuant to the DMCA by providing our
         Copyright Agent with specific details. You can contact our copyright
         agent via email at{" "}
-        <a href="mailto:deniskatarasenko6@gmail.com">
-          deniskatarasenko6@gmail.com
+        <a href="mailto:denistarasenko@nextnative.dev">
+          denistarasenko@nextnative.dev
         </a>
         .
       </p>
@@ -195,8 +195,8 @@ export default function Terms() {
         </li>
         <li>
           Email:{" "}
-          <a href="mailto:deniskatarasenko6@gmail.com">
-            deniskatarasenko6@gmail.com
+          <a href="mailto:denistarasenko@nextnative.dev">
+            denistarasenko@nextnative.dev
           </a>
         </li>
       </ul>
