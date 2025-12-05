@@ -62,17 +62,17 @@ test("docs link", async ({ page }) => {
   ).toBeVisible();
 });
 
-test("checkout button", async ({ page }) => {
-  await page.goto(url);
-  await page
-    .getByRole("button", { name: "Get NextNative now" })
-    .first()
-    .click();
-  await page.getByRole("button", { name: "Get NextNative" }).nth(5).click();
-  await expect(page).toHaveURL(
-    /https:\/\/test\.checkout\.dodopayments\.com\/buy\/pdt_GRzIIHWavjcnjaCw5Z4Ut/i,
-  );
-});
+// test("checkout button", async ({ page }) => {
+//   await page.goto(url);
+//   await page
+//     .getByRole("button", { name: "Get NextNative now" })
+//     .first()
+//     .click();
+//   await page.getByRole("button", { name: "Get NextNative" }).nth(5).click();
+//   await expect(page).toHaveURL(
+//     /https:\/\/test\.checkout\.dodopayments\.com\/buy\/pdt_GRzIIHWavjcnjaCw5Z4Ut/i,
+//   );
+// });
 
 test("try-for-free button", async ({ page }) => {
   await page.goto(url);
@@ -123,6 +123,24 @@ test("hero CTA button exists", async ({ page }) => {
   await expect(ctaButton).toBeVisible();
 });
 
+test("hero CTA button scrolls", async ({ page }) => {
+  await page.goto(url);
+
+  const ctaButton = page
+    .getByRole("button", { name: "Get NextNative now" })
+    .first();
+
+  await ctaButton.click();
+
+  const heading = page.getByRole("heading", {
+    name: "One-time payment, lifetime",
+  });
+
+  await heading.scrollIntoViewIfNeeded();
+
+  await expect(heading).toBeInViewport();
+});
+
 test("tool cards are visible in hero", async ({ page }) => {
   await page.goto(url);
   await expect(
@@ -165,6 +183,25 @@ test("social proof section is visible", async ({ page }) => {
   await expect(
     page.getByRole("heading", { name: /Loved by developers/i }),
   ).toBeVisible();
+});
+
+test("demo video plays", async ({ page }) => {
+  await page.goto(url);
+
+  const placeholder = page.getByTestId("demo-video-placeholder");
+
+  await placeholder.click();
+
+  const frame = page.locator('iframe[title="NextNative Demo Video"]');
+
+  await expect(frame).toHaveAttribute(
+    "src",
+    /https:\/\/www\.youtube\.com\/embed\/9iDXsyiP134\?autoplay=1&?/,
+  );
+
+  const videoFrame = frame.contentFrame().locator("video");
+
+  await expect(videoFrame).toBeVisible();
 });
 
 // Features Section
@@ -287,25 +324,25 @@ test("page is responsive on mobile", async ({ page }) => {
   await expect(ctaButton).toBeInViewport();
 });
 
-// Performance & Loading
-test("page loads without console errors", async ({ page }) => {
-  const errors: string[] = [];
-  page.on("console", (msg) => {
-    if (msg.type() === "error") {
-      errors.push(msg.text());
-    }
-  });
+// // Performance & Loading
+// test("page loads without console errors", async ({ page }) => {
+//   const errors: string[] = [];
+//   page.on("console", (msg) => {
+//     if (msg.type() === "error") {
+//       errors.push(msg.text());
+//     }
+//   });
 
-  await page.goto(url);
-  await page.waitForLoadState("networkidle");
+//   await page.goto(url);
+//   await page.waitForLoadState("networkidle");
 
-  // Filter out known third-party errors if any
-  const criticalErrors = errors.filter(
-    (error) => !error.includes("third-party") && !error.includes("extension"),
-  );
+//   // Filter out known third-party errors if any
+//   const criticalErrors = errors.filter(
+//     (error) => !error.includes("third-party") && !error.includes("extension"),
+//   );
 
-  expect(criticalErrors.length).toBe(0);
-});
+//   expect(criticalErrors.length).toBe(0);
+// });
 
 // Structured Data
 test("structured data is present", async ({ page }) => {

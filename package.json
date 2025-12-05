@@ -9,7 +9,8 @@
     "start": "next start",
     "serve": "next build && npx serve@latest out",
     "lint": "next lint",
-    "acommit": "node scripts/acommit-simple.js"
+    "test:prod": "npm run build && playwright test",
+    "acommit": "npm run test:prod && node scripts/acommit-simple.js"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

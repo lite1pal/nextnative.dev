@@ -5,9 +5,9 @@ import { headers } from "next/headers";
 import { UAParser } from "ua-parser-js";
 
 export async function trackEvent(event: string, botDetection: boolean = true) {
-  if (process.env.NODE_ENV !== "production") {
-    return;
-  }
+  if (process.env.NODE_ENV !== "production") return;
+  if (process.env.TELEGRAM_TRACKING !== "true") return;
+
   // Get user agent information
   const headersList = await headers();
   const userAgent = headersList.get("user-agent") || "";
@@ -63,7 +63,7 @@ export async function trackEvent(event: string, botDetection: boolean = true) {
 function detectBot(
   userAgent: string,
   browser: UAParser.IBrowser,
-  referer: string
+  referer: string,
 ): boolean {
   const userAgentLower = userAgent.toLowerCase();
 

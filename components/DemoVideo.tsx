@@ -42,6 +42,7 @@ function DemoVideo() {
         >
           {isPlaying ? (
             <iframe
+              data-testid="demo-video"
               className="h-full w-full"
               src={embedUrl}
               title="NextNative Demo Video"
@@ -50,6 +51,7 @@ function DemoVideo() {
             ></iframe>
           ) : (
             <div
+              data-testid="demo-video-placeholder"
               onClick={handleVideoClick}
               className="group relative h-full w-full cursor-pointer"
             >
