@@ -2,17 +2,15 @@
 
 import { trackEvent } from "@/services/custom-analytics";
 import Button from "./Button";
-import Link from "next/link";
 
 function CTAButtonSecondary() {
   return (
-    <Link
+    <a
       href="https://nextnative.dev/playground"
       onClick={() => {
         trackEvent("CTA_try_for_free_clicked");
         window?.datafast("try_for_free_clicked_from_herosection");
       }}
-      prefetch={false}
     >
       <Button
         variant="primary"
@@ -20,7 +18,7 @@ function CTAButtonSecondary() {
       >
         Try for free
       </Button>
-    </Link>
+    </a>
   );
 }
 

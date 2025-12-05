@@ -13,7 +13,7 @@ function ShowcaseSection() {
         trackEvent("Demo_Apps_Showcase_clicked");
       }}
       id="interactive-demo"
-      className="relative flex h-[500px] justify-center space-x-[-200px] max-md:left-10 max-md:scale-[0.6] sm:h-full md:py-16"
+      className="relative flex h-[500px] justify-center space-x-[-200px] max-md:left-10 max-md:scale-[0.6] max-sm:pointer-events-none sm:h-full md:py-16"
     >
       <div className="rotate-[-30deg]">
         <IPhoneMockup isDark={false}>
