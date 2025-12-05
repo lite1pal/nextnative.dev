@@ -191,8 +191,8 @@ function TryForFreeButton({
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   return (
-    <Link
-      href="/playground"
+    <a
+      href="https://nextnative.dev/playground"
       onClick={() => {
         setIsMenuOpen(false);
         trackEvent("Navbar_TryForFree_clicked");
@@ -202,9 +202,8 @@ function TryForFreeButton({
           (window as any).datafast("try_for_free_clicked_from_navbar");
         }
       }}
-      prefetch={false}
     >
       <Button variant="secondary">Try for free</Button>
-    </Link>
+    </a>
   );
 }
