@@ -122,16 +122,19 @@ export default function Terms() {
       <p>
         In no event shall the Company be liable for any indirect, incidental, or
         consequential damages. Total liability shall not exceed the amount paid
-        by you through the Service or $100 if you haven't made any purchases.
+        by you through the Service or $100 if you haven&apos;t made any
+        purchases.
       </p>
 
       <h3>
-        <strong>"AS IS" and "AS AVAILABLE" Disclaimer</strong>
+        <strong>
+          &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; Disclaimer
+        </strong>
       </h3>
       <p>
-        The Service is provided on an "AS IS" and "AS AVAILABLE" basis without
-        warranties of any kind. We disclaim all warranties to the fullest extent
-        permitted under applicable law.
+        The Service is provided on an &quot;AS IS&quot; and &quot;AS
+        AVAILABLE&quot; basis without warranties of any kind. We disclaim all
+        warranties to the fullest extent permitted under applicable law.
       </p>
 
       <h3>

@@ -11,13 +11,13 @@ export default function Disclaimer() {
       </h3>
 
       <p>
-        The information provided by <strong>NextNative</strong> ("we", "us", or
-        "our") on this website is for general informational and educational
-        purposes only. All content, tools, documentation, and materials are
-        provided in good faith, however we make no representation or warranty of
-        any kind, express or implied, regarding the accuracy, adequacy,
-        validity, reliability, availability or completeness of any information
-        on the site.
+        The information provided by <strong>NextNative</strong> (&quot;we&quot;,
+        &quot;us&quot;, or &quot;our&quot;) on this website is for general
+        informational and educational purposes only. All content, tools,
+        documentation, and materials are provided in good faith, however we make
+        no representation or warranty of any kind, express or implied, regarding
+        the accuracy, adequacy, validity, reliability, availability or
+        completeness of any information on the site.
       </p>
 
       <p>
