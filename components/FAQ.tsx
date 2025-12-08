@@ -343,7 +343,7 @@ const faqItems = [
         one-time purchase.
         <br />
         <br />
-        <span className="text-primary">🔄 Last update: Oct 7, 2025</span>
+        <span className="text-primary">🔄 Last update: Dec 8, 2025</span>
         {/* Optionally link to a changelog page here */}
         <br />
         <br />
