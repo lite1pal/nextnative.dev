@@ -10,8 +10,6 @@ import {
   Calendar,
 } from "lucide-react";
 import Link from "next/link";
-import { Suspense } from "react";
-import CTASkeleton from "@/components/CTASkeleton";
 import CTA from "@/components/CTA";
 
 export async function generateStaticParams() {

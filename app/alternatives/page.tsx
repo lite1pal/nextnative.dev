@@ -1,9 +1,7 @@
 import { alternatives } from "./[slug]/alternatives-data";
 import Link from "next/link";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import CTASkeleton from "@/components/CTASkeleton";
 import CTA from "@/components/CTA";
 
 export const metadata: Metadata = {
@@ -109,8 +107,9 @@ export default function AlternativesPage() {
             <span className="text-primary">Alternatives</span>
           </h1>
           <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600 md:text-2xl lg:text-3xl">
-            Don't want to learn React Native, Flutter, or Dart? Build iOS and
-            Android apps with JavaScript, React, and web tools you already know.
+            Don&apos;t want to learn React Native, Flutter, or Dart? Build iOS
+            and Android apps with JavaScript, React, and web tools you already
+            know.
           </p>
         </div>
 
