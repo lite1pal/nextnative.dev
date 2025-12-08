@@ -4,12 +4,10 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "./Breadcrumbs";
 import NextNativeCard from "./NextNativeCard";
-import { Suspense } from "react";
-import NextNativeCardSkeleton from "./NextNativeCardSkeleton";
 import { rehype } from "rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { JSDOM } from "jsdom"; // install: npm i jsdom
+import { JSDOM } from "jsdom";
 import TableOfContents from "./TableOfContents";
 import MobileCTAClient from "./MobileCTA";
 import PostInternalLinks from "./PostInternalLinks";
@@ -47,7 +45,7 @@ async function addAnchorsToHeadings(html: string): Promise<string> {
   return result.toString();
 }
 
-export const revalidate = 86400; // Revalidate every day
+export const revalidate = 86400;
 
 export async function generateMetadata({
   params,
@@ -149,8 +147,6 @@ export default async function BlogPostPage({
             />
           )}
 
-          {/* <p>{post.description}</p> */}
-
           <div
             className="drop-cap max-w-2xl lg:px-16 xl:px-0"
             dangerouslySetInnerHTML={{ __html: contentWithAnchors }}
@@ -188,29 +184,12 @@ export default async function BlogPostPage({
       </div>
 
       <aside className="relative mx-auto hidden w-full max-w-xl lg:block xl:col-span-2">
-        {/* Navigation Links */}
-
         <div className="sticky top-36">
           <TableOfContents headings={headings} />
 
           <NextNativeCard post={{ slug }} />
         </div>
       </aside>
-
-      {/* Pop-up */}
-      {/* <script
-        async
-        src="https://eocampaign1.com/form/9870388e-6ee8-11f0-acfe-733f9fcd04f6.js"
-        data-form="9870388e-6ee8-11f0-acfe-733f9fcd04f6"
-      ></script> */}
-
-      {/* Slide-in */}
-      {/* <script
-        className="shadow-lg"
-        async
-        src="https://eocampaign1.com/form/b5043f12-6ef3-11f0-826d-d372b1117e0b.js"
-        data-form="b5043f12-6ef3-11f0-826d-d372b1117e0b"
-      ></script> */}
 
       <MobileCTAClient showAfterPx={350}>
         <NextNativeCard post={{ slug }} />

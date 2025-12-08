@@ -16,19 +16,9 @@ type Props = {
 
 export default function PostInternalLinks({
   title = "Explore more",
-  showDocs = true,
   includeIndividualPages = true,
   links,
 }: Props) {
-  const defaultLinks = [
-    { href: "/tutorials", label: "Next.js + Capacitor Tutorials" },
-    { href: "/comparisons", label: "Framework Comparisons" },
-    { href: "/alternatives", label: "NextNative Alternatives" },
-    { href: "/use-cases", label: "Real Use-Cases" },
-    { href: "/free-tools", label: "Free Tools" },
-    ...(showDocs ? [{ href: "/docs", label: "Full Documentation" }] : []),
-  ];
-
   // Add individual comparison and tutorial pages if enabled
   const individualPages = includeIndividualPages
     ? [
