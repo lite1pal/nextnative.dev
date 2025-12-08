@@ -62,18 +62,6 @@ test("docs link", async ({ page }) => {
   ).toBeVisible();
 });
 
-// test("checkout button", async ({ page }) => {
-//   await page.goto(url);
-//   await page
-//     .getByRole("button", { name: "Get NextNative now" })
-//     .first()
-//     .click();
-//   await page.getByRole("button", { name: "Get NextNative" }).nth(5).click();
-//   await expect(page).toHaveURL(
-//     /https:\/\/test\.checkout\.dodopayments\.com\/buy\/pdt_GRzIIHWavjcnjaCw5Z4Ut/i,
-//   );
-// });
-
 test("try-for-free button", async ({ page }) => {
   await page.goto(url);
   const a1 = page.getByRole("link", { name: "Try for free" }).nth(1);
@@ -323,26 +311,6 @@ test("page is responsive on mobile", async ({ page }) => {
   await expect(ctaButton).toBeVisible();
   await expect(ctaButton).toBeInViewport();
 });
-
-// // Performance & Loading
-// test("page loads without console errors", async ({ page }) => {
-//   const errors: string[] = [];
-//   page.on("console", (msg) => {
-//     if (msg.type() === "error") {
-//       errors.push(msg.text());
-//     }
-//   });
-
-//   await page.goto(url);
-//   await page.waitForLoadState("networkidle");
-
-//   // Filter out known third-party errors if any
-//   const criticalErrors = errors.filter(
-//     (error) => !error.includes("third-party") && !error.includes("extension"),
-//   );
-
-//   expect(criticalErrors.length).toBe(0);
-// });
 
 // Structured Data
 test("structured data is present", async ({ page }) => {
