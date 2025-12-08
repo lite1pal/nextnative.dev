@@ -6,7 +6,7 @@ interface BeehiivResponse {
 }
 
 export async function subscribeToNewsletter(
-  email: string
+  email: string,
 ): Promise<BeehiivResponse> {
   const BEEHIIV_API_KEY = process.env.BEEHIIV_API_KEY;
   const BEEHIIV_PUBLICATION_ID = process.env.BEEHIIV_PUBLICATION_ID;
@@ -33,7 +33,7 @@ export async function subscribeToNewsletter(
           utm_source: "nextnative.dev",
           utm_campaign: "waitlist",
         }),
-      }
+      },
     );
 
     const subscribeData = await subscribeResponse.json();
@@ -57,7 +57,7 @@ export async function subscribeToNewsletter(
         body: JSON.stringify({
           email: email,
         }),
-      }
+      },
     );
 
     await automationResponse.json();
@@ -73,7 +73,7 @@ export async function subscribeToNewsletter(
       success: true,
       message: "Successfully subscribed!",
     };
-  } catch (error) {
+  } catch {
     return {
       success: false,
       message: "An error occurred while subscribing",
