@@ -28,6 +28,8 @@ import ToolCard from "@/components/ToolCard";
 import CTA from "@/components/CTA";
 import CTAWithSocialProof from "@/components/CTAWithSocialProof";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   alternates: {
     canonical: "https://nextnative.dev",
