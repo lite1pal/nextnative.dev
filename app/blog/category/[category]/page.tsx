@@ -37,28 +37,6 @@ export async function generateMetadata(
   };
 }
 
-// export const revalidate = 600;
-
-// export async function generateStaticParams() {
-//   // Get all unique tags from blog posts
-//   const posts = await prisma.blogPost.findMany({
-//     select: {
-//       tags: true,
-//     },
-//   });
-
-//   // Collect unique tags across all posts
-//   const allTags = Array.from(
-//     new Set(
-//       posts.flatMap((p) => Array.isArray(p.tags) ? p.tags : [])
-//     )
-//   ).sort();
-
-//   return allTags.map((tag) => ({
-//     category: encodeURIComponent(tag.replaceAll(" ", "-")), // Encode spaces as dashes
-//   }));
-// }
-
 export default function BlogCategoryPage(props: BlogTagPageProps) {
   return (
     <Suspense

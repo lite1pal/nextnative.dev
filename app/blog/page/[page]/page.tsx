@@ -51,22 +51,6 @@ export async function generateMetadata(
   };
 }
 
-// export const revalidate = 600;
-
-// export async function generateStaticParams() {
-//   const postsPerPage = 4;
-//   const totalPosts = await prisma.blogPost.count();
-//   const totalPages = Math.ceil(totalPosts / postsPerPage);
-
-//   const pages = [];
-
-//   for (let i = 2; i <= totalPages; i++) {
-//     pages.push({ page: i.toString() });
-//   }
-
-//   return pages;
-// }
-
 export default async function BlogListPage(props: BlogListPageProps) {
   const params = await props.params;
   const pageParam = params.page;
