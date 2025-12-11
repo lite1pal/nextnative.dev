@@ -33,6 +33,11 @@ export default function RootLayout({
           data-affonso="cmcqau5fq001b6df1lxjk00up"
           data-cookie_duration="30"
         /> */}
+        <script
+          defer
+          src="https://analytics.denistarasenko.com/script.js"
+          data-website-id="c4fd4a3a-c1eb-40a0-ba15-750124213746"
+        ></script>
         {/* DataFast */}
         <Script
           data-website-id="68665e138b39cc32bf5cf8ad"
