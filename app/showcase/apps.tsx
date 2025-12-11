@@ -157,8 +157,8 @@ function Apps({ maxApps = 10 }: { maxApps?: number }) {
                   <Image
                     src={app.image}
                     alt={app.name}
-                    width={400}
-                    height={800}
+                    width={1920}
+                    height={1080}
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                 </div>

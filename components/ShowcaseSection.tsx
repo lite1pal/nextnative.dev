@@ -21,8 +21,8 @@ function ShowcaseSection() {
             <Image
               src={"/showcase/lastinghabits.png"}
               alt={"Lasting Habits App Screenshot"}
-              width={400}
-              height={800}
+              width={1920}
+              height={1080}
               className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
@@ -34,8 +34,8 @@ function ShowcaseSection() {
             <Image
               src={"/showcase/sproutly-premium-screen.jpg"}
               alt={"AI Plant identification app screenshot"}
-              width={400}
-              height={800}
+              width={1920}
+              height={1080}
               className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
@@ -47,8 +47,8 @@ function ShowcaseSection() {
             <Image
               src={"/showcase/bill-organizer/screen-3-2.png"}
               alt={"Bill Organizer - Matcharge"}
-              width={400}
-              height={800}
+              width={1920}
+              height={1080}
               className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
