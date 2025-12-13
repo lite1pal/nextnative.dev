@@ -96,7 +96,15 @@ If you're using Capacitor (like NextNative), you can:
 - Android: \`android-splash-{width}x{height}\` (e.g., android-splash-1920x1920.png)
 
 ## Generated with NextNative Tools
-These assets were generated using the free app icon and splash screen generator at https://nextnative.dev
+These assets were generated using the free app icon and splash screen generator:
+
+- https://nextnative.dev/free-tools/app-icon-splash-generator
+
+Optional credit (copy/paste into your README):
+
+\`\`\`
+[App icon & splash generator by NextNative](https://nextnative.dev/free-tools/app-icon-splash-generator)
+\`\`\`
 
 For more mobile app development tools and resources, visit:
 - NextNative Documentation: https://nextnative.dev/docs

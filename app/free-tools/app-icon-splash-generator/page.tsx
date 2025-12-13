@@ -22,8 +22,14 @@ interface SuccessShareCardProps {
 
 function SuccessShareCard({ visible }: SuccessShareCardProps) {
   const [copied, setCopied] = useState(false);
-  const attributionSnippet =
-    '<a href="https://nextnative.dev/free-tools/app-icon-splash-generator">App icon generator by NextNative</a>';
+  const [copiedFormat, setCopiedFormat] = useState<
+    "html" | "markdown" | "url" | null
+  >(null);
+
+  const toolUrl = "https://nextnative.dev/free-tools/app-icon-splash-generator";
+  const attributionHtml = `<a href="${toolUrl}">App icon & splash generator by NextNative</a>`;
+  const attributionMarkdown = `[App icon & splash generator by NextNative](${toolUrl})`;
+  const attributionUrl = toolUrl;
 
   if (!visible) return null;
 
@@ -41,11 +47,20 @@ function SuccessShareCard({ visible }: SuccessShareCardProps) {
     );
   };
 
-  const handleCopySnippet = async () => {
+  const handleCopyAttribution = async (format: "html" | "markdown" | "url") => {
     try {
-      await navigator.clipboard.writeText(attributionSnippet);
+      const value =
+        format === "html"
+          ? attributionHtml
+          : format === "markdown"
+            ? attributionMarkdown
+            : attributionUrl;
+
+      await navigator.clipboard.writeText(value);
+      trackEvent(`FreeTools_BacklinkSnippet_copied_${format}`);
       trackEvent("FreeTools_BacklinkSnippet_copied");
       setCopied(true);
+      setCopiedFormat(format);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy attribution snippet", err);
@@ -73,14 +88,43 @@ function SuccessShareCard({ visible }: SuccessShareCardProps) {
           </Button>
           <Button
             size="lg"
-            onClick={handleCopySnippet}
+            onClick={() => handleCopyAttribution("markdown")}
             variant="ghost"
             aria-label={
-              copied ? "Attribution snippet copied" : "Copy attribution snippet"
+              copied ? "Attribution copied" : "Copy attribution (Markdown link)"
             }
           >
-            {copied ? "Copied! ✓" : "Copy attribution snippet"}
+            {copied && copiedFormat === "markdown"
+              ? "Copied! ✓"
+              : "Copy Markdown credit"}
           </Button>
+          <Button
+            size="lg"
+            onClick={() => handleCopyAttribution("html")}
+            variant="ghost"
+            aria-label={copied ? "Attribution copied" : "Copy HTML credit"}
+          >
+            {copied && copiedFormat === "html"
+              ? "Copied! ✓"
+              : "Copy HTML credit"}
+          </Button>
+          <Button
+            size="lg"
+            onClick={() => handleCopyAttribution("url")}
+            variant="ghost"
+            aria-label={copied ? "Link copied" : "Copy tool link"}
+          >
+            {copied && copiedFormat === "url" ? "Copied! ✓" : "Copy tool link"}
+          </Button>
+        </div>
+
+        <div className="mt-4 space-y-2">
+          <p className="text-sm text-emerald-900">
+            Optional credit (helps others find the tool):
+          </p>
+          <div className="rounded-lg border border-emerald-200 bg-white p-3 text-sm text-gray-800">
+            <div className="font-mono break-all">{attributionMarkdown}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -741,9 +785,9 @@ export default function AppIconSplashGenerator() {
             Upload your image now
           </ButtonNextNative> */}
 
-          <div className="mx-auto mt-10 max-w-xl">
+          {/* <div className="mx-auto mt-10 max-w-xl">
             <NextNativeCard post={{ slug: "free-tool" }} />
-          </div>
+          </div> */}
         </div>
 
         {/* Main Content */}
@@ -763,7 +807,7 @@ export default function AppIconSplashGenerator() {
               onUseDemoImage={async () => {
                 try {
                   const response = await fetch(
-                    "/showcase/bill-organizer/logo.png",
+                    "/showcase/bill-organizer/logo.webp",
                   );
                   const blob = await response.blob();
                   const file = new File([blob], "demo-app-icon.png", {

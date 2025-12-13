@@ -76,5 +76,34 @@ export default function AppIconGeneratorLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <main>{children}</main>;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "App Icon & Splash Screen Generator",
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Web",
+    url: "https://nextnative.dev/free-tools/app-icon-splash-generator",
+    description:
+      "Generate every required app icon and splash screen size for iOS & Android from one image. Fast, free, no signup.",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "NextNative",
+      url: "https://nextnative.dev",
+    },
+  };
+
+  return (
+    <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </main>
+  );
 }
