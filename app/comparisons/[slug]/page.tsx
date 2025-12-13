@@ -6,6 +6,7 @@ import { Check, X, ChevronRight, Calendar } from "lucide-react";
 import Link from "next/link";
 import Script from "next/script";
 import CTA from "@/components/CTA";
+import CTABlogButton from "@/app/blog/[slug]/CTABlogButton";
 
 // Generate static params for all comparisons
 export async function generateStaticParams() {
@@ -351,9 +352,8 @@ export default async function ComparisonPage({
           {comparison.cta.text}
         </h2>
         <p className="mb-8 text-lg md:text-xl">{comparison.cta.description}</p>
-        <Link href="/">
-          <CTA />
-        </Link>
+
+        <CTABlogButton post={{ slug: comparison.title }} />
       </section>
 
       {/* Related Tutorials */}
