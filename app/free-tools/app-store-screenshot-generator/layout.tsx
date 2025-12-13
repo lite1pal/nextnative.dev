@@ -74,9 +74,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="mx-auto mt-10 max-w-xl">
+      {/* <div className="mx-auto mt-10 max-w-xl">
         <NextNativeCard post={{ slug: "free-tool" }} />
-      </div>
+      </div> */}
       {children}
     </main>
   );
