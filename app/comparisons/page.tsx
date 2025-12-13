@@ -2,9 +2,8 @@ import Link from "next/link";
 import { comparisons } from "./[slug]/comparisons-data";
 import { ChevronRight } from "lucide-react";
 import HighlightedSpan from "@/components/HighlightedSpan";
-import CTASkeleton from "@/components/CTASkeleton";
-import { Suspense } from "react";
 import CTA from "@/components/CTA";
+import CTABlogButton from "../blog/[slug]/CTABlogButton";
 
 export default function ComparisonsPage() {
   return (
@@ -59,15 +58,8 @@ export default function ComparisonsPage() {
           NextNative provides everything you need to ship iOS and Android apps
           with Next.js + Capacitor in minutes.
         </p>
-        {/* <Link
-          href="/pricing"
-          className="bg-primary hover:bg-primary/90 inline-block rounded-full px-8 py-3 font-semibold text-white"
-        >
-          Get Started
-        </Link> */}
-        <Link href="/">
-          <CTA />
-        </Link>
+
+        <CTABlogButton post={{ slug: "comparisons_page" }} />
       </div>
     </div>
   );

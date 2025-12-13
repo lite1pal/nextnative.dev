@@ -5,9 +5,7 @@ import type { Metadata } from "next";
 import { Check, X, ChevronRight, Calendar } from "lucide-react";
 import Link from "next/link";
 import Script from "next/script";
-import { Suspense } from "react";
 import CTA from "@/components/CTA";
-import CTASkeleton from "@/components/CTASkeleton";
 
 // Generate static params for all comparisons
 export async function generateStaticParams() {
