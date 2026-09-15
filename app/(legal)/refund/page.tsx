@@ -83,10 +83,7 @@ export default function Refund() {
       <ol>
         <li>
           Contact our support team at{" "}
-          <a href="mailto:denistarasenko@nextnative.dev">
-            denistarasenko@nextnative.dev
-          </a>
-          .
+          <a href="mailto:dev@denistarasenko.com">dev@denistarasenko.com</a>.
         </li>
         <li>
           Provide your payment receipt, order ID, and a detailed explanation of
@@ -117,9 +114,7 @@ export default function Refund() {
 
       <p>
         Email:{" "}
-        <a href="mailto:denistarasenko@nextnative.dev">
-          denistarasenko@nextnative.dev
-        </a>
+        <a href="mailto:dev@denistarasenko.com">dev@denistarasenko.com</a>
       </p>
     </div>
   );

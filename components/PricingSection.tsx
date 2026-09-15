@@ -242,9 +242,9 @@ function PricingPlanCard({ plan }: { plan: PricingPlan }) {
               Questions before buying? Email{" "}
               <a
                 className="text-foreground underline underline-offset-4"
-                href="mailto:denistarasenko@nextnative.dev"
+                href="mailto:dev@denistarasenko.com"
               >
-                denistarasenko@nextnative.dev
+                dev@denistarasenko.com
               </a>
               .
             </span>

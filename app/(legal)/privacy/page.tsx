@@ -22,10 +22,7 @@ export default function Privacy() {
       <p>
         If you have additional questions or require more information about our
         Privacy Policy, do not hesitate to contact us at{" "}
-        <a href="mailto:denistarasenko@nextnative.dev">
-          denistarasenko@nextnative.dev
-        </a>
-        .
+        <a href="mailto:dev@denistarasenko.com">dev@denistarasenko.com</a>.
       </p>
 
       <p>

@@ -154,9 +154,9 @@ const faqItems = [
         Just email{" "}
         <a
           className="text-primary underline"
-          href="mailto:denistarasenko@nextnative.dev"
+          href="mailto:dev@denistarasenko.com"
         >
-          denistarasenko@nextnative.dev
+          dev@denistarasenko.com
         </a>{" "}
         or message me on Twitter/X{" "}
         <a

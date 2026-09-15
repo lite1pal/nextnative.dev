@@ -44,7 +44,7 @@ export default function ThankYouPageStripe({
     } catch (err) {
       console.log(err);
       setError(
-        "Something went wrong. Please write me on email: denistarasenko@nextnative.dev",
+        "Something went wrong. Please write me on email: dev@denistarasenko.com",
       );
     } finally {
       setIsLoading(false);

@@ -117,9 +117,7 @@ export default function Disclaimer() {
         </li>
         <li>
           By email:{" "}
-          <a href="mailto:denistarasenko@nextnative.dev">
-            denistarasenko@nextnative.dev
-          </a>
+          <a href="mailto:dev@denistarasenko.com">dev@denistarasenko.com</a>
         </li>
       </ul>
     </div>
