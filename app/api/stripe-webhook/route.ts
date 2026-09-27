@@ -92,12 +92,6 @@ export async function POST(req: Request) {
         },
       });
 
-      // Update customer count
-      await prisma.globalNumber.update({
-        where: { id: "99c3a4be-4565-451b-813e-82bf381568d7" },
-        data: { value: { increment: 1 } },
-      });
-
       // Send welcome email
       try {
         const emailResult = await sendWelcomeEmail({
