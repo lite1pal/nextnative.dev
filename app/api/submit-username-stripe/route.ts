@@ -106,7 +106,17 @@ export async function POST(request: NextRequest) {
 
     return ok({ message: "Invitation sent successfully" });
   } catch (error: any) {
-    trackEvent("💰 Error on submit-username - " + error.message + " 💔", false);
-    return fromError(error);
-  }
+  console.error("GitHub/API error:", {
+    message: error.message,
+    status: error.status,
+    response: error.response?.data,
+  });
+
+  await trackEvent(
+    "💰 Error on submit-username - " + error.message + " 💔",
+    false,
+  );
+
+  return fromError(error);
+}
 }
