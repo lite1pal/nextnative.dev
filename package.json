@@ -18,7 +18,7 @@
     "db:migrate": "node migration/migrate-mongo-to-postgres.mjs"
   },
   "dependencies": {
-    "@next/third-parties": "^15.3.4",
+    "@next/third-parties": "^16.4.0",
     "@octokit/rest": "^21.1.1",
     "@prisma/client": "^6.6.0",
     "@radix-ui/react-accordion": "^1.2.3",
@@ -34,7 +34,7 @@
     "jszip": "^3.10.1",
     "lucide-react": "^0.476.0",
     "mongodb": "^6.17.0",
-    "next": "^15.5.27",
+    "next": "^16.4.0",
     "pg": "^8.16.0",
     "prism-themes": "^1.9.0",
     "react": "^19.0.0",
