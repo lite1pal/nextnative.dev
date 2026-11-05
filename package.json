@@ -50,7 +50,7 @@
     "stripe": "^20.1.1",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7",
-    "ua-parser-js": "^2.0.3",
+    "ua-parser-js": "^2.0.10",
     "zod": "^3.25.74",
     "zustand": "^5.0.3"
   },
