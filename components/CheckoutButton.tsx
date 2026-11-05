@@ -3,6 +3,7 @@
 import { trackEvent } from "@/services/custom-analytics";
 import Button from "./Button";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 type CheckoutButtonProps = {
   plan: "starter" | "all-in";
@@ -44,7 +45,12 @@ export default function CheckoutButton({ plan }: CheckoutButtonProps) {
 
   return (
     <Button
-      onClick={() => handleBuy(plan)}
+      // onClick={() => handleBuy(plan)}
+      onClick={() =>
+        toast(
+          "NextNative is currently not actively maintained, so I'm temporarily suspending new purchases.",
+        )
+      }
       disabled={isLoading}
       className="flex w-full items-center justify-center gap-2 py-5 text-[18px]"
       variant={plan === "all-in" ? "primary" : "secondary"}

@@ -33,6 +33,11 @@ export default function Home() {
     <div>
       <JsonLD />
 
+      <div className="fixed bottom-5 left-5 rounded bg-black p-5 text-lg text-white">
+        NextNative is currently not actively maintained, so purchase is disabled
+        for now.
+      </div>
+
       <HeroSection />
 
       <VitaliyTestimonial />

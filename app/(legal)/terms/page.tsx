@@ -84,7 +84,13 @@ export default function Terms() {
         You may submit a notification pursuant to the DMCA by providing our
         Copyright Agent with specific details. You can contact our copyright
         agent via email at{" "}
-        <a href="mailto:dev@denistarasenko.com">dev@denistarasenko.com</a>.
+        <a
+          className="text-foreground underline underline-offset-4"
+          href="https://nextnative.dev/contact"
+        >
+          Contact me
+        </a>
+        .
       </p>
 
       <h3>
@@ -201,7 +207,12 @@ export default function Terms() {
         </li>
         <li>
           Email:{" "}
-          <a href="mailto:dev@denistarasenko.com">dev@denistarasenko.com</a>
+          <a
+            className="text-foreground underline underline-offset-4"
+            href="https://nextnative.dev/contact"
+          >
+            Contact me
+          </a>
         </li>
       </ul>
     </div>

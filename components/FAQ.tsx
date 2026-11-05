@@ -153,10 +153,10 @@ const faqItems = [
         <br />
         Just email{" "}
         <a
-          className="text-primary underline"
-          href="mailto:dev@denistarasenko.com"
+          className="text-foreground underline underline-offset-4"
+          href="https://nextnative.dev/contact"
         >
-          dev@denistarasenko.com
+          Contact me
         </a>{" "}
         or message me on Twitter/X{" "}
         <a

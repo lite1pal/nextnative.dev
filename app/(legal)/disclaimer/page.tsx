@@ -117,7 +117,12 @@ export default function Disclaimer() {
         </li>
         <li>
           By email:{" "}
-          <a href="mailto:dev@denistarasenko.com">dev@denistarasenko.com</a>
+          <a
+            className="text-foreground underline underline-offset-4"
+            href="https://nextnative.dev/contact"
+          >
+            Contact me
+          </a>
         </li>
       </ul>
     </div>

@@ -228,23 +228,29 @@ function PricingPlanCard({ plan }: { plan: PricingPlan }) {
 
           <div className="mt-auto flex flex-col gap-2">
             <span className="text-gray mt-7 font-[500]"></span>
-
+            {/*
             {plan.buttonWrapper ? (
               plan.buttonWrapper(<CheckoutButton plan={plan.key} />)
             ) : (
               <CheckoutButton plan={plan.key} />
             )}
-
+            */}
+            <div className="rounded-xl bg-black px-4 py-4 text-white">
+              <p className="font-semibold">Not accepting new customers</p>
+              <p className="mt-1 text-sm text-white">
+                NextNative is currently not actively maintained.
+              </p>
+            </div>
             <span className="text-gray font-[500]">
               Pay once, use it for unlimited apps and unlimited team members.
             </span>
             <span className="text-sm text-gray-500">
-              Questions before buying? Email{" "}
+              Questions about NextNative?{" "}
               <a
                 className="text-foreground underline underline-offset-4"
-                href="mailto:dev@denistarasenko.com"
+                href="https://nextnative.dev/contact"
               >
-                dev@denistarasenko.com
+                Contact me
               </a>
               .
             </span>

@@ -22,7 +22,13 @@ export default function Privacy() {
       <p>
         If you have additional questions or require more information about our
         Privacy Policy, do not hesitate to contact us at{" "}
-        <a href="mailto:dev@denistarasenko.com">dev@denistarasenko.com</a>.
+        <a
+          className="text-foreground underline underline-offset-4"
+          href="https://nextnative.dev/contact"
+        >
+          Contact me
+        </a>
+        .
       </p>
 
       <p>
